@@ -24,8 +24,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Window;
 import android.view.WindowManager;
 
-import com.wonium.extension.utils.ActivityManagerUtil;
-import com.wonium.extension.utils.StatusBarUtil;
+import com.wonium.cicada.android.utils.ActivityManagerUtil;
+import com.wonium.cicada.android.utils.StatusBarUtil;
+import com.wonium.java.library.R;
+
 
 /**
  * @ClassName: BaseActivity.java
@@ -116,7 +118,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
 
     protected int getStatusColor() {
-        return getResources().getColor(com.wonium.extension.R.color.forestGreen);
+        return getResources().getColor(android.R.color.background_dark);
     }
 
     /**

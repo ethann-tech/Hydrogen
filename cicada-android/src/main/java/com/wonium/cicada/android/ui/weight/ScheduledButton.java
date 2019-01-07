@@ -26,7 +26,7 @@ import android.os.Message;
 import android.support.v7.widget.AppCompatButton;
 import android.util.AttributeSet;
 
-import com.wonium.extension.utils.ThreadPoolUtil;
+import com.wonium.cicada.android.utils.ThreadPoolUtil;
 import com.wonium.java.library.R;
 
 import java.util.concurrent.ScheduledExecutorService;
@@ -83,7 +83,7 @@ public class ScheduledButton extends AppCompatButton {
                     if (scheduledTime == 0) {
                         cancel();
                         setEnabled(true);
-                        setBackgroundColor(getResources().getColor(com.wonium.extension.R.color.cadetBlue));
+                        setBackgroundColor(getResources().getColor(R.color.cadetBlue));
                         setText(text);
                     }
                     setText(String.valueOf(scheduledTime-- + "s"));
