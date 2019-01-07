@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="title"
+            type="String"/>
+    </data>
+    <android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/include_h5_toolbar"
+            layout="@layout/layout_toolbar" />
+
+        <WebView
+            app:layout_constraintTop_toBottomOf="@+id/include_h5_toolbar"
+            android:id="@+id/webView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <LinearLayout
+            android:id="@+id/layout_control_h5"
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/btnJs"
+                android:layout_width="0.0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="调用js 无参数" />
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/btnJs2"
+                android:layout_width="0.0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="调用js 有参数" />
+
+
+        </LinearLayout>
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

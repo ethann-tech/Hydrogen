@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/nav_find"
+        android:icon="@drawable/ic_nav_find_black_24dp"
+        android:title="@string/nav_find" />
+
+    <item
+        android:id="@+id/nav_video"
+        android:icon="@drawable/ic_nav_video_black_24dp"
+        android:checked="true"
+        android:title="@string/nav_video" />
+
+    <item
+        android:id="@+id/nav_my"
+        android:icon="@drawable/ic_nav_my_black_24dp"
+        android:title="@string/nav_my" />
+
+    <item
+        android:id="@+id/nav_friend"
+        android:icon="@drawable/ic_nav_friend_black_24dp"
+        android:title="@string/nav_friend" />
+
+    <item
+        android:id="@+id/nav_account"
+        android:icon="@drawable/ic_nav_person_black_24dp"
+        app:showAsAction="always"
+        android:title="@string/nav_account" />
+
+</menu>
