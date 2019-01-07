@@ -6,7 +6,7 @@ import android.view.View;
 
 import com.wonium.aclj.R;
 import com.wonium.aclj.databinding.FragmentVideoBinding;
-import com.wonium.java.library.ui.fragment.BaseFragment;
+import com.wonium.cicada.android.ui.fragment.BaseFragment;
 
 /**
  * @ClassName: VideoFragment

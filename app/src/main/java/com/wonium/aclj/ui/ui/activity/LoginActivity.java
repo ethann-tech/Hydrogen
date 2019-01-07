@@ -2,12 +2,11 @@ package com.wonium.aclj.ui.ui.activity;
 
 
 import android.databinding.DataBindingUtil;
-import android.view.View;
 
 import com.wonium.aclj.R;
 import com.wonium.aclj.databinding.ActivityLoginBinding;
 import com.wonium.extension.utils.IntentUtil;
-import com.wonium.java.library.BaseActivity;
+import com.wonium.cicada.android.BaseActivity;
 
 /**
  * @ClassName: LoginActivity

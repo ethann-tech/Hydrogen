@@ -1,4 +1,4 @@
-package com.wonium.java.library.ui.activity;
+package com.wonium.cicada.android.ui.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
@@ -7,7 +7,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import com.wonium.java.library.R;
-import com.wonium.java.library.ui.weight.SwipeBackLayout;
+import com.wonium.cicada.android.ui.weight.SwipeBackLayout;
 
 /**
  * @ClassName: SwipeBackActivity

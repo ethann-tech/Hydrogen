@@ -1,4 +1,4 @@
-package com.wonium.java.library.ui.fragment;
+package com.wonium.cicada.android.ui.fragment;
 
 import android.content.Context;
 import android.databinding.DataBindingUtil;

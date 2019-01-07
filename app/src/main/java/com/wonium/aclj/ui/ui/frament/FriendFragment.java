@@ -7,7 +7,7 @@ import android.view.View;
 import com.wonium.aclj.BR;
 import com.wonium.aclj.R;
 import com.wonium.aclj.databinding.FragmentFriendBinding;
-import com.wonium.java.library.ui.fragment.BaseFragment;
+import com.wonium.cicada.android.ui.fragment.BaseFragment;
 
 /**
  * @ClassName: FriendFragment

@@ -1,4 +1,4 @@
-package com.wonium.java.library.adapter;
+package com.wonium.cicada.android.adapter;
 
 import android.util.Log;
 import android.view.View;

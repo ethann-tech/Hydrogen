@@ -2,13 +2,12 @@ package com.wonium.aclj.ui.ui.frament;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.View;
 
 import com.wonium.aclj.BR;
 import com.wonium.aclj.R;
 import com.wonium.aclj.databinding.FragmentAccountBinding;
-import com.wonium.java.library.ui.fragment.BaseFragment;
+import com.wonium.cicada.android.ui.fragment.BaseFragment;
 
 /**
  * @ClassName: AccountFragment

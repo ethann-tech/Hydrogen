@@ -4,8 +4,8 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import com.wonium.aclj.R;
-import com.wonium.java.library.ui.activity.SwipeBackActivity;
-import com.wonium.java.library.ui.weight.SwipeBackLayout;
+import com.wonium.cicada.android.ui.activity.SwipeBackActivity;
+import com.wonium.cicada.android.ui.weight.SwipeBackLayout;
 
 
 /**

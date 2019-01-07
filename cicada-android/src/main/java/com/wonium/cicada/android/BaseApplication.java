@@ -1,4 +1,4 @@
-package com.wonium.java.library;
+package com.wonium.cicada.android;
 
 import android.app.Application;
 

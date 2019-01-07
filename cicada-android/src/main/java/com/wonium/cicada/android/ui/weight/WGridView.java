@@ -15,7 +15,7 @@
  *
  */
 
-package com.wonium.java.library.ui.weight;
+package com.wonium.cicada.android.ui.weight;
 
 import android.content.Context;
 import android.util.AttributeSet;

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.wonium.java.library;
+package com.wonium.cicada.android;
 
 import android.content.Context;
 import android.content.pm.ActivityInfo;

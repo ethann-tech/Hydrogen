@@ -1,7 +1,7 @@
 package com.wonium.aclj.ui;
 
 
-import com.wonium.java.library.BaseApplication;
+import com.wonium.cicada.android.BaseApplication;
 
 /**
  * @ClassName: App

@@ -22,8 +22,8 @@ import android.support.v7.widget.AppCompatButton;
 
 import com.wonium.aclj.R;
 import com.wonium.extension.utils.ToastUtil;
-import com.wonium.java.library.BaseActivity;
-import com.wonium.java.library.ui.weight.ScheduledButton;
+import com.wonium.cicada.android.BaseActivity;
+import com.wonium.cicada.android.ui.weight.ScheduledButton;
 
 public class DateActivity extends BaseActivity {
     private ScheduledButton btnTime;

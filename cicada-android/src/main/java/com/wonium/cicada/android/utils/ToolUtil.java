@@ -1,4 +1,4 @@
-package com.wonium.java.library.utils;
+package com.wonium.cicada.android.utils;
 
 import android.view.MotionEvent;
 import android.view.View;

@@ -11,7 +11,7 @@ import com.wonium.aclj.R;
 import com.wonium.aclj.databinding.FragmentFindBinding;
 import com.wonium.aclj.ui.ui.activity.H5Activity;
 import com.wonium.extension.utils.StringUtil;
-import com.wonium.java.library.ui.fragment.BaseFragment;
+import com.wonium.cicada.android.ui.fragment.BaseFragment;
 
 
 /**

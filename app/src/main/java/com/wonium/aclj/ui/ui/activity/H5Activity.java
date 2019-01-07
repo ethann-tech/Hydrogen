@@ -17,7 +17,7 @@ import android.widget.Toast;
 
 import com.wonium.aclj.R;
 import com.wonium.aclj.databinding.ActivityH5Binding;
-import com.wonium.java.library.BaseActivity;
+import com.wonium.cicada.android.BaseActivity;
 
 /**
  * @ClassName: MainActivity
