@@ -61,6 +61,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mContext = this;
         initWindowAttributes();
         if (mAllowFullScreen) {
             getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -84,8 +85,6 @@ public abstract class BaseActivity extends AppCompatActivity {
                 initParam(getIntent().getExtras());
             }
         }
-        mContext = this;
-
         initListener();
     }
 
