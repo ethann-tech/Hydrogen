@@ -11,8 +11,8 @@ import com.wonium.aclj.ui.ui.frament.FindFragment;
 import com.wonium.aclj.ui.ui.frament.FriendFragment;
 import com.wonium.aclj.ui.ui.frament.MyFragment;
 import com.wonium.aclj.ui.ui.frament.VideoFragment;
-import com.wonium.extension.utils.ToastUtil;
 import com.wonium.cicada.android.BaseActivity;
+import com.wonium.cicada.android.utils.ToastUtil;
 
 import java.util.ArrayList;
 import java.util.List;

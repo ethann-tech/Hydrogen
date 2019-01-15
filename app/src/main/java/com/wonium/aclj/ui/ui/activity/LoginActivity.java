@@ -5,8 +5,8 @@ import android.databinding.DataBindingUtil;
 
 import com.wonium.aclj.R;
 import com.wonium.aclj.databinding.ActivityLoginBinding;
-import com.wonium.extension.utils.IntentUtil;
 import com.wonium.cicada.android.BaseActivity;
+import com.wonium.cicada.android.utils.IntentUtil;
 
 /**
  * @ClassName: LoginActivity
