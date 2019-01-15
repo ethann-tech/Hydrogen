@@ -4,8 +4,8 @@ import android.databinding.DataBindingUtil;
 
 import com.wonium.aclj.R;
 import com.wonium.aclj.databinding.ActivityRegisterBinding;
-import com.wonium.extension.utils.StatusBarUtil;
 import com.wonium.cicada.android.BaseActivity;
+import com.wonium.cicada.android.utils.StatusBarUtil;
 
 /**
  * @ClassName: RegisterActivity

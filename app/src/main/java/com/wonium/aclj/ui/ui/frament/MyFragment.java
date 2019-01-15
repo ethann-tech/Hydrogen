@@ -8,8 +8,8 @@ import com.wonium.aclj.BR;
 import com.wonium.aclj.R;
 import com.wonium.aclj.databinding.FragmentMyBinding;
 import com.wonium.aclj.ui.ui.activity.LoginActivity;
-import com.wonium.extension.utils.IntentUtil;
 import com.wonium.cicada.android.ui.fragment.BaseFragment;
+import com.wonium.cicada.android.utils.IntentUtil;
 
 import java.util.Objects;
 

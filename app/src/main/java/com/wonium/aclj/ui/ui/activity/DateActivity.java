@@ -21,10 +21,22 @@ import android.support.v7.widget.AppCompatButton;
 
 
 import com.wonium.aclj.R;
-import com.wonium.extension.utils.ToastUtil;
 import com.wonium.cicada.android.BaseActivity;
 import com.wonium.cicada.android.ui.weight.ScheduledButton;
+import com.wonium.cicada.android.utils.ToastUtil;
 
+/**
+ * @ClassName: DateActivity
+ * @Description: 描述一下
+ * @Author: Ethan
+ * @E-mail: wonium@qq.com
+ * @Blog: https://blog.wonium.com
+ * @CreateDate: 2019/1/15 21:46
+ * @UpdateUser: update user
+ * @UpdateDate: 2019/1/15 21:46
+ * @UpdateDescription: 更新说明
+ * @Version: 1.0.0
+ */
 public class DateActivity extends BaseActivity {
     private ScheduledButton btnTime;
     private AppCompatButton btnStop;

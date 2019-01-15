@@ -10,8 +10,8 @@ import com.wonium.aclj.BR;
 import com.wonium.aclj.R;
 import com.wonium.aclj.databinding.FragmentFindBinding;
 import com.wonium.aclj.ui.ui.activity.H5Activity;
-import com.wonium.extension.utils.StringUtil;
 import com.wonium.cicada.android.ui.fragment.BaseFragment;
+import com.wonium.cicada.android.utils.StringUtil;
 
 
 /**
@@ -48,7 +48,7 @@ public class FindFragment extends BaseFragment {
 
     @Override
     public void initView(View view) {
-        mBinding.setVariable(BR.btnFind,StringUtil.INSTANCE.isEmpty(argument1));
+        mBinding.setVariable(BR.btnFind, StringUtil.INSTANCE.isEmpty(argument1));
     }
 
     @Override
