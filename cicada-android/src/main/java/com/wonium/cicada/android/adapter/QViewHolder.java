@@ -5,7 +5,7 @@ import android.view.View;
 public  abstract class QViewHolder {
     private final View itemView;
 
-    QViewHolder(View itemView) {
+  public  QViewHolder(View itemView) {
         this.itemView = itemView;
         itemView.setTag(this);
     }

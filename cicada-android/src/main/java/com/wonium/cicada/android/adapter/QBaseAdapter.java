@@ -17,7 +17,7 @@ public abstract class QBaseAdapter<T, VH extends QViewHolder> extends BaseAdapte
 
     private List<T> datas;
 
-    QBaseAdapter(List<T> datas) {
+   public QBaseAdapter(List<T> datas) {
         this.datas = datas;
     }
 
@@ -101,7 +101,7 @@ public abstract class QBaseAdapter<T, VH extends QViewHolder> extends BaseAdapte
     }
 
 
-    protected OnChildItemClickListener onChildItemClickListener;
+    private OnChildItemClickListener onChildItemClickListener;
 
     public void setOnChildItemClickListener(OnChildItemClickListener onChildItemClickListener) {
         if (onChildItemClickListener == null) {
