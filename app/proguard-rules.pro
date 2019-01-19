@@ -20,9 +20,20 @@
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
 # SwipeBackLayout
-#-keep public class com.wonium.cicada.android.ui.weight.SwipeBackLayout{*;}
-# 这个library  cicada-android  里面有一个混淆配置文件
-# 这个 app  moduel 下面也有一个
-# 这个就这样了,保留这个类   然后还是不行 。
-# 现在不是没有被混淆吗？ 下面 提示要保留的方法
-# 测试一下
+#-dontwarn com.wonium.cicada.android.ui.weight.**
+#-keep class com.wonium.cicada.android.ui.weight.**{*;}
+#-keep class com.wonium.cicada.android.ui.weight.SwipeBackLayout{*;}
+##-keep class com.wonium.cicada.android.ui.weight.SwipeBackLayout.DragEdge{*;}
+#-keep enum com.wonium.cicada.android.ui.weight.SwipeBackLayout$DragEdge{*;}
+#-keep  class com.wonium.cicada.android.ui.weight.SwipeBackLayout$ * {
+# *;
+#}
+##-keepclassmembers enum * {
+##    *;
+##}
+##-keepclassmembers class com.wonium.cicada.android.ui.weight.SwipeBackLayout{
+##    public void test(com.wonium.cicada.android.ui.weight.SwipeBackLayout$DragEdge);
+##}
+#-dontwarn org.**
+#-dontwarn com.**
+#-dontwarn afu.**

@@ -10,18 +10,44 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
+    lintOptions {
+        abortOnError false  //这个属性 网上说是  每次都会检查lint 错误， 所以设置成false 忽略检查
+    }
+
     buildTypes {
         release {
-            minifyEnabled false
+            // 不显示Log
+            buildConfigField "boolean", "LOG_DEBUG", "false"
+            minifyEnabled true //代码混淆
+            zipAlignEnabled true //zipalign 优化
+            // 移除无用的resource文件
+            shrinkResources false
+            //加载默认混淆配置文件 progudard-android.txt在sdk目录里面，不用管，proguard.cfg是我们自己配<span></span>的混淆文件
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+        }
+        debug {
+            // 这个是控制显示LOG true 显示 false 不显示
+            buildConfigField "boolean", "LOG_DEBUG", "true"
+            versionNameSuffix "-debug" //测试包版本名后缀 这个在安装的时候，会看到
+            minifyEnabled true //代码混淆 false 不混淆，true 混淆
+            zipAlignEnabled true // zipalign 优化 这个也要单独领出来说一下
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
-    }
-    dataBinding{
-        enabled=true
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+    }
+    dataBinding {
+        enabled = true
+    }
+
+    //资源设置
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
     }
 }
 

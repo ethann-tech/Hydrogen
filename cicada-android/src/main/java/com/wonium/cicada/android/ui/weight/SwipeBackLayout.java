@@ -43,25 +43,30 @@ import android.widget.ScrollView;
  * <p/>
  * Created by Eric on 15/1/8.
  */
-@Keep
+
 public class SwipeBackLayout extends ViewGroup {
-
     private static final String TAG = "SwipeBackLayout";
-
     /**
      * 该枚举定义哪边侧滑关闭
      * 侧滑边缘
      */
+    @Keep
     public enum DragEdge {
         NONE,
         LEFT,
         TOP,
         RIGHT,
-        BOTTOM
+        BOTTOM;
+
+
+        @Override
+        public String toString() {
+            return super.toString();
+        }
     }
 
     private DragEdge dragEdge = DragEdge.NONE;// 默认从上往下拉关闭页面
-
+    @Keep
     public void setDragEdge(DragEdge dragEdge) {
         this.dragEdge = dragEdge;
     }
@@ -291,6 +296,7 @@ public class SwipeBackLayout extends ViewGroup {
         act.overridePendingTransition(0, android.R.anim.fade_out);
     }
 
+
     private class ViewDragHelperCallBack extends ViewDragHelper.Callback {
 
         @Override
@@ -457,6 +463,7 @@ public class SwipeBackLayout extends ViewGroup {
         }
     }
 
+    @Keep
     public interface SwipeBackListener {
 
         /**
