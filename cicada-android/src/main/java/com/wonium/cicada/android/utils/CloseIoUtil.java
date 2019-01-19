@@ -17,15 +17,10 @@ import java.io.Closeable;
 import java.io.IOException;
 
 /**
- * <pre>
- *     author: Blankj
- *     blog  : http://blankj.com
- *     time  : 2016/10/09
- *     desc  : 关闭相关工具类
- * </pre>
- * @author fxhhq
+ * 关闭相关工具类
+ * @author Ethan
  */
-public  enum  CloseUtil {
+public  enum CloseIoUtil {
     /**
      * 实例对象
      */

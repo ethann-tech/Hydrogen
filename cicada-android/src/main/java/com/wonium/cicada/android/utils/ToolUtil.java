@@ -14,7 +14,7 @@ public enum  ToolUtil {
      * 判断是否点击的View 是EditView
      * @param v EditView的一个实例对象
      * @param event 事件
-     * @return
+     * @return true 点击的View 是EditView ；false 点击的View不是EditView
      */
     public  boolean isHideInput(View v, MotionEvent event) {
         if ((v instanceof EditText)) {

@@ -152,7 +152,7 @@ public enum ShellUtil {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            CloseUtil.INSTANCE.closeIO(os, successResult, errorResult);
+            CloseIoUtil.INSTANCE.closeIO(os, successResult, errorResult);
             if (process != null) {
                 process.destroy();
             }

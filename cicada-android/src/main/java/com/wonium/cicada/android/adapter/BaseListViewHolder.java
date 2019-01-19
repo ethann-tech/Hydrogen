@@ -2,10 +2,10 @@ package com.wonium.cicada.android.adapter;
 
 import android.view.View;
 
-public  abstract class QViewHolder {
+public  abstract class BaseListViewHolder {
     private final View itemView;
 
-  public  QViewHolder(View itemView) {
+  public BaseListViewHolder(View itemView) {
         this.itemView = itemView;
         itemView.setTag(this);
     }

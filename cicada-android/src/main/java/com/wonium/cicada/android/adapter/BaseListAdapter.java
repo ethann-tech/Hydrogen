@@ -7,7 +7,7 @@ import android.widget.BaseAdapter;
 
 import java.util.List;
 
-public abstract class QBaseAdapter<T, VH extends QViewHolder> extends BaseAdapter {
+public abstract class BaseListAdapter<T, VH extends BaseListViewHolder> extends BaseAdapter {
 
     private final String TAG = this.getClass().getSimpleName();
 
@@ -17,7 +17,7 @@ public abstract class QBaseAdapter<T, VH extends QViewHolder> extends BaseAdapte
 
     private List<T> datas;
 
-   public QBaseAdapter(List<T> datas) {
+   public BaseListAdapter(List<T> datas) {
         this.datas = datas;
     }
 
