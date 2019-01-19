@@ -18,6 +18,7 @@ package com.wonium.cicada.android.ui.weight;
 
 import android.app.Activity;
 import android.content.Context;
+import android.support.annotation.Keep;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.ViewDragHelper;
@@ -42,6 +43,7 @@ import android.widget.ScrollView;
  * <p/>
  * Created by Eric on 15/1/8.
  */
+@Keep
 public class SwipeBackLayout extends ViewGroup {
 
     private static final String TAG = "SwipeBackLayout";
@@ -53,11 +55,8 @@ public class SwipeBackLayout extends ViewGroup {
     public enum DragEdge {
         NONE,
         LEFT,
-
         TOP,
-
         RIGHT,
-
         BOTTOM
     }
 

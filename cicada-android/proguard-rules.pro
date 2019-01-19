@@ -19,3 +19,24 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+#-dontwarn com.google.common.util.**
+#-keep com.google.common.util.**
+## com.google.guava:guava:24.1-jre
+#-keep class com.google.common.io.Resources {
+#    public static <methods>;
+#}
+#-keep class com.google.common.collect.Lists {
+#    public static ** reverse(**);
+#}
+#-keep class com.google.common.base.Charsets {
+#    public static <fields>;
+#}
+#
+## SwipeBackLayout
+## -keepclassmembers  class com.wonium.cicada.android.ui.weight.SwipeBackLayout{*;}
+#
+#-keepclassmembers enum * {
+#    public static **[] values();
+#    public static ** valueOf(java.lang.String);
+#}
+#-keep public class com.wonium.cicada.android.ui.weight.SwipeBackLayout{*;}
