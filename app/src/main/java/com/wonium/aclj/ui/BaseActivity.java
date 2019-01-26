@@ -14,19 +14,16 @@
  * limitations under the License.
  */
 
-package com.wonium.cicada.android;
+package com.wonium.aclj.ui;
 
 import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.view.Window;
 import android.view.WindowManager;
 
-import com.wonium.cicada.android.utils.ActivityManagerUtil;
-import com.wonium.cicada.android.utils.StatusBarUtil;
-import com.wonium.java.library.R;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 
 /**
@@ -67,7 +64,7 @@ public abstract class BaseActivity extends AppCompatActivity {
             getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
             requestWindowFeature(Window.FEATURE_NO_TITLE);
         }
-        ActivityManagerUtil.getInstance().addActivity(this);
+//        ActivityManagerUtil.getInstance().addActivity(this);
         bindLayout(getLayoutResId());
         initView();
         if (isSetStatusBar) {
@@ -108,7 +105,7 @@ public abstract class BaseActivity extends AppCompatActivity {
      */
     protected void setStatusBar() {
         try {
-            StatusBarUtil.INSTANCE.setColor(this, getStatusColor(), 0);
+//            StatusBarUtil.INSTANCE.setColor(this, getStatusColor(), 0);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -175,7 +172,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        ActivityManagerUtil.getInstance().finishActivity(this);
+//        ActivityManagerUtil.getInstance().finishActivity(this);
     }
 
 }

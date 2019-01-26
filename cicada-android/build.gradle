@@ -16,23 +16,10 @@ android {
 
     buildTypes {
         release {
-            // 不显示Log
-            buildConfigField "boolean", "LOG_DEBUG", "false"
-            minifyEnabled true //代码混淆
-            zipAlignEnabled true //zipalign 优化
-            // 移除无用的resource文件
-            shrinkResources false
-            //加载默认混淆配置文件 progudard-android.txt在sdk目录里面，不用管，proguard.cfg是我们自己配<span></span>的混淆文件
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-
+            consumerProguardFiles 'proguard-rules.pro'
         }
         debug {
-            // 这个是控制显示LOG true 显示 false 不显示
-            buildConfigField "boolean", "LOG_DEBUG", "true"
-            versionNameSuffix "-debug" //测试包版本名后缀 这个在安装的时候，会看到
-            minifyEnabled true //代码混淆 false 不混淆，true 混淆
-            zipAlignEnabled true // zipalign 优化 这个也要单独领出来说一下
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            consumerProguardFiles  'proguard-rules.pro'
         }
     }
     compileOptions {
@@ -53,11 +40,11 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation 'com.android.support:appcompat-v7:28.0.0'
-    implementation 'com.android.support:design:28.0.0'
+    implementation 'androidx.appcompat:appcompat:1.1.0-alpha01'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    testImplementation 'junit:junit:4.12'
     implementation 'com.google.guava:guava:24.1-jre'
 }
-
 // jcenter 配置
 apply plugin: "com.github.dcendents.android-maven"
 apply plugin: 'com.jfrog.bintray'
@@ -76,7 +63,6 @@ task sourcesJar(type: Jar) {
     from android.sourceSets.main.java.srcDirs
     classifier = 'sources'
 }
-
 //生成文档
 task javadoc(type: Javadoc) {
     source = android.sourceSets.main.java.srcDirs

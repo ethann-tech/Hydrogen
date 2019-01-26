@@ -17,20 +17,20 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ui.ui.activity.MainActivity">
+        <activity android:name="com.wonium.aclj.ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.ui.activity.SecondActivity" />
-        <!-- 登陆页面 -->
-        <activity android:name=".ui.ui.activity.LoginActivity" />
-        <!--Register page-->
-        <activity android:name=".ui.ui.activity.RegisterActivity"/>
-        <!--H5页面-->
-        <activity android:name=".ui.ui.activity.H5Activity"/>
+        <!--<activity android:name=".ui.ui.activity.SecondActivity" />-->
+        <!--&lt;!&ndash; 登陆页面 &ndash;&gt;-->
+        <!--<activity android:name=".ui.ui.activity.LoginActivity" />-->
+        <!--&lt;!&ndash;Register page&ndash;&gt;-->
+        <!--<activity android:name=".ui.ui.activity.RegisterActivity"/>-->
+        <!--&lt;!&ndash;H5页面&ndash;&gt;-->
+        <!--<activity android:name=".ui.ui.activity.H5Activity"/>-->
     </application>
 
 </manifest>

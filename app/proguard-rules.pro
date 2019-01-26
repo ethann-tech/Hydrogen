@@ -34,6 +34,6 @@
 ##-keepclassmembers class com.wonium.cicada.android.ui.weight.SwipeBackLayout{
 ##    public void test(com.wonium.cicada.android.ui.weight.SwipeBackLayout$DragEdge);
 ##}
-#-dontwarn org.**
-#-dontwarn com.**
-#-dontwarn afu.**
+-dontwarn org.**
+-dontwarn com.**
+-dontwarn afu.**

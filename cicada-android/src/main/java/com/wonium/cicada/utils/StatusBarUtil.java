@@ -11,18 +11,14 @@
  *   limitations under the License.
  */
 
-package com.wonium.cicada.android.utils;
+package com.wonium.cicada.utils;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Build;
-import android.support.annotation.ColorInt;
-import android.support.annotation.IntRange;
-import android.support.annotation.NonNull;
-import android.support.design.widget.CoordinatorLayout;
-import android.support.v4.widget.DrawerLayout;
+
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -34,6 +30,12 @@ import com.wonium.java.library.R;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+
+import androidx.annotation.ColorInt;
+import androidx.annotation.IntRange;
+import androidx.annotation.NonNull;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 /**
  * @ date  2018/9/4
@@ -73,7 +75,7 @@ public enum StatusBarUtil {
      * @param statusBarAlpha 状态栏透明度
      */
 
-    public void setColor(Activity activity, @ColorInt int color, @IntRange (from = 0, to = 255) int statusBarAlpha) {
+    public void setColor(Activity activity, @ColorInt int color, @IntRange(from = 0, to = 255) int statusBarAlpha) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             activity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);

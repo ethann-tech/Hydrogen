@@ -11,7 +11,7 @@
  *   limitations under the License.
  */
 
-package com.wonium.cicada.android.utils;
+package com.wonium.cicada.utils;
 
 import android.app.Activity;
 import android.app.ActivityManager;

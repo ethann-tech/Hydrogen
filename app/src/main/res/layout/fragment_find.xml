@@ -11,11 +11,11 @@
             type="String" />
     </data>
 
-    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <android.support.v7.widget.AppCompatButton
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_test"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -26,7 +26,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
 
-        <android.support.v7.widget.AppCompatButton
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_h5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -34,21 +34,21 @@
             app:layout_constraintTop_toBottomOf="@+id/btn_test" />
 
 
-        <com.wonium.cicada.android.ui.weight.MarqueeTextView
-            android:id="@+id/tvMarquee"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:ellipsize="marquee"
-            android:singleLine="true"
-            android:text="blog.wonium.com blog.wonium.com blog.wonium.com blog.wonium.com" />
+        <!--<com.wonium.cicada.android.ui.weight.MarqueeTextView-->
+            <!--android:id="@+id/tvMarquee"-->
+            <!--android:layout_width="200dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:ellipsize="marquee"-->
+            <!--android:singleLine="true"-->
+            <!--android:text="blog.wonium.com blog.wonium.com blog.wonium.com blog.wonium.com" />-->
 
 
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="blog.wonium.com"
-            app:layout_constraintTop_toBottomOf="@+id/tvMarquee" />
+        <!--<EditText-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="blog.wonium.com"-->
+            <!--app:layout_constraintTop_toBottomOf="@+id/tvMarquee" />-->
 
 
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

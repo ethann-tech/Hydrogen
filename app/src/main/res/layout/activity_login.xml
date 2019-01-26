@@ -11,7 +11,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <android.support.constraint.ConstraintLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="0.0dp"
             android:layout_weight="1">
@@ -29,9 +29,9 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
 
-        </android.support.constraint.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <android.support.constraint.ConstraintLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="0.0dp"
             android:layout_weight="2"
@@ -40,14 +40,13 @@
             android:paddingEnd="@dimen/material_layout_view_right_margin_16dp"
             android:paddingRight="@dimen/material_layout_view_right_margin_16dp">
 
-            <android.support.design.widget.TextInputLayout
+            <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/layout_edit_user_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
                 android:textColorHint="@color/darkGray">
 
-                <android.support.design.widget.TextInputEditText
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edit_user_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -55,17 +54,17 @@
                     android:textColor="@color/black_p50" />
 
 
-            </android.support.design.widget.TextInputLayout>
+            </com.google.android.material.textfield.TextInputLayout>
 
 
-            <android.support.design.widget.TextInputLayout
+            <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/layout_edit_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColorHint="@color/darkGray"
                 app:layout_constraintTop_toBottomOf="@+id/layout_edit_user_name">
 
-                <android.support.design.widget.TextInputEditText
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edit_password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -73,10 +72,10 @@
                     android:textColor="@color/black_p50" />
 
 
-            </android.support.design.widget.TextInputLayout>
+            </com.google.android.material.textfield.TextInputLayout>
 
 
-            <android.support.v7.widget.AppCompatButton
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_login"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/material_component_button_touchable_target_height"
@@ -87,14 +86,15 @@
                 android:textSize="@dimen/text_size_18sp"
                 app:layout_constraintTop_toBottomOf="@+id/layout_edit_password" />
 
-            <android.support.constraint.ConstraintLayout
+            <RelativeLayout
+                android:orientation="horizontal"
                 android:id="@+id/layout_forget_password_and_register"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/material_layout_view_top_margin_8dp"
                 app:layout_constraintTop_toBottomOf="@+id/btn_login">
 
-                <TextView
+                <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tv_forget_password"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -102,18 +102,20 @@
                     android:textColor="@color/black"
                     app:layout_constraintLeft_toLeftOf="parent" />
 
-                <TextView
+                <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tv_register_account"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
                     android:text="@string/register_account"
                     android:textColor="@color/black"
                     app:layout_constraintRight_toRightOf="parent" />
 
-            </android.support.constraint.ConstraintLayout>
+            </RelativeLayout>
 
 
-            <android.support.constraint.ConstraintLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/layout_fast_login_hint"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -154,17 +156,17 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
 
-            </android.support.constraint.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-            <android.support.constraint.ConstraintLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/material_layout_view_top_margin_8dp"
                 app:layout_constraintTop_toBottomOf="@+id/layout_fast_login_hint">
 
 
-                <android.support.v7.widget.AppCompatImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/img_login_wei_chat"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -172,15 +174,16 @@
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toLeftOf="@+id/img_login_qq" />
 
-                <android.support.v7.widget.AppCompatImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/img_login_qq"
                     android:layout_width="wrap_content"
+                    app:layout_constraintHorizontal_weight="1"
                     android:layout_height="wrap_content"
                     android:src="@drawable/login_qq_img"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent" />
 
-                <android.support.v7.widget.AppCompatImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/img_login_wei_bo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -189,10 +192,10 @@
                     app:layout_constraintRight_toRightOf="parent" />
 
 
-            </android.support.constraint.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-        </android.support.constraint.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     </LinearLayout>

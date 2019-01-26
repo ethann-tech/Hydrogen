@@ -1,7 +1,8 @@
 package com.wonium.aclj.ui;
 
 
-import com.wonium.cicada.android.BaseApplication;
+import android.app.Application;
+
 
 
 /**
@@ -16,7 +17,7 @@ import com.wonium.cicada.android.BaseApplication;
  * @UpdateDescription: 更新说明
  * @Version: 1.0.0
 */
-public class App extends BaseApplication {
+public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
