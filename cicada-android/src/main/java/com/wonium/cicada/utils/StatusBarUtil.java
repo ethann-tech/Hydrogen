@@ -33,6 +33,7 @@ import java.lang.reflect.Method;
 
 import androidx.annotation.ColorInt;
 import androidx.annotation.IntRange;
+import androidx.annotation.Keep;
 import androidx.annotation.NonNull;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -46,6 +47,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
  * @ ModifyDescription
  * @ ModifyDate 2018/9/4
  **/
+
 public enum StatusBarUtil {
     /**
      * 实例对象

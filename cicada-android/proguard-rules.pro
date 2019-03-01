@@ -45,5 +45,21 @@
 -dontwarn com.android.databinding.**
 -dontwarn android.databinding.**
 # utils 工具包下的类都不混淆
--keep class com.wonium.cicada.utils.**{*;}
--keep enum * {*;}
+-keep class com.wonium.cicada.**{*;}
+#-keep enum com.wonium.cicada.StatusBarUtil {*;}
+#-keepclassmembers enum com.wonium.cicada.StatusBarUtil {
+#    public static final int DEFAULT_STATUS_BAR_ALPHA;
+#    private static final int FAKE_STATUS_BAR_VIEW_ID;
+#    private static final int FAKE_TRANSLUCENT_VIEW_ID;
+#    private static final int TAG_KEY_HAVE_SET_OFFSET;
+#}
+## 枚举类不能被混淆
+#-keepclassmembers enum * {
+#    public static **[] values();
+#    public static ** valueOf(java.lang.String);
+#}
+#
+#-keepclassmembers enum com.wonium.cicada.StatusBarUtil{
+#  private void setMIUIStatusBarDarkIcon(@NonNull Activity activity, boolean darkIcon);
+#}
+# https://blog.csdn.net/shoneworn/article/details/83055449

@@ -3,12 +3,12 @@ package com.wonium.aclj.ui;
 
 import com.wonium.aclj.R;
 import com.wonium.aclj.databinding.ActivityMainBinding;
+import com.wonium.cicada.utils.StatusBarUtil;
 
 import java.util.List;
 
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
-import com.google.android.material.appbar.AppBarLayout;
 
 /**
  * @ClassName: MainActivity
@@ -43,7 +43,9 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void initView() {
+        StatusBarUtil.INSTANCE.setColor(this,getResources().getColor(R.color.aliceBlue));
         initFragment();
+
     }
 
     @Override
@@ -53,7 +55,7 @@ public class MainActivity extends BaseActivity {
             switch (menuItem.getItemId()) {
                 case R.id.nav_find:
                     replaceFragment(lastShowFragment,0);
-//                    ToastUtil.INSTANCE.show(getContext(), "find");
+
 
                     break;
                 case R.id.nav_video:
