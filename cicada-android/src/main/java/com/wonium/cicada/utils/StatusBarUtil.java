@@ -47,7 +47,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
  * @ ModifyDescription
  * @ ModifyDate 2018/9/4
  **/
-
+@Keep
 public enum StatusBarUtil {
     /**
      * 实例对象
