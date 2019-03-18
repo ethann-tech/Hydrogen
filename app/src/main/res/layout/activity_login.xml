@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
@@ -44,7 +45,8 @@
                 android:id="@+id/layout_edit_user_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColorHint="@color/darkGray">
+                android:textColorHint="@color/darkGray"
+                tools:ignore="MissingConstraints">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edit_user_name"
@@ -170,9 +172,11 @@
                     android:id="@+id/img_login_wei_chat"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:orientation="vertical"
                     android:src="@drawable/login_weichat_img"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toLeftOf="@+id/img_login_qq" />
+                    app:layout_constraintRight_toLeftOf="@+id/img_login_qq"
+                    tools:ignore="MissingConstraints" />
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/img_login_qq"
@@ -181,7 +185,8 @@
                     android:layout_height="wrap_content"
                     android:src="@drawable/login_qq_img"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent" />
+                    app:layout_constraintRight_toRightOf="parent"
+                    tools:ignore="MissingConstraints" />
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/img_login_wei_bo"
@@ -189,7 +194,8 @@
                     android:layout_height="wrap_content"
                     android:src="@drawable/login_weibo_img"
                     app:layout_constraintLeft_toRightOf="@+id/img_login_qq"
-                    app:layout_constraintRight_toRightOf="parent" />
+                    app:layout_constraintRight_toRightOf="parent"
+                    tools:ignore="MissingConstraints" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>

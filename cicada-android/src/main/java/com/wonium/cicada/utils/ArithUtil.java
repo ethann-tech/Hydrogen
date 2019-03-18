@@ -16,6 +16,8 @@ package com.wonium.cicada.utils;
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
 
+import androidx.annotation.Keep;
+
 
 /**
  * @ClassName: ArithUtil
@@ -29,7 +31,7 @@ import java.text.DecimalFormat;
  * @UpdateDescription: 更新说明
  * @Version: 1.0.0
  */
-
+@Keep
 public enum ArithUtil {
 
     /**

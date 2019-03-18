@@ -48,6 +48,8 @@ import java.util.Set;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
 
+import androidx.annotation.Keep;
+
 /**
  * @ClassName: ACacheUtil.java
  * @Description: 缓存清除工具
@@ -60,6 +62,7 @@ import java.util.concurrent.atomic.AtomicLong;
  * @UpdateDescription: 更新说明
  * @Version: 1.0.0
  */
+@Keep
 public class ACacheUtil {
 
     private static final int TIME_HOUR = 60 * 60;

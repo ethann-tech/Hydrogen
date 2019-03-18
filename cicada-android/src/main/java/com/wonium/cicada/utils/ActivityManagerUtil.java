@@ -19,6 +19,8 @@ import android.content.Context;
 
 import java.util.LinkedList;
 
+import androidx.annotation.Keep;
+
 /**
  * @ClassName: ActivityManagerUtil.java
  * @Description: Activity统一管理工具包
@@ -31,6 +33,7 @@ import java.util.LinkedList;
  * @UpdateDescription: 调整Size 方法名
  * @Version: 1.0.0
  */
+@Keep
 public class ActivityManagerUtil {
 
     private static LinkedList<Activity> activityStack = new LinkedList<>();
