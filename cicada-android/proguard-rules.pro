@@ -42,12 +42,17 @@
 -verbose
 
 # 忽略警告
--dontwarn com.android.databinding.**
--dontwarn android.databinding.**
+
+-dontwarn androidx.databinding.**
+# 保持所有databinding类
+-keep class androidx.databinding.** { *; }
+
 # 以下无效 start
 # utils 工具包下的类都不混淆
 -keep class com.wonium.cicada.**{*;}
+
 -keep enum com.wonium.cicada.StatusBarUtil {*;}
+
 -keepclassmembers enum com.wonium.cicada.StatusBarUtil {
     public static final int DEFAULT_STATUS_BAR_ALPHA;
     private static final int FAKE_STATUS_BAR_VIEW_ID;
@@ -59,9 +64,9 @@
     public static **[] values();
     public static ** valueOf(java.lang.String);
 }
-#-keepclassmembers enum com.wonium.cicada.StatusBarUtil{
-#  private void setMIUIStatusBarDarkIcon(@NonNull Activity activity, boolean darkIcon);
-#}
+-keepclassmembers enum com.wonium.cicada.StatusBarUtil{
+  private void setMIUIStatusBarDarkIcon(@NonNull Activity activity, boolean darkIcon);
+}
 
 # 以上无效 end
 

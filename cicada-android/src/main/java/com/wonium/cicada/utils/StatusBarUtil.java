@@ -56,10 +56,13 @@ public enum StatusBarUtil {
      * 实例对象
      */
     INSTANCE;
-
+    @Keep
     public static final int DEFAULT_STATUS_BAR_ALPHA = 112;
+    @Keep
     private static final int FAKE_STATUS_BAR_VIEW_ID = R.id.statusbarutil_fake_status_bar_view;
+    @Keep
     private static final int FAKE_TRANSLUCENT_VIEW_ID = R.id.statusbarutil_translucent_view;
+    @Keep
     private static final int TAG_KEY_HAVE_SET_OFFSET = -123;
 
     /**
