@@ -37,3 +37,10 @@
 -dontwarn org.**
 -dontwarn com.**
 -dontwarn afu.**
+
+# 忽略警告
+
+-dontwarn androidx.databinding.**
+# 保持所有databinding类
+-keep class androidx.databinding.** { *; }
+

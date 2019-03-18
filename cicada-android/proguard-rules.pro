@@ -64,12 +64,8 @@
     public static **[] values();
     public static ** valueOf(java.lang.String);
 }
--keepclassmembers enum com.wonium.cicada.StatusBarUtil{
-  private void setMIUIStatusBarDarkIcon(@NonNull Activity activity, boolean darkIcon);
-}
 
 # 以上无效 end
-
 
 
 
