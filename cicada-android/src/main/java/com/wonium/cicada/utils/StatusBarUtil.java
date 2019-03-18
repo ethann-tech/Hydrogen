@@ -39,14 +39,17 @@ import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 /**
- * @ date  2018/9/4
- * @ author Cyuan.Huang
- * @ description 适配状态栏沉浸
- * @ version
- * @ Modify Cyuan.Huang
- * @ ModifyDescription
- * @ ModifyDate 2018/9/4
- **/
+ * @ClassName: StatusBarUtil
+ * @Description:
+ * @uthor: Ethan
+ * @E-mail: wonium@qq.com
+ * @Blog: https://blog.wonium.com
+ * @CreateDate: 2019/3/18 15:35
+ * @UpdateUser: update user
+ * @UpdateDate: 2018/11/29 22:56
+ * @UpdateDescription: 更新说明
+ * @Version: 1.0.0
+*/
 @Keep
 public enum StatusBarUtil {
     /**
@@ -549,6 +552,7 @@ public enum StatusBarUtil {
     /**
      * 修改 MIUI V6  以上状态栏颜色
      */
+    @Keep
     private void setMIUIStatusBarDarkIcon(@NonNull Activity activity, boolean darkIcon) {
         Class<? extends Window> clazz = activity.getWindow().getClass();
         try {
