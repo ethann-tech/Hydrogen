@@ -25,12 +25,13 @@ import java.io.IOException;
  * @uthor: Ethan
  * @E-mail: wonium@qq.com
  * @Blog: https://blog.wonium.com
- * @CreateDate: 2019/3/18 16:59
+ * @CreateDate: 2019/3/20 16:06
  * @UpdateUser: update user
  * @UpdateDate: 2018/11/29 22:56
  * @UpdateDescription: 更新说明
  * @Version:
 */
+
 public  enum CloseUtil {
     /**
      * 实例对象

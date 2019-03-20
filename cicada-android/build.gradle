@@ -12,7 +12,7 @@ android {
 
     lintOptions {
         // 这个属性 网上说是  每次都会检查lint 错误， 所以设置成false 忽略检查
-        abortOnError true
+        abortOnError false
     }
 
     buildTypes {
@@ -20,7 +20,7 @@ android {
             // 代码混淆 false 不混淆，true 混淆
             minifyEnabled true
             // zipalign 优化 这个也要单独领出来说一下
-            zipAlignEnabled false
+            zipAlignEnabled true
             consumerProguardFiles 'proguard-rules.pro'
         }
         debug {
@@ -61,7 +61,7 @@ group = "com.wonium.cicada.android"
 //发布到JCenter上的项目名字，必须填写
 def libName = "cicada-android"
 // 版本号，下次更新是只需要更改版本号即可
-version = "0.0.6"
+version = "0.1.0"
 //生成源文件
 task sourcesJar(type: Jar) {
     from android.sourceSets.main.java.srcDirs

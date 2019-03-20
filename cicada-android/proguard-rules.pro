@@ -46,10 +46,10 @@
 -dontwarn androidx.databinding.**
 # 保持所有databinding类
 -keep class androidx.databinding.** { *; }
-
+-keep class androidx.annotation.**{*;}
 # 以下无效 start
 # utils 工具包下的类都不混淆
--keep class com.wonium.cicada.**{*;}
+-keep class com.wonium.cicada.utils.**{*;}
 
 -keep enum com.wonium.cicada.StatusBarUtil {*;}
 
@@ -64,7 +64,10 @@
     public static **[] values();
     public static ** valueOf(java.lang.String);
 }
-
+##表示不混淆任何包含native方法的类的类名以及native方法名
+#-keepclasseswithmembernames class * {
+#    native <methods>;
+#}
 # 以上无效 end
 
 

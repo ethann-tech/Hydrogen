@@ -21,18 +21,19 @@ import android.util.Log;
 
 import androidx.annotation.Keep;
 
+
 /**
  * @ClassName: CRC16Util
- * @Description: CRC 校验
- * @Author: Wonium
+ * @Description:
+ * @uthor: Ethan
  * @E-mail: wonium@qq.com
  * @Blog: https://blog.wonium.com
- * @CreateDate: 2018/12/21 16:15
- * @UpdateUser: 添加更新者
- * @UpdateDate: 2018/12/21 16:15
- * @UpdateDescription: 更新描述
+ * @CreateDate: 2019/3/20 16:07
+ * @UpdateUser: update user
+ * @UpdateDate: 2018/11/29 22:56
+ * @UpdateDescription: 更新说明
  * @Version:
- */
+*/
 @Keep
 public enum CRC16Util {
 

@@ -56,15 +56,12 @@ public enum StatusBarUtil {
      * 实例对象
      */
     INSTANCE;
-    @Keep
     public static final int DEFAULT_STATUS_BAR_ALPHA = 112;
-    @Keep
     private static final int FAKE_STATUS_BAR_VIEW_ID = R.id.statusbarutil_fake_status_bar_view;
-    @Keep
     private static final int FAKE_TRANSLUCENT_VIEW_ID = R.id.statusbarutil_translucent_view;
-    @Keep
     private static final int TAG_KEY_HAVE_SET_OFFSET = -123;
-
+    private static final String EXTRA_FLAG_STATUS_BAR_DARK_MODE="EXTRA_FLAG_STATUS_BAR_DARK_MODE";
+    private static final String MEIZU_FLAG_DARK_STATUS_BAR_ICON="MEIZU_FLAG_DARK_STATUS_BAR_ICON";
     /**
      * 设置状态栏颜色
      *
@@ -555,12 +552,11 @@ public enum StatusBarUtil {
     /**
      * 修改 MIUI V6  以上状态栏颜色
      */
-    @Keep
     private void setMIUIStatusBarDarkIcon(@NonNull Activity activity, boolean darkIcon) {
         Class<? extends Window> clazz = activity.getWindow().getClass();
         try {
             Class<?> layoutParams = Class.forName("android.view.MiuiWindowManager$LayoutParams");
-            Field field = layoutParams.getField("EXTRA_FLAG_STATUS_BAR_DARK_MODE");
+            Field field = layoutParams.getField(EXTRA_FLAG_STATUS_BAR_DARK_MODE);
             int darkModeFlag = field.getInt(layoutParams);
             Method extraFlagField = clazz.getMethod("setExtraFlags", int.class, int.class);
             extraFlagField.invoke(activity.getWindow(), darkIcon ? darkModeFlag : 0, darkModeFlag);
@@ -575,7 +571,7 @@ public enum StatusBarUtil {
     private void setMeizuStatusBarDarkIcon(@NonNull Activity activity, boolean darkIcon) {
         try {
             WindowManager.LayoutParams lp = activity.getWindow().getAttributes();
-            Field darkFlag = WindowManager.LayoutParams.class.getDeclaredField("MEIZU_FLAG_DARK_STATUS_BAR_ICON");
+            Field darkFlag = WindowManager.LayoutParams.class.getDeclaredField(MEIZU_FLAG_DARK_STATUS_BAR_ICON);
             Field meizuFlags = WindowManager.LayoutParams.class.getDeclaredField("meizuFlags");
             darkFlag.setAccessible(true);
             meizuFlags.setAccessible(true);
