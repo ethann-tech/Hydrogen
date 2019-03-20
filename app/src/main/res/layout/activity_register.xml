@@ -17,7 +17,7 @@
     </data>
 
 
-    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clipToPadding="true"
@@ -43,7 +43,7 @@
 
         </LinearLayout>
 
-        <LinearLayout
+        <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/layout_register_weight"
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -58,11 +58,11 @@
             app:layout_constraintTop_toBottomOf="@+id/layout_register_app_name"
             app:layout_constraintVertical_weight="2.2">
 
-            <android.support.design.widget.TextInputLayout
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <android.support.design.widget.TextInputEditText
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edit_nickname"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -71,14 +71,14 @@
                     android:textSize="@dimen/text_size_18sp" />
 
 
-            </android.support.design.widget.TextInputLayout>
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <android.support.design.widget.TextInputLayout
+            <com.google.android.material.textfield.TextInputLayout
 
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <android.support.design.widget.TextInputEditText
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edit_phone_number"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -87,7 +87,7 @@
                     android:textSize="@dimen/text_size_18sp" />
 
 
-            </android.support.design.widget.TextInputLayout>
+            </com.google.android.material.textfield.TextInputLayout>
 
 
             <RelativeLayout
@@ -95,52 +95,52 @@
 
                 android:layout_height="@dimen/material_component_button_height_48dp">
 
-                <android.support.design.widget.TextInputLayout
+                <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
-                    <android.support.design.widget.TextInputEditText
+                    <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/edit_verify_code"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/register_verify_code" />
 
-                </android.support.design.widget.TextInputLayout>
+                </com.google.android.material.textfield.TextInputLayout>
 
 
-                <com.wonium.cicada.android.ui.weight.ScheduledButton
-                    android:id="@+id/btn_send_verify_code"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
-                    android:gravity="center"
-                    android:minWidth="100dp"
-                    android:minHeight="@dimen/material_component_button_height_42dp"
-                    android:text="发送验证码"
-                    android:textColor="@color/blackGray"
-                    android:textSize="@dimen/text_size_18sp"
-                    app:layout_constraintRight_toRightOf="parent" />
+                <!--<com.wonium.cicada.android.ui.weight.ScheduledButton-->
+                    <!--android:id="@+id/btn_send_verify_code"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_alignParentEnd="true"-->
+                    <!--android:layout_alignParentRight="true"-->
+                    <!--android:gravity="center"-->
+                    <!--android:minWidth="100dp"-->
+                    <!--android:minHeight="@dimen/material_component_button_height_42dp"-->
+                    <!--android:text="发送验证码"-->
+                    <!--android:textColor="@color/blackGray"-->
+                    <!--android:textSize="@dimen/text_size_18sp"-->
+                    <!--app:layout_constraintRight_toRightOf="parent" />-->
 
             </RelativeLayout>
 
 
-            <android.support.design.widget.TextInputLayout
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
 
-                <android.support.design.widget.TextInputEditText
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edit_register_password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/register_password" />
 
 
-            </android.support.design.widget.TextInputLayout>
+            </com.google.android.material.textfield.TextInputLayout>
 
 
-            <android.support.v7.widget.AppCompatButton
+            <androidx.appcompat.widget.AppCompatButton
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/material_layout_view_top_bottom_margin_24dp"
@@ -150,7 +150,7 @@
                 android:textColor="@color/whiteSmoke"
                 android:textSize="@dimen/text_size_18sp" />
 
-            <android.support.v7.widget.AppCompatTextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_register_back_login"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -161,10 +161,10 @@
                 android:textSize="@dimen/text_size_18sp" />
 
 
-        </LinearLayout>
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
 
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </layout>

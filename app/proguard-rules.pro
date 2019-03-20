@@ -19,3 +19,28 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+# SwipeBackLayout
+#-dontwarn com.wonium.cicada.android.ui.weight.**
+#-keep class com.wonium.cicada.android.ui.weight.**{*;}
+#-keep class com.wonium.cicada.android.ui.weight.SwipeBackLayout{*;}
+##-keep class com.wonium.cicada.android.ui.weight.SwipeBackLayout.DragEdge{*;}
+#-keep enum com.wonium.cicada.android.ui.weight.SwipeBackLayout$DragEdge{*;}
+#-keep  class com.wonium.cicada.android.ui.weight.SwipeBackLayout$ * {
+# *;
+#}
+##-keepclassmembers enum * {
+##    *;
+##}
+##-keepclassmembers class com.wonium.cicada.android.ui.weight.SwipeBackLayout{
+##    public void test(com.wonium.cicada.android.ui.weight.SwipeBackLayout$DragEdge);
+##}
+-dontwarn org.**
+-dontwarn com.**
+-dontwarn afu.**
+
+# 忽略警告
+
+-dontwarn androidx.databinding.**
+# 保持所有databinding类
+-keep class androidx.databinding.** { *; }
+
