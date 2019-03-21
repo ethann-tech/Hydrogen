@@ -3,6 +3,7 @@ package com.wonium.aclj.ui;
 
 import com.wonium.aclj.R;
 import com.wonium.aclj.databinding.ActivityMainBinding;
+import com.wonium.cicada.utils.IntentUtil;
 import com.wonium.cicada.utils.StatusBarUtil;
 
 import java.util.List;
@@ -54,8 +55,8 @@ public class MainActivity extends BaseActivity {
 
             switch (menuItem.getItemId()) {
                 case R.id.nav_find:
-                    replaceFragment(lastShowFragment,0);
-
+                    IntentUtil.INSTANCE.toActivity(this,ZLibActivity.class);
+//                    replaceFragment(lastShowFragment,0);
 
                     break;
                 case R.id.nav_video:
