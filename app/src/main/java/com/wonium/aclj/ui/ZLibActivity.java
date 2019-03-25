@@ -1,9 +1,8 @@
 package com.wonium.aclj.ui;
 
 import android.Manifest;
-import android.graphics.Bitmap;
+import android.os.Build;
 import android.os.Environment;
-import android.view.View;
 
 import com.wonium.aclj.R;
 import com.wonium.aclj.databinding.ActivityZlibBinding;
@@ -12,8 +11,7 @@ import com.wonium.cicada.utils.FileUtil;
 import com.wonium.cicada.utils.ToastUtil;
 import com.wonium.cicada.utils.ZLibUtil;
 
-import java.io.File;
-import java.io.FileOutputStream;
+import java.io.IOException;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
@@ -23,7 +21,6 @@ public class ZLibActivity extends BaseActivity {
     private ActivityZlibBinding mBinding;
     private byte[] src;
     private byte[] compressSrc;
-    private String result;
     private PermissionHelper  helper;
     @Override
     public void initWindowAttributes() {
@@ -37,16 +34,19 @@ public class ZLibActivity extends BaseActivity {
 
     @Override
     public void bindLayout(int layoutResId) {
+
         mBinding= DataBindingUtil.setContentView(this,layoutResId);
     }
 
     @Override
     public void initView() {
          helper =new PermissionHelper(this);
-        helper.check(Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.READ_EXTERNAL_STORAGE)
-                .onSuccess(this::onSuccess)
-                .onDenied(this::onDenied)
-                .onNeverAskAgain(this::onNeverAskAgain).run();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            helper.check(Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.READ_EXTERNAL_STORAGE)
+                    .onSuccess(this::onSuccess)
+                    .onDenied(this::onDenied)
+                    .onNeverAskAgain(this::onNeverAskAgain).run();
+        }
     }
 
     @Override
@@ -56,16 +56,19 @@ public class ZLibActivity extends BaseActivity {
         compressSrc = ZLibUtil.getInstance().compress(src);
 
         new Thread(() -> {
-            String path = Environment.getExternalStorageDirectory() +FileUtil.INSTANCE.generateFilePath("test","compress",".zhd");
-
-            File file = new File(path);
-            if (file.exists()) {
-                file.delete();
+            String pathPre =Environment.getExternalStorageDirectory() +FileUtil.INSTANCE.generateFilePath("test","compressPre",".zhd");
+            String pathPreHex =Environment.getExternalStorageDirectory() +FileUtil.INSTANCE.generateFilePath("test","compressPre-hex",".zhd");
+            String path = Environment.getExternalStorageDirectory() +FileUtil.INSTANCE.generateFilePath("test","compressResult",".zhd");
+            FileUtil.INSTANCE.writeFile(pathPre,src);
+            try {
+                FileUtil.INSTANCE.writeFile(pathPreHex,ByteUtil.INSTANCE.bytesToHex(src),false);
+                FileUtil.INSTANCE.writeFile(path,ByteUtil.INSTANCE.bytesToHex(compressSrc),false);
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-            FileUtil.INSTANCE.writeFile(path,compressSrc);
         }).start();
 
-        System.out.println(ByteUtil.INSTANCE.printHexBinary(compressSrc));
+        System.out.println(ByteUtil.INSTANCE.bytesToHex(compressSrc));
         mBinding.tvCompress.setText(new String(compressSrc));
         });
         mBinding.btnUnCompress.setOnClickListener(view -> mBinding.tvResult.setText(new String(ZLibUtil.getInstance().decompress(compressSrc))));
