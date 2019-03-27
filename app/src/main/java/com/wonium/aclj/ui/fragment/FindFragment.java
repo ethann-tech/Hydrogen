@@ -11,10 +11,25 @@ import com.wonium.aclj.R;
 import com.wonium.aclj.databinding.FragmentFindBinding;
 import com.wonium.aclj.router.PageRouter;
 import com.wonium.cicada.ui.BaseFragment;
+import com.wonium.cicada.utils.ToastUtil;
 
 import androidx.databinding.DataBindingUtil;
 
+
+/**
+ * @ClassName: FindFragment
+ * @Description: 描述一下
+ * @Author: Ethan
+ * @E-mail: wonium@qq.com
+ * @Blog: https://blog.wonium.com
+ * @CreateDate: 2019/3/27 21:21
+ * @UpdateUser: update user
+ * @UpdateDate: 2019/3/27 21:21
+ * @UpdateDescription: 更新说明
+ * @Version: 1.0.0
+ */
 public class FindFragment extends BaseFragment {
+    private final String TAG =FindFragment.this.getClass().getSimpleName();
     private FragmentFindBinding mBinding;
     private String args1;
     private String args2;
@@ -36,6 +51,7 @@ public class FindFragment extends BaseFragment {
 
     @Override
     protected View initBinding(LayoutInflater inflater, ViewGroup container) {
+
         mBinding = DataBindingUtil.inflate(inflater,getLayoutResId(),container,false);
         return mBinding.getRoot();
     }
@@ -49,8 +65,8 @@ public class FindFragment extends BaseFragment {
     protected void initListener() {
         super.initListener();
         mBinding.btnTest.setOnClickListener(v -> {
-            Object activityTest = ARouter.getInstance().build(PageRouter.TEST_GRID_VIEW).navigation();
-            Log.d("test", activityTest.toString());
+             ARouter.getInstance().build(PageRouter.TEST_GRID_VIEW).navigation();
+//            Log.d("test", activityTest.toString());
         });
     }
 }

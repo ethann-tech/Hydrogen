@@ -13,6 +13,18 @@ import java.util.List;
 
 import androidx.databinding.DataBindingUtil;
 
+/**
+ * @ClassName: TestGridViewActivity
+ * @Description: 描述一下
+ * @Author: Ethan
+ * @E-mail: wonium@qq.com
+ * @Blog: https://blog.wonium.com
+ * @CreateDate: 2019/3/27 21:34
+ * @UpdateUser: update user
+ * @UpdateDate: 2019/3/27 21:34
+ * @UpdateDescription: 更新说明
+ * @Version: 1.0.0
+ */
 @Route(path = PageRouter.TEST_GRID_VIEW)
 public class TestGridViewActivity extends BaseActivity {
     private ActivityTestGridBinding mBinding;

@@ -2,6 +2,7 @@ package com.wonium.cicada.ui;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,8 +13,20 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+/**
+ * @ClassName: BaseFragment
+ * @Description: 描述一下
+ * @Author: Ethan
+ * @E-mail: wonium@qq.com
+ * @Blog: https://blog.wonium.com
+ * @CreateDate: 2019/3/27 21:29
+ * @UpdateUser: update user
+ * @UpdateDate: 2019/3/27 21:29
+ * @UpdateDescription: 更新说明
+ * @Version: 1.0.0
+ */
 public abstract class BaseFragment extends Fragment {
-
+    private final String TAG=BaseFragment.class.getSimpleName();
     /**
      * 获取布局资源Id
      * @return 布局资源Id
@@ -46,6 +59,7 @@ public abstract class BaseFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        Log.d(TAG, "onCreateView: ");
         return initBinding(inflater,container);
     }
 

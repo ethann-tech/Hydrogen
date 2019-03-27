@@ -59,7 +59,7 @@ public class MainActivity extends BaseActivity {
     @Override
     public void initListener() {
         mBinding.includeMainContent.bottomNavigationView.setOnNavigationItemSelectedListener(menuItem -> {
-            int itemId =0;
+            int itemId;
             switch (menuItem.getItemId()) {
                 case R.id.nav_find:
                     itemId =0;
@@ -88,7 +88,7 @@ public class MainActivity extends BaseActivity {
                     break;
                 default:
                     itemId=0;
-//                    ToastUtil.INSTANCE.show(getContext(), "find");
+                //                    ToastUtil.INSTANCE.show(getContext(), "find");
                     break;
             }
             replaceFragment(lastShowFragment,itemId);

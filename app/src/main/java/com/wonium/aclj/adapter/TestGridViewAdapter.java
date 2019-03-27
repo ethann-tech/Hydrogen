@@ -10,6 +10,7 @@ import com.wonium.aclj.databinding.ItemTestGridViewBinding;
 import com.wonium.cicada.adapter.BaseListAdapter;
 
 import androidx.databinding.DataBindingUtil;
+import androidx.databinding.ViewDataBinding;
 
 public class TestGridViewAdapter extends BaseListAdapter<String, TestGridViewAdapter.GridViewHolder> {
 
@@ -17,19 +18,20 @@ public class TestGridViewAdapter extends BaseListAdapter<String, TestGridViewAda
     @Override
     public GridViewHolder createView(int position, ViewGroup parent) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_test_grid_view,parent,false);
+
         return new GridViewHolder(view);
     }
 
     @Override
     public void bindView(int position, GridViewHolder holder, String data) {
-        holder.mBinding.tvContent.setText(data);
+        holder.mBinding.setVariable(R.id.tvContent,data);
     }
 
     public class GridViewHolder extends BaseListAdapter.ZoeViewHolder{
-        private ItemTestGridViewBinding mBinding;
+        private ViewDataBinding mBinding;
         public GridViewHolder(View itemView) {
             super(itemView);
-            mBinding= DataBindingUtil.bind(itemView);
+            mBinding= DataBindingUtil.findBinding(itemView);
         }
     }
 
