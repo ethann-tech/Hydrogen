@@ -1,6 +1,7 @@
 package com.wonium.aclj.ui.fragment;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,6 +48,9 @@ public class FindFragment extends BaseFragment {
     @Override
     protected void initListener() {
         super.initListener();
-        mBinding.btnTest.setOnClickListener(v -> ARouter.getInstance().build(PageRouter.TEST_GRID_VIEW).navigation());
+        mBinding.btnTest.setOnClickListener(v -> {
+            Object activityTest = ARouter.getInstance().build(PageRouter.TEST_GRID_VIEW).navigation();
+            Log.d("test", activityTest.toString());
+        });
     }
 }

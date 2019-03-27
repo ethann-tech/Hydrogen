@@ -2,5 +2,6 @@ package com.wonium.aclj.router;
 
 public class PageRouter {
 
-    public final static String TEST_GRID_VIEW="ethan/test/TestGridViewActivity";
+    // 这个代码在哪里？
+    public final static String TEST_GRID_VIEW="/activity/TestGridViewActivity";
 }
