@@ -1,8 +1,12 @@
 package com.wonium.aclj.ui.activity;
 
 
+import android.view.View;
+import android.widget.AdapterView;
+
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.wonium.aclj.R;
+import com.wonium.aclj.adapter.TestAdapter;
 import com.wonium.aclj.adapter.TestGridViewAdapter;
 import com.wonium.aclj.databinding.ActivityTestGridBinding;
 import com.wonium.aclj.router.PageRouter;
@@ -28,6 +32,8 @@ import androidx.databinding.DataBindingUtil;
 @Route(path = PageRouter.TEST_GRID_VIEW)
 public class TestGridViewActivity extends BaseActivity {
     private ActivityTestGridBinding mBinding;
+    private TestGridViewAdapter adapter;
+//    private TestAdapter adapter;
     @Override
     public void initWindowAttributes() {
         setAllowFullScreen(false);
@@ -46,14 +52,14 @@ public class TestGridViewActivity extends BaseActivity {
 
     @Override
     public void initView() {
-        TestGridViewAdapter adapter =new TestGridViewAdapter();
+         adapter =new TestGridViewAdapter();
         adapter.setDatas(buildData());
         mBinding.list.setAdapter(adapter);
     }
 
     @Override
     public void initListener() {
-
+        mBinding.list.setOnItemClickListener((parent, view, position, id) -> adapter.setSelectPosition(position));
     }
 
 

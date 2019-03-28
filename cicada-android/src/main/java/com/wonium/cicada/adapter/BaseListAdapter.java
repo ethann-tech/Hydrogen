@@ -11,10 +11,13 @@ import java.util.List;
 public abstract class BaseListAdapter<T, VH extends BaseListAdapter.ZoeViewHolder> extends android.widget.BaseAdapter {
 
     private final String TAG = this.getClass().getSimpleName();
+    /**
+     * 解决position ==0 多次调用时 view 复用，position再次为0时  数据不更新的问题
+     */
+    private boolean isViewRepeat=true;
+    public abstract VH createViewHolder(int position, ViewGroup parent);
 
-    public abstract VH createView(int position, ViewGroup parent);
-
-    public abstract void bindView(int position, VH holder, T data);
+    public abstract void bindViewHolder(int position, VH holder, T data);
 
     private List<T> datas;
     private int selectPosition = -1;
@@ -47,20 +50,24 @@ public abstract class BaseListAdapter<T, VH extends BaseListAdapter.ZoeViewHolde
     public int getItemViewType(int position) {
         return super.getItemViewType(position);
     }
-
+    private int count =0;
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         VH holder;
+
+        if (convertView != null && position == 0&&isViewRepeat) {
+            return convertView;
+        }
         if (convertView == null) {
-            holder = createView(position, parent);
+            holder = createViewHolder(position, parent);
             convertView = holder.getItemView();
             convertView.setTag(holder);
         } else {
             holder = (VH) convertView.getTag();
+            isViewRepeat =false;
         }
-
-        bindView(position, holder, datas.get(position));
-
+        Log.d(TAG, "getView:position --->"+position);
+        bindViewHolder(position, holder, datas.get(position));
         return convertView;
     }
 
@@ -108,7 +115,7 @@ public abstract class BaseListAdapter<T, VH extends BaseListAdapter.ZoeViewHolde
      * 数据集合清空，并更新适配器
      */
     public void clear() {
-        if (datas!=null){
+        if (datas != null) {
             this.datas.clear();
         }
         notifyDataSetChanged();
@@ -118,8 +125,9 @@ public abstract class BaseListAdapter<T, VH extends BaseListAdapter.ZoeViewHolde
         datas = ts;
         notifyDataSetChanged();
     }
-    public List<T> getDatas(){
-        if (datas==null){
+
+    public List<T> getDatas() {
+        if (datas == null) {
             return new ArrayList<>();
         }
         return datas;
@@ -151,12 +159,10 @@ public abstract class BaseListAdapter<T, VH extends BaseListAdapter.ZoeViewHolde
     }
 
 
-    public  abstract class ZoeViewHolder {
+    public abstract class ZoeViewHolder {
         private final View itemView;
-
         public ZoeViewHolder(View itemView) {
             this.itemView = itemView;
-            itemView.setTag(this);
         }
 
         public View getItemView() {

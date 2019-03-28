@@ -1,37 +1,37 @@
 package com.wonium.aclj.adapter;
 
-import android.util.SparseArray;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.wonium.aclj.R;
-import com.wonium.aclj.databinding.ItemTestGridViewBinding;
 import com.wonium.cicada.adapter.BaseListAdapter;
 
-import androidx.databinding.DataBindingUtil;
-import androidx.databinding.ViewDataBinding;
-
 public class TestGridViewAdapter extends BaseListAdapter<String, TestGridViewAdapter.GridViewHolder> {
-
-
+    private static final String TAG =TestGridViewAdapter.class.getSimpleName();
     @Override
-    public GridViewHolder createView(int position, ViewGroup parent) {
+    public GridViewHolder createViewHolder(int position, ViewGroup parent) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_test_grid_view,parent,false);
-
         return new GridViewHolder(view);
     }
 
     @Override
-    public void bindView(int position, GridViewHolder holder, String data) {
-        holder.mBinding.setVariable(R.id.tvContent,data);
+    public void bindViewHolder(int position, GridViewHolder holder, String data) {
+        holder.tvContent.setText(data);
+        if (getSelectPosition()==position){
+            holder.tvContent.setBackgroundColor(holder.getItemView().getResources().getColor(R.color.cadetBlue));
+        }else {
+            holder.tvContent.setBackgroundColor(holder.getItemView().getResources().getColor(R.color.orchid));
+        }
     }
 
     public class GridViewHolder extends BaseListAdapter.ZoeViewHolder{
-        private ViewDataBinding mBinding;
+        private TextView tvContent;
         public GridViewHolder(View itemView) {
             super(itemView);
-            mBinding= DataBindingUtil.findBinding(itemView);
+            tvContent =itemView.findViewById(R.id.tvContent);
         }
     }
 
