@@ -51,7 +51,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void initView() {
-        StatusBarUtil.INSTANCE.setColor(this,getResources().getColor(R.color.aliceBlue));
+        StatusBarUtil.getInstance().setColor(this,getResources().getColor(R.color.aliceBlue));
         initFragment();
 
     }
