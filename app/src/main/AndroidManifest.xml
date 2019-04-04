@@ -24,6 +24,7 @@
         </activity>
         <activity android:name=".ui.ZLibActivity"/>
         <activity android:name=".ui.activity.TestGridViewActivity"/>
+        <activity android:name=".ui.activity.ProgressActivity"/>
         <!--<activity android:name=".ui.ui.activity.SecondActivity" />-->
         <!--&lt;!&ndash; 登陆页面 &ndash;&gt;-->
         <!--<activity android:name=".ui.ui.activity.LoginActivity" />-->
