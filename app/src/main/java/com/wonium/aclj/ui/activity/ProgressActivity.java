@@ -2,7 +2,6 @@ package com.wonium.aclj.ui.activity;
 
 import com.wonium.aclj.ui.BaseActivity;
 
-import androidx.appcompat.app.AppCompatActivity;
 
 public class ProgressActivity extends BaseActivity {
     @Override
