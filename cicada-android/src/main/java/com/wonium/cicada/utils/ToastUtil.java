@@ -47,7 +47,7 @@ public enum ToastUtil {
      * 实例对象
      */
     INSTANCE;
-    private static boolean isToast = true;
+    private static boolean IS_SHOW = true;
 
     /**
      * 显示时间短
@@ -55,8 +55,8 @@ public enum ToastUtil {
      * @param context 上下文
      * @param content 显示内容
      */
-    private void toastShort(Context context, CharSequence content) {
-        if (isToast) {
+    private void showShort(Context context, CharSequence content) {
+        if (IS_SHOW) {
             Toast.makeText(context, content, Toast.LENGTH_SHORT).show();
         }
     }
@@ -67,8 +67,8 @@ public enum ToastUtil {
      * @param context 上下文
      * @param content 显示内容
      */
-    private void toastLong(Context context, CharSequence content) {
-        if (isToast) {
+    private void showLong(Context context, CharSequence content) {
+        if (IS_SHOW) {
             Toast.makeText(context, content, Toast.LENGTH_LONG).show();
         }
     }
@@ -81,8 +81,8 @@ public enum ToastUtil {
      * @param duration 持续时间
      */
 
-    public void toastDuration(Context context, CharSequence content, int duration) {
-        if (isToast) {
+    public void showDuration(Context context, CharSequence content, int duration) {
+        if (IS_SHOW) {
             Toast.makeText(context, content, duration).show();
         }
     }
@@ -94,8 +94,8 @@ public enum ToastUtil {
      * @param content  显示内容
      * @param duration 持续时间
      */
-    public void toastUiThread(final Context context, final CharSequence content, final int duration) {
-        if (isToast) {
+    public void showUiThread(final Context context, final CharSequence content, final int duration) {
+        if (IS_SHOW) {
             ((Activity) context).runOnUiThread(() -> Toast.makeText(context, content, duration).show());
         }
     }
@@ -109,9 +109,9 @@ public enum ToastUtil {
      */
     public void show(Context context, CharSequence content) {
         if (content.length() > 6) {
-            ToastUtil.INSTANCE.toastShort(context, content);
+            ToastUtil.INSTANCE.showShort(context, content);
         } else {
-            ToastUtil.INSTANCE.toastLong(context, content);
+            ToastUtil.INSTANCE.showLong(context, content);
         }
     }
 
@@ -123,7 +123,7 @@ public enum ToastUtil {
      * @param content  显示内容
      * @param duration 持续时间
      */
-    public void showCustomToast(Context context, CharSequence content, int duration) {
+    public void showCustom(Context context, CharSequence content, int duration) {
 
         View view1 = LayoutInflater.from(context).inflate(R.layout.layout_toast_view, null, false);
         TextView textView = view1.findViewById(R.id.tv_toast_text);

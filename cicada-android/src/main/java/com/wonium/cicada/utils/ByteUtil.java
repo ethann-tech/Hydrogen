@@ -298,7 +298,7 @@ public enum ByteUtil {
      * @param data 需打印的字节数组
      * @return String 转换成16进制后的字符串
      */
-    public String printHexBinary(byte[] data) {
+    public String bytesToHex(byte[] data) {
         char[] hexCode = "0123456789ABCDEF".toCharArray();
         StringBuilder r = new StringBuilder(data.length * 2);
         for (int i = 0; i < data.length; i++) {
@@ -357,4 +357,5 @@ public enum ByteUtil {
         System.arraycopy(src, 0, subByteArray, 0, subByteArray.length);
         return subByteArray;
     }
+
 }

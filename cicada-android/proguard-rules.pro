@@ -44,14 +44,13 @@
 # 忽略警告
 
 -dontwarn androidx.databinding.**
-# 保持所有databinding类
+-dontnote androidx.databinding.**
+-dontnote android.databinding.**
 -keep class androidx.databinding.** { *; }
 -keep class androidx.annotation.**{*;}
 # 以下无效 start
 # utils 工具包下的类都不混淆
 -keep class com.wonium.cicada.utils.**{*;}
-
--keep enum com.wonium.cicada.StatusBarUtil {*;}
 
 -keepclassmembers enum com.wonium.cicada.StatusBarUtil {
     public static final int DEFAULT_STATUS_BAR_ALPHA;

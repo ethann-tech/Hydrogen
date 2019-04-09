@@ -375,6 +375,10 @@ public enum FileUtil {
      */
     public  String writeFile(String filePath ,byte[] data) {
 
+        File file = new File(filePath);
+        if (file.exists()) {
+            file.delete();
+        }
         FileOutputStream fos;
         try {
             fos = new FileOutputStream(filePath,false);

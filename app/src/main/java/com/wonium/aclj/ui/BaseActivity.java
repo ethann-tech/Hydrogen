@@ -22,6 +22,8 @@ import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.wonium.cicada.utils.ActivityManagerUtil;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -57,6 +59,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+        ActivityManagerUtil.getInstance().addActivity(this);
         super.onCreate(savedInstanceState);
         mContext = this;
         initWindowAttributes();
@@ -64,7 +67,7 @@ public abstract class BaseActivity extends AppCompatActivity {
             getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
             requestWindowFeature(Window.FEATURE_NO_TITLE);
         }
-//        ActivityManagerUtil.getInstance().addActivity(this);
+
         bindLayout(getLayoutResId());
         initView();
         if (isSetStatusBar) {
@@ -172,7 +175,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-//        ActivityManagerUtil.getInstance().finishActivity(this);
     }
 
 }

@@ -21,6 +21,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="@{btnFind}"
+
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -32,6 +33,13 @@
             android:layout_height="wrap_content"
             android:text="@string/msg_H5"
             app:layout_constraintTop_toBottomOf="@+id/btn_test" />
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_custom_loading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/tips_custom_progress"
+            app:layout_constraintTop_toBottomOf="@+id/btn_test" />
+
 
 
         <!--<com.wonium.cicada.android.ui.weight.MarqueeTextView-->
