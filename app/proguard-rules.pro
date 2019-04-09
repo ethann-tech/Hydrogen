@@ -34,13 +34,16 @@
 ##-keepclassmembers class com.wonium.cicada.android.ui.weight.SwipeBackLayout{
 ##    public void test(com.wonium.cicada.android.ui.weight.SwipeBackLayout$DragEdge);
 ##}
+#避免混淆泛型
+-keepattributes Signature
+
 -dontwarn org.**
 -dontwarn com.**
 -dontwarn afu.**
 
 # 忽略警告
 
-
+-ignorewarning
 -dontnote android.widget.Space
 -dontnote com.wonium.cicada.**
 -dontnote com.alibaba.android.**
@@ -52,17 +55,27 @@
 -keep class androidx.databinding.** { *; }
 -keep class androidx.annotation.**{*;}
 
+#leakcanary
+-dontwarn com.squareup.haha.guava.**
+-dontwarn com.squareup.haha.perflib.**
+-dontwarn com.squareup.haha.trove.**
+-dontwarn com.squareup.leakcanary.**
+-keep class com.squareup.haha.** { *; }
+-keep class com.squareup.leakcanary.** { *; }
+-keep class gnu.trove.**{*;}
+
+# material
+-keep class com.google.android.material.**
+
+
 # ARouter start
 -keep public class com.alibaba.android.arouter.routes.**{*;}
 -keep public class com.alibaba.android.arouter.facade.**{*;}
 -keep class * implements com.alibaba.android.arouter.facade.template.ISyringe{*;}
-
 # If you use the byType method to obtain Service, add the following rules to protect the interface:
 -keep interface * implements com.alibaba.android.arouter.facade.template.IProvider
-
 # If single-type injection is used, that is, no interface is defined to implement IProvider, the following rules need to be added to protect the implementation
 -keep class * implements com.alibaba.android.arouter.facade.template.IProvider
 # ARouter end
 #-keep public class com.google.android.material.**{*;}
 
--keep class com.google.android.material.**
