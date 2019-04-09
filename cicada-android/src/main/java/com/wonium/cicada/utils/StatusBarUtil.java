@@ -51,12 +51,24 @@ import androidx.drawerlayout.widget.DrawerLayout;
  * @Version: 1.0.0
 */
 @Keep
-public enum StatusBarUtil {
+public class StatusBarUtil {
     /**
      * 实例对象
      */
-    INSTANCE;
-    public static final int DEFAULT_STATUS_BAR_ALPHA = 112;
+  private static  StatusBarUtil  instance;
+
+    public static  StatusBarUtil getInstance() {
+        if (instance==null){
+            synchronized (StatusBarUtil.class){
+                if (instance==null){
+                    instance =new StatusBarUtil();
+                }
+            }
+        }
+        return instance;
+    }
+
+    private static final int DEFAULT_STATUS_BAR_ALPHA = 112;
     private static final int FAKE_STATUS_BAR_VIEW_ID = R.id.statusbarutil_fake_status_bar_view;
     private static final int FAKE_TRANSLUCENT_VIEW_ID = R.id.statusbarutil_translucent_view;
     private static final int TAG_KEY_HAVE_SET_OFFSET = -123;

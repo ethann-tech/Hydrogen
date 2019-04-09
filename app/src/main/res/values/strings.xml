@@ -21,4 +21,6 @@
     <string name="register_send_verify_code">发送验证码</string>
     <string name="register_password">密码</string>
     <string name="register_back_login">返回登录</string>
+    <string name="tips_custom_progress">自定义进度条</string>
+    <string name="test_zlib_src">1月25日，小米MIUI官方公众号发布了《MIUI 11，出发！》，宣布全新的MIUI 11正式启动，并且即将进入研发阶段。现在似乎已经到了MIUI 11正式发布的日子了。回顾过往两年，MIUI 9主打快如闪电的流畅体验，MIUI 10则主打AI加持的全面屏系统。MIUI系统作为小米公司第一款产品，一直深受用户青睐，无论基础体验还是功能研发上，一直都处于行业领跑地位，也被很多同行借鉴。</string>
 </resources>

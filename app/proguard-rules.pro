@@ -40,7 +40,29 @@
 
 # 忽略警告
 
--dontwarn androidx.databinding.**
-# 保持所有databinding类
--keep class androidx.databinding.** { *; }
 
+-dontnote android.widget.Space
+-dontnote com.wonium.cicada.**
+-dontnote com.alibaba.android.**
+
+# 保持所有databinding类
+-dontwarn androidx.databinding.**
+-dontnote androidx.databinding.**
+-dontnote android.databinding.**
+-keep class androidx.databinding.** { *; }
+-keep class androidx.annotation.**{*;}
+
+# ARouter start
+-keep public class com.alibaba.android.arouter.routes.**{*;}
+-keep public class com.alibaba.android.arouter.facade.**{*;}
+-keep class * implements com.alibaba.android.arouter.facade.template.ISyringe{*;}
+
+# If you use the byType method to obtain Service, add the following rules to protect the interface:
+-keep interface * implements com.alibaba.android.arouter.facade.template.IProvider
+
+# If single-type injection is used, that is, no interface is defined to implement IProvider, the following rules need to be added to protect the implementation
+-keep class * implements com.alibaba.android.arouter.facade.template.IProvider
+# ARouter end
+#-keep public class com.google.android.material.**{*;}
+
+-keep class com.google.android.material.**
