@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import com.wonium.aclj.R;
 import com.wonium.aclj.databinding.FragmentVideoBinding;
 import com.wonium.cicada.ui.BaseFragment;
+import com.wonium.cicada.utils.ToastUtil;
 
 import androidx.databinding.DataBindingUtil;
 
@@ -37,7 +38,8 @@ public class VideoFragment extends BaseFragment {
 
     @Override
     protected void initView(View view) {
-
+        mBinding.editFixedText.setFixedText("ZH-");
+        mBinding.btnTest.setOnClickListener(v -> ToastUtil.INSTANCE.show(getContext(),mBinding.editFixedText.getText().toString().trim()));
     }
 
     @Override

@@ -65,26 +65,26 @@ public class MainActivity extends BaseActivity {
                 case R.id.nav_find:
                     itemId =0;
 //                    IntentUtil.INSTANCE.toActivity(this,ZLibActivity.class);
-                    replaceFragment(lastShowFragment,0);
+//                    replaceFragment(lastShowFragment,0);
 
                     break;
                 case R.id.nav_video:
                     itemId=1;
-                    replaceFragment(lastShowFragment,1);
+//                    replaceFragment(lastShowFragment,1);
                     break;
                 case R.id.nav_my:
                     itemId =2;
-                    replaceFragment(lastShowFragment,2);
+//                    replaceFragment(lastShowFragment,2);
 //                    ToastUtil.INSTANCE.show(getContext(), "my");
                     break;
                 case R.id.nav_friend:
                     itemId=3;
-                    replaceFragment(lastShowFragment,3);
+//                    replaceFragment(lastShowFragment,3);
 //                    ToastUtil.INSTANCE.show(getContext(), "friend");
                     break;
                 case R.id.nav_account:
                     itemId=4;
-                    replaceFragment(lastShowFragment,4);
+//                    replaceFragment(lastShowFragment,4);
 //                    ToastUtil.INSTANCE.show(getContext(), "account");
                     break;
                 default:
