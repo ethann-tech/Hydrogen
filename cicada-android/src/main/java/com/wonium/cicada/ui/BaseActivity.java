@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.wonium.aclj.ui;
+package com.wonium.cicada.ui;
 
 import android.content.Context;
 import android.content.pm.ActivityInfo;
@@ -23,6 +23,7 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.wonium.cicada.utils.ActivityManagerUtil;
+import com.wonium.cicada.utils.StatusBarUtil;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -108,18 +109,18 @@ public abstract class BaseActivity extends AppCompatActivity {
      */
     protected void setStatusBar() {
         try {
-//            StatusBarUtil.INSTANCE.setColor(this, getStatusColor(), 0);
+            StatusBarUtil.getInstance().setColor(this, getStatusColor(), 0);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
     }
 
-
-    protected int getStatusColor() {
-        return getResources().getColor(android.R.color.background_dark);
-    }
-
+    /**
+     * 设置状态栏颜色
+     * @return
+     */
+    protected abstract int getStatusColor();
     /**
      * 初始化窗口属性
      */
