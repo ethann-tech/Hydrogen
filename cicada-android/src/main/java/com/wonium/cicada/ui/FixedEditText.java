@@ -7,12 +7,14 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 
+import androidx.annotation.Keep;
 import androidx.appcompat.widget.AppCompatEditText;
 
 
 /**
  * 左边有固定文字EditText
  */
+@Keep
 public class FixedEditText extends AppCompatEditText {
     private String fixedText;
     private View.OnClickListener mListener;

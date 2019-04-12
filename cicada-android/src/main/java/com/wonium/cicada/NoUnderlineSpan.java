@@ -19,6 +19,8 @@ package com.wonium.cicada;
 import android.text.TextPaint;
 import android.text.style.UnderlineSpan;
 
+import androidx.annotation.Keep;
+
 
 /**
  * @ClassName: NoUnderlineSpan
@@ -32,6 +34,7 @@ import android.text.style.UnderlineSpan;
  * @UpdateDescription: 更新说明
  * @Version: 1.0.0
  */
+@Keep
 public class NoUnderlineSpan extends UnderlineSpan {
     private int colorId;
 

@@ -45,7 +45,7 @@ import androidx.viewpager.widget.ViewPager;
  * <p/>
  * Created by Eric on 15/1/8.
  */
-
+@Keep
 public class SwipeBackLayout extends ViewGroup {
     private static final String TAG = "SwipeBackLayout";
     /**

@@ -63,12 +63,49 @@
     public static **[] values();
     public static ** valueOf(java.lang.String);
 }
-##表示不混淆任何包含native方法的类的类名以及native方法名
-#-keepclasseswithmembernames class * {
-#    native <methods>;
-#}
+
 # 以上无效 end
+# 所有的native方法不被混淆
+-keepclasseswithmembers class * {
+    native <methods>;
+}
+# 自定义View构造方法不混淆
+-keepclasseswithmembers class * {
+    public <init>(android.content.Context);
+}
+-keepclasseswithmembers class * {
+    public <init>(android.content.Context,android.util.AttributeSet);
+}
+-keepclasseswithmembers class * {
+    public <init>(android.content.Context,android.util.AttributeSet,int);
+}
+# release版不打印log
+-assumenosideeffects class android.util.Log {
+    public static *** d(...);
+    public static *** v(...);
+    public static *** i(...);
+    public static *** e(...);
+    public static *** w(...);
+}
 
 
+# 四大组件不混淆
+-keep public class * extends androidx.appcompat.app.AppCompatActivity
+-keep public class * extends androidx.fragment.app.Fragment
+-keep public class * extends android.app.Application
+-keep public class * extends android.app.Service
+-keep public class * extends android.content.BroadcastReceiver
+-keep public class * extends android.content.ContentProvider
+-keep public class * extends android.app.backup.BackupAgentHelper
+-keep public class * extends android.preference.Preference
+# 不混淆资源类
+-keepclassmembers class **.R$* {
+    public static <fields>;
+}
+# Design包不混淆
+-dontwarn android.support.design.**
+-keep class android.support.design.** { *; }
+-keep interface android.support.design.** { *; }
+-keep public class android.support.design.R$* { *; }
 
 # https://blog.csdn.net/shoneworn/article/details/83055449

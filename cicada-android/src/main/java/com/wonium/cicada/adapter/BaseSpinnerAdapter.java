@@ -24,6 +24,7 @@ import android.widget.BaseAdapter;
 
 import java.util.List;
 
+import androidx.annotation.Keep;
 import androidx.databinding.ViewDataBinding;
 
 /**
@@ -38,6 +39,7 @@ import androidx.databinding.ViewDataBinding;
  * @UpdateDescription: 更新说明
  * @Version: 1.0.0
  */
+@Keep
 public abstract class BaseSpinnerAdapter<T> extends BaseAdapter {
     private List<T> datas;
     private LayoutInflater inflater;

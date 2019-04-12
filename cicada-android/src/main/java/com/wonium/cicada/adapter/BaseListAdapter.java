@@ -8,6 +8,9 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.annotation.Keep;
+
+@Keep
 public abstract class BaseListAdapter<T, VH extends BaseListAdapter.ZoeViewHolder> extends android.widget.BaseAdapter {
 
     private final String TAG = this.getClass().getSimpleName();
