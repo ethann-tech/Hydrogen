@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 
 import com.wonium.cicada.utils.ToastUtil;
 
+import androidx.annotation.Keep;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -25,6 +26,7 @@ import androidx.fragment.app.Fragment;
  * @UpdateDescription: 更新说明
  * @Version: 1.0.0
  */
+@Keep
 public abstract class BaseFragment extends Fragment {
     private final String TAG=BaseFragment.class.getSimpleName();
     /**

@@ -25,6 +25,7 @@ import android.view.WindowManager;
 import com.wonium.cicada.utils.ActivityManagerUtil;
 import com.wonium.cicada.utils.StatusBarUtil;
 
+import androidx.annotation.Keep;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -41,6 +42,7 @@ import androidx.appcompat.app.AppCompatActivity;
  * @UpdateDescription: 更新说明
  * @Version: 1.0.0
  */
+@Keep
 public abstract class BaseActivity extends AppCompatActivity {
     /**
      * 是否允许全屏

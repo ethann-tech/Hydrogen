@@ -7,6 +7,7 @@ import android.widget.RelativeLayout;
 
 import com.wonium.java.library.R;
 
+import androidx.annotation.Keep;
 import androidx.appcompat.app.AppCompatActivity;
 
 /**
@@ -21,8 +22,8 @@ import androidx.appcompat.app.AppCompatActivity;
  * @UpdateDescription: 更新描述
  * @Version:
  */
-public class SwipeBackActivity extends AppCompatActivity implements SwipeBackLayout.SwipeBackListener
-{
+@Keep
+public class SwipeBackActivity extends AppCompatActivity implements SwipeBackLayout.SwipeBackListener {
     private SwipeBackLayout swipeBackLayout;
     private ImageView ivShadow;
 

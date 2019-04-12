@@ -24,6 +24,7 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.annotation.Keep;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -39,6 +40,7 @@ import androidx.recyclerview.widget.RecyclerView;
  * @UpdateDescription: 更新说明
  * @Version: 1.0.0
  */
+@Keep
 public abstract class BaseRecyclerViewAdapter<T, VH extends RecyclerView.ViewHolder> extends RecyclerView.Adapter<VH> {
     private List<T> datas;
     private LayoutInflater inflater;

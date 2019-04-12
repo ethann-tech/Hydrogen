@@ -16,6 +16,7 @@
 
 package com.wonium.cicada.adapter;
 
+import androidx.annotation.Keep;
 import androidx.databinding.ViewDataBinding;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -31,6 +32,7 @@ import androidx.recyclerview.widget.RecyclerView;
  * @UpdateDescription: 更新说明
  * @Version: 1.0.0
  */
+@Keep
 public class BaseViewHolder<B extends ViewDataBinding> extends RecyclerView.ViewHolder {
     private B mBinding;
 
