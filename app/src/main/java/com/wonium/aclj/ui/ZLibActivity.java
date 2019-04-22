@@ -6,6 +6,7 @@ import android.os.Environment;
 
 import com.wonium.aclj.R;
 import com.wonium.aclj.databinding.ActivityZlibBinding;
+import com.wonium.cicada.ui.BaseActivity;
 import com.wonium.cicada.utils.ByteUtil;
 import com.wonium.cicada.utils.FileUtil;
 import com.wonium.cicada.utils.ToastUtil;
@@ -22,6 +23,12 @@ public class ZLibActivity extends BaseActivity {
     private byte[] src;
     private byte[] compressSrc;
     private PermissionHelper  helper;
+
+    @Override
+    protected int getStatusColor() {
+        return getResources().getColor(R.color.black);
+    }
+
     @Override
     public void initWindowAttributes() {
         setAllowFullScreen(false);
@@ -36,6 +43,7 @@ public class ZLibActivity extends BaseActivity {
     public void bindLayout(int layoutResId) {
 
         mBinding= DataBindingUtil.setContentView(this,layoutResId);
+
     }
 
     @Override
