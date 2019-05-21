@@ -311,4 +311,5 @@
     <!-- 黑色 -->
     <color name="black">#000000</color>
     <color name="black_p50">#7f000000</color>
+    <color name="black_alpha_50">#50000000</color>
 </resources>

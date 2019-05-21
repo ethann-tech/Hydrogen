@@ -48,12 +48,21 @@ import androidx.annotation.Keep;
  * @Version: 1.0.0
  */
 @Keep
-public enum DeviceUtil {
+public class DeviceUtil {
     /**
      * 实例对象
      */
-    INSTANCE;
-
+    private static DeviceUtil mInstance;
+    public static DeviceUtil getInstance(){
+        if (mInstance==null){
+            synchronized (DeviceUtil.class){
+                if (mInstance==null){
+                    mInstance =new DeviceUtil();
+                }
+            }
+        }
+        return mInstance;
+    }
 
     /**
      * 获取设备IMEI

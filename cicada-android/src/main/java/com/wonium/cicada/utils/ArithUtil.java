@@ -32,13 +32,23 @@ import androidx.annotation.Keep;
  * @Version: 1.0.0
  */
 @Keep
-public enum ArithUtil {
+public class ArithUtil {
 
     /**
      * 实例对象
      */
-    INSTANCE;
+    private static ArithUtil mInstance;
 
+    public static ArithUtil getInstance() {
+        if (mInstance == null) {
+            synchronized (ArithUtil.class) {
+                if (mInstance == null) {
+                    mInstance = new ArithUtil();
+                }
+            }
+        }
+        return mInstance;
+    }
 
     /**
      * 提供精确的加法运算。

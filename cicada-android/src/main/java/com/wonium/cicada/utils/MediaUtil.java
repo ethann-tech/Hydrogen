@@ -40,12 +40,21 @@ import androidx.annotation.Keep;
  * @Version:
  */
 @Keep
-public enum MediaUtil {
+public class MediaUtil {
     /**
      * 多媒体工具类
      */
-    INSTANCE;
-
+    private static MediaUtil mInstance;
+    public static MediaUtil getInstance(){
+        if(mInstance==null){
+            synchronized (MediaUtil.class){
+             if (mInstance==null){
+                 mInstance =new MediaUtil();
+             }
+            }
+        }
+        return mInstance;
+    }
     /**
      * @param context 上下文
      * @param path  文件存放路径 例如  nternal_background/bg00001.mp4;

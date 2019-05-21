@@ -35,11 +35,21 @@ import androidx.annotation.Keep;
  * @Version: 1.0.0
  */
 @Keep
-public enum SharedPreferencesUtil {
+public class SharedPreferencesUtil {
     /**
      * 实例对象
      */
-    INSTANCE;
+    private static SharedPreferencesUtil mInstance;
+    public static SharedPreferencesUtil getInstance(){
+        if(mInstance==null){
+            synchronized (MediaUtil.class){
+                if (mInstance==null){
+                    mInstance =new SharedPreferencesUtil();
+                }
+            }
+        }
+        return mInstance;
+    }
 
 
     public static String getString(Context context, String key, final String defaultValue) {

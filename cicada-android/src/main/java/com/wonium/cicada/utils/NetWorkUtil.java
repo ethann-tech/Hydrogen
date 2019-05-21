@@ -51,13 +51,21 @@ import androidx.annotation.Keep;
  * @Version: 1.0.0
  */
 @Keep
-public enum NetWorkUtil {
-
-
+public class NetWorkUtil {
     /**
      * 实例对象
      */
-    INSTANCE;
+    private static NetWorkUtil mInstance;
+    public static NetWorkUtil getInstance(){
+        if(mInstance==null){
+            synchronized (MediaUtil.class){
+                if (mInstance==null){
+                    mInstance =new NetWorkUtil();
+                }
+            }
+        }
+        return mInstance;
+    }
 
     /**
      * 当前连接时wifi
@@ -177,7 +185,7 @@ public enum NetWorkUtil {
         int networkType = info.getType();
         if (networkType == ConnectivityManager.TYPE_MOBILE) {
             String extraInfo = info.getExtraInfo();
-            if (StringUtil.INSTANCE.isNull(extraInfo)) {
+            if (StringUtil.getInstance().isNull(extraInfo)) {
                 if ("cmnet".equals(extraInfo.toLowerCase())) {
                     netType = NETTYPE_CMNET;
                 } else {

@@ -40,8 +40,6 @@ public class FindFragment extends BaseFragment {
     private FragmentFindBinding mBinding;
     private String args1;
     private String args2;
-
-
     public static FindFragment newInstance(String args1,String args2) {
         Bundle args = new Bundle();
         FindFragment fragment = new FindFragment();

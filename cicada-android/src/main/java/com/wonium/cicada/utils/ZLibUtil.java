@@ -10,8 +10,10 @@ import java.util.zip.Inflater;
 import java.util.zip.InflaterInputStream;
 
 public class ZLibUtil {
+
     private static  ZLibUtil mInstance;
     private ZLibUtil(){}
+
     public static ZLibUtil getInstance() {
         if (mInstance==null){
             synchronized (ZLibUtil.class){
@@ -22,7 +24,6 @@ public class ZLibUtil {
         }
         return mInstance;
     }
-
 
     /**
      * 压缩
@@ -136,7 +137,6 @@ public class ZLibUtil {
             while ((i = iis.read(buf, 0, i)) > 0) {
                 o.write(buf, 0, i);
             }
-
         } catch (IOException e) {
             e.printStackTrace();
         }
