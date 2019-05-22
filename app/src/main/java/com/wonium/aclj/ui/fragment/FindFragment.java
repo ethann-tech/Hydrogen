@@ -12,7 +12,6 @@ import com.alibaba.android.arouter.launcher.ARouter;
 import com.wonium.aclj.R;
 import com.wonium.aclj.databinding.FragmentFindBinding;
 import com.wonium.aclj.router.PageRouter;
-import com.wonium.aclj.ui.MainActivity;
 import com.wonium.cicada.ui.BaseFragment;
 import com.wonium.cicada.utils.ToastUtil;
 
@@ -63,7 +62,7 @@ public class FindFragment extends BaseFragment {
 
     @Override
     protected void initView(View view) {
-        mBinding.setBtnFind("TestGridView");
+        mBinding.setBtnFind("测试TestGridView");
     }
 
     @Override
@@ -71,7 +70,7 @@ public class FindFragment extends BaseFragment {
         super.initListener();
         mBinding.btnTest.setOnClickListener(v -> ARouter.getInstance().build(PageRouter.TEST_GRID_VIEW).navigation());
 
-        mBinding.btnProxy.setOnClickListener(v -> ToastUtil.INSTANCE.show(getContext(),"是否启用网络代理："+(isWifiProxy()?"yes":"false")+"  ; \n是否启用VPN : "+(isVpnUsed()?"yes":"false")));
+        mBinding.btnProxy.setOnClickListener(v -> ToastUtil.getInstance().show(getContext(),"是否启用网络代理："+(isWifiProxy()?"yes":"false")+"  ; \n是否启用VPN : "+(isVpnUsed()?"yes":"false")));
 
     }
 

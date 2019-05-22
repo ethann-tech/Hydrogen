@@ -1,6 +1,5 @@
 package com.wonium.aclj.adapter;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,7 +9,7 @@ import com.wonium.aclj.R;
 import com.wonium.cicada.adapter.BaseListAdapter;
 
 public class TestGridViewAdapter extends BaseListAdapter<String, TestGridViewAdapter.GridViewHolder> {
-    private static final String TAG =TestGridViewAdapter.class.getSimpleName();
+    private final String TAG =TestGridViewAdapter.class.getSimpleName();
     @Override
     public GridViewHolder createViewHolder(int position, ViewGroup parent) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_test_grid_view,parent,false);

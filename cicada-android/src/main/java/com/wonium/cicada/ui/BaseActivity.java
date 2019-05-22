@@ -51,12 +51,12 @@ public abstract class BaseActivity extends AppCompatActivity {
     /**
      * 是否禁止旋转屏幕
      **/
-    private boolean isAllowScreenRotate = true;
+    private boolean isAllowScreenRotate = false;
 
     /**
      * 是否沉浸状态栏
      **/
-    private boolean isSetStatusBar = false;
+    private boolean isSetStatusBar = true;
 
     private Context mContext;
 
@@ -76,7 +76,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         if (isSetStatusBar) {
             setStatusBar();
         }
-        if (!isAllowScreenRotate) {
+        if (isAllowScreenRotate) {
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         } else {
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
@@ -109,13 +109,12 @@ public abstract class BaseActivity extends AppCompatActivity {
     /**
      * 设置状态栏
      */
-    protected void setStatusBar() {
+    private void setStatusBar() {
         try {
-            StatusBarUtil.getInstance().setColor(this, getStatusColor(), 0);
+            StatusBarUtil.getInstance().setColor(this, getStatusColor());
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 
     /**

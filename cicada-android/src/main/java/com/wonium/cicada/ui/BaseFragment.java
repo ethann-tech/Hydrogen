@@ -79,10 +79,10 @@ public abstract class BaseFragment extends Fragment {
 
 
     protected  void showToast(CharSequence content){
-        ToastUtil.INSTANCE.show(getContext(),content);
+        ToastUtil.getInstance().show(getContext(),content);
     }
     protected void showToast(CharSequence content,int duration){
-        ToastUtil.INSTANCE.showDuration(getContext(),content,duration);
+        ToastUtil.getInstance().showDuration(getContext(),content,duration);
     }
 
 

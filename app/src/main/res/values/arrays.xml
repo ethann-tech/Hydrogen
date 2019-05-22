@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="my_recycler_view_data">
+        <item>工具</item>
+        <item>自定义控件</item>
+        <item>框架</item>
+    </string-array>
+</resources>

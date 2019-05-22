@@ -18,4 +18,10 @@ public class PageRouter {
      * 这个代码在哪里？
      */
     public final static String TEST_GRID_VIEW="/page/activity/TestGridViewActivity";
+
+    /**
+     * 我的工具页面
+     */
+    public final static String MY_TOOLS_ACTIVITY="/page/activity/MyToolsActivity";
+
 }

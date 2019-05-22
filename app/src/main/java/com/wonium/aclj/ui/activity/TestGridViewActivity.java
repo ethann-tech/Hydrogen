@@ -4,6 +4,8 @@ package com.wonium.aclj.ui.activity;
 import android.view.View;
 import android.widget.AdapterView;
 
+import androidx.databinding.DataBindingUtil;
+
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.wonium.aclj.R;
 import com.wonium.aclj.adapter.TestAdapter;
@@ -15,7 +17,6 @@ import com.wonium.cicada.ui.BaseActivity;
 import java.util.ArrayList;
 import java.util.List;
 
-import androidx.databinding.DataBindingUtil;
 
 /**
  * @ClassName: TestGridViewActivity
@@ -39,7 +40,7 @@ public class TestGridViewActivity extends BaseActivity {
         return getResources().getColor(R.color.black);
     }
 
-    //    private TestAdapter adapter;
+
     @Override
     public void initWindowAttributes() {
         setAllowFullScreen(false);
@@ -52,8 +53,7 @@ public class TestGridViewActivity extends BaseActivity {
 
     @Override
     public void bindLayout(int layoutResId) {
-//        mBinding = DataBindingUtil.setContentView(this,layoutResId);
-
+        mBinding = DataBindingUtil.setContentView(this,layoutResId);
     }
 
     @Override
