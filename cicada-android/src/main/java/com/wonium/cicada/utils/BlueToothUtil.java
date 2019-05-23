@@ -37,12 +37,22 @@ import androidx.annotation.Keep;
  * @Version: 1.0.0
  */
 @Keep
-public enum BlueToothUtil {
-
+public class BlueToothUtil {
     /**
      * 实例对象
      */
-    INSTANCE;
+    private static BlueToothUtil mInstance;
+
+    public static BlueToothUtil getInstance() {
+        if (mInstance == null) {
+            synchronized (BlueToothUtil.class) {
+                if (mInstance == null) {
+                    mInstance = new BlueToothUtil();
+                }
+            }
+        }
+        return mInstance;
+    }
 
 
     /**

@@ -54,11 +54,22 @@ import androidx.annotation.Keep;
  *@ModifyDate 2018/7/19
  **/
 @Keep
-public enum FileUtil {
+public class FileUtil {
     /**
      * 实例对象
      */
-    INSTANCE;
+    private static FileUtil mInstance;
+    public static FileUtil getInstance(){
+        if (mInstance==null){
+            synchronized (FileUtil.class){
+                if (mInstance==null){
+                    mInstance =new FileUtil();
+                }
+            }
+        }
+        return mInstance;
+    }
+
 
     /**
      * 分隔符.
@@ -153,7 +164,7 @@ public enum FileUtil {
     public  String generateFilePath(String dir,String name,String uffix){
 
          String filePath = SEPARATOR + dir+ SEPARATOR+name+uffix;
-         if (!FileUtil.INSTANCE.isFileExist(filePath)){
+         if (!isFileExist(filePath)){
              File file =new File(filePath);
              File fileDir =file.getParentFile();
              if (!fileDir.exists()){

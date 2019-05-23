@@ -42,11 +42,22 @@ import androidx.annotation.Keep;
  * @Version: 1.0.0
  */
 @Keep
-public enum ToastUtil {
+public class ToastUtil {
     /**
      * 实例对象
      */
-    INSTANCE;
+    private static  ToastUtil  instance;
+
+    public static  ToastUtil getInstance() {
+        if (instance==null){
+            synchronized (ToastUtil.class){
+                if (instance==null){
+                    instance =new ToastUtil();
+                }
+            }
+        }
+        return instance;
+    }
     private static boolean IS_SHOW = true;
 
     /**
@@ -109,9 +120,9 @@ public enum ToastUtil {
      */
     public void show(Context context, CharSequence content) {
         if (content.length() > 6) {
-            ToastUtil.INSTANCE.showShort(context, content);
+            showShort(context, content);
         } else {
-            ToastUtil.INSTANCE.showLong(context, content);
+            showLong(context, content);
         }
     }
 

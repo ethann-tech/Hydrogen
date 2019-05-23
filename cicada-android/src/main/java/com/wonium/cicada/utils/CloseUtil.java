@@ -32,11 +32,21 @@ import java.io.IOException;
  * @Version:
 */
 
-public  enum CloseUtil {
+public  class CloseUtil {
     /**
      * 实例对象
      */
-    INSTANCE;
+    private static CloseUtil mInstance;
+    public static CloseUtil getInstance(){
+        if (mInstance==null){
+            synchronized (CloseUtil.class){
+                if (mInstance==null){
+                    mInstance =new CloseUtil();
+                }
+            }
+        }
+        return mInstance;
+    }
     
     /**
      * 关闭 IO

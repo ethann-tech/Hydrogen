@@ -1,6 +1,8 @@
 package com.wonium.aclj.ui.fragment;
 
+import android.os.Build;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +16,10 @@ import com.wonium.cicada.ui.BaseFragment;
 import com.wonium.cicada.utils.ToastUtil;
 
 import androidx.databinding.DataBindingUtil;
+
+import java.net.NetworkInterface;
+import java.util.Collections;
+import java.util.Enumeration;
 
 
 /**
@@ -29,12 +35,10 @@ import androidx.databinding.DataBindingUtil;
  * @Version: 1.0.0
  */
 public class FindFragment extends BaseFragment {
-    private final String TAG =FindFragment.this.getClass().getSimpleName();
+    private static final String TAG =FindFragment.class.getSimpleName();
     private FragmentFindBinding mBinding;
     private String args1;
     private String args2;
-
-
     public static FindFragment newInstance(String args1,String args2) {
         Bundle args = new Bundle();
         FindFragment fragment = new FindFragment();
@@ -58,15 +62,55 @@ public class FindFragment extends BaseFragment {
 
     @Override
     protected void initView(View view) {
-        mBinding.setBtnFind("TestGridView");
+        mBinding.setBtnFind("测试TestGridView");
     }
 
     @Override
     protected void initListener() {
         super.initListener();
-        mBinding.btnTest.setOnClickListener(v -> {
-             ARouter.getInstance().build(PageRouter.TEST_GRID_VIEW).navigation();
-//            Log.d("test", activityTest.toString());
-        });
+        mBinding.btnTest.setOnClickListener(v -> ARouter.getInstance().build(PageRouter.TEST_GRID_VIEW).navigation());
+
+        mBinding.btnProxy.setOnClickListener(v -> ToastUtil.getInstance().show(getContext(),"是否启用网络代理："+(isWifiProxy()?"yes":"false")+"  ; \n是否启用VPN : "+(isVpnUsed()?"yes":"false")));
+
     }
+
+    private boolean isWifiProxy(){
+        final boolean is_ics_or_later = Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT;
+        String proxyAddress;
+        int proxyPort;
+        if (is_ics_or_later) {
+            proxyAddress = System.getProperty("http.proxyHost");
+            String portstr = System.getProperty("http.proxyPort");
+            proxyPort = Integer.parseInt((portstr != null ? portstr : "-1"));
+            System.out.println(proxyAddress + "~");
+            System.out.println("port = " + proxyPort);
+        }else {
+            proxyAddress = android.net.Proxy.getHost(getContext());
+            proxyPort = android.net.Proxy.getPort(getContext());
+            Log.e("address = ", proxyAddress + "~");
+            Log.e("port = ", proxyPort + "~");
+        }
+        return (!TextUtils.isEmpty(proxyAddress)) && (proxyPort != -1);
+    }
+
+    public static boolean isVpnUsed() {
+        try {
+            Enumeration<NetworkInterface> niList = NetworkInterface.getNetworkInterfaces();
+            if(niList != null) {
+                for (NetworkInterface intf : Collections.list(niList)) {
+                    if(!intf.isUp() || intf.getInterfaceAddresses().size() == 0) {
+                        continue;
+                    }
+                    Log.d(TAG, "isVpnUsed() NetworkInterface Name: " + intf.getName());
+                    if ("tun0".equals(intf.getName()) || "ppp0".equals(intf.getName())){
+                        return true; // The VPN is up
+                    }
+                }
+            }
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
 }

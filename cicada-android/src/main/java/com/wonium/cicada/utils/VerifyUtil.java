@@ -34,11 +34,22 @@ import androidx.annotation.Keep;
  * @Version: 1.0.0
  */
 @Keep
-public enum VerifyUtil {
+public class VerifyUtil {
     /**
      * 实例对象
      */
-    INSTANCE;
+    private static  VerifyUtil  instance;
+
+    public static  VerifyUtil getInstance() {
+        if (instance==null){
+            synchronized (VerifyUtil.class){
+                if (instance==null){
+                    instance =new VerifyUtil();
+                }
+            }
+        }
+        return instance;
+    }
 
     /**
      * 验证密码

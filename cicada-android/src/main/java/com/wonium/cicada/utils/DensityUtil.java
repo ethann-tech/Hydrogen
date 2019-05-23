@@ -18,6 +18,7 @@ package com.wonium.cicada.utils;
 
 
 import android.content.Context;
+import android.util.TypedValue;
 
 import androidx.annotation.Keep;
 
@@ -34,12 +35,22 @@ import androidx.annotation.Keep;
  * @Version: 1.0.0
  */
 @Keep
-public enum DensityUtil {
+public class DensityUtil {
     /**
      * 实例对象
      */
-    INSTANCE;
 
+    private static DensityUtil mInstance;
+    public static DensityUtil getInstance(){
+        if (mInstance==null){
+            synchronized (DensityUtil.class){
+                if (mInstance==null){
+                    mInstance =new DensityUtil();
+                }
+            }
+        }
+        return mInstance;
+    }
     /**
      * 根据手机的分辨率从 dp 的单位 转成为 px(像素)
      *
@@ -51,6 +62,9 @@ public enum DensityUtil {
         return (int) (dpValue * scale + 0.5f);
     }
 
+    public int dp2px(Context context,int dp){
+        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, context.getResources().getDisplayMetrics());
+    }
     /**
      * 根据手机的分辨率从 px(像素) 的单位 转成为 dp
      *

@@ -39,7 +39,7 @@ public class VideoFragment extends BaseFragment {
     @Override
     protected void initView(View view) {
         mBinding.editFixedText.setFixedText("ZH-");
-        mBinding.btnTest.setOnClickListener(v -> ToastUtil.INSTANCE.show(getContext(),mBinding.editFixedText.getText().toString().trim()));
+        mBinding.btnTest.setOnClickListener(v -> ToastUtil.getInstance().show(getContext(),mBinding.editFixedText.getText().toString().trim()));
     }
 
     @Override

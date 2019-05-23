@@ -43,7 +43,7 @@
 
 # 忽略警告
 
--ignorewarning
+#-ignorewarning
 -dontnote android.widget.Space
 -dontnote com.wonium.cicada.**
 -dontnote com.alibaba.android.**
