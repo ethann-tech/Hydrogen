@@ -38,16 +38,27 @@ import androidx.core.app.ActivityCompat;
  * @Version: 1.0.0
  */
 @Keep
-public enum IntentUtil {
+public class IntentUtil {
     /**
      * 实例对象
      */
-    INSTANCE;
+    private static IntentUtil mInstance;
+
+    public static IntentUtil getInstance() {
+        if (mInstance == null) {
+            synchronized (IntentUtil.class) {
+                if (mInstance == null) {
+                    mInstance = new IntentUtil();
+                }
+            }
+        }
+        return mInstance;
+    }
 
     /**
      * 跳转到拨号页面
      * @param context 上下文
-     * @param phone 手机号
+     * @param phone   手机号
      */
     public void callPhone(Context context, String phone) {
         Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + phone));
@@ -56,15 +67,4 @@ public enum IntentUtil {
         }
         context.startActivity(intent);
     }
-
-    /**
-     * 跳转到指定的Activity
-     * @param context 上下文
-     * @param cls 指定的activity
-     */
-    public void toActivity(Context context,Class cls){
-        Intent intent =new Intent(context,cls);
-        context.startActivity(intent);
-    }
-
 }

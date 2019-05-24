@@ -38,11 +38,21 @@ import androidx.annotation.Keep;
  * @Version: 1.0.0
  */
 @Keep
-public enum DateUtil {
+public class DateUtil {
     /**
      * 实例对象
      */
-    INSTANCE;
+    private static DateUtil mInstance;
+    public static DateUtil getInstance(){
+        if (mInstance==null){
+            synchronized (DateUtil.class){
+                if (mInstance==null){
+                    mInstance =new DateUtil();
+                }
+            }
+        }
+        return mInstance;
+    }
 
     /**
      * yyyy-MM-dd HH:mm:ss字符串

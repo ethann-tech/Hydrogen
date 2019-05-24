@@ -1,4 +1,4 @@
-package com.wonium.aclj.ui;
+package com.wonium.aclj.ui.activity;
 
 
 import com.wonium.aclj.R;
@@ -52,15 +52,19 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void initView() {
-
-        StatusBarUtil.getInstance().setColor(this,getResources().getColor(R.color.aliceBlue));
+        // 开启状态栏沉浸
+        setStatusBar(true);
+        mBinding.setTitle(getString(R.string.app_name));
         initFragment();
-
     }
 
+    /**
+     * 设置状态栏颜色
+     * @return
+     */
     @Override
     protected int getStatusColor () {
-        return getResources().getColor(R.color.cornFlowerBlue);
+        return getResources().getColor(R.color.black);
     }
 
     @Override

@@ -37,13 +37,21 @@ import androidx.annotation.Keep;
  * @Version: 1.0.0
  */
 @Keep
-public enum ShellUtil {
+public class ShellUtil {
     /**
      * 实例对象
      */
-    INSTANCE;
-
-
+    private static ShellUtil mInstance;
+    public static ShellUtil getInstance(){
+        if(mInstance==null){
+            synchronized (MediaUtil.class){
+                if (mInstance==null){
+                    mInstance =new ShellUtil();
+                }
+            }
+        }
+        return mInstance;
+    }
     private static final String LINE_SEP = System.getProperty("line.separator");
 
 
@@ -157,7 +165,7 @@ public enum ShellUtil {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            CloseUtil.INSTANCE.closeIO(os, successResult, errorResult);
+            CloseUtil.getInstance().closeIO(os, successResult, errorResult);
             if (process != null) {
                 process.destroy();
             }

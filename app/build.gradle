@@ -5,14 +5,15 @@ apply plugin: 'com.android.application'
 static def releaseTime() {
     return new Date().format("yyyy-MM-dd", TimeZone.getTimeZone("UTC"))
 }
+
 android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.wonium.aclj"
         minSdkVersion 15
         targetSdkVersion 28
-        versionCode 8
-        versionName "v0.1.4"
+        versionCode 10
+        versionName "v0.1.6"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         // ARouter
         javaCompileOptions {
@@ -24,14 +25,14 @@ android {
     lintOptions {
         abortOnError true  //这个属性 网上说是  每次都会检查lint 错误， 所以设置成false 忽略检查
     }
-    signingConfigs{
-        release{
+    signingConfigs {
+        release {
             keyAlias 'release'  //别名
             keyPassword 'wonium1993' // 别名密码
             storeFile file('keystore/release.jks')//签名文件路径
             storePassword 'wonium1993'//签名密码
         }
-        debug{
+        debug {
             keyAlias 'debug'
             keyPassword 'wonium1993'
             storeFile file('keystore/debug.jks')
@@ -51,9 +52,10 @@ android {
             //打包签名
             signingConfig signingConfigs.release
             applicationVariants.all {
-                variant -> variant.outputs.all {
-                    output -> outputFileName="${variant.applicationId}-${ buildType.name}-${defaultConfig.versionName}-${ defaultConfig.versionCode}-${releaseTime()}.apk"
-                }
+                variant ->
+                    variant.outputs.all {
+                        output -> outputFileName = "${variant.applicationId}-${buildType.name}-${defaultConfig.versionName}-${defaultConfig.versionCode}-${releaseTime()}.apk"
+                    }
             }
         }
         debug {
@@ -93,7 +95,6 @@ dependencies {
     androidTestImplementation 'androidx.test:runner:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
     implementation 'com.android.support:design:28.0.0'
-    implementation project(path: ':cicada-android')
     implementation 'com.android.support:multidex:1.0.3'
     implementation 'ru.alexbykov:nopermission:1.1.2'
     implementation 'com.alibaba:arouter-api:1.4.1'
@@ -102,4 +103,5 @@ dependencies {
     releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.6.3'
     // Optional, if you use support library fragments:
     debugImplementation 'com.squareup.leakcanary:leakcanary-support-fragment:1.6.3'
+    implementation project(':cicada-android')
 }

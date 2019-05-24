@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/material_component_bottom_sheet_list_item_height"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_item_data"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:paddingStart="@dimen/material_component_button_text_left_and_right_padding"
+            android:paddingLeft="@dimen/material_component_button_text_left_and_right_padding"
+            android:paddingEnd="@dimen/material_component_button_text_left_and_right_padding"
+            android:paddingRight="@dimen/material_component_button_text_left_and_right_padding"
+            android:textSize="@dimen/text_size_16sp" />
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/material_component_lists_right_padding_8dp"
+            android:layout_marginEnd="@dimen/material_component_lists_right_padding_8dp"
+            android:src="@drawable/ic_arrow_right_24dp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_item_data"
+
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_item_data" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

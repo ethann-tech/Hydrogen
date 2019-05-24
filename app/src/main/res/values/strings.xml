@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">蜗牛魔方</string>
+    <string name="app_name">蜗牛开发库</string>
     <string name="login_edit_hint_phone_number">手机号</string>
     <string name="login_edit_hint_password">密码</string>
     <string name="login">登录</string>

@@ -34,12 +34,22 @@ import androidx.annotation.Keep;
  * @Version: 1.0.0
  */
 @Keep
-public enum ByteUtil {
+public class ByteUtil {
 
     /**
      * 实例对象
      */
-    INSTANCE;
+    private static ByteUtil mInstance;
+    public static ByteUtil getInstance() {
+        if (mInstance == null) {
+            synchronized (ArithUtil.class) {
+                if (mInstance == null) {
+                    mInstance = new ByteUtil();
+                }
+            }
+        }
+        return mInstance;
+    }
 
     /**
      * 获取index位置的bit值

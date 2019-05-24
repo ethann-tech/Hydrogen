@@ -36,11 +36,21 @@ import androidx.annotation.Keep;
  * @Version: 1.0.0
  */
 @Keep
-public enum Md5Util {
+public class Md5Util {
     /**
      * 实例对象
      */
-    INSTANCE;
+    private static Md5Util mInstance;
+    public static Md5Util getInstance(){
+        if (mInstance==null){
+            synchronized (Md5Util.class){
+                if (mInstance==null){
+                    mInstance =new Md5Util();
+                }
+            }
+        }
+        return mInstance;
+    }
 
     /**
      * 字符串MD5加密

@@ -37,11 +37,22 @@ import androidx.annotation.Keep;
  * @Version: 1.0.0
  */
 @Keep
-public enum StringUtil {
+public class StringUtil {
     /**
      * 实例对象
      */
-    INSTANCE;
+    private static  StringUtil  instance;
+
+    public static  StringUtil getInstance() {
+        if (instance==null){
+            synchronized (StringUtil.class){
+                if (instance==null){
+                    instance =new StringUtil();
+                }
+            }
+        }
+        return instance;
+    }
 
     /**
      * 判空操作 如果为null 返回true 否则返回false

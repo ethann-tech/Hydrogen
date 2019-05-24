@@ -172,7 +172,9 @@ public abstract class BaseRecyclerViewAdapter<T, VH extends RecyclerView.ViewHol
         this.datas.add(data);
         notifyDataSetChanged();
     }
-
+    public T getData(int position){
+        return datas.get(position);
+    }
     /**
      * 追加一个泛型集合到datas集合中
      * @param datas
