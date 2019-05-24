@@ -22,9 +22,7 @@ android {
             }
         }
     }
-    lintOptions {
-        abortOnError true  //这个属性 网上说是  每次都会检查lint 错误， 所以设置成false 忽略检查
-    }
+
     signingConfigs {
         release {
             keyAlias 'release'  //别名
