@@ -10,12 +10,6 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
-
-    lintOptions {
-        // 这个属性 网上说是  每次都会检查lint 错误， 所以设置成false 忽略检查
-        abortOnError true
-    }
-
     buildTypes {
         release {
             // 代码混淆 false 不混淆，true 混淆
@@ -53,97 +47,97 @@ dependencies {
     implementation files('libs/zxing-core-3.3.3.jar')
 }
 // jcenter 配置
-apply plugin: "com.github.dcendents.android-maven"
-apply plugin: 'com.jfrog.bintray'
-//项目主页
-def siteUrl = 'https://github.com/Hayquan/CicadaAndroid'
-//项目的版本控制地址
-def gitUrl = 'https://github.com/Hayquan/CicadaAndroid.git'
-//发布的组织名称名字，必须填写
-group = "com.wonium.cicada.android"
-//发布到JCenter上的项目名字，必须填写
-def libName = "cicada-android"
-// 版本号，下次更新是只需要更改版本号即可
-version = "0.1.5"
-//生成源文件
-task sourcesJar(type: Jar) {
-    from android.sourceSets.main.java.srcDirs
-    classifier = 'sources'
-}
-//生成文档
-task javadoc(type: Javadoc) {
-    source = android.sourceSets.main.java.srcDirs
-    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
-    options.encoding "UTF-8"
-    options.charSet 'UTF-8'
-    options.author true
-    options.version true
-    options.links "https://github.com/Hayquan/CicadaAndroid"
-    failOnError false
-}
-
-//文档打包成jar
-task javadocJar(type: Jar, dependsOn: javadoc) {
-    classifier = 'javadoc'
-    from javadoc.destinationDir
-}
-//拷贝javadoc文件
-task copyDoc(type: Copy) {
-    from "${buildDir}/docs/"
-    into "docs"
-}
-//上传到jCenter所需要的源码文件
-artifacts {
-    archives javadocJar
-    archives sourcesJar
-}
-// 配置maven库，生成POM.xml文件
-install {
-    repositories.mavenInstaller {
-        // This generates POM.xml with proper parameters
-        pom {
-            project {
-                packaging 'aar'
-                name 'cicada-android'
-                url siteUrl
-                licenses {
-                    license {
-                        name 'The Apache Software License, Version 2.0'
-                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-                    }
-                }
-                developers {
-                    developer {
-                        id 'wonium'
-                        name 'Ethan'
-                        email 'wonium@qq.com'
-                    }
-                }
-                scm {
-                    connection gitUrl
-                    developerConnection gitUrl
-                    url siteUrl
-                }
-            }
-        }
-    }
-}
-//上传到JCenter
-Properties properties = new Properties()
-properties.load(project.rootProject.file('local.properties').newDataInputStream())
-bintray {
-    user = properties.getProperty("bintray.user")    //读取 local.properties 文件里面的 bintray.user
-    key = properties.getProperty("bintray.apikey")   //读取 local.properties 文件里面的 bintray.apikey
-    configurations = ['archives']
-    pkg {
-        repo = "maven"
-        userOrg = 'rumblefish'    //组织名称 organization
-        name = libName    //发布到JCenter上的项目名字，必须填写
-        desc = 'desc'    //项目描述
-        websiteUrl = siteUrl
-        vcsUrl = gitUrl
-        licenses = ["Apache-2.0"]
-        publish = true
-    }
-}
+//apply plugin: "com.github.dcendents.android-maven"
+//apply plugin: 'com.jfrog.bintray'
+////项目主页
+//def siteUrl = 'https://github.com/Hayquan/CicadaAndroid'
+////项目的版本控制地址
+//def gitUrl = 'https://github.com/Hayquan/CicadaAndroid.git'
+////发布的组织名称名字，必须填写
+//group = "com.wonium.cicada.android"
+////发布到JCenter上的项目名字，必须填写
+//def libName = "cicada-android"
+//// 版本号，下次更新是只需要更改版本号即可
+//version = "0.1.5"
+////生成源文件
+//task sourcesJar(type: Jar) {
+//    from android.sourceSets.main.java.srcDirs
+//    classifier = 'sources'
+//}
+////生成文档
+//task javadoc(type: Javadoc) {
+//    source = android.sourceSets.main.java.srcDirs
+//    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+//    options.encoding "UTF-8"
+//    options.charSet 'UTF-8'
+//    options.author true
+//    options.version true
+//    options.links "https://github.com/Hayquan/CicadaAndroid"
+//    failOnError false
+//}
+//
+////文档打包成jar
+//task javadocJar(type: Jar, dependsOn: javadoc) {
+//    classifier = 'javadoc'
+//    from javadoc.destinationDir
+//}
+////拷贝javadoc文件
+//task copyDoc(type: Copy) {
+//    from "${buildDir}/docs/"
+//    into "docs"
+//}
+////上传到jCenter所需要的源码文件
+//artifacts {
+//    archives javadocJar
+//    archives sourcesJar
+//}
+//// 配置maven库，生成POM.xml文件
+//install {
+//    repositories.mavenInstaller {
+//        // This generates POM.xml with proper parameters
+//        pom {
+//            project {
+//                packaging 'aar'
+//                name 'cicada-android'
+//                url siteUrl
+//                licenses {
+//                    license {
+//                        name 'The Apache Software License, Version 2.0'
+//                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+//                    }
+//                }
+//                developers {
+//                    developer {
+//                        id 'wonium'
+//                        name 'Ethan'
+//                        email 'wonium@qq.com'
+//                    }
+//                }
+//                scm {
+//                    connection gitUrl
+//                    developerConnection gitUrl
+//                    url siteUrl
+//                }
+//            }
+//        }
+//    }
+//}
+////上传到JCenter
+//Properties properties = new Properties()
+//properties.load(project.rootProject.file('local.properties').newDataInputStream())
+//bintray {
+//    user = properties.getProperty("bintray.user")    //读取 local.properties 文件里面的 bintray.user
+//    key = properties.getProperty("bintray.apikey")   //读取 local.properties 文件里面的 bintray.apikey
+//    configurations = ['archives']
+//    pkg {
+//        repo = "maven"
+//        userOrg = 'rumblefish'    //组织名称 organization
+//        name = libName    //发布到JCenter上的项目名字，必须填写
+//        desc = 'desc'    //项目描述
+//        websiteUrl = siteUrl
+//        vcsUrl = gitUrl
+//        licenses = ["Apache-2.0"]
+//        publish = true
+//    }
+//}
 
