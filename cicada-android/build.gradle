@@ -5,15 +5,15 @@ android {
     defaultConfig {
         minSdkVersion 15
         targetSdkVersion 28
-        versionCode 11
-        versionName "v0.1.7"
+        versionCode 12
+        versionName "v0.1.8"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
         release {
             // 代码混淆 false 不混淆，true 混淆
-            minifyEnabled true
+            minifyEnabled false
             // zipalign 优化 这个也要单独领出来说一下
             zipAlignEnabled true
             consumerProguardFiles 'proguard-rules.pro'

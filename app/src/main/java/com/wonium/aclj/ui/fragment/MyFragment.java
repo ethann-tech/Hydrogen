@@ -10,8 +10,10 @@ import com.wonium.aclj.R;
 import com.wonium.aclj.adapter.MyAdapter;
 import com.wonium.aclj.databinding.FragmentMyBinding;
 import com.wonium.aclj.router.PageRouter;
+import com.wonium.cicada.OnItemLongClickListener;
 import com.wonium.cicada.UniversalItemDecoration;
 import com.wonium.cicada.ui.BaseFragment;
+import com.wonium.cicada.utils.ToastUtil;
 
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -19,6 +21,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 
 public class MyFragment extends BaseFragment {
     private FragmentMyBinding mBinding;
@@ -65,13 +68,14 @@ public class MyFragment extends BaseFragment {
         mAdapter = new MyAdapter(getContext());
         mBinding.myRecyclerView.setAdapter(mAdapter);
         mAdapter.setDatas(list);
+
     }
 
     @Override
     protected void initListener() {
         super.initListener();
-
         mAdapter.setOnItemClickListener((view, position) -> goPageByPosition(position));
+        mAdapter.setOnItemLongClickListener((view, position) -> ToastUtil.getInstance().show(getContext(),String.format(Locale.CHINA,"%d",position)));
     }
 
     /**

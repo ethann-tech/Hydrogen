@@ -26,9 +26,9 @@ public class TestGridViewAdapter extends BaseListAdapter<String, TestGridViewAda
         }
     }
 
-    public class GridViewHolder extends BaseListAdapter.ZoeViewHolder{
+    class GridViewHolder extends BaseListAdapter.ZoeViewHolder{
         private TextView tvContent;
-        public GridViewHolder(View itemView) {
+        GridViewHolder(View itemView) {
             super(itemView);
             tvContent =itemView.findViewById(R.id.tvContent);
         }
