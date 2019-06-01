@@ -28,6 +28,8 @@ import androidx.annotation.Keep;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.wonium.cicada.OnItemLongClickListener;
+
 /**
  * @ClassName: BaseRecyclerViewAdapter.java
  * @Description: Adapter的公共基类
@@ -45,8 +47,8 @@ public abstract class BaseRecyclerViewAdapter<T, VH extends RecyclerView.ViewHol
     private List<T> datas;
     private LayoutInflater inflater;
     private Context context;
-    public OnItemClickListener onItemClickListener;
-
+    private  OnItemClickListener onItemClickListener;
+    private OnItemLongClickListener onItemLongClickListener;
 
     /**
      * 设置Item得点击事件
@@ -57,11 +59,19 @@ public abstract class BaseRecyclerViewAdapter<T, VH extends RecyclerView.ViewHol
         this.onItemClickListener = onItemClickListener;
     }
 
+    /**
+     * 长按监听事件
+     * @param onItemLongClickListener 长按监听事件
+     */
+    public void setOnItemLongClickListener(OnItemLongClickListener onItemLongClickListener){
+        this.onItemLongClickListener=onItemLongClickListener;
+    }
 
 
     /**
      * Item 点击接口
      */
+    @Keep
     public interface OnItemClickListener {
         /**
          * Item 点击事件
@@ -118,6 +128,17 @@ public abstract class BaseRecyclerViewAdapter<T, VH extends RecyclerView.ViewHol
 
     @Override
     public void onBindViewHolder(@NonNull VH holder, int position) {
+        holder.itemView.setOnClickListener(view -> {
+            if (onItemClickListener!=null){
+                onItemClickListener.onItemClick(view,position);
+            }
+        });
+        holder.itemView.setOnLongClickListener(view -> {
+                if (onItemLongClickListener!=null){
+                    onItemLongClickListener.onItemLongClick(view,position);
+                }
+            return false;
+        });
         onBindVH(holder, position);
     }
 
