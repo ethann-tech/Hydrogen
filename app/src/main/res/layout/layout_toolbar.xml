@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"   xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
         <variable
             name="title"
             type="String" />
     </data>
+
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbar"
         android:layout_width="match_parent"
@@ -19,6 +21,7 @@
             android:layout_height="?attr/actionBarSize"
             android:background="@android:color/black"
             app:layout_scrollFlags="scroll|enterAlways"
+            app:title=" "
             app:popupTheme="@style/AppTheme.PopupOverlay">
 
 

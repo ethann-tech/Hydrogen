@@ -89,6 +89,7 @@ public class MyFragment extends BaseFragment {
                 ARouter.getInstance().build(PageRouter.MY_TOOLS_ACTIVITY).navigation(getContext());
                 break;
             case 1:
+                ARouter.getInstance().build(PageRouter.ACTIVITY_CUSTOM_COMPONENT).navigation(getContext());
                 break;
             case 2:
                 break;

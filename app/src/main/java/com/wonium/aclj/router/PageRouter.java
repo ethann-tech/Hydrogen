@@ -23,5 +23,15 @@ public class PageRouter {
      * 我的工具页面
      */
     public final static String MY_TOOLS_ACTIVITY="/page/activity/MyToolsActivity";
+    /**
+     * 自定义组件
+     */
+    public final static String ACTIVITY_CUSTOM_COMPONENT="/page/activity/ActivityCustomComponent";
+
+    /**
+     * ImageView
+     */
+    public final static String ACTIVITY_IMAGE_VIEW="/page/activity/ImageViewActivity";
+
 
 }

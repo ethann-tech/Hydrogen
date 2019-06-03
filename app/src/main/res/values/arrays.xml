@@ -5,4 +5,7 @@
         <item>自定义控件</item>
         <item>框架</item>
     </string-array>
+    <string-array name="arrays_custom_component">
+        <item>圆形头像</item>
+    </string-array>
 </resources>
