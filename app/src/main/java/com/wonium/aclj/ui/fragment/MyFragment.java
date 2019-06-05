@@ -13,6 +13,7 @@ import com.wonium.aclj.router.PageRouter;
 import com.wonium.cicada.OnItemLongClickListener;
 import com.wonium.cicada.UniversalItemDecoration;
 import com.wonium.cicada.ui.BaseFragment;
+import com.wonium.cicada.ui.widget.LoadingDialog;
 import com.wonium.cicada.utils.ToastUtil;
 
 import androidx.databinding.DataBindingUtil;
@@ -92,6 +93,7 @@ public class MyFragment extends BaseFragment {
                 ARouter.getInstance().build(PageRouter.ACTIVITY_CUSTOM_COMPONENT).navigation(getContext());
                 break;
             case 2:
+
                 break;
             default:
                 break;

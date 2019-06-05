@@ -7,5 +7,7 @@
     </string-array>
     <string-array name="arrays_custom_component">
         <item>圆形头像</item>
+        <item>TextView</item>
+        <item>Custom Dialog</item>
     </string-array>
 </resources>

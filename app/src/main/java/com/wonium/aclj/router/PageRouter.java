@@ -32,6 +32,15 @@ public class PageRouter {
      * ImageView
      */
     public final static String ACTIVITY_IMAGE_VIEW="/page/activity/ImageViewActivity";
+    /**
+     * TextView 各种变形
+     */
+    public final static String ACTIVITY_TEXT_VIEW="/page/activity/TextViewActivity";
+
+    /**
+     * 自定义Dialog
+     */
+    public final static String ACTIVITY_CUSTOM_DIALOG="/page/activity/CustomDialogActivity";
 
 
 }

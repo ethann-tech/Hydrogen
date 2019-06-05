@@ -29,6 +29,8 @@
         <activity android:name=".ui.activity.MyToolsActivity" android:screenOrientation="portrait"/>
         <activity android:name=".ui.activity.CustomComponentActivity" android:screenOrientation="portrait"/>
         <activity android:name=".ui.activity.ImageViewActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".ui.activity.TextViewActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".ui.activity.CustomDialogActivity" android:screenOrientation="portrait"/>
         <!--<activity android:name=".ui.ui.activity.SecondActivity" />-->
         <!--&lt;!&ndash; 登陆页面 &ndash;&gt;-->
         <!--<activity android:name=".ui.ui.activity.LoginActivity" />-->
