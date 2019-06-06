@@ -5,6 +5,10 @@ import android.app.Application;
 import android.util.Log;
 
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.orhanobut.logger.AndroidLogAdapter;
+import com.orhanobut.logger.FormatStrategy;
+import com.orhanobut.logger.Logger;
+import com.orhanobut.logger.PrettyFormatStrategy;
 
 
 /**
@@ -28,6 +32,7 @@ public class App extends Application {
         super.onCreate();
         mInstance = this;
         initARouter();
+        initLogger();
     }
 
     public static App getInstance() {
@@ -50,4 +55,14 @@ public class App extends Application {
         ARouter.init(this);
 
     }
+
+    /**
+     * 初始化Logger
+     */
+    private void initLogger() {
+        FormatStrategy formatStrategy = PrettyFormatStrategy.newBuilder().showThreadInfo(true).methodCount(5).methodOffset(7).tag(getBaseContext().getResources().getString(R.string.app_name)).build();
+        Logger.addLogAdapter(new AndroidLogAdapter(formatStrategy));
+    }
+
+
 }
