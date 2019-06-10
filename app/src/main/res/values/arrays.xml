@@ -9,6 +9,7 @@
         <item>圆形头像</item>
         <item>TextView</item>
         <item>Custom Dialog</item>
+        <item>ExpandableListView</item>
     </string-array>
    <string-array name="tools_arrays">
        <item>@string/tools_activity_manager</item>
@@ -16,7 +17,6 @@
        <item>@string/tools_byte</item>
        <item>@string/tools_color</item>
        <item>@string/tools_data_clean</item>
-       <item>@string/tools_date_util</item>
        <item>@string/tools_date_util</item>
        <item>@string/tools_device</item>
        <item>@string/tools_density</item>

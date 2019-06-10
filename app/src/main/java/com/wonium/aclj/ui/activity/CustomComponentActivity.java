@@ -94,8 +94,12 @@
                         break;
                     case 1:
                         ARouter.getInstance().build(PageRouter.ACTIVITY_TEXT_VIEW).navigation(getContext());
+                        break;
                     case 2:
                         ARouter.getInstance().build(PageRouter.ACTIVITY_CUSTOM_DIALOG).navigation(getContext());
+                        break;
+                    case 3:
+                        ARouter.getInstance().build(PageRouter.ACTIVITY_EXPAND_LIST).navigation(getContext());
                         break;
                         default: break;
                 }

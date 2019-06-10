@@ -12,9 +12,7 @@
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-
-        android:layout_height="match_parent"
-        android:fitsSystemWindows="true">
+        android:layout_height="match_parent">
 
         <include
             android:id="@+id/include_tools_toolbar"
@@ -24,8 +22,10 @@
         <include
             android:id="@+id/include_tools_recycler"
             layout="@layout/layout_recycler_view"
-            tools:showIn="@layout/layout_toolbar"
-            bind:layout_behavior="@string/appbar_scrolling_view_behavior" />
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            bind:layout_behavior="@string/appbar_scrolling_view_behavior"
+            tools:showIn="@layout/layout_toolbar" />
 
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -36,8 +36,15 @@
     <string name="tools_toast">ToastUtil</string>
     <string name="tools_verify">VerifyUtil</string>
 
+    <!--hint-->
+    <string name="hint_result">验证结果:</string>
 
+    <!--StringUtil-->
+    <string name="hint_is_null">请输入验证isNull方法的字符串</string>
+    <string name="hint_is_empty">请输入验证isEmpty方法的字符串</string>
 
+    <string name="hint_value_of">请输入验证valueOf方法的内容</string>
+    <string name="hint_click_bottom_button_check">点击下方按钮验证</string>
 
     <!--navigation-->
     <string name="nav_find">发现</string>

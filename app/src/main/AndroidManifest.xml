@@ -6,8 +6,12 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.READ_SMS"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
 
     <application
         android:name=".App"
@@ -22,15 +26,25 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.activity.ZLibActivity"/>
-        <activity android:name=".ui.activity.TestGridViewActivity"/>
-        <activity android:name=".ui.activity.ProgressActivity"/>
+        <activity android:name=".ui.activity.ZLibActivity" />
+        <activity android:name=".ui.activity.TestGridViewActivity" />
+        <activity android:name=".ui.activity.ProgressActivity" />
         <!--我的工具页面-->
-        <activity android:name=".ui.activity.MyToolsActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".ui.activity.CustomComponentActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".ui.activity.ImageViewActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".ui.activity.TextViewActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".ui.activity.CustomDialogActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".ui.activity.MyToolsActivity" />
+        <activity android:name=".ui.activity.ActivityManagerActivity" />
+        <activity android:name=".ui.activity.BitmapUtilActivity" />
+        <activity android:name=".ui.activity.DataCleanActivity" />
+        <activity android:name=".ui.activity.DateUtilActivity" />
+        <activity android:name=".ui.activity.DeviceUtilActivity"/>
+        <activity android:name=".ui.activity.FileUtilActivity"/>
+        <activity android:name=".ui.activity.StringUtilActivity"/>
+        <activity android:name=".ui.activity.CustomComponentActivity" />
+        <activity android:name=".ui.activity.ImageViewActivity" />
+        <activity android:name=".ui.activity.TextViewActivity" />
+        <activity android:name=".ui.activity.CustomDialogActivity" />
+        <activity android:name=".ui.activity.ByteUtilActivity" />
+        <activity android:name=".ui.activity.ExpandListActivity"/>
+
         <!--<activity android:name=".ui.ui.activity.SecondActivity" />-->
         <!--&lt;!&ndash; 登陆页面 &ndash;&gt;-->
         <!--<activity android:name=".ui.ui.activity.LoginActivity" />-->
