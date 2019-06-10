@@ -8,15 +8,14 @@
    StringUtil.getInstance().reverseString("wonium");
    ```
 ## 使用
-### 步骤1 Add the JitPack repository to your build file
-```
-allprojects {
-		repositories {
-			maven { url 'https://jitpack.io' }
-		}
-	}
-```
-
+### 步骤1 添加 JitPack repository 到项目的根目录
+   ```
+    allprojects {
+        repositories {
+             maven { url 'https://jitpack.io' }
+        }
+    }
+   ```
 ### 步骤2
 
 在你的model目录下的build中增加依赖，替换下面`latestVersion`位最新的版本，当前最新的版本: [![](https://jitpack.io/v/ethan-wonium/CicadaAndroid.svg)](https://jitpack.io/#ethan-wonium/CicadaAndroid)
