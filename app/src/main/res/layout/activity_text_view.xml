@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="title"
+            type="String" />
+    </data>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <include
+            android:id="@+id/include_text_view_toolbar"
+            app:title="@{title}"
+            layout="@layout/layout_toolbar"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="跑马灯效果"
+            android:layout_height="wrap_content" />
+        <com.wonium.cicada.ui.widget.MarqueeTextView
+            android:id="@+id/tv_marquee"
+            android:ellipsize="marquee"
+            android:layout_width="match_parent"
+            android:singleLine="true"
+            android:text="蜗牛魔方，蜗牛魔方，蜗牛魔方，蜗牛魔方-蜗牛开发库，蜗牛魔方-蜗牛开发库，蜗牛魔方-蜗牛开发库。"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</layout>

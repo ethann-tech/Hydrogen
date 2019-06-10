@@ -23,5 +23,62 @@ public class PageRouter {
      * 我的工具页面
      */
     public final static String MY_TOOLS_ACTIVITY="/page/activity/MyToolsActivity";
+    /**
+     * ActivityManager
+     */
+    public final static String ACTIVITY_MANAGER_ACTIVITY="/page/activity/ActivityManagerActivity";
+    /**
+     * BitmapUtil
+     */
+    public final static String ACTIVITY_BITMAP_UTIL="/page/activity/BitmapUtilActivity";
 
+    /**
+     * ByteUtilActivity
+     */
+    public final static String ACTIVITY_BYTE_UTIL="/page/activity/ByteUtilActivity";
+    /**
+     * DateCleanActivity
+     */
+    public final static String ACTIVITY_DATA_CLEAR="/page/activity/DataCleanActivity";
+    /**
+     * DateUtilActivity
+     */
+    public final static String ACTIVITY_DATE_UTIL="/page/activity/DateUtilActivity";
+    /**
+     * DeviceUtilActivity
+     */
+    public final static String ACTIVITY_DEVICE_UTIL="/page/activity/DeviceUtilActivity";
+    /**
+     * FileUtilActivity
+     */
+    public final static String ACTIVITY_FILE_UTIL="/page/activity/FileUtilActivity";
+
+    public final static String ACTIVITY_STRING_UTIL="/page/activity/StringUtilActivity";
+
+
+
+
+
+    /**
+     * 自定义组件
+     */
+    public final static String ACTIVITY_CUSTOM_COMPONENT="/page/activity/ActivityCustomComponent";
+
+    /**
+     * ImageView
+     */
+    public final static String ACTIVITY_IMAGE_VIEW="/page/activity/ImageViewActivity";
+    /**
+     * TextView 各种变形
+     */
+    public final static String ACTIVITY_TEXT_VIEW="/page/activity/TextViewActivity";
+
+    /**
+     * 自定义Dialog
+     */
+    public final static String ACTIVITY_CUSTOM_DIALOG="/page/activity/CustomDialogActivity";
+    /**
+     * ExpandListActivity
+     */
+    public final static String ACTIVITY_EXPAND_LIST="/page/actvity/ExpandListActivity";
 }

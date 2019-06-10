@@ -7,16 +7,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.wonium.aclj.R;
 import com.wonium.aclj.databinding.FragmentFindBinding;
 import com.wonium.aclj.router.PageRouter;
+import com.wonium.cicada.OnNoDoubleClickListener;
 import com.wonium.cicada.ui.BaseFragment;
 import com.wonium.cicada.utils.ToastUtil;
-
 import androidx.databinding.DataBindingUtil;
-
 import java.net.NetworkInterface;
 import java.util.Collections;
 import java.util.Enumeration;
@@ -69,7 +67,12 @@ public class FindFragment extends BaseFragment {
     protected void initListener() {
         super.initListener();
         mBinding.btnTest.setOnClickListener(v -> ARouter.getInstance().build(PageRouter.TEST_GRID_VIEW).navigation());
-
+       mBinding.btnCustomLoading.setOnClickListener(new OnNoDoubleClickListener() {
+           @Override
+           public void onNoDoubleClick(View v) {
+                    ToastUtil.getInstance().show(getContext(),"OnNoDoubleClickListener");
+           }
+       });
         mBinding.btnProxy.setOnClickListener(v -> ToastUtil.getInstance().show(getContext(),"是否启用网络代理："+(isWifiProxy()?"yes":"false")+"  ; \n是否启用VPN : "+(isVpnUsed()?"yes":"false")));
 
     }

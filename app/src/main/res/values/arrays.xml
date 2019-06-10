@@ -5,4 +5,31 @@
         <item>自定义控件</item>
         <item>框架</item>
     </string-array>
+    <string-array name="arrays_custom_component">
+        <item>圆形头像</item>
+        <item>TextView</item>
+        <item>Custom Dialog</item>
+        <item>ExpandableListView</item>
+    </string-array>
+   <string-array name="tools_arrays">
+       <item>@string/tools_activity_manager</item>
+       <item>@string/tools_bitmap</item>
+       <item>@string/tools_byte</item>
+       <item>@string/tools_color</item>
+       <item>@string/tools_data_clean</item>
+       <item>@string/tools_date_util</item>
+       <item>@string/tools_device</item>
+       <item>@string/tools_density</item>
+       <item>@string/tools_file</item>
+       <item>@string/tools_input_method_manager</item>
+       <item>@string/tools_intent</item>
+       <item>@string/tools_md5</item>
+       <item>@string/tools_network</item>
+       <item>@string/tools_shared_preferences</item>
+       <item>@string/tools_status_bar</item>
+       <item>@string/tools_string</item>
+       <item>@string/tools_thread_pool</item>
+       <item>@string/tools_toast</item>
+       <item>@string/tools_verify</item>
+   </string-array>
 </resources>
