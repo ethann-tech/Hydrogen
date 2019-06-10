@@ -70,7 +70,6 @@ public abstract class BaseActivity extends AppCompatActivity {
             getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
             requestWindowFeature(Window.FEATURE_NO_TITLE);
         }
-
         bindLayout(getLayoutResId());
         initView();
         if (isSetStatusBar) {
@@ -97,9 +96,7 @@ public abstract class BaseActivity extends AppCompatActivity {
      *
      * @param bundle 界面跳转携带的参数
      */
-    protected void initParam(Bundle bundle) {
-
-    }
+    protected void initParam(Bundle bundle) { }
 
 
     public Context getContext() {

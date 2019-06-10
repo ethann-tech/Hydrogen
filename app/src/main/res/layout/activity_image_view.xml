@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:circle="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="title"
+            type="String" />
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/antiqueWhite"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/include_image_view_toolbar"
+            layout="@layout/layout_toolbar"
+            circle:title="@{title}" />
+
+        <com.wonium.cicada.ui.widget.CircleImageView
+            android:layout_width="@dimen/material_component_button_height_56dp"
+            android:layout_height="@dimen/material_component_button_height_56dp"
+            android:src="@mipmap/app_launcher"
+            circle:border_color="@color/black"
+            circle:border_width="@dimen/material_layout_separator_height_1dp" />
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

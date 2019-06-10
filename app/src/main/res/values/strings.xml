@@ -1,5 +1,10 @@
 <resources>
     <string name="app_name">蜗牛开发库</string>
+    <string name="activity_custom_component">自定义组件</string>
+    <string name="activity_image_view">CustomImageView</string>
+    <string name="activity_text_view">TextView的用法</string>
+    <string name="activity_custom_dialog">CustomDialog</string>
+    <string name="activity_tools">我的工具</string>
     <string name="login_edit_hint_phone_number">手机号</string>
     <string name="login_edit_hint_password">密码</string>
     <string name="login">登录</string>
@@ -7,6 +12,40 @@
     <string name="forget_password">忘记密码</string>
     <string name="register_account">注册账号</string>
     <string name="fast_login">第三方账号快速登录</string>
+
+
+
+    <string name="tools_acache">ACacheUtil</string>
+    <string name="tools_activity_manager">ActivityManagerUtils</string>
+    <string name="tools_bitmap">BitmapUtil</string>
+    <string name="tools_byte">ByteUtil</string>
+    <string name="tools_color">ColorUtil</string>
+    <string name="tools_data_clean">DataCleanUtil</string>
+    <string name="tools_date_util">DateUtil</string>
+    <string name="tools_density">DensityUtil</string>
+    <string name="tools_device">DeviceUtil</string>
+    <string name="tools_file">FileUtils</string>
+    <string name="tools_input_method_manager">InputMethodManagerUtil</string>
+    <string name="tools_intent">IntentUtil</string>
+    <string name="tools_md5">MD5Util</string>
+    <string name="tools_network">NetWorkUtil</string>
+    <string name="tools_shared_preferences">SharedPreferencesUtil</string>
+    <string name="tools_status_bar">StatusBarUtil</string>
+    <string name="tools_string">StringUtil</string>
+    <string name="tools_thread_pool">ThreadPollUtil</string>
+    <string name="tools_toast">ToastUtil</string>
+    <string name="tools_verify">VerifyUtil</string>
+
+    <!--hint-->
+    <string name="hint_result">验证结果:</string>
+
+    <!--StringUtil-->
+    <string name="hint_is_null">请输入验证isNull方法的字符串</string>
+    <string name="hint_is_empty">请输入验证isEmpty方法的字符串</string>
+
+    <string name="hint_value_of">请输入验证valueOf方法的内容</string>
+    <string name="hint_click_bottom_button_check">点击下方按钮验证</string>
+
     <!--navigation-->
     <string name="nav_find">发现</string>
     <string name="nav_video">视频</string>
