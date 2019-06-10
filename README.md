@@ -5,18 +5,26 @@
 这是一个Android基于JAVA语言的工具类库，该库集成了常用的工具类，就比如`StringUtil`,'FileUtil','DeviceUtil'等。
 ## 使用实例
    ```
-   StringUtil.INSTANCE.reverseString("wonium");
+   StringUtil.getInstance().reverseString("wonium");
    ```
 ## 使用
-
+### 步骤1 Add the JitPack repository to your build file
+```
+allprojects {
+		repositories {
+			maven { url 'https://jitpack.io' }
+		}
+	}
+```
 
 ### 步骤2
 
-在你的model目录下的build中增加依赖，替换下面`latestVersion`位最新的版本，当前最新的版本: [ ![Download](https://api.bintray.com/packages/rumblefish/maven/cicada-android/images/download.svg) ](https://bintray.com/rumblefish/maven/cicada-android/_latestVersion)
+在你的model目录下的build中增加依赖，替换下面`latestVersion`位最新的版本，当前最新的版本: [![](https://jitpack.io/v/ethan-wonium/CicadaAndroid.svg)](https://jitpack.io/#ethan-wonium/CicadaAndroid)
+
 
 ```
 dependencies {
-	compile 'com.wonium.cicada.android:cicada-android:latestVersion'
+	  implementation 'com.github.ethan-wonium:CicadaAndroid:latestVersion'
 }
 ```
 
