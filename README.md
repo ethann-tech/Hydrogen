@@ -18,23 +18,13 @@
    ```
 ### 步骤2
 
-<<<<<<< HEAD
-在你的model目录下的build中增加依赖，替换下面`latestVersion`位最新的版本，当前最新的版本: [![](https://jitpack.io/v/wonium-ethan/CicadaAndroid.svg)](https://jitpack.io/#wonium-ethan/CicadaAndroid)
 
-```
-dependencies {
-	 implementation 'com.github.wonium-ethan:CicadaAndroid:0.1.8'
-=======
 在你的model目录下的build中增加依赖，替换下面`latestVersion`最新的版本，当前最新的版本: [![](https://jitpack.io/v/ethan-wonium/CicadaAndroid.svg)](https://jitpack.io/#ethan-wonium/CicadaAndroid)
-
 
 ```
 dependencies {
 	  implementation 'com.github.ethan-wonium:CicadaAndroid:latestVersion'
->>>>>>> develop
-}
 ```
-
 ## LICENSE
 
 ```text

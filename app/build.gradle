@@ -82,10 +82,7 @@ android {
             jniLibs.srcDirs = ['libs']
         }
     }
-
 }
-
-
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'androidx.appcompat:appcompat:1.1.0-alpha05'
