@@ -4,6 +4,7 @@
     <string name="activity_image_view">CustomImageView</string>
     <string name="activity_text_view">TextView的用法</string>
     <string name="activity_custom_dialog">CustomDialog</string>
+    <string name="activity_expandable_list">ExpandableListView</string>
     <string name="activity_tools">我的工具</string>
     <string name="login_edit_hint_phone_number">手机号</string>
     <string name="login_edit_hint_password">密码</string>

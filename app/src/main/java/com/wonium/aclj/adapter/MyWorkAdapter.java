@@ -98,21 +98,16 @@ public class MyWorkAdapter extends BaseExpandableListAdapter {
     }
 
     @Override
-    public View getGroupView(int groupPosition, boolean isExpanded,
-                             View convertView, ViewGroup parent) {
+    public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
         // 返回表头View
-        GroupViewHolder mGroupViewHolder = null;
+        GroupViewHolder mGroupViewHolder;
         if (convertView == null) {
             mGroupViewHolder = new GroupViewHolder();
             // 内部类绑定相应控件
-            convertView = mLayoutInflater.inflate(R.layout.item_work_groups, parent,
-                    false);
-            mGroupViewHolder.groupImage = (ImageView) convertView
-                    .findViewById(R.id.group_image1);
-            mGroupViewHolder.groupTitle = (TextView) convertView
-                    .findViewById(R.id.group_title);
-            mGroupViewHolder.groupIndicator = (ImageView) convertView
-                    .findViewById(R.id.group_image2);
+            convertView = mLayoutInflater.inflate(R.layout.item_work_groups, parent, false);
+            mGroupViewHolder.groupImage = convertView.findViewById(R.id.group_image1);
+            mGroupViewHolder.groupTitle = convertView.findViewById(R.id.group_title);
+            mGroupViewHolder.groupIndicator = convertView.findViewById(R.id.group_image2);
             // 内部类绑定当前载入的convertView
             convertView.setTag(mGroupViewHolder);
         } else {
@@ -126,11 +121,9 @@ public class MyWorkAdapter extends BaseExpandableListAdapter {
         mGroupViewHolder.groupTitle.setText(mWorkGroup.getTitleGroup());
         // 表头的open和close设置不同image
         if (isExpanded) {
-            mGroupViewHolder.groupIndicator
-                    .setBackgroundResource(R.drawable.ic_launcher_foreground);
+            mGroupViewHolder.groupIndicator.setBackgroundResource(R.drawable.ic_arrow_down);
         } else {
-            mGroupViewHolder.groupIndicator
-                    .setBackgroundResource(R.drawable.ic_launcher_background);
+            mGroupViewHolder.groupIndicator.setBackgroundResource(R.drawable.ic_arrow_list_expand_right_24dp);
         }
         return convertView;
     }
