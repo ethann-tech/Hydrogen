@@ -5,9 +5,10 @@
 /app/build/
 /app/src/androidTest/
 /app/src/test/
-/android-common-library-java/build/
-/android-common-library-java/src/androidTest/
-/android-common-library-java/src/test/
+/hydrogen-android/build/
+/hydrogen-android/androidTest/
+/hydrogen-android/test/
+
 /.idea/caches/build_file_checksums.ser
 /.idea/libraries
 /.idea/modules.xml

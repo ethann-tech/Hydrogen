@@ -1,1 +1,1 @@
-include ':app', ':cicada-android'
+include ':app', ':hydrogen-android'
