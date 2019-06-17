@@ -1,11 +1,11 @@
-# CicadaAndroid
+# HydrogenAndroid
 
 ## 说明
 
 这是一个Android基于JAVA语言的工具类库，该库集成了常用的工具类，就比如`StringUtil`,'FileUtil','DeviceUtil'等。
 ## 使用实例
    ```
-   StringUtil.getInstance().reverseString("wonium");
+   StringUtil.getInstance().reverseString("HydrogenAndroid");
    ```
 ## 使用
 ### 步骤1 添加 JitPack repository 到项目的根目录
@@ -19,11 +19,11 @@
 ### 步骤2
 
 
-在你的model目录下的build中增加依赖，替换下面`latestVersion`最新的版本，当前最新的版本: [![](https://jitpack.io/v/ethan-wonium/CicadaAndroid.svg)](https://jitpack.io/#ethan-wonium/CicadaAndroid)
+在你的model目录下的build中增加依赖，替换下面`latestVersion`最新的版本，当前最新的版本: [![](https://jitpack.io/v/ethan-wonium/HydrogenAndroid.svg)](https://jitpack.io/#ethan-wonium/CicadaAndroid)
 
 ```
 dependencies {
-	  implementation 'com.github.ethan-wonium:CicadaAndroid:latestVersion'
+	  implementation 'com.github.ethan-wonium:HydrogenAndroid:latestVersion'
 ```
 ## LICENSE
 
