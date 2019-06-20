@@ -29,6 +29,7 @@
         <activity android:name=".ui.activity.ZLibActivity" />
         <activity android:name=".ui.activity.TestGridViewActivity" />
         <activity android:name=".ui.activity.ProgressActivity" />
+        <activity android:name=".ui.activity.ImageCompressActivity" android:launchMode="singleTop"/>
         <!--我的工具页面-->
         <activity android:name=".ui.activity.MyToolsActivity" />
         <activity android:name=".ui.activity.ActivityManagerActivity" />
@@ -44,6 +45,7 @@
         <activity android:name=".ui.activity.CustomDialogActivity" />
         <activity android:name=".ui.activity.ByteUtilActivity" />
         <activity android:name=".ui.activity.ExpandListActivity"/>
+
 
         <!--<activity android:name=".ui.ui.activity.SecondActivity" />-->
         <!--&lt;!&ndash; 登陆页面 &ndash;&gt;-->

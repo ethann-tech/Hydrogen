@@ -13,12 +13,15 @@ package com.wonium.aclj.router;
  * @Version: 1.0.0
  */
 public class PageRouter {
-
+    // FindFragment
     /**
      * 这个代码在哪里？
      */
     public final static String TEST_GRID_VIEW="/page/activity/TestGridViewActivity";
-
+    /**
+     * 图片压缩Activity
+     */
+    public final static String ACTIVITY_IMG_COMPRESS="/page/activity/ImageCompressActivity";
     /**
      * 我的工具页面
      */

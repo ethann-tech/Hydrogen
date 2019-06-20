@@ -54,6 +54,10 @@
     <string name="nav_friend">朋友</string>
     <string name="nav_account">账号</string>
     <string name="msg_H5">H5</string>
+    <!--navigation end-->
+    <!--menu start-->
+    <string name="nav_select">选择</string>
+    <!--menu_end-->
     <!--注册页面-->
     <string name="register_nickname">昵称</string>
     <string name="register_phone_number">手机号</string>

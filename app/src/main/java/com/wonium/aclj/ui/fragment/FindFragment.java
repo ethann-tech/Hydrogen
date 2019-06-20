@@ -74,7 +74,7 @@ public class FindFragment extends BaseFragment {
            }
        });
         mBinding.btnProxy.setOnClickListener(v -> ToastUtil.getInstance().show(getContext(),"是否启用网络代理："+(isWifiProxy()?"yes":"false")+"  ; \n是否启用VPN : "+(isVpnUsed()?"yes":"false")));
-
+        mBinding.btnImgCompress.setOnClickListener(v -> ARouter.getInstance().build(PageRouter.ACTIVITY_IMG_COMPRESS).navigation(getContext()));
     }
 
     private boolean isWifiProxy(){
