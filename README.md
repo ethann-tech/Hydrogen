@@ -19,7 +19,8 @@
 ### 步骤2
 
 
-在你的model目录下的build中增加依赖，替换下面`latestVersion`最新的版本，当前最新的版本: [![](https://jitpack.io/v/ethan-wonium/HydrogenAndroid.svg)](https://jitpack.io/#ethan-wonium/CicadaAndroid)
+在你的model目录下的build中增加依赖，替换下面`latestVersion`最新的版本，当前最新的版本: [![](https://jitpack.io/v/ethan-wonium/CicadaAndroid.svg)](https://jitpack.io/#ethan-wonium/CicadaAndroid)
+
 
 ```
 dependencies {
