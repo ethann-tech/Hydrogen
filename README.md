@@ -2,7 +2,7 @@
 
 ## 说明
 
-这是一个Android基于JAVA语言的工具类库，该库集成了常用的工具类，就比如`StringUtil`,'FileUtil','DeviceUtil'等。
+这是一个Android基于JAVA语言的快速开发库，该库分工具包，UI库，就比如`StringUtil`,'FileUtil','DeviceUtil'等。
 ## 使用实例
    ```
    StringUtil.getInstance().reverseString("HydrogenAndroid");
