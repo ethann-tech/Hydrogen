@@ -23,5 +23,19 @@
             android:singleLine="true"
             android:text="蜗牛魔方，蜗牛魔方，蜗牛魔方，蜗牛魔方-蜗牛开发库，蜗牛魔方-蜗牛开发库，蜗牛魔方-蜗牛开发库。"
             android:layout_height="wrap_content" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_hint_vertical"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="@dimen/material_layout_view_top_margin_8dp"
+            android:text="TextViewVertical"
+            android:layout_height="wrap_content" />
+        <com.wonium.cicada.ui.widget.TextViewVertical
+            android:id="@+id/tv_vertical"
+            android:layout_marginTop="@dimen/material_layout_view_top_margin_8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
     </LinearLayout>
 </layout>

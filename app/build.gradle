@@ -61,10 +61,14 @@ android {
             debuggable true
             // 这个是控制显示LOG true 显示 false 不显示
             buildConfigField "boolean", "LOG_DEBUG", "true"
-            versionNameSuffix "-debug" //测试包版本名后缀 这个在安装的时候，会看到
-            minifyEnabled true //代码混淆 false 不混淆，true 混淆
-            zipAlignEnabled true// zipalign 优化 这个也要单独领出来说一下
-            shrinkResources true //移除无用的resource文件 signingConfig signingConfigs.debug //签名调用
+            // 测试包版本名后缀 这个在安装的时候，会看到
+            versionNameSuffix "-debug"
+            // 代码混淆 false 不混淆，true 混淆
+            minifyEnabled true
+            // zipalign 优化 这个也要单独领出来说一下
+            zipAlignEnabled true
+            // 移除无用的resource文件 signingConfig signingConfigs.debug //签名调用
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -76,7 +80,7 @@ android {
         enabled = true
     }
 
-    //资源设置
+    // 资源设置
     sourceSets {
         main {
             jniLibs.srcDirs = ['libs']

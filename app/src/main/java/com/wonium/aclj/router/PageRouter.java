@@ -39,6 +39,12 @@ public class PageRouter {
      * ByteUtilActivity
      */
     public final static String ACTIVITY_BYTE_UTIL="/page/activity/ByteUtilActivity";
+
+    /**
+     * ColorUtilActivity
+     */
+    public final static String ACTIVITY_COLOR_UTIL="/page/activity/ColorUtilActivity";
+
     /**
      * DateCleanActivity
      */

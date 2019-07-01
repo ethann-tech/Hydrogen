@@ -4,13 +4,12 @@ import androidx.databinding.DataBindingUtil;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.wonium.aclj.R;
-import com.wonium.aclj.databinding.ActivityTextViewBinding;
+import com.wonium.aclj.databinding.ActivityColorUtilBinding;
 import com.wonium.aclj.router.PageRouter;
 import com.wonium.cicada.ui.BaseActivity;
-@Route(path = PageRouter.ACTIVITY_TEXT_VIEW)
-
-public class TextViewActivity extends BaseActivity {
-    private ActivityTextViewBinding mBinding;
+@Route(path = PageRouter.ACTIVITY_COLOR_UTIL)
+public class ColorUtilActivity extends BaseActivity {
+    private ActivityColorUtilBinding mBinding;
     @Override
     protected int getStatusColor() {
         return getResources().getColor(R.color.black);
@@ -18,12 +17,13 @@ public class TextViewActivity extends BaseActivity {
 
     @Override
     public void initWindowAttributes() {
-        setAllowFullScreen(false);
+            setAllowFullScreen(false);
+            setScreenRoate(false);
     }
 
     @Override
     public int getLayoutResId() {
-        return R.layout.activity_text_view;
+        return R.layout.activity_color_util;
     }
 
     @Override
@@ -33,12 +33,8 @@ public class TextViewActivity extends BaseActivity {
 
     @Override
     public void initView() {
-        setSupportActionBar(mBinding.includeTextViewToolbar.toolbar);
-        mBinding.setTitle(getContext().getResources().getString(R.string.activity_text_view));
-        mBinding.includeTextViewToolbar.toolbar.setNavigationIcon(R.drawable.ic_arrow_back_24dp);
-        mBinding.includeTextViewToolbar.toolbar.setNavigationOnClickListener(v -> finish());
-    }
 
+    }
 
     @Override
     public void initListener() {

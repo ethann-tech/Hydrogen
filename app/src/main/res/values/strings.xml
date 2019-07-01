@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">蜗牛开发库</string>
+    <string name="app_name">Hydrogen</string>
     <string name="activity_custom_component">自定义组件</string>
     <string name="activity_image_view">CustomImageView</string>
     <string name="activity_text_view">TextView的用法</string>
