@@ -43,7 +43,7 @@ public class DateUtilActivity extends BaseActivity {
     @Override
     public void initWindowAttributes() {
         setAllowFullScreen(false);
-        setScreenRoate(false);
+        setScreenRotate(false);
     }
 
     @Override

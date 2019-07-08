@@ -18,10 +18,7 @@
 package com.wonium.aclj.ui.activity;
 
 
-import android.app.Activity;
 import android.os.Bundle;
-import android.view.View;
-import android.view.Window;
 import android.widget.ExpandableListView;
 
 import androidx.databinding.DataBindingUtil;
@@ -66,7 +63,7 @@ public class ExpandListActivity extends BaseActivity {
     @Override
     public void initWindowAttributes() {
         setAllowFullScreen(false);
-        setScreenRoate(false);
+        setScreenRotate(false);
     }
 
     @Override

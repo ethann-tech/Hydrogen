@@ -1,8 +1,10 @@
 package com.wonium.aclj.ui.activity;
 
 
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.wonium.aclj.R;
 import com.wonium.aclj.databinding.ActivityMainBinding;
+import com.wonium.aclj.router.PageRouter;
 import com.wonium.aclj.ui.fragment.AccountFragment;
 import com.wonium.aclj.ui.fragment.FindFragment;
 import com.wonium.aclj.ui.fragment.FriendFragment;
@@ -31,6 +33,7 @@ import androidx.fragment.app.FragmentTransaction;
  * @UpdateDescription: 更新描述
  * @Version:
  */
+@Route(path = PageRouter.ACTIVITY_MAIN)
 public class MainActivity extends BaseActivity {
     private ActivityMainBinding mBinding;
     private List<Fragment> fragments;

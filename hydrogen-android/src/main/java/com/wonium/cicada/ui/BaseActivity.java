@@ -166,7 +166,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
 
-    public void setScreenRoate(boolean isAllowScreenRotate) {
+    public void setScreenRotate(boolean isAllowScreenRotate) {
         this.isAllowScreenRotate = isAllowScreenRotate;
     }
 

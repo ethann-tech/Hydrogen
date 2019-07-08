@@ -1,11 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
         <variable
             name="title"
             type="String" />
+
+        <variable
+            name="gradientColors"
+            type="String" />
+
+        <variable
+            name="nextColorByCurrentColor"
+            type="String" />
+
+        <variable
+            name="currentColor"
+            type="int" />
+
+        <variable
+            name="nextColor"
+            type="int" />
+
     </data>
 
     <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
@@ -13,7 +30,87 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <include layout="@layout/layout_toolbar" />
+        <include
+        android:id="@+id/include_toolbar_color"
+        layout="@layout/layout_toolbar"
+        app:title="@{title}" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_color_util_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img_gradientator"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/horizontal_dimen_14dp" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{gradientColors}" />
+
+        <include
+            android:id="@+id/include_color_recycler"
+            layout="@layout/layout_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{nextColorByCurrentColor}" />
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/img_current_color"
+                android:layout_width="@dimen/material_component_button_min_width"
+                android:layout_height="@dimen/material_component_button_height_48dp"
+                android:src="@{currentColor}"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/img_long_arrow_right"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="当前颜色"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/img_current_color" />
+
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/img_next_color"
+                android:layout_width="@dimen/material_component_button_min_width"
+                android:layout_height="@dimen/material_component_button_height_48dp"
+                android:src="@{nextColor}"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="下一个颜色"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/img_next_color" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 </layout>

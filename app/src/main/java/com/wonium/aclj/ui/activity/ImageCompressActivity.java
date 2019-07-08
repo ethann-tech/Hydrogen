@@ -2,7 +2,6 @@ package com.wonium.aclj.ui.activity;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -35,7 +34,7 @@ public class ImageCompressActivity extends BaseActivity {
     @Override
     public void initWindowAttributes() {
         setAllowFullScreen(false);
-        setScreenRoate(false);
+        setScreenRotate(false);
     }
 
     @Override
