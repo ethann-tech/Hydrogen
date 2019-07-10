@@ -42,7 +42,7 @@ public class ByteUtil {
     private static ByteUtil mInstance;
     public static ByteUtil getInstance() {
         if (mInstance == null) {
-            synchronized (ArithUtil.class) {
+            synchronized (ByteUtil.class) {
                 if (mInstance == null) {
                     mInstance = new ByteUtil();
                 }

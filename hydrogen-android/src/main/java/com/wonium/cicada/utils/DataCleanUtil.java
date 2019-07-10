@@ -34,11 +34,22 @@ import java.math.BigDecimal;
  * @UpdateDescription: 更新说明
  * @Version: 1.0.0
  */
-public enum DataCleanUtil {
+public class DataCleanUtil {
     /**
      * 实例对象
      */
-    INSTANCE;
+   private static DataCleanUtil  mInstance;
+
+    public static DataCleanUtil getInstance() {
+        if (mInstance==null){
+            synchronized (DataCleanUtil.class){
+                if (mInstance==null){
+                    mInstance =new DataCleanUtil();
+                }
+            }
+        }
+        return mInstance;
+    }
 
     public  String getTotalCacheSize(Context context) {
         long cacheSize = getFolderSize(context.getCacheDir());
