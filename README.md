@@ -23,6 +23,7 @@
 ```
 dependencies {
 	  implementation 'com.github.ethan-wonium:HydrogenAndroid:latestVersion'
+	 }
 ```
 ### 工具库说明
 工具类 | 描述
