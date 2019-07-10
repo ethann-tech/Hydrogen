@@ -56,6 +56,7 @@ dependencies {
 
 ### 简单封装的Adapter
 Adapter | 描述
+---     | ---
 [BaseListAdapter](https://github.com/wonium-ethan/HydrogenAndroid/tree/master/hydrogen-android/src/main/java/com/wonium/cicada/adapter/BaseListAdapter.java) | BaseListAdapter支持ListView，GridView
 [BaseRecyclerViewAdapter](https://github.com/wonium-ethan/HydrogenAndroid/tree/master/hydrogen-android/src/main/java/com/wonium/cicada/adapter/BaseRecyclerViewAdapter.java) | BaseRecyclerViewAdapter 是对RecyclerView的adapter 的简单封装
 [BaseSpinnerAdapter](https://github.com/wonium-ethan/HydrogenAndroid/tree/master/hydrogen-android/src/main/java/com/wonium/cicada/adapter/BaseSpinnerAdapter.java) | BaseSpinnerAdapter 是针对Spinner View 己成BaseAdapter 简单封装的Adapter
