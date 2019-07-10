@@ -28,7 +28,7 @@ import androidx.annotation.Keep;
 /**
  * @ClassName: DateUtil.java
  * @Description: 日期工具类
- * @Author: Wonium
+ * @Author: Ethan
  * @E-mail: wonium@qq.com
  * @Blog: https://blog.wonium.com
  * @CreateDate: 2018/11/12 21:03
@@ -448,6 +448,5 @@ public class DateUtil {
         arr[2] = calendar.get(Calendar.DAY_OF_MONTH);
         return arr;
     }
-
 
 }

@@ -2,7 +2,7 @@
 
 ## 说明
 
-这是一个Android基于JAVA语言的工具类库，该库集成了常用的工具类，就比如`StringUtil`,'FileUtil','DeviceUtil'等。
+这是一个基于JAVA语言的Android工具类库，该库集成了常用的工具类,组件等。就比如`StringUtil`,'FileUtil','DeviceUtil',CircleImageView,LoadingDialog;
 ## 使用实例
    ```
    StringUtil.getInstance().reverseString("HydrogenAndroid");
@@ -24,6 +24,11 @@
 dependencies {
 	  implementation 'com.github.ethan-wonium:HydrogenAndroid:latestVersion'
 ```
+### 工具库说明
+工具类 | 描述
+---   | ---
+[ActivityManagerUtil](https://github.com/wonium-ethan/HydrogenAndroid/tree/master/hydrogen-android/src/main/java/com/wonium/cicada/utils/ActivityManagerUtil.java) |Activity管理类
+
 ## LICENSE
 
 ```text
