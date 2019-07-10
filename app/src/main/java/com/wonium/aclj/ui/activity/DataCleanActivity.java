@@ -17,8 +17,6 @@
 package com.wonium.aclj.ui.activity;
 
 
-import android.view.View;
-
 import androidx.databinding.DataBindingUtil;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
@@ -65,7 +63,7 @@ public class DataCleanActivity extends BaseActivity {
     @Override
     public void initWindowAttributes() {
         setAllowFullScreen(false);
-        setScreenRoate(false);
+        setScreenRotate(false);
     }
 
     @Override

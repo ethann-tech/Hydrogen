@@ -20,7 +20,7 @@ import androidx.annotation.Keep;
 
 
 /**
- * @ClassName: ArithUtil
+ * @ClassName: MathUtil
  * @Description: 数值计算工具类
  * @Author: Ethan
  * @E-mail: wonium@qq.com
@@ -32,18 +32,18 @@ import androidx.annotation.Keep;
  * @Version: 1.0.0
  */
 @Keep
-public class ArithUtil {
+public class MathUtil {
 
     /**
      * 实例对象
      */
-    private static ArithUtil mInstance;
+    private static MathUtil mInstance;
 
-    public static ArithUtil getInstance() {
+    public static MathUtil getInstance() {
         if (mInstance == null) {
-            synchronized (ArithUtil.class) {
+            synchronized (MathUtil.class) {
                 if (mInstance == null) {
-                    mInstance = new ArithUtil();
+                    mInstance = new MathUtil();
                 }
             }
         }

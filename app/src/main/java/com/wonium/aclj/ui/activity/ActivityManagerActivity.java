@@ -56,7 +56,7 @@ public class ActivityManagerActivity extends BaseActivity {
     @Override
     public void initWindowAttributes() {
         setAllowFullScreen(false);
-        setScreenRoate(false);
+        setScreenRotate(false);
     }
 
     @Override

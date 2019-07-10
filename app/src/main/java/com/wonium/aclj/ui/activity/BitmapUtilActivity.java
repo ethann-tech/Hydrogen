@@ -17,7 +17,6 @@
 package com.wonium.aclj.ui.activity;
 
 import android.graphics.Bitmap;
-import android.view.View;
 
 import androidx.databinding.DataBindingUtil;
 
@@ -120,7 +119,7 @@ public class BitmapUtilActivity extends BaseActivity {
     @Override
     public void initWindowAttributes() {
     setAllowFullScreen(false);
-    setScreenRoate(false);
+    setScreenRotate(false);
     }
 
     @Override

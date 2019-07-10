@@ -19,16 +19,18 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name="com.wonium.aclj.ui.activity.MainActivity">
+        <activity android:name=".ui.activity.LoginActivity" android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="com.wonium.aclj.ui.activity.MainActivity" android:launchMode="singleInstance"/>
+
         <activity android:name=".ui.activity.ZLibActivity" />
         <activity android:name=".ui.activity.TestGridViewActivity" />
         <activity android:name=".ui.activity.ProgressActivity" />
+        <activity android:name=".ui.activity.ImageCompressActivity" android:launchMode="singleTop"/>
         <!--我的工具页面-->
         <activity android:name=".ui.activity.MyToolsActivity" />
         <activity android:name=".ui.activity.ActivityManagerActivity" />
@@ -44,6 +46,7 @@
         <activity android:name=".ui.activity.CustomDialogActivity" />
         <activity android:name=".ui.activity.ByteUtilActivity" />
         <activity android:name=".ui.activity.ExpandListActivity"/>
+        <activity android:name=".ui.activity.ColorUtilActivity" android:launchMode="singleTask"/>
 
         <!--<activity android:name=".ui.ui.activity.SecondActivity" />-->
         <!--&lt;!&ndash; 登陆页面 &ndash;&gt;-->

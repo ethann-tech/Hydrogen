@@ -1,6 +1,5 @@
 package com.wonium.aclj.ui.activity;
 
-
 import androidx.databinding.DataBindingUtil;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
@@ -39,6 +38,7 @@ public class TextViewActivity extends BaseActivity {
         mBinding.includeTextViewToolbar.toolbar.setNavigationIcon(R.drawable.ic_arrow_back_24dp);
         mBinding.includeTextViewToolbar.toolbar.setNavigationOnClickListener(v -> finish());
     }
+
 
     @Override
     public void initListener() {

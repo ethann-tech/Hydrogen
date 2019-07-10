@@ -13,12 +13,25 @@ package com.wonium.aclj.router;
  * @Version: 1.0.0
  */
 public class PageRouter {
+    /**
+     * LoginActivity
+     */
+    public final static String ACTIVITY_LOGIN="/page/activity/LoginActivity";
+    /**
+     * MainActivity
+     */
+    public final static String ACTIVITY_MAIN="/page/activity/MainActivity";
 
+
+    // FindFragment
     /**
      * 这个代码在哪里？
      */
     public final static String TEST_GRID_VIEW="/page/activity/TestGridViewActivity";
-
+    /**
+     * 图片压缩Activity
+     */
+    public final static String ACTIVITY_IMG_COMPRESS="/page/activity/ImageCompressActivity";
     /**
      * 我的工具页面
      */
@@ -36,6 +49,12 @@ public class PageRouter {
      * ByteUtilActivity
      */
     public final static String ACTIVITY_BYTE_UTIL="/page/activity/ByteUtilActivity";
+
+    /**
+     * ColorUtilActivity
+     */
+    public final static String ACTIVITY_COLOR_UTIL="/page/activity/ColorUtilActivity";
+
     /**
      * DateCleanActivity
      */

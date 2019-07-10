@@ -279,4 +279,39 @@ public class BitmapUtil {
         matrix.postScale(scaleWidth, scaleHeight);
         return Bitmap.createBitmap(orgBitmap, 0, 0, (int) width, (int) height, matrix, true);
     }
+
+
+    /**
+     * Bitmap 尺寸压缩
+     * @param path 图片地址
+     * @param rqsW  宽度
+     * @param rqsH 高度
+     * @return 压缩后的Bitmap
+     */
+    public  Bitmap sizeCompress(String path, int rqsW, int rqsH) {
+        // 用option设置返回的bitmap对象的一些属性参数
+        final BitmapFactory.Options options = new BitmapFactory.Options();
+        // 设置仅读取Bitmap的宽高而不读取内容
+        options.inJustDecodeBounds = true;
+        // 获取到图片的宽高，放在option里边
+        BitmapFactory.decodeFile(path, options);
+        //图片的高度放在option里的outHeight属性中
+        final int height = options.outHeight;
+        final int width = options.outWidth;
+        int inSampleSize = 1;
+        if (rqsW == 0 || rqsH == 0) {
+            options.inSampleSize = 1;
+        } else if (height > rqsH || width > rqsW) {
+            final int heightRatio = Math.round((float) height / (float) rqsH);
+            final int widthRatio = Math.round((float) width / (float) rqsW);
+            inSampleSize = heightRatio < widthRatio ? heightRatio : widthRatio;
+            options.inSampleSize = inSampleSize;
+            options.inJustDecodeBounds=false;
+        }
+        // 主要通过option里的inSampleSize对原图片进行按比例压缩
+        return BitmapFactory.decodeFile(path, options);
+    }
+
+
+
 }

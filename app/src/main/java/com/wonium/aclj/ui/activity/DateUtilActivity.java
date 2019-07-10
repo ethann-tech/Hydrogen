@@ -25,6 +25,7 @@ import com.wonium.aclj.R;
 import com.wonium.aclj.databinding.ActivityDateUtilBinding;
 import com.wonium.aclj.router.PageRouter;
 import com.wonium.cicada.ui.BaseActivity;
+import com.wonium.cicada.utils.DateUtil;
 
 @Route(path = PageRouter.ACTIVITY_DATE_UTIL)
 public class DateUtilActivity extends BaseActivity {
@@ -43,7 +44,7 @@ public class DateUtilActivity extends BaseActivity {
     @Override
     public void initWindowAttributes() {
         setAllowFullScreen(false);
-        setScreenRoate(false);
+        setScreenRotate(false);
     }
 
     @Override
@@ -61,6 +62,15 @@ public class DateUtilActivity extends BaseActivity {
         setSupportActionBar(mBinding.includeDateUtilToolbar.toolbar);
         mBinding.setTitle(getString(R.string.tools_date_util));
         mBinding.includeDateUtilToolbar.toolbar.setNavigationIcon(R.drawable.ic_arrow_back_24dp);
-
+        displayTestCase();
     }
+
+
+
+    private void displayTestCase(){
+        StringBuilder builder =new StringBuilder();
+        builder.append("使用方法：").append("\n").append("函数：\n").append(" String getDateTimeFromMillis(long timeInMillis)");
+        mBinding.setContent(builder.toString());
+    }
+
 }

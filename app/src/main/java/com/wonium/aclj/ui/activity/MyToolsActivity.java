@@ -33,7 +33,7 @@ public class MyToolsActivity extends BaseActivity implements MainView {
     @Override
     public void initWindowAttributes() {
         setAllowFullScreen(false);
-        setScreenRoate(false);
+        setScreenRotate(false);
     }
 
     @Override
@@ -83,6 +83,9 @@ public class MyToolsActivity extends BaseActivity implements MainView {
                     break;
                 case 2:
                     ARouter.getInstance().build(PageRouter.ACTIVITY_BYTE_UTIL).navigation(getContext());
+                    break;
+                case 3:
+                    ARouter.getInstance().build(PageRouter.ACTIVITY_COLOR_UTIL).navigation(getContext());
                     break;
                 case 4:
                     ARouter.getInstance().build(PageRouter.ACTIVITY_DATA_CLEAR).navigation(getContext());

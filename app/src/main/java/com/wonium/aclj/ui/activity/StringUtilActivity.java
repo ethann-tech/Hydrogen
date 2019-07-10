@@ -68,7 +68,7 @@ public class StringUtilActivity extends BaseActivity implements StringView {
     @Override
     public void initWindowAttributes() {
         setAllowFullScreen(false);
-        setScreenRoate(false);
+        setScreenRotate(false);
     }
 
     @Override
