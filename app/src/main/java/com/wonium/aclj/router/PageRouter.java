@@ -71,9 +71,14 @@ public class PageRouter {
      * FileUtilActivity
      */
     public final static String ACTIVITY_FILE_UTIL="/page/activity/FileUtilActivity";
-
+    /**
+     * StringUtil
+     */
     public final static String ACTIVITY_STRING_UTIL="/page/activity/StringUtilActivity";
-
+    /**
+     * DensityUtil
+     */
+    public  final static String ACTIVITY_DENSITY_UTIL="/page/activity/DensityUtilActivity";
 
 
 

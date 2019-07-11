@@ -47,12 +47,12 @@ public class DataCleanActivity extends BaseActivity {
     public void initListener() {
         binding.btnGetAcache.setOnClickListener(v -> {
             try {
-                binding.tvAcacheResult.setText(StringUtil.getInstance().isEmpty(DataCleanUtil.INSTANCE.getTotalCacheSize(this)));
+                binding.tvAcacheResult.setText(StringUtil.getInstance().isEmpty(DataCleanUtil.getInstance().getTotalCacheSize(this)));
             } catch (Exception e) {
                 e.printStackTrace();
             }
         });
-        binding.btnCleanAcache.setOnClickListener(v -> binding.tvAcacheResult.setText(StringUtil.getInstance().isEmpty(DataCleanUtil.INSTANCE.clearAllCache(this) + "KB")));
+        binding.btnCleanAcache.setOnClickListener(v -> binding.tvAcacheResult.setText(StringUtil.getInstance().isEmpty(DataCleanUtil.getInstance().clearAllCache(this) + "KB")));
     }
 
     @Override

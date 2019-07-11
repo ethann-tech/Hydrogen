@@ -36,7 +36,6 @@
     <string name="tools_thread_pool">ThreadPollUtil</string>
     <string name="tools_toast">ToastUtil</string>
     <string name="tools_verify">VerifyUtil</string>
-
     <!--hint-->
     <string name="hint_result">验证结果:</string>
 

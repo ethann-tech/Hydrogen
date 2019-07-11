@@ -47,6 +47,7 @@
         <activity android:name=".ui.activity.ByteUtilActivity" />
         <activity android:name=".ui.activity.ExpandListActivity"/>
         <activity android:name=".ui.activity.ColorUtilActivity" android:launchMode="singleTask"/>
+        <activity android:name=".ui.activity.DensityUtilActivity" android:launchMode="singleTask"/>
 
         <!--<activity android:name=".ui.ui.activity.SecondActivity" />-->
         <!--&lt;!&ndash; 登陆页面 &ndash;&gt;-->
