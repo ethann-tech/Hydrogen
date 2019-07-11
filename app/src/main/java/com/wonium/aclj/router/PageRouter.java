@@ -79,8 +79,15 @@ public class PageRouter {
      * DensityUtil
      */
     public  final static String ACTIVITY_DENSITY_UTIL="/page/activity/DensityUtilActivity";
+    /**
+     * InputMethodManagerUtil
+     */
+    public final static String ACTIVITY_INPUT_METHOD_MANAGER_UTIL="/page/activity/InputMethodManagerUtilActivity";
 
-
+    /**
+     * IntentUtilActivity
+     */
+    public final static String ACTIVITY_INTENT_UTIL="/page/activity/IntentUtilActivity";
 
 
     /**

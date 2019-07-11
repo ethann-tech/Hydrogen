@@ -10,6 +10,8 @@ import com.wonium.aclj.databinding.ItemMyRecyclerViewBinding;
 import com.wonium.cicada.adapter.BaseRecyclerViewAdapter;
 import com.wonium.cicada.adapter.BaseViewHolder;
 
+import java.util.Locale;
+
 public class MyAdapter extends BaseRecyclerViewAdapter<String, BaseViewHolder<ItemMyRecyclerViewBinding>> {
 
     public MyAdapter(Context context) {
@@ -25,5 +27,6 @@ public class MyAdapter extends BaseRecyclerViewAdapter<String, BaseViewHolder<It
     @Override
     public void onBindVH(BaseViewHolder<ItemMyRecyclerViewBinding> holder, int position) {
         holder.getBinding().tvItemData.setText(getData(position));
+        holder.getBinding().tvNumber.setText(String.format(Locale.CHINA,"%d",position));
     }
 }

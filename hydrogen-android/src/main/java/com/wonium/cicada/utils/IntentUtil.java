@@ -62,9 +62,6 @@ public class IntentUtil {
      */
     public void callPhone(Context context, String phone) {
         Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + phone));
-        if (ActivityCompat.checkSelfPermission(context, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-            return;
-        }
         context.startActivity(intent);
     }
 }

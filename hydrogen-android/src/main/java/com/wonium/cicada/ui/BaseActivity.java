@@ -24,6 +24,7 @@ import android.view.WindowManager;
 
 import com.wonium.cicada.utils.ActivityManagerUtil;
 import com.wonium.cicada.utils.StatusBarUtil;
+import com.wonium.java.library.R;
 
 import androidx.annotation.Keep;
 import androidx.annotation.Nullable;
@@ -118,7 +119,9 @@ public abstract class BaseActivity extends AppCompatActivity {
      * 设置状态栏颜色
      * @return
      */
-    protected abstract int getStatusColor();
+    protected  int getStatusColor(){
+        return getResources().getColor(R.color.black);
+    }
     /**
      * 初始化窗口属性
      */

@@ -26,11 +26,6 @@ public class MyToolsActivity extends BaseActivity implements MainView {
     private MainPresenter mPresenter;
 
     @Override
-    protected int getStatusColor() {
-        return getResources().getColor(R.color.black);
-    }
-
-    @Override
     public void initWindowAttributes() {
         setAllowFullScreen(false);
         setScreenRotate(false);
@@ -101,6 +96,11 @@ public class MyToolsActivity extends BaseActivity implements MainView {
                     break;
                 case 8:
                     ARouter.getInstance().build(PageRouter.ACTIVITY_FILE_UTIL).navigation(getContext());
+                case 9:
+                    ARouter.getInstance().build(PageRouter.ACTIVITY_INPUT_METHOD_MANAGER_UTIL).navigation(getContext());
+                    break;
+                case 10:
+                    ARouter.getInstance().build(PageRouter.ACTIVITY_INTENT_UTIL).navigation(getContext());
                     break;
                 case 15:
                     ARouter.getInstance().build(PageRouter.ACTIVITY_STRING_UTIL).navigation(getContext());

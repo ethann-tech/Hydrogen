@@ -18,6 +18,8 @@ package com.wonium.cicada.utils;
 
 import android.app.Activity;
 import android.content.Context;
+import android.view.View;
+import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 
 import androidx.annotation.Keep;
@@ -67,12 +69,16 @@ public class InputMethodManagerUtil {
     }
 
     /**
-     * 隐藏软键盘
+     * 隐藏软键盘 当前页面必须有View获得焦点，否则会报空指针
      *
      * @param activity 软键盘所在的页面
      */
     public void hideSoftInput(Activity activity) {
-        inputMethodManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+        View view =activity.getCurrentFocus();
+        if (view ==null){
+            view =new View(activity);
+        }
+        inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
     }
 
 }
