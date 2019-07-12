@@ -28,6 +28,7 @@ import android.os.Build;
 import android.provider.Settings;
 import android.telephony.TelephonyManager;
 
+import java.lang.reflect.Method;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.net.SocketException;
@@ -77,37 +78,7 @@ public class DeviceUtil {
         return manager.getDeviceId();
     }
 
-    /**
-     * 获取版本号
-     * @param context
-     * @return
-     */
-    public  int getVersionCode(Context context) {
-        PackageManager manager = context.getPackageManager();
-        try {
-            PackageInfo info = manager.getPackageInfo(context.getPackageName(), 0);
-            return info.versionCode;
-        } catch (PackageManager.NameNotFoundException e) {
-            e.printStackTrace();
-        }
-        return 1;
-    }
 
-    /**
-     *获取版本名
-     * @param context
-     * @return 版本名称
-     */
-    public  String getVersionName(Context context){
-        PackageManager manager =context.getPackageManager();
-        try {
-            PackageInfo info =manager.getPackageInfo(context.getPackageName(),0);
-            return  info.versionName;
-        } catch (PackageManager.NameNotFoundException e) {
-            e.printStackTrace();
-        }
-        return "1.0";
-    }
     /**
      * 获取MacAddr
      *
@@ -193,6 +164,13 @@ public class DeviceUtil {
     public String getBrand(){
         return  Build.BRAND;
     }
+    /**
+     * 获得手机名称
+     * @return 手机名称
+     */
+    public  String getMobileName(){
+        return  Build.MANUFACTURER+" "+ Build.MODEL;
+    }
 
     /**
      * 获取手机型号
@@ -209,8 +187,29 @@ public class DeviceUtil {
     public String getAndroidId(Context context){
         return  Settings.Secure.getString(context.getContentResolver(),Settings.Secure.ANDROID_ID);
     }
+    /**
+     * 获得系统版本号
+     * @return 系统版本号
+     */
+    public  int getOSVersion(){
+        return Build.VERSION.SDK_INT;
+    }
 
+    /**
+     * 获得序列号
+     * @return 序列号
+     */
+    public  String getSerialNum() {
+        String serialNum = null;
+        try {
+            Class<?> c = Class.forName("android.os.SystemProperties");
+            Method get = c.getMethod("get", String.class, String.class);
+            serialNum = (String) (get.invoke(c, "ro.serialno", "unknown"));
+        } catch (Exception ignored) {
+        }
 
+        return serialNum;
+    }
 
 }
 

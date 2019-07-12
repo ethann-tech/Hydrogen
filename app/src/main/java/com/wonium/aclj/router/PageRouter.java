@@ -90,6 +90,9 @@ public class PageRouter {
     public final static String ACTIVITY_INTENT_UTIL="/page/activity/IntentUtilActivity";
 
 
+    public final static String ACTIVITY_MD5_UTIL="/page/activity/MD5UtilActivity";
+
+
     /**
      * 自定义组件
      */

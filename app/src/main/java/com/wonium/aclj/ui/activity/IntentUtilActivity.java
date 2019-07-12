@@ -14,7 +14,6 @@ import com.wonium.cicada.ui.BaseActivity;
 import com.wonium.cicada.utils.IntentUtil;
 import com.wonium.cicada.utils.ToastUtil;
 
-import java.security.Permission;
 
 import ru.alexbykov.nopermission.PermissionHelper;
 
@@ -54,6 +53,9 @@ public class IntentUtilActivity extends BaseActivity {
         mBinding.btnIntentToCallPhone.setOnClickListener(v -> checkPermissionForCallPhone());
     }
 
+    /**
+     * 检查拨打电话权限
+     */
     private void checkPermissionForCallPhone() {
         mPermissionHelper.check(Manifest.permission.CALL_PHONE).onDenied(() -> ToastUtil.getInstance().show(getContext(), "没有授权，无法打开拨号页面")).onSuccess(() -> IntentUtil.getInstance().callPhone(getContext(), "18751705121")).onNeverAskAgain(() -> ToastUtil.getInstance().show(getContext(), "不再询问")).run();
 

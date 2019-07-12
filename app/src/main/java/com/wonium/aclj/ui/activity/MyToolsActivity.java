@@ -102,6 +102,9 @@ public class MyToolsActivity extends BaseActivity implements MainView {
                 case 10:
                     ARouter.getInstance().build(PageRouter.ACTIVITY_INTENT_UTIL).navigation(getContext());
                     break;
+                case 11:
+                    ARouter.getInstance().build(PageRouter.ACTIVITY_MD5_UTIL).navigation(getContext());
+                    break;
                 case 15:
                     ARouter.getInstance().build(PageRouter.ACTIVITY_STRING_UTIL).navigation(getContext());
                     break;

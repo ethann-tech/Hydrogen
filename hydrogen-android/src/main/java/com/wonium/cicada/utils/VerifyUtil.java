@@ -16,6 +16,9 @@
 
 package com.wonium.cicada.utils;
 
+import android.text.TextUtils;
+
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import androidx.annotation.Keep;
@@ -38,13 +41,13 @@ public class VerifyUtil {
     /**
      * 实例对象
      */
-    private static  VerifyUtil  instance;
+    private static VerifyUtil instance;
 
-    public static  VerifyUtil getInstance() {
-        if (instance==null){
-            synchronized (VerifyUtil.class){
-                if (instance==null){
-                    instance =new VerifyUtil();
+    public static VerifyUtil getInstance() {
+        if (instance == null) {
+            synchronized (VerifyUtil.class) {
+                if (instance == null) {
+                    instance = new VerifyUtil();
                 }
             }
         }
@@ -237,4 +240,183 @@ public class VerifyUtil {
         String regex = "[1-9](\\d{1,2})?\\.(0|([1-9](\\d{1,2})?))\\.(0|([1-9](\\d{1,2})?))\\.(0|([1-9](\\d{1,2})?))";
         return Pattern.matches(regex, ipAddress);
     }
+
+
+    /**
+     * 判断是否为纯字母或数字
+     *
+     * @param str 待验证的字符串
+     * @return 是否为纯字母或数字
+     */
+    public boolean isAlphaBetaOrNumbericString(String str) {
+        if (TextUtils.isEmpty(str)) {
+            return false;
+        }
+
+        Pattern p = Pattern.compile("^[a-zA-Z0-9]+$");// 从开头到结尾必须全部为字母或者数字
+        Matcher m = p.matcher(str);
+
+        return m.find();
+    }
+
+
+    /**
+     * 判断字符串是否为连续字母 xyZaBcd等
+     *
+     * @param str 待验证的字符串
+     * @return 是否为连续字母
+     */
+    public boolean isContinuousWord(String str) {
+        if (TextUtils.isEmpty(str))
+            return false;
+        if (!isAlphaBetaString(str))
+            return true;
+        int len = str.length();
+        String local = str.toLowerCase();
+        for (int i = 0; i < len - 1; i++) {
+            char curChar = local.charAt(i);
+            char verifyChar = (char) (curChar + 1);
+            if (curChar == 'z')
+                verifyChar = 'a';
+            char nextChar = local.charAt(i + 1);
+            if (nextChar != verifyChar) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
+     * 是否是纯字母
+     *
+     * @param str 待验证的字符串
+     * @return 是否是纯字母
+     */
+    public boolean isAlphaBetaString(String str) {
+        if (TextUtils.isEmpty(str)) {
+            return false;
+        }
+
+        Pattern p = Pattern.compile("^[a-zA-Z]+$");// 从开头到结尾必须全部为字母或者数字
+        Matcher m = p.matcher(str);
+
+        return m.find();
+    }
+
+    /**
+     * 是否是合法的邮箱
+     *
+     * @param str 待验证的字符串
+     * @return 是否是合法的邮箱
+     */
+    public boolean isValidEmail(String str) {
+        Pattern pattern = Pattern.compile("[\\w!#$%&'*+/=?^_`{|}~-]+(?:\\.[\\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\\w](?:[\\w-]*[\\w])?\\.)+[\\w](?:[\\w-]*[\\w])?");
+        Matcher isValid = pattern.matcher(str);
+        return isValid.matches();
+
+    }
+
+    /**
+     * 判断字符串是否为连续数字 45678901等
+     *
+     * @param str 待验证的字符串
+     * @return 是否为连续数字
+     */
+    public boolean isContinuousNum(String str) {
+        if (TextUtils.isEmpty(str))
+            return false;
+        if (!isNumbericString(str))
+            return true;
+        int len = str.length();
+        for (int i = 0; i < len - 1; i++) {
+            char curChar = str.charAt(i);
+            char verifyChar = (char) (curChar + 1);
+            if (curChar == '9')
+                verifyChar = '0';
+            char nextChar = str.charAt(i + 1);
+            if (nextChar != verifyChar) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
+     * 判断是否为纯数字
+     *
+     * @param str 待验证的字符串
+     * @return 是否为纯数字
+     */
+    public boolean isNumbericString(String str) {
+        if (TextUtils.isEmpty(str)) {
+            return false;
+        }
+        Pattern p = Pattern.compile("^[0-9]+$");// 从开头到结尾必须全部为数字
+        Matcher m = p.matcher(str);
+        return m.find();
+    }
+
+    /**
+     * 判断是否为重复字符串
+     *
+     * @param str 待验证的字符串
+     * @return 是否为重复字符串
+     */
+    public boolean isRepeatedString(String str) {
+        if (TextUtils.isEmpty(str)) {
+            return false;
+        }
+        int len = str.length();
+        if (len <= 1) {
+            return false;
+        } else {
+            char firstChar = str.charAt(0);// 第一个字符
+            for (int i = 1; i < len; i++) {
+                char nextChar = str.charAt(i);// 第i个字符
+                if (firstChar != nextChar) {
+                    return false;
+                }
+            }
+            return true;
+        }
+    }
+
+    /**
+     * 是否是英语
+     *
+     * @param str 待验证的字符串
+     * @return 是否是英语
+     */
+    public boolean isEnglish(String str) {
+        byte[] bytes = str.getBytes();
+        int i = bytes.length;
+        int j = str.length();
+        return i == j;
+    }
+
+    /**
+     * 是否含有特殊符号
+     *
+     * @param str 待验证的字符串
+     * @return 是否含有特殊符号
+     */
+    public boolean hasSpecialCharacter(String str) {
+        String regEx = "[`~!@#$%^&*()+=|{}':;',\\[\\].<>?~！@#￥%……&*（）——+|{}【】‘；：”“’。，、？]";
+        Pattern p = Pattern.compile(regEx);
+        Matcher m = p.matcher(str);
+        return m.find();
+    }
+
+    /**
+     * 是否包含数字
+     *
+     * @param str 待验证的字符串
+     * @return 是否含数字
+     */
+    public boolean hasNumeric(String str) {
+        Pattern pattern = Pattern.compile("[0-9]+");
+        return pattern.matcher(str).find();
+    }
+
+
 }

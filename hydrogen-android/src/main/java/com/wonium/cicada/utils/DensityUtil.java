@@ -18,6 +18,7 @@ package com.wonium.cicada.utils;
 
 
 import android.content.Context;
+import android.util.DisplayMetrics;
 import android.util.TypedValue;
 
 import androidx.annotation.Keep;
@@ -99,4 +100,17 @@ public class DensityUtil {
         final float fontScale = context.getResources().getDisplayMetrics().scaledDensity;
         return (int) (pxValue / fontScale + 0.5f);
     }
+
+
+    /**
+     * 获取scaledDensity
+     *
+     * @param context 上下文
+     * @return scaledDensity
+     */
+    public  float getScaledDensity(Context context) {
+        DisplayMetrics dm = context.getResources().getDisplayMetrics();
+        return dm.scaledDensity;
+    }
+
 }
