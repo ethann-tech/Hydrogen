@@ -72,7 +72,7 @@ public class VerifyUtil {
      * @return
      */
     public boolean isMobileNO(String mobiles) {
-        return Pattern.matches("^((13[0-9])|(15[^4,\\D])|(18[0,5-9]))\\d{8}$", mobiles);
+        return Pattern.matches("^((13[0-9])|(15[^4,\\D])|(16[0-9])|(17[0-9])|(18[0-9]))\\d{8}$", mobiles);
     }
 
 
