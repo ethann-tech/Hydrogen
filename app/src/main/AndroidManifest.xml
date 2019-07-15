@@ -53,6 +53,7 @@
         <activity android:name=".ui.activity.InputMethodManagerUtilActivity" android:launchMode="singleTask"/>
         <activity android:name=".ui.activity.IntentUtilActivity" android:launchMode="singleTask"/>
         <activity android:name=".ui.activity.MD5UtilActivity" android:launchMode="singleTask"/>
+        <activity android:name=".ui.activity.RippleLayoutActivity" android:launchMode="singleTask"/>
         <!--<activity android:name=".ui.ui.activity.SecondActivity" />-->
         <!--&lt;!&ndash; 登陆页面 &ndash;&gt;-->
         <!--<activity android:name=".ui.ui.activity.LoginActivity" />-->

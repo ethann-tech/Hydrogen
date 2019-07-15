@@ -29,6 +29,7 @@ import com.wonium.aclj.router.PageRouter;
 import com.wonium.cicada.ui.BaseActivity;
 import com.wonium.cicada.utils.DeviceUtil;
 import com.wonium.cicada.utils.NetWorkUtil;
+import com.wonium.cicada.utils.PackageInfoUtil;
 import com.wonium.cicada.utils.StringUtil;
 import com.wonium.cicada.utils.ToastUtil;
 
@@ -96,8 +97,8 @@ public class DeviceUtilActivity extends BaseActivity {
     private void onSuccess() {
         StringBuilder builder = new StringBuilder();
         builder.append("当前软件版本-->")
-                .append(DeviceUtil.getInstance().getVersionName(this))
-                .append("\n软件版本号-->").append(StringUtil.getInstance().valueOf(DeviceUtil.getInstance().getVersionCode(this)))
+                .append(PackageInfoUtil.getInstance().getVersionCode(this))
+                .append("\n软件版本号-->").append(StringUtil.getInstance().valueOf(PackageInfoUtil.getInstance().getVersionCode(this)))
                 .append("\nphone number-->")
                 .append(StringUtil.getInstance().isEmpty(DeviceUtil.getInstance().getPhoneNumber(getContext())))
                 .append("\nIMEI-->")

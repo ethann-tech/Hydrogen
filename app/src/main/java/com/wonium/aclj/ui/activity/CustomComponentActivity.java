@@ -101,6 +101,9 @@
                     case 3:
                         ARouter.getInstance().build(PageRouter.ACTIVITY_EXPAND_LIST).navigation(getContext());
                         break;
+                    case 4:
+                        ARouter.getInstance().build(PageRouter.ACTIVITY_RIPPLE_LAYOUT).navigation(getContext());
+                        break;
                         default: break;
                 }
             });
