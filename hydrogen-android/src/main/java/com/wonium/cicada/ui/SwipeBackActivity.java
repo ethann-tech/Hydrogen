@@ -5,7 +5,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
-import com.wonium.java.library.R;
+import com.wonium.cicada.R;
 
 import androidx.annotation.Keep;
 import androidx.appcompat.app.AppCompatActivity;

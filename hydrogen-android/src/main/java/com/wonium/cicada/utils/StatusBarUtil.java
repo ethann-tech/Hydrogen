@@ -24,13 +24,9 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
-
-
-import com.wonium.java.library.R;
-
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
-
+import com.wonium.cicada.R;
 import androidx.annotation.ColorInt;
 import androidx.annotation.IntRange;
 import androidx.annotation.Keep;

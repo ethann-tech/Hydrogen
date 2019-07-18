@@ -11,6 +11,7 @@
         <item>Custom Dialog</item>
         <item>ExpandableListView</item>
         <item>RippleLayout</item>
+        <item>WProgressDialog</item>
     </string-array>
    <string-array name="tools_arrays">
        <item>@string/tools_activity_manager</item>

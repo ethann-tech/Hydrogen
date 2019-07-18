@@ -4,14 +4,12 @@ package com.wonium.cicada.ui.widget;
  * Created by DongBang on 2016/6/28.
  */
 
-import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.widget.TextView;
 
-import com.wonium.java.library.R;
-
+import com.wonium.cicada.R;
 
 /**
  * @ Class Describe ：

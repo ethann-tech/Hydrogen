@@ -23,7 +23,7 @@ import android.widget.ImageView;
 
 import androidx.appcompat.widget.AppCompatImageView;
 
-import com.wonium.java.library.R;
+import com.wonium.cicada.R;
 
 /**
  * Created by dobest on 2016/6/16.

@@ -16,6 +16,7 @@
   -->
 
 <resources>
+
     <!-- 象牙色 -->
     <color name="ivory">#fffff0</color>
     <!-- 亮黄色 -->
@@ -311,4 +312,6 @@
     <color name="black">#000000</color>
     <color name="black_p50">#7f000000</color>
     <color name="black_alpha_50">#50000000</color>
+    <color name="progress_default_color">#b1000000</color>
+    <color name="progress_grey_color">#449E9E9E</color>
 </resources>

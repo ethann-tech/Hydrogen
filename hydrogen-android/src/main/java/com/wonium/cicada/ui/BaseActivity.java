@@ -24,7 +24,7 @@ import android.view.WindowManager;
 
 import com.wonium.cicada.utils.ActivityManagerUtil;
 import com.wonium.cicada.utils.StatusBarUtil;
-import com.wonium.java.library.R;
+import com.wonium.cicada.R;
 
 import androidx.annotation.Keep;
 import androidx.annotation.Nullable;

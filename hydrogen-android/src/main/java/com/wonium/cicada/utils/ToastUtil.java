@@ -24,7 +24,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.wonium.java.library.R;
+import com.wonium.cicada.R;
 
 import androidx.annotation.Keep;
 

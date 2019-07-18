@@ -19,7 +19,7 @@ package com.wonium.cicada.utils;
 
 import android.content.Context;
 import android.util.DisplayMetrics;
-import android.util.TypedValue;
+
 
 import androidx.annotation.Keep;
 
@@ -63,9 +63,7 @@ public class DensityUtil {
         return (int) (dpValue * scale + 0.5f);
     }
 
-    public int dp2px(Context context,int dp){
-        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, context.getResources().getDisplayMetrics());
-    }
+
     /**
      * 根据手机的分辨率从 px(像素) 的单位 转成为 dp
      *

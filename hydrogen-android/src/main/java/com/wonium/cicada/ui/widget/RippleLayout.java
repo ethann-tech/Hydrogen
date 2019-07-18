@@ -45,8 +45,7 @@ import android.widget.AdapterView;
 import android.widget.RelativeLayout;
 
 import androidx.annotation.ColorRes;
-
-import com.wonium.java.library.R;
+import com.wonium.cicada.R;
 
 
 /**

@@ -117,5 +117,9 @@ public class PageRouter {
     public final static String ACTIVITY_EXPAND_LIST="/page/activity/ExpandListActivity";
 
     public final static String ACTIVITY_RIPPLE_LAYOUT="/page/activity/RippleLayoutActivity";
+    /**
+     * WProgressDialog
+     */
+    public final static String ACTIVITY_W_PROGRESS_DIALOG="/page/activity/WProgressDialogActivity";
 
 }
