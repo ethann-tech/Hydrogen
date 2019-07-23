@@ -1,21 +1,17 @@
 package com.wonium.aclj.ui.activity;
 
-import android.graphics.Canvas;
 import android.graphics.Color;
-import android.view.View;
 
-import androidx.core.graphics.ColorUtils;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.wonium.aclj.R;
-import com.wonium.aclj.adapter.ColorGradientatorAdapter;
+import com.wonium.hydrogen.adapter.ColorGradientatorAdapter;
 import com.wonium.aclj.databinding.ActivityColorUtilBinding;
 import com.wonium.aclj.router.PageRouter;
 import com.wonium.cicada.UniversalItemDecoration;
-import com.wonium.cicada.adapter.BaseRecyclerViewAdapter;
 import com.wonium.cicada.ui.BaseActivity;
 import com.wonium.cicada.utils.ColorUtil;
 

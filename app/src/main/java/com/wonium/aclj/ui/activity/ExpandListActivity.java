@@ -25,7 +25,7 @@ import androidx.databinding.DataBindingUtil;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.wonium.aclj.R;
-import com.wonium.aclj.adapter.MyWorkAdapter;
+import com.wonium.hydrogen.adapter.MyWorkAdapter;
 import com.wonium.aclj.bean.Work;
 import com.wonium.aclj.bean.WorkChild;
 import com.wonium.aclj.bean.WorkGroup;

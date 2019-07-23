@@ -13,7 +13,7 @@ import com.bumptech.glide.Glide;
 import com.lcw.library.imagepicker.ImagePicker;
 import com.wonium.aclj.GlideLoader;
 import com.wonium.aclj.R;
-import com.wonium.aclj.config.RequestCode;
+import com.wonium.hydrogen.config.RequestCode;
 import com.wonium.aclj.databinding.ActivityImageCompressBinding;
 import com.wonium.aclj.router.PageRouter;
 import com.wonium.cicada.ui.BaseActivity;

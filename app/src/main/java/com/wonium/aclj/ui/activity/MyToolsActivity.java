@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.wonium.aclj.R;
-import com.wonium.aclj.adapter.MyAdapter;
+import com.wonium.hydrogen.adapter.MyAdapter;
 import com.wonium.aclj.databinding.ActivityMyToolsBinding;
 import com.wonium.aclj.presenter.MainPresenter;
 import com.wonium.aclj.presenter.impl.MainPresenterImpl;

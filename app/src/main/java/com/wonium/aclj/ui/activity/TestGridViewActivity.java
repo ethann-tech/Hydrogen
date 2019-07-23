@@ -1,15 +1,11 @@
 package com.wonium.aclj.ui.activity;
 
 
-import android.view.View;
-import android.widget.AdapterView;
-
 import androidx.databinding.DataBindingUtil;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.wonium.aclj.R;
-import com.wonium.aclj.adapter.TestAdapter;
-import com.wonium.aclj.adapter.TestGridViewAdapter;
+import com.wonium.hydrogen.adapter.TestGridViewAdapter;
 import com.wonium.aclj.databinding.ActivityTestGridBinding;
 import com.wonium.aclj.router.PageRouter;
 import com.wonium.cicada.ui.BaseActivity;

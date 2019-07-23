@@ -1,5 +1,7 @@
 package com.wonium.aclj.ui.activity;
 
+import android.view.View;
+
 import androidx.databinding.DataBindingUtil;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
@@ -42,5 +44,6 @@ public class LoginActivity extends BaseActivity {
     @Override
     public void initListener() {
         mBinding.btnLogin.setOnClickListener(v -> ARouter.getInstance().build(PageRouter.ACTIVITY_MAIN).navigation(getContext()));
+        mBinding.tvRegisterAccount.setOnClickListener(v -> ARouter.getInstance().build(PageRouter.ACTIVITY_REGISTER).navigation(getContext()));
     }
 }

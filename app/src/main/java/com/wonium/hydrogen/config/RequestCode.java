@@ -1,4 +1,4 @@
-package com.wonium.aclj.config;
+package com.wonium.hydrogen.config;
 
 public interface RequestCode {
 

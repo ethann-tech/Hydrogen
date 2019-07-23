@@ -1,4 +1,7 @@
 <resources>
+    <!--SplashActivity start-->
+    <string name="text_into">进入</string>
+    <!--SplashActivity end-->
     <string name="app_name">Hydrogen</string>
     <string name="activity_custom_component">自定义组件</string>
     <string name="activity_image_view">CustomImageView</string>

@@ -21,14 +21,15 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ui.activity.LoginActivity" android:launchMode="singleTask">
+        <!--启动引导页-->
+        <activity android:name=".ui.activity.SplashActivity" android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ui.activity.LoginActivity" android:launchMode="singleTask"/>
         <activity android:name=".ui.activity.MainActivity" android:launchMode="singleInstance"/>
-
         <activity android:name=".ui.activity.ZLibActivity" />
         <activity android:name=".ui.activity.TestGridViewActivity" />
         <activity android:name=".ui.activity.ProgressActivity" />
@@ -56,10 +57,8 @@
         <activity android:name=".ui.activity.RippleLayoutActivity" android:launchMode="singleTask"/>
         <activity android:name=".ui.activity.WProgressDialogActivity" android:launchMode="singleTask"/>
         <!--<activity android:name=".ui.ui.activity.SecondActivity" />-->
-        <!--&lt;!&ndash; 登陆页面 &ndash;&gt;-->
-        <!--<activity android:name=".ui.ui.activity.LoginActivity" />-->
-        <!--&lt;!&ndash;Register page&ndash;&gt;-->
-        <!--<activity android:name=".ui.ui.activity.RegisterActivity"/>-->
+        <!-- 登陆页面 -->
+        <activity android:name=".ui.activity.RegisterActivity" android:launchMode="singleTask"/>
         <!--&lt;!&ndash;H5页面&ndash;&gt;-->
         <!--<activity android:name=".ui.ui.activity.H5Activity"/>-->
     </application>

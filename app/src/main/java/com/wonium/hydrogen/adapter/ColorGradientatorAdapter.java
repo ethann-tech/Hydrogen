@@ -1,8 +1,7 @@
-package com.wonium.aclj.adapter;
+package com.wonium.hydrogen.adapter;
 
 import android.content.Context;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 
 import androidx.databinding.DataBindingUtil;
 

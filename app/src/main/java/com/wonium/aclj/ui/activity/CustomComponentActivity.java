@@ -1,7 +1,5 @@
     package com.wonium.aclj.ui.activity;
 
-    import android.view.View;
-
     import androidx.databinding.DataBindingUtil;
     import androidx.recyclerview.widget.LinearLayoutManager;
     import androidx.recyclerview.widget.RecyclerView;
@@ -9,18 +7,13 @@
     import com.alibaba.android.arouter.facade.annotation.Route;
     import com.alibaba.android.arouter.launcher.ARouter;
     import com.wonium.aclj.R;
-    import com.wonium.aclj.adapter.CustomComponentAdapter;
+    import com.wonium.hydrogen.adapter.CustomComponentAdapter;
     import com.wonium.aclj.databinding.ActivityCustomComponentBinding;
     import com.wonium.aclj.router.PageRouter;
-    import com.wonium.cicada.OnNoDoubleClickListener;
     import com.wonium.cicada.UniversalItemDecoration;
-    import com.wonium.cicada.adapter.BaseRecyclerViewAdapter;
     import com.wonium.cicada.ui.BaseActivity;
-    import com.wonium.cicada.ui.widget.LoadingDialog;
-    import com.wonium.cicada.utils.StringUtil;
 
     import java.util.Arrays;
-    import java.util.List;
 
     /**
      * @ClassName: CustomComponentActivity

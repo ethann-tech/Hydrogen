@@ -34,4 +34,11 @@
        <item>@string/tools_toast</item>
        <item>@string/tools_verify</item>
    </string-array>
+
+    <integer-array name="item_splash">
+        <item>@drawable/img_splash_1</item>
+        <item>@drawable/img_splash_2</item>
+        <item>@drawable/img_splash_3</item>
+    </integer-array>
+
 </resources>

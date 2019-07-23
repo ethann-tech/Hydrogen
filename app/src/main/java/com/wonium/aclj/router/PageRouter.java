@@ -1,5 +1,7 @@
 package com.wonium.aclj.router;
 
+import com.wonium.aclj.ui.activity.SplashActivity;
+
 /**
  * @ClassName: PageRouter
  * @Description: 描述一下
@@ -14,9 +16,17 @@ package com.wonium.aclj.router;
  */
 public class PageRouter {
     /**
+     * 启动引导页
+     */
+    public final static String ACTIVITY_SPLASH="/page/activity/SplashActivity";
+    /**
      * LoginActivity
      */
     public final static String ACTIVITY_LOGIN="/page/activity/LoginActivity";
+    /**
+     * 注册页面
+     */
+    public final static String ACTIVITY_REGISTER="/page/activity/RegisterActivity";
     /**
      * MainActivity
      */
@@ -121,5 +131,9 @@ public class PageRouter {
      * WProgressDialog
      */
     public final static String ACTIVITY_W_PROGRESS_DIALOG="/page/activity/WProgressDialogActivity";
+
+
+
+
 
 }

@@ -7,13 +7,11 @@ import android.view.ViewGroup;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.wonium.aclj.R;
-import com.wonium.aclj.adapter.MyAdapter;
+import com.wonium.hydrogen.adapter.MyAdapter;
 import com.wonium.aclj.databinding.FragmentMyBinding;
 import com.wonium.aclj.router.PageRouter;
-import com.wonium.cicada.OnItemLongClickListener;
 import com.wonium.cicada.UniversalItemDecoration;
 import com.wonium.cicada.ui.BaseFragment;
-import com.wonium.cicada.ui.widget.LoadingDialog;
 import com.wonium.cicada.utils.ToastUtil;
 
 import androidx.databinding.DataBindingUtil;
