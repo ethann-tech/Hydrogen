@@ -21,7 +21,7 @@
             layout="@layout/layout_toolbar"
             circle:title="@{title}" />
 
-        <com.wonium.cicada.ui.widget.CircleImageView
+        <com.wonium.hydrogen.ui.widget.CircleImageView
             android:layout_width="@dimen/material_component_button_height_56dp"
             android:layout_height="@dimen/material_component_button_height_56dp"
             android:src="@mipmap/app_launcher"

@@ -76,7 +76,7 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <com.wonium.cicada.ui.widget.RippleLayout
+            <com.wonium.hydrogen.ui.widget.RippleLayout
                 android:id="@+id/layout_ripple_login"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -95,7 +95,7 @@
                     android:textSize="@dimen/text_size_18sp" />
 
 
-            </com.wonium.cicada.ui.widget.RippleLayout>
+            </com.wonium.hydrogen.ui.widget.RippleLayout>
 
 
             <RelativeLayout
