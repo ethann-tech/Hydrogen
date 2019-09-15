@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ripple="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="title"
+            type="String" />
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/include_ripple_toolbar"
+            layout="@layout/layout_toolbar"
+            ripple:title="@{title}" />
+
+        <com.wonium.hydrogen.ui.widget.RippleLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/material_layout_view_left_margin_8dp"
+            android:layout_marginTop="@dimen/material_layout_view_top_margin_8dp"
+            android:layout_marginEnd="@dimen/material_layout_view_right_margin_8dp"
+            ripple:rl_type="rectangle">
+
+            <TextView
+                android:id="@+id/tv_rectangle_ripple"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="水波纹透明度为90%,类型为rectangleRipple" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/material_component_button_height_48dp"
+                android:layout_below="@+id/tv_rectangle_ripple"
+                android:background="@color/black"
+                android:text="@string/activity_ripple_layout"
+                android:textAllCaps="false"
+                android:textColor="@color/whiteSmoke" />
+        </com.wonium.hydrogen.ui.widget.RippleLayout>
+
+
+        <com.wonium.hydrogen.ui.widget.RippleLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/material_layout_view_left_margin_8dp"
+            android:layout_marginTop="@dimen/material_layout_view_top_margin_8dp"
+            android:layout_marginEnd="@dimen/material_layout_view_right_margin_8dp"
+            ripple:rl_alpha="50"
+            ripple:rl_type="doubleRipple">
+
+            <TextView
+                android:id="@+id/tv_double_ripple"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="水波纹透明度为50%,类型为doubleRipple" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/material_component_button_touchable_target_height"
+                android:layout_below="@+id/tv_double_ripple"
+                android:background="@color/black"
+                android:text="@string/activity_ripple_layout"
+                android:textAllCaps="false"
+                android:textColor="@color/whiteSmoke" />
+        </com.wonium.hydrogen.ui.widget.RippleLayout>
+
+        <com.wonium.hydrogen.ui.widget.RippleLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/material_layout_view_left_margin_8dp"
+            android:layout_marginLeft="@dimen/material_layout_view_left_margin_8dp"
+            android:layout_marginTop="@dimen/material_layout_view_top_margin_8dp"
+            android:layout_marginEnd="@dimen/material_layout_view_right_margin_8dp"
+            android:layout_marginRight="@dimen/material_layout_view_right_margin_8dp"
+            ripple:rl_alpha="90"
+            ripple:rl_type="simpleRipple">
+
+            <TextView
+                android:id="@+id/tv_simple_ripple"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="水波纹透明度为90%,类型为simpleRipple" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/material_component_button_touchable_target_height"
+                android:layout_below="@+id/tv_simple_ripple"
+                android:background="@color/black"
+                android:text="@string/activity_ripple_layout"
+                android:textAllCaps="false"
+                android:textColor="@color/whiteSmoke" />
+        </com.wonium.hydrogen.ui.widget.RippleLayout>
+
+        <com.wonium.hydrogen.ui.widget.RippleLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/material_layout_view_left_margin_8dp"
+            android:layout_marginLeft="@dimen/material_layout_view_left_margin_8dp"
+            android:layout_marginTop="@dimen/material_layout_view_top_margin_8dp"
+            android:layout_marginEnd="@dimen/material_layout_view_right_margin_8dp"
+            android:layout_marginRight="@dimen/material_layout_view_right_margin_8dp"
+            ripple:rl_alpha="90"
+            ripple:rl_centered="true"
+            ripple:rl_color="@color/cyan"
+            ripple:rl_rippleDuration="800"
+            android:background="@color/yellow"
+            ripple:rl_frameRate="25"
+            ripple:rl_ripplePadding="10dp"
+            ripple:rl_type="simpleRipple">
+
+            <TextView
+                android:id="@+id/tv_simple_ripple1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="水波纹透明度为90%\n类型为simpleRipple\n 波纹从控件中心发出\n 波纹持续时间800ms\n 波纹帧率25\波纹颜色青色（00ffff）\n 波纹到内边距10dp处消失,效果不明显" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/material_component_button_touchable_target_height"
+                android:layout_below="@+id/tv_simple_ripple1"
+                android:background="@color/greenYellow"
+                android:text="@string/activity_ripple_layout"
+                android:textAllCaps="false"
+                android:textColor="@color/black" />
+        </com.wonium.hydrogen.ui.widget.RippleLayout>
+
+
+
+
+
+
+        <com.wonium.hydrogen.ui.widget.RippleLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/material_layout_view_left_margin_8dp"
+            android:layout_marginLeft="@dimen/material_layout_view_left_margin_8dp"
+            android:layout_marginTop="@dimen/material_layout_view_top_margin_8dp"
+            android:layout_marginEnd="@dimen/material_layout_view_right_margin_8dp"
+            android:layout_marginRight="@dimen/material_layout_view_right_margin_8dp"
+            ripple:rl_alpha="90"
+            ripple:rl_color="@color/deepSkyBlue"
+            ripple:rl_frameRate="25"
+            ripple:rl_zoom="true"
+            ripple:rl_zoomDuration="500"
+            ripple:rl_zoomScale="1.3"
+            ripple:rl_type="rectangle">
+
+            <TextView
+                android:id="@+id/tv_rectangle_ripple1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="水波纹透明度为90%\n类型为rectangleRipple\n 波纹从控件中心发出\n 波纹帧率25\n " />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/material_component_button_touchable_target_height"
+                android:layout_below="@+id/tv_rectangle_ripple1"
+                android:background="@color/greenYellow"
+                android:text="@string/activity_ripple_layout"
+                android:textAllCaps="false"
+                android:textColor="@color/black" />
+        </com.wonium.hydrogen.ui.widget.RippleLayout>
+
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</layout>

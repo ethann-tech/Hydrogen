@@ -10,6 +10,8 @@
         <item>TextView</item>
         <item>Custom Dialog</item>
         <item>ExpandableListView</item>
+        <item>RippleLayout</item>
+        <item>WProgressDialog</item>
     </string-array>
    <string-array name="tools_arrays">
        <item>@string/tools_activity_manager</item>
@@ -32,4 +34,11 @@
        <item>@string/tools_toast</item>
        <item>@string/tools_verify</item>
    </string-array>
+
+    <integer-array name="item_splash">
+        <item>@drawable/img_splash_1</item>
+        <item>@drawable/img_splash_2</item>
+        <item>@drawable/img_splash_3</item>
+    </integer-array>
+
 </resources>

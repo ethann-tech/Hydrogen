@@ -16,7 +16,7 @@
             android:layout_width="wrap_content"
             android:text="跑马灯效果"
             android:layout_height="wrap_content" />
-        <com.wonium.cicada.ui.widget.MarqueeTextView
+        <com.wonium.hydrogen.ui.widget.MarqueeTextView
             android:id="@+id/tv_marquee"
             android:ellipsize="marquee"
             android:layout_width="match_parent"
@@ -30,7 +30,7 @@
             android:layout_marginTop="@dimen/material_layout_view_top_margin_8dp"
             android:text="TextViewVertical"
             android:layout_height="wrap_content" />
-        <com.wonium.cicada.ui.widget.TextViewVertical
+        <com.wonium.hydrogen.ui.widget.TextViewVertical
             android:id="@+id/tv_vertical"
             android:layout_marginTop="@dimen/material_layout_view_top_margin_8dp"
             android:layout_width="wrap_content"

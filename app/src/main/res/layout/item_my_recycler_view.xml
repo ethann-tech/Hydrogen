@@ -6,12 +6,25 @@
         android:orientation="vertical">
 
         <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_number"
+            android:text="1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginLeft="@dimen/material_component_button_text_left_and_right_padding"
+            android:layout_marginStart="@dimen/material_component_button_text_left_and_right_padding"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_item_data"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:gravity="center_vertical"
-            android:paddingStart="@dimen/material_component_button_text_left_and_right_padding"
+            app:layout_constraintLeft_toRightOf="@+id/tv_number"
+            android:text="adsfasdfasdfasd"
             android:paddingLeft="@dimen/material_component_button_text_left_and_right_padding"
+            android:paddingStart="@dimen/material_component_button_text_left_and_right_padding"
             android:paddingEnd="@dimen/material_component_button_text_left_and_right_padding"
             android:paddingRight="@dimen/material_component_button_text_left_and_right_padding"
             android:textSize="@dimen/text_size_16sp" />

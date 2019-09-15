@@ -120,9 +120,7 @@
                     <!--android:textColor="@color/blackGray"-->
                     <!--android:textSize="@dimen/text_size_18sp"-->
                     <!--app:layout_constraintRight_toRightOf="parent" />-->
-
             </RelativeLayout>
-
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
