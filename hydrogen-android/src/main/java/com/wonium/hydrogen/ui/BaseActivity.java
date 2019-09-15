@@ -22,13 +22,15 @@ import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
 
-import com.wonium.hydrogen.utils.ActivityManagerUtil;
-import com.wonium.hydrogen.utils.StatusBarUtil;
-import com.wonium.hydrogen.R;
-
 import androidx.annotation.Keep;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+
+import com.wonium.hydrogen.R;
+import com.wonium.hydrogen.utils.ActivityManagerUtil;
+import com.wonium.hydrogen.utils.DensityUtil;
+import com.wonium.hydrogen.utils.StatusBarUtil;
 
 
 /**
@@ -61,8 +63,10 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     private Context mContext;
 
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+        DensityUtil.getInstance().setCustomDensity(this, getApplication());
         ActivityManagerUtil.getInstance().addActivity(this);
         super.onCreate(savedInstanceState);
         mContext = this;
@@ -97,7 +101,8 @@ public abstract class BaseActivity extends AppCompatActivity {
      *
      * @param bundle 界面跳转携带的参数
      */
-    protected void initParam(Bundle bundle) { }
+    protected void initParam(Bundle bundle) {
+    }
 
 
     public Context getContext() {
@@ -117,15 +122,18 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     /**
      * 设置状态栏颜色
+     *
      * @return
      */
-    protected  int getStatusColor(){
+    protected int getStatusColor() {
         return getResources().getColor(R.color.black);
     }
+
     /**
      * 初始化窗口属性
      */
-    public  abstract void initWindowAttributes();
+    public abstract void initWindowAttributes();
+
     /**
      * 获取资源文件Id
      *
@@ -135,6 +143,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     /**
      * 绑定布局文件
+     *
      * @param layoutResId 布局文件资源ID
      */
     public abstract void bindLayout(int layoutResId);
@@ -149,6 +158,7 @@ public abstract class BaseActivity extends AppCompatActivity {
      * 初始化监听事件
      */
     public abstract void initListener();
+
     /**
      * 设置是否需要全屏
      *

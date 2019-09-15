@@ -147,6 +147,10 @@ public class PageRouter {
     public final static String ACTIVITY_W_PROGRESS_DIALOG="/page/activity/WProgressDialogActivity";
 
 
+    /**
+     * 适配测试
+     */
+    public final static String ACTIVITY_FITTER="/page/activity/FitterActivity";
 
 
 

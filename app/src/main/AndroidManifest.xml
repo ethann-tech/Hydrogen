@@ -61,6 +61,8 @@
         <activity android:name="com.wonium.cicada.ui.activity.RegisterActivity" android:launchMode="singleTask"/>
         <!--&lt;!&ndash;H5页面&ndash;&gt;-->
         <!--<activity android:name=".ui.ui.activity.H5Activity"/>-->
+        <!-- 测试适配-->
+        <activity android:name=".ui.activity.FitterActivity" android:launchMode="singleTop"/>
     </application>
 
 </manifest>

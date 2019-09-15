@@ -21,8 +21,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.wonium.cicada.R;
+
 import com.wonium.cicada.databinding.FragmentAccountBinding;
+import com.wonium.cicada.router.PageRouter;
 import com.wonium.hydrogen.ui.BaseFragment;
 
 import androidx.databinding.DataBindingUtil;
@@ -61,5 +65,6 @@ public class AccountFragment extends BaseFragment {
     @Override
     protected void initListener() {
         super.initListener();
+        mBinding.btnFitter.setOnClickListener(v -> ARouter.getInstance().build(PageRouter.ACTIVITY_FITTER).navigation());
     }
 }
