@@ -38,4 +38,13 @@
         <!--控件缩放持续时间 rl_zoom 为true 有效-->
         <attr name="rl_zoomDuration" format="integer" />
     </declare-styleable>
+
+    <!-- 末行对齐方式 -->
+    <declare-styleable name="AlignTextView">
+        <attr name="align" format="enum">
+            <enum name="left" value="0"/>
+            <enum name="center" value="1"/>
+            <enum name="right" value="2"/>
+        </attr>
+    </declare-styleable>
 </resources>
