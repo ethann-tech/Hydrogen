@@ -144,7 +144,7 @@ public class DensityUtil {
 
 
     /**
-     * 设置自定义Density
+     * 设置自定义Density 适配使用
      * @param activity 当前activity
      * @param application 应用程序
      */

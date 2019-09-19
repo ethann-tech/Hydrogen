@@ -24,6 +24,7 @@ import com.wonium.cicada.R;
 import com.wonium.cicada.databinding.ActivityDateUtilBinding;
 import com.wonium.cicada.router.PageRouter;
 import com.wonium.hydrogen.ui.BaseActivity;
+import com.wonium.hydrogen.utils.DateUtil;
 
 @Route(path = PageRouter.ACTIVITY_DATE_UTIL)
 public class DateUtilActivity extends BaseActivity {
@@ -68,6 +69,26 @@ public class DateUtilActivity extends BaseActivity {
     private void displayTestCase(){
         StringBuilder builder =new StringBuilder();
         builder.append("使用方法：").append("\n").append("函数：\n").append(" String getDateTimeFromMillis(long timeInMillis)");
+        builder.append("\n返回时间间隔的常用表示 例如：3天前、3分钟前、刚刚等等：");
+        builder.append( DateUtil.getInstance().getTimeIntervalIntro(System.currentTimeMillis()-30*3600*1000,false));
+        builder.append("\n\n获得当天0点时间,单位毫秒数\nDateUtil.getInstance().getTimesMorning()\n\n");
+        builder.append(DateUtil.getInstance().getTimesMorning());
+
+        builder.append("\n\n获得当天24点时间,单位毫秒数\nDateUtil.getInstance().getTimesNight()\n\n");
+        builder.append(DateUtil.getInstance().getTimesNight());
+
+        builder.append("\n\n获得本周一0点时间,单位毫秒数\nDateUtil.getInstance().getTimesNight()\n\n");
+        builder.append(DateUtil.getInstance().getTimesWeekMorning());
+
+        builder.append("\n\n获得本周日24点时间,单位毫秒数\nDateUtil.getInstance().getTimesWeekNight()\n\n");
+        builder.append(DateUtil.getInstance().getTimesWeekNight());
+
+        builder.append("\n\n获得本月第一天0点时间,单位毫秒数\nDateUtil.getInstance().getTimesMonthMorning()\n\n");
+        builder.append(DateUtil.getInstance().getTimesMonthMorning());
+
+        builder.append("\n\n获得本月最后一天24点时间,单位毫秒数\nDateUtil.getInstance().getTimesMonthNight()\n\n");
+        builder.append(DateUtil.getInstance().getTimesMonthNight());
+
         mBinding.setContent(builder.toString());
     }
 

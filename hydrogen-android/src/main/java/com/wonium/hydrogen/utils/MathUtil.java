@@ -174,4 +174,45 @@ public class MathUtil {
         return db.toPlainString();
     }
 
+    /**
+     * 格式化double类型
+     *
+     * @param value 一个小数 例如 1345324.34235
+     * @return
+     */
+    public static String formatDouble(double value) {
+        DecimalFormat df = new DecimalFormat("###,###.###");
+        String returnValue = df.format(value);
+        String[] spits = returnValue.split("\\.");
+        if (spits.length > 0) {
+            if (spits.length == 2) {
+                String first = spits[0];
+                String second = spits[1];
+                if (second.length() == 1) {
+                    returnValue = first + "." + second + "0";
+                } else if (second.length() == 2) {
+                    returnValue = first + "." + second;
+                } else {
+                    String par = second.substring(2, 3);
+                    int parValue = Integer.parseInt(par);
+                    if (parValue > 4) {
+                        if ((Integer.parseInt(second.substring(1, 2)) + 1) == 10) {
+                            returnValue = first + "." + (Integer.parseInt(second.substring(0, 1)) + 1) + "0";
+                        } else {
+                            returnValue = first + "." + Integer.parseInt(second.substring(0, 1)) + (Integer.parseInt(second.substring(1, 2)) + 1);
+                        }
+                    } else {
+                        String secondTemp = second.substring(0, 2);
+                        returnValue = first + "." + secondTemp;
+                    }
+                }
+            } else {
+                returnValue = spits[0];
+            }
+        } else {
+            returnValue = "0";
+        }
+        return returnValue;
+    }
+
 }

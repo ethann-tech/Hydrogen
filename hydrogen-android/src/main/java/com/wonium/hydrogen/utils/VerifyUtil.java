@@ -102,6 +102,7 @@ public class VerifyUtil {
         return Pattern.matches(regex, idCard);
     }
 
+
     /**
      * 短信验证码长度校验 6位
      *
