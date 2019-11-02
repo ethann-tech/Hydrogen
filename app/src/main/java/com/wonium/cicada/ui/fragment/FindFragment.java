@@ -27,6 +27,7 @@ import com.alibaba.android.arouter.launcher.ARouter;
 import com.wonium.cicada.R;
 import com.wonium.cicada.databinding.FragmentFindBinding;
 import com.wonium.cicada.router.PageRouter;
+import com.wonium.cicada.ui.activity.MainActivity;
 import com.wonium.hydrogen.OnNoDoubleClickListener;
 import com.wonium.hydrogen.ui.BaseFragment;
 import com.wonium.hydrogen.utils.ToastUtil;
