@@ -1,21 +1,21 @@
 apply plugin: 'com.android.application'
-
-
 //打包时间戳
 static def releaseTime() {
     return new Date().format("yyyy-MM-dd", TimeZone.getTimeZone("UTC"))
 }
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 29
     buildToolsVersion = '28.0.3'
     defaultConfig {
         applicationId "com.wonium.aclj"
-        minSdkVersion 24
-        targetSdkVersion 28
+        minSdkVersion 19
+        targetSdkVersion 29
         versionCode 12
         versionName "v0.1.9"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        buildConfigField 'String', 'BUILD_TIME', '"' + (new Date()).format('yyyy-MM-dd HH:mm:ss') + '"'
         // ARouter
         javaCompileOptions {
             annotationProcessorOptions {
@@ -91,7 +91,7 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    implementation 'com.google.android.material:material:1.1.0-alpha10'
+    implementation 'com.google.android.material:material:1.2.0-alpha03'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
@@ -105,6 +105,9 @@ dependencies {
     // 图片视频选择器
     implementation 'com.lcw.library:imagepicker:2.2.1'
     implementation project(':hydrogen-android')
-    implementation 'com.orhanobut:logger:2.2.0'
-    implementation 'com.github.bumptech.glide:glide:4.9.0'
+    // Glide
+    implementation 'com.github.bumptech.glide:glide:4.10.0'
+    // log
+    implementation 'org.jooq:joor-java-6:0.9.12'
+    implementation 'org.slf4j:slf4j-android:1.7.28'
 }

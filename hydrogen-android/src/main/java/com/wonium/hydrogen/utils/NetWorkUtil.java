@@ -294,11 +294,7 @@ public class NetWorkUtil {
             assert mWifiManager != null;
             WifiInfo info = mWifiManager.getConnectionInfo();
 
-            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT) {
-                return info.getSSID();
-            } else {
-                return info.getSSID().replace("\"", "");
-            }
+            return info.getSSID().replace("\"", "");
         } else if (Build.VERSION.SDK_INT == Build.VERSION_CODES.O_MR1) {
 
             ConnectivityManager connManager = (ConnectivityManager) activity.getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);

@@ -131,6 +131,7 @@
                 android:id="@+id/layout_fast_login_hint"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 android:layout_marginTop="@dimen/material_layout_view_right_margin_16dp"
                 app:layout_constraintTop_toBottomOf="@+id/layout_forget_password_and_register">
 
@@ -173,6 +174,7 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
+                android:visibility="gone"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/material_layout_view_top_margin_8dp"
                 app:layout_constraintTop_toBottomOf="@+id/layout_fast_login_hint">

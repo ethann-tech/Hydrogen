@@ -21,7 +21,6 @@ import android.graphics.Bitmap;
 import androidx.databinding.DataBindingUtil;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
-import com.orhanobut.logger.Logger;
 import com.wonium.cicada.R;
 import com.wonium.cicada.databinding.ActivityBitmapUtilBinding;
 import com.wonium.cicada.router.PageRouter;
@@ -30,6 +29,9 @@ import com.wonium.hydrogen.utils.BitmapUtil;
 import com.wonium.hydrogen.utils.ByteUtil;
 import com.wonium.hydrogen.utils.ThreadPoolUtil;
 import com.wonium.hydrogen.utils.ToastUtil;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 /**
@@ -48,6 +50,7 @@ import com.wonium.hydrogen.utils.ToastUtil;
 @Route(path = PageRouter.ACTIVITY_BITMAP_UTIL)
 public class BitmapUtilActivity extends BaseActivity {
     private ActivityBitmapUtilBinding mBinding;
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
     @Override
     public void initListener() {
         mBinding.includeToolbarBitmap.toolbar.setNavigationOnClickListener(v -> finish());
@@ -87,7 +90,7 @@ public class BitmapUtilActivity extends BaseActivity {
     private void bitmapToBytes() {
         ToastUtil.getInstance().show(getContext(), "查看Log");
         Bitmap bitmap = BitmapUtil.getInstance().imgToBitmap(getContext(), R.mipmap.img_wonium);
-        Logger.d(ByteUtil.getInstance().printByteArrayToBinary(BitmapUtil.getInstance().bitmapToByte(bitmap)));
+        logger.debug(ByteUtil.getInstance().printByteArrayToBinary(BitmapUtil.getInstance().bitmapToByte(bitmap)));
     }
 
     private void getBitmapFromPath() {
@@ -145,9 +148,9 @@ public class BitmapUtilActivity extends BaseActivity {
         mBinding.imgRotateBitmap.setImageBitmap(BitmapUtil.getInstance().rotateBitmap(bitmap,-90));
         // 打印RGBA数据
         byte[] bytes=BitmapUtil.getInstance().getPixels(bitmap);
-        Logger.d("打印RGBA数据————>: "+ByteUtil.getInstance().printByteArrayToBinary(bytes));
+        logger.debug("打印RGBA数据————>: "+ByteUtil.getInstance().printByteArrayToBinary(bytes));
         // 打印RGB数据 24位
         byte[] bytes24=BitmapUtil.getInstance().getRGBDataFormat24(bitmap);
-        Logger.d("打印RGB数据24位————>: "+ByteUtil.getInstance().printByteArrayToBinary(bytes24));
+        logger.debug("打印RGB数据24位————>: "+ByteUtil.getInstance().printByteArrayToBinary(bytes24));
     }
 }

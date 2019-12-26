@@ -21,7 +21,6 @@ package com.wonium.cicada.ui.activity;
 import androidx.databinding.DataBindingUtil;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
-import com.orhanobut.logger.Logger;
 import com.wonium.cicada.R;
 import com.wonium.cicada.databinding.ActivityStringUtilBinding;
 import com.wonium.cicada.presenter.StringPresenter;
@@ -30,6 +29,9 @@ import com.wonium.cicada.router.PageRouter;
 import com.wonium.cicada.ui.view.StringView;
 import com.wonium.hydrogen.ui.BaseActivity;
 import com.wonium.hydrogen.utils.StringUtil;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.UnsupportedEncodingException;
 
@@ -50,6 +52,7 @@ public class StringUtilActivity extends BaseActivity implements StringView {
     private ActivityStringUtilBinding mBinding;
     private StringPresenter mPresenter;
     private StringBuilder builder = new StringBuilder();
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Override
     public void initListener() {
@@ -93,7 +96,8 @@ public class StringUtilActivity extends BaseActivity implements StringView {
                     .append("更改字符集 例如 wonium-->").append(StringUtil.getInstance().changeCharSet("wonium", "UTF-8"));
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
-            Logger.e("更改字符集方法需要处理 UnsupportedEncodingException异常");
+            logger.error("LOG:StringUtilActivity:initView ={}","更改字符集方法需要处理 UnsupportedEncodingException异常");
+
         }
 
         mBinding.tvExample.setText(StringUtil.getInstance().isEmpty(builder.toString()));
