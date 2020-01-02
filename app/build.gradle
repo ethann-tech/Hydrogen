@@ -14,8 +14,9 @@ android {
         versionCode 12
         versionName "v0.1.9"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
+        setProperty('archivesBaseName', "$applicationId-official-$versionName-$versionCode-"+releaseTime())
         buildConfigField 'String', 'BUILD_TIME', '"' + (new Date()).format('yyyy-MM-dd HH:mm:ss') + '"'
+
         // ARouter
         javaCompileOptions {
             annotationProcessorOptions {
@@ -26,51 +27,59 @@ android {
 
     signingConfigs {
         release {
-            keyAlias 'release'  //别名
-            keyPassword 'wonium1993' // 别名密码
-            storeFile file('keystore/release.jks')//签名文件路径
-            storePassword 'wonium1993'//签名密码
+            v1SigningEnabled true
+            v2SigningEnabled true
+            storeFile file("/keystore/release.jks")
+            storePassword "ethan0000"
+            keyAlias "release"
+            keyPassword "ethan0000"
         }
         debug {
-            keyAlias 'debug'
-            keyPassword 'wonium1993'
-            storeFile file('keystore/debug.jks')
-            storePassword 'wonium1993'
+            v1SigningEnabled true
+            v2SigningEnabled true
+            storeFile file("/keystore/release.jks")
+            storePassword "ethan0000"
+            keyAlias "release"
+            keyPassword "ethan0000"
         }
     }
     buildTypes {
         release {
-            // 不显示Log
-            buildConfigField "boolean", "LOG_DEBUG", "false"
-            minifyEnabled true //代码混淆
-            zipAlignEnabled true //zipalign 优化
-            // 移除无用的resource文件
+            debuggable false
+            minifyEnabled true
             shrinkResources true
-            //加载默认混淆配置文件 progudard-android.txt在sdk目录里面，不用管，proguard.cfg是我们自己配<span></span>的混淆文件
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            //打包签名
+            zipAlignEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro', 'proguard-log.pro'
             signingConfig signingConfigs.release
-            applicationVariants.all {
-                variant ->
-                    variant.outputs.all {
-                        output -> outputFileName = "${variant.applicationId}-${buildType.name}-${defaultConfig.versionName}-${defaultConfig.versionCode}-${releaseTime()}.apk"
-                    }
-            }
         }
         debug {
             debuggable true
-            // 这个是控制显示LOG true 显示 false 不显示
-            buildConfigField "boolean", "LOG_DEBUG", "true"
-            // 测试包版本名后缀 这个在安装的时候，会看到
-            versionNameSuffix "-debug"
-            // 代码混淆 false 不混淆，true 混淆
-            minifyEnabled true
-            // zipalign 优化 这个也要单独领出来说一下
-            zipAlignEnabled true
-            // 移除无用的resource文件 signingConfig signingConfigs.debug //签名调用
-            shrinkResources true
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            minifyEnabled false
+            shrinkResources false
+            zipAlignEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debug
         }
+        debugProguard {
+            debuggable true
+            minifyEnabled true
+            shrinkResources true
+            zipAlignEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro', 'proguard-rules-debug.pro'
+            signingConfig signingConfigs.debug
+        }
+
+        debugProguardLog {
+            debuggable true
+            minifyEnabled true
+            shrinkResources true
+            zipAlignEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro', 'proguard-log.pro'
+            signingConfig signingConfigs.debug
+        }
+
+
+
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -87,6 +96,7 @@ android {
         }
     }
 }
+def qmui_arch_version = '2.0.0-alpha02'
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'androidx.appcompat:appcompat:1.1.0'
@@ -110,4 +120,8 @@ dependencies {
     // log
     implementation 'org.jooq:joor-java-6:0.9.12'
     implementation 'org.slf4j:slf4j-android:1.7.28'
+    // QMUI
+    implementation "com.qmuiteam:arch:$qmui_arch_version"
+    annotationProcessor "com.qmuiteam:arch-compiler:$qmui_arch_version"
+    implementation "com.qmuiteam:qmui:2.0.0-alpha02"
 }

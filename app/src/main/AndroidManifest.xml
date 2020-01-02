@@ -8,12 +8,12 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.READ_SMS"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <!--拨打电话-->
-    <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
         android:name="com.wonium.cicada.App"
@@ -22,47 +22,73 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
         <!--启动引导页-->
-        <activity android:name="com.wonium.cicada.ui.activity.SplashActivity" android:launchMode="singleTask">
+        <activity
+            android:name="com.wonium.cicada.ui.activity.SplashActivity"
+            android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.wonium.cicada.ui.activity.LoginActivity" android:launchMode="singleTask"/>
-        <activity android:name="com.wonium.cicada.ui.activity.MainActivity" android:launchMode="singleInstance"/>
+        <activity
+            android:name="com.wonium.cicada.ui.activity.LoginActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name="com.wonium.cicada.ui.activity.MainActivity"
+            android:launchMode="singleInstance" />
         <activity android:name="com.wonium.cicada.ui.activity.ZLibActivity" />
         <activity android:name="com.wonium.cicada.ui.activity.TestGridViewActivity" />
         <activity android:name="com.wonium.cicada.ui.activity.ProgressActivity" />
-        <activity android:name="com.wonium.cicada.ui.activity.ImageCompressActivity" android:launchMode="singleTask"/>
+        <activity
+            android:name="com.wonium.cicada.ui.activity.ImageCompressActivity"
+            android:launchMode="singleTask" />
         <!--我的工具页面-->
         <activity android:name="com.wonium.cicada.ui.activity.MyToolsActivity" />
         <activity android:name="com.wonium.cicada.ui.activity.ActivityManagerActivity" />
         <activity android:name="com.wonium.cicada.ui.activity.BitmapUtilActivity" />
         <activity android:name="com.wonium.cicada.ui.activity.DataCleanActivity" />
         <activity android:name="com.wonium.cicada.ui.activity.DateUtilActivity" />
-        <activity android:name="com.wonium.cicada.ui.activity.DeviceUtilActivity"/>
-        <activity android:name="com.wonium.cicada.ui.activity.FileUtilActivity"/>
-        <activity android:name="com.wonium.cicada.ui.activity.StringUtilActivity"/>
+        <activity android:name="com.wonium.cicada.ui.activity.DeviceUtilActivity" />
+        <activity android:name="com.wonium.cicada.ui.activity.FileUtilActivity" />
+        <activity android:name="com.wonium.cicada.ui.activity.StringUtilActivity" />
         <activity android:name="com.wonium.cicada.ui.activity.CustomComponentActivity" />
         <activity android:name="com.wonium.cicada.ui.activity.ImageViewActivity" />
         <activity android:name="com.wonium.cicada.ui.activity.TextViewActivity" />
         <activity android:name="com.wonium.cicada.ui.activity.CustomDialogActivity" />
         <activity android:name="com.wonium.cicada.ui.activity.ByteUtilActivity" />
-        <activity android:name="com.wonium.cicada.ui.activity.ExpandListActivity"/>
-        <activity android:name="com.wonium.cicada.ui.activity.ColorUtilActivity" android:launchMode="singleTask"/>
-        <activity android:name="com.wonium.cicada.ui.activity.DensityUtilActivity" android:launchMode="singleTask"/>
-        <activity android:name="com.wonium.cicada.ui.activity.InputMethodManagerUtilActivity" android:launchMode="singleTask"/>
-        <activity android:name="com.wonium.cicada.ui.activity.IntentUtilActivity" android:launchMode="singleTask"/>
-        <activity android:name="com.wonium.cicada.ui.activity.MD5UtilActivity" android:launchMode="singleTask"/>
-        <activity android:name="com.wonium.cicada.ui.activity.RippleLayoutActivity" android:launchMode="singleTask"/>
-        <activity android:name="com.wonium.cicada.ui.activity.WProgressDialogActivity" android:launchMode="singleTask"/>
+        <activity android:name="com.wonium.cicada.ui.activity.ExpandListActivity" />
+        <activity
+            android:name="com.wonium.cicada.ui.activity.ColorUtilActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name="com.wonium.cicada.ui.activity.DensityUtilActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name="com.wonium.cicada.ui.activity.InputMethodManagerUtilActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name="com.wonium.cicada.ui.activity.IntentUtilActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name="com.wonium.cicada.ui.activity.MD5UtilActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name="com.wonium.cicada.ui.activity.RippleLayoutActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name="com.wonium.cicada.ui.activity.WProgressDialogActivity"
+            android:launchMode="singleTask" />
         <!--<activity android:name=".ui.ui.activity.SecondActivity" />-->
         <!-- 登陆页面 -->
-        <activity android:name="com.wonium.cicada.ui.activity.RegisterActivity" android:launchMode="singleTask"/>
+        <activity
+            android:name="com.wonium.cicada.ui.activity.RegisterActivity"
+            android:launchMode="singleTask" />
         <!--&lt;!&ndash;H5页面&ndash;&gt;-->
         <!--<activity android:name=".ui.ui.activity.H5Activity"/>-->
         <!-- 测试适配-->
-        <activity android:name=".ui.activity.FitterActivity" android:launchMode="singleTop"/>
+        <activity
+            android:name=".ui.activity.FitterActivity"
+            android:launchMode="singleTop" />
     </application>
 
 </manifest>

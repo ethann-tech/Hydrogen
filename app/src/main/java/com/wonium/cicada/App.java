@@ -18,9 +18,9 @@ package com.wonium.cicada;
 
 
 import android.app.Application;
-import android.util.Log;
 
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.qmuiteam.qmui.arch.QMUISwipeBackActivityManager;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -40,11 +40,15 @@ import org.slf4j.LoggerFactory;
  */
 public class App extends Application {
     private static App mInstance;
-    private Logger logger;
+    private Logger logger=LoggerFactory.getLogger(this.getClass());
 
     @Override
     public void onCreate() {
-        super.onCreate(); mInstance = this; initARouter(); initLogger();
+        super.onCreate();
+        mInstance = this;
+        initARouter();
+        initLogger();
+        QMUISwipeBackActivityManager.init(this);
     }
 
     public static App getInstance() {
@@ -55,12 +59,14 @@ public class App extends Application {
      * 初始化页面路由
      */
     private void initARouter() {
-        logger.debug( "initARouter: " + BuildConfig.DEBUG);
+        logger.debug("initARouter: " + BuildConfig.DEBUG);
         logger.debug("LOG:App:initARouter init={}", "sdfsfs");
         if (BuildConfig.DEBUG) {
             ARouter.openLog();
-            ARouter.openDebug(); ARouter.printStackTrace();
-        } ARouter.init(this);
+            ARouter.openDebug();
+            ARouter.printStackTrace();
+        }
+        ARouter.init(this);
 
     }
 
