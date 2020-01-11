@@ -145,19 +145,18 @@ public class DensityUtil {
 
     /**
      * 设置自定义Density 适配使用
-     * @param activity 当前activity
-     * @param application 应用程序
+     * @param context 当前activity
      */
-    public  void setCustomDensity(AppCompatActivity activity, final Application application){
-        DisplayMetrics appDisplayMetrics =application.getResources().getDisplayMetrics();
+    public  void setCustomDensity(Context context){
+        DisplayMetrics appDisplayMetrics =context.getApplicationContext().getResources().getDisplayMetrics();
         if (sNonCompatDensity ==0){
             sNonCompatDensity =appDisplayMetrics.density;
             sNonCompatScaledDensity =appDisplayMetrics.scaledDensity;
-            application.registerComponentCallbacks(new ComponentCallbacks() {
+            context.getApplicationContext().registerComponentCallbacks(new ComponentCallbacks() {
                 @Override
                 public void onConfigurationChanged(Configuration newConfig) {
                     if (newConfig!=null&&newConfig.fontScale>0){
-                        sNonCompatScaledDensity =application.getResources().getDisplayMetrics().scaledDensity;
+                        sNonCompatScaledDensity =context.getApplicationContext().getResources().getDisplayMetrics().scaledDensity;
                     }
                 }
                 @Override
@@ -171,7 +170,7 @@ public class DensityUtil {
         appDisplayMetrics.density =targetDensity;
         appDisplayMetrics.scaledDensity = targetScaleDensity;
         appDisplayMetrics.densityDpi =targetDensityDpi;
-        final  DisplayMetrics activityDisplayMetrics =activity.getResources().getDisplayMetrics();
+        final  DisplayMetrics activityDisplayMetrics =context.getApplicationContext().getResources().getDisplayMetrics();
         activityDisplayMetrics.density =targetDensity;
         activityDisplayMetrics.scaledDensity =targetScaleDensity;
         activityDisplayMetrics.densityDpi =targetDensityDpi;
