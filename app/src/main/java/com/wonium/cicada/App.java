@@ -18,15 +18,12 @@ package com.wonium.cicada;
 
 
 import android.app.Application;
-import android.util.Log;
 
 import com.alibaba.android.arouter.launcher.ARouter;
-import com.orhanobut.logger.AndroidLogAdapter;
-import com.orhanobut.logger.FormatStrategy;
-import com.orhanobut.logger.Logger;
-import com.orhanobut.logger.PrettyFormatStrategy;
-import com.wonium.cicada.BuildConfig;
-import com.wonium.cicada.R;
+import com.qmuiteam.qmui.arch.QMUISwipeBackActivityManager;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 /**
@@ -43,7 +40,7 @@ import com.wonium.cicada.R;
  */
 public class App extends Application {
     private static App mInstance;
-    private String TAG=this.getClass().getSimpleName();
+    private Logger logger=LoggerFactory.getLogger(this.getClass());
 
     @Override
     public void onCreate() {
@@ -51,6 +48,7 @@ public class App extends Application {
         mInstance = this;
         initARouter();
         initLogger();
+        QMUISwipeBackActivityManager.init(this);
     }
 
     public static App getInstance() {
@@ -60,13 +58,11 @@ public class App extends Application {
     /**
      * 初始化页面路由
      */
-    private void initARouter(){
-        Log.d(TAG, "initARouter: "+String.valueOf(BuildConfig.DEBUG));
-        // These two lines must be written before init, otherwise these configurations will be invalid in the init process
+    private void initARouter() {
+        logger.debug("initARouter: " + BuildConfig.DEBUG);
+        logger.debug("LOG:App:initARouter init={}", "sdfsfs");
         if (BuildConfig.DEBUG) {
-            // Print log
             ARouter.openLog();
-            // Turn on debugging mode (If you are running in InstantRun mode, you must turn on debug mode! Online version needs to be closed, otherwise there is a security risk)
             ARouter.openDebug();
             ARouter.printStackTrace();
         }
@@ -78,9 +74,14 @@ public class App extends Application {
      * 初始化Logger
      */
     private void initLogger() {
-        FormatStrategy formatStrategy = PrettyFormatStrategy.newBuilder().showThreadInfo(true).methodCount(5).methodOffset(7).tag(getBaseContext().getResources().getString(R.string.app_name)).build();
-        Logger.addLogAdapter(new AndroidLogAdapter(formatStrategy));
+        logger = LoggerFactory.getLogger(this.getClass());
+        logger.error("LOG:Application:onCreate =================================================================================");
+        logger.debug("LOG:Application:onCreate content=debug !!! this log should remove !!!");
+        logger.trace("LOG:Application:onCreate content=trace !!! this log should remove !!!");
+        logger.info("LOG:Application:onCreate content=info  !!! this log should remove !!!");
+        logger.warn("LOG:Application:onCreate content=warn  !!! this log should remove !!!");
+        logger.error("LOG:Application:onCreate content=error !!! this log should remove !!!");
+        logger.info("LOG:Application:onCreate apk build time={}", BuildConfig.BUILD_TIME);
+        logger.error("LOG:Application:onCreate =================================================================================");
     }
-
-
 }

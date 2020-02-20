@@ -41,6 +41,33 @@
 -dontwarn com.**
 -dontwarn afu.**
 
+-obfuscationdictionary          proguard-dic-6.txt
+-renamesourcefileattribute      proguard-dic-6.txt
+-classobfuscationdictionary     proguard-dic-6.txt
+-packageobfuscationdictionary   proguard-dic-6.txt
+-repackageclasses               java.io
+
+-dontwarn **
+
+-keepattributes Signature
+-keepattributes *Annotation*
+-keepclassmembers class * { @org.greenrobot.eventbus.Subscribe <methods>; }
+
+##########################################################################################################
+-keep class androidx.fragment.app.FragmentTransaction{ *; }
+-keep class androidx.fragment.app.FragmentTransaction$Op{ *; }
+-keep class android.support.v4.app.BackStackRecord{ *; }
+-keep class android.support.v4.app.BackStackRecord$Op{ *; }
+
+
+#######################################Glide##############################################################
+-keep public class * implements com.bumptech.glide.module.GlideModule
+-keep public class * extends com.bumptech.glide.module.AppGlideModule
+
+
+
+
+
 # 忽略警告
 
 #-ignorewarning
@@ -78,4 +105,7 @@
 -keep class * implements com.alibaba.android.arouter.facade.template.IProvider
 # ARouter end
 #-keep public class com.google.android.material.**{*;}
-
+################################## QMUI #############################################################
+-keep class **_FragmentFinder { *; }
+-keep class com.qmuiteam.qmui.arch.record.** { *; }
+-keep class androidx.fragment.app.* { *; }

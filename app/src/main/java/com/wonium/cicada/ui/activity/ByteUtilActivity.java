@@ -20,12 +20,14 @@ package com.wonium.cicada.ui.activity;
 import androidx.databinding.DataBindingUtil;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
-import com.orhanobut.logger.Logger;
 import com.wonium.cicada.R;
 import com.wonium.cicada.databinding.ActivityByteUtilBinding;
 import com.wonium.cicada.router.PageRouter;
 import com.wonium.hydrogen.ui.BaseActivity;
 import com.wonium.hydrogen.utils.ByteUtil;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.nio.ByteOrder;
 
@@ -44,7 +46,7 @@ import java.nio.ByteOrder;
 @Route(path = PageRouter.ACTIVITY_BYTE_UTIL)
 public class ByteUtilActivity extends BaseActivity {
     private ActivityByteUtilBinding mBinding;
-
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
     @Override
     protected int getStatusColor() {
         return getContext().getResources().getColor(R.color.black);
@@ -74,19 +76,19 @@ public class ByteUtilActivity extends BaseActivity {
         mBinding.includeToolbarByte.toolbar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_arrow_back_24dp));
         // getBitValue
         byte value = (byte) 234;
-        Logger.d("234 convert binary" + ByteUtil.getInstance().byteToBit(value));
-        Logger.d("获取value index 为4的值" + ByteUtil.getInstance().getBitValue(value, 4));
+        logger.debug("234 convert binary" + ByteUtil.getInstance().byteToBit(value));
+        logger.debug("获取value index 为4的值" + ByteUtil.getInstance().getBitValue(value, 4));
 
         //byteArrayToShort 如果你不了解大小端 请参考 https://blog.wonium.com/archives/115/
         byte[] bytes = new byte[2];
         bytes[0] = 8;
         bytes[1] = 1;
-        Logger.d("bytesArrayToShort Big-->" + ByteUtil.getInstance().byteArrayToShort(bytes, ByteOrder.BIG_ENDIAN));
-        Logger.d("byteArrayToShort--Little>" + ByteUtil.getInstance().byteArrayToShort(bytes, ByteOrder.LITTLE_ENDIAN));
+        logger.debug("bytesArrayToShort Big-->" + ByteUtil.getInstance().byteArrayToShort(bytes, ByteOrder.BIG_ENDIAN));
+        logger.debug("byteArrayToShort--Little>" + ByteUtil.getInstance().byteArrayToShort(bytes, ByteOrder.LITTLE_ENDIAN));
 
         //printByteArrayToBinary 如果你不了解大小端 请参考 https://blog.wonium.com/archives/115/
-        Logger.d("shortToByteArray Big-Endian-->" + ByteUtil.getInstance().printByteArrayToBinary(ByteUtil.getInstance().shortToByteArray((short) 2049, ByteOrder.BIG_ENDIAN)));
-        Logger.d("shortToByteArray Little-Endian-->" + ByteUtil.getInstance().printByteArrayToBinary(ByteUtil.getInstance().shortToByteArray((short) 2049, ByteOrder.LITTLE_ENDIAN)));
+        logger.debug("shortToByteArray Big-Endian-->" + ByteUtil.getInstance().printByteArrayToBinary(ByteUtil.getInstance().shortToByteArray((short) 2049, ByteOrder.BIG_ENDIAN)));
+        logger.debug("shortToByteArray Little-Endian-->" + ByteUtil.getInstance().printByteArrayToBinary(ByteUtil.getInstance().shortToByteArray((short) 2049, ByteOrder.LITTLE_ENDIAN)));
 
 
         // byteArrayToInt
@@ -95,12 +97,12 @@ public class ByteUtilActivity extends BaseActivity {
         byteInt[1] = 1;
         byteInt[2] = 1;
         byteInt[3] = 64;
-        Logger.d("byteArrayToInt Big-Endian-->" + ByteUtil.getInstance().byteArrayToInt(byteInt, ByteOrder.BIG_ENDIAN));
-        Logger.d("byteArrayToInt Little-Endian-->" + ByteUtil.getInstance().byteArrayToInt(byteInt, ByteOrder.LITTLE_ENDIAN));
+        logger.debug("byteArrayToInt Big-Endian-->" + ByteUtil.getInstance().byteArrayToInt(byteInt, ByteOrder.BIG_ENDIAN));
+        logger.debug("byteArrayToInt Little-Endian-->" + ByteUtil.getInstance().byteArrayToInt(byteInt, ByteOrder.LITTLE_ENDIAN));
 
         // intToByteArray 83951936
-        Logger.d("intToByteArray Big-Endian-->" + ByteUtil.getInstance().printByteArrayToBinary(ByteUtil.getInstance().intToByteArray(83951936, ByteOrder.BIG_ENDIAN)));
-        Logger.d("intToByteArray Little-Endian-->" + ByteUtil.getInstance().printByteArrayToBinary(ByteUtil.getInstance().intToByteArray(83951936, ByteOrder.LITTLE_ENDIAN)));
+         logger.debug("intToByteArray Big-Endian-->" + ByteUtil.getInstance().printByteArrayToBinary(ByteUtil.getInstance().intToByteArray(83951936, ByteOrder.BIG_ENDIAN)));
+         logger.debug("intToByteArray Little-Endian-->" + ByteUtil.getInstance().printByteArrayToBinary(ByteUtil.getInstance().intToByteArray(83951936, ByteOrder.LITTLE_ENDIAN)));
 
         // byteArrayToFloat
         byte[] byteFloat = new byte[4];
@@ -108,8 +110,8 @@ public class ByteUtilActivity extends BaseActivity {
         byteFloat[1] = 0;
         byteFloat[2] = 0;
         byteFloat[3] = 0;
-        Logger.d("byteArrayToFloat Big-Endian-->" + ByteUtil.getInstance().byteArrayToFloat(byteFloat, ByteOrder.BIG_ENDIAN));
-        Logger.d("byteArrayToFloat Little-Endian-->" + ByteUtil.getInstance().byteArrayToFloat(byteFloat, ByteOrder.LITTLE_ENDIAN));
+         logger.debug("byteArrayToFloat Big-Endian-->" + ByteUtil.getInstance().byteArrayToFloat(byteFloat, ByteOrder.BIG_ENDIAN));
+         logger.debug("byteArrayToFloat Little-Endian-->" + ByteUtil.getInstance().byteArrayToFloat(byteFloat, ByteOrder.LITTLE_ENDIAN));
     }
 
     @Override

@@ -26,7 +26,6 @@ import androidx.annotation.Keep;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-
 import com.wonium.hydrogen.R;
 import com.wonium.hydrogen.utils.ActivityManagerUtil;
 import com.wonium.hydrogen.utils.DensityUtil;
@@ -43,7 +42,7 @@ import com.wonium.hydrogen.utils.StatusBarUtil;
  * @UpdateUser: update user
  * @UpdateDate: 2018/11/17 10:08
  * @UpdateDescription: 更新说明
- * @Version: 1.0.0
+ * @Version: 1.0.1
  */
 @Keep
 public abstract class BaseActivity extends AppCompatActivity {
@@ -66,7 +65,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-        DensityUtil.getInstance().setCustomDensity(this, getApplication());
+        DensityUtil.getInstance().setCustomDensity(this);
         ActivityManagerUtil.getInstance().addActivity(this);
         super.onCreate(savedInstanceState);
         mContext = this;

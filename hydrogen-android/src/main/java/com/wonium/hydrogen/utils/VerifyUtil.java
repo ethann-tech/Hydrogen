@@ -102,6 +102,7 @@ public class VerifyUtil {
         return Pattern.matches(regex, idCard);
     }
 
+
     /**
      * 短信验证码长度校验 6位
      *
@@ -380,18 +381,11 @@ public class VerifyUtil {
             return true;
         }
     }
-
     /**
-     * 是否是英语
-     *
-     * @param str 待验证的字符串
-     * @return 是否是英语
+     *  判断是否是英语
      */
-    public boolean isEnglish(String str) {
-        byte[] bytes = str.getBytes();
-        int i = bytes.length;
-        int j = str.length();
-        return i == j;
+    public  boolean isEnglish(String charaString) {
+        return charaString.matches("^[a-zA-Z]*");
     }
 
     /**

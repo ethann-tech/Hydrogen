@@ -19,6 +19,7 @@ package com.wonium.hydrogen.utils;
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 import androidx.annotation.Keep;
@@ -146,8 +147,8 @@ public class ShellUtil {
             if (isNeedResultMsg) {
                 successMsg = new StringBuilder();
                 errorMsg = new StringBuilder();
-                successResult = new BufferedReader(new InputStreamReader(process.getInputStream(), "UTF-8"));
-                errorResult = new BufferedReader(new InputStreamReader(process.getErrorStream(), "UTF-8"));
+                successResult = new BufferedReader(new InputStreamReader(process.getInputStream(), StandardCharsets.UTF_8));
+                errorResult = new BufferedReader(new InputStreamReader(process.getErrorStream(), StandardCharsets.UTF_8));
                 String line;
                 if ((line = successResult.readLine()) != null) {
                     successMsg.append(line);

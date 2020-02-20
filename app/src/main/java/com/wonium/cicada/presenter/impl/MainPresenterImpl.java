@@ -19,12 +19,14 @@ package com.wonium.cicada.presenter.impl;
 import android.content.Context;
 
 
-import com.orhanobut.logger.Logger;
 import com.wonium.cicada.model.BaseModel;
 import com.wonium.cicada.model.MainModel;
 import com.wonium.cicada.model.impl.MainModelImpl;
 import com.wonium.cicada.presenter.MainPresenter;
 import com.wonium.cicada.ui.view.MainView;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.List;
 
@@ -43,7 +45,7 @@ import java.util.List;
 public class MainPresenterImpl implements MainPresenter {
     private MainView mainView;
     private MainModel mainModel;
-
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
     public MainPresenterImpl(MainView mainView) {
         this.mainView = mainView;
         mainModel = new MainModelImpl();
@@ -60,7 +62,7 @@ public class MainPresenterImpl implements MainPresenter {
 
                 @Override
                 public void onFailure(String error) {
-                    Logger.d(error);
+                    logger.debug("LOG:MainPresenterImpl:onFailure [error]={}",error);
                 }
             });
         }

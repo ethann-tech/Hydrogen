@@ -148,10 +148,6 @@ public abstract class UniversalItemDecoration extends RecyclerView.ItemDecoratio
         } catch (Exception e) {
             return defValue;
         }
-
-
     }
-
-
 
 }
