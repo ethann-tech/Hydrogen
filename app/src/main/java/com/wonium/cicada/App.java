@@ -60,7 +60,7 @@ public class App extends Application {
      */
     private void initARouter() {
         logger.debug("initARouter: " + BuildConfig.DEBUG);
-        logger.debug("LOG:App:initARouter init={}", "sdfsfs");
+        logger.debug("LOG:App:initARouter init={}", "hydrogen");
         if (BuildConfig.DEBUG) {
             ARouter.openLog();
             ARouter.openDebug();
