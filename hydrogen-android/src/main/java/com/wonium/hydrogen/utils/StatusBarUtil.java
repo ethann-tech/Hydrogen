@@ -143,7 +143,12 @@ public class StatusBarUtil {
                     boolean isNeedRequestLayout = contentView.getPaddingTop() < statusBarHeight;
                     if (isNeedRequestLayout) {
                         contentView.setPadding(0, statusBarHeight, 0, 0);
-                        coordinatorLayout.post(coordinatorLayout::requestLayout);
+                        coordinatorLayout.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                coordinatorLayout.requestLayout();
+                            }
+                        });
                     }
                 } else {
                     coordinatorLayout.setStatusBarBackgroundColor(calculateStatusColor(color, statusBarAlpha));

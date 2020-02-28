@@ -543,7 +543,12 @@ public class FileUtil {
         }
 
         File dir = new File(dirPath);
-        File[] files = dir.listFiles((dir1, filename) -> filename.indexOf("." + extension) > 0);
+        File[] files = dir.listFiles(new FilenameFilter() {
+            @Override
+            public boolean accept(File dir1, String filename) {
+                return filename.indexOf("." + extension) > 0;
+            }
+        });
         if (files == null){
             return Collections.emptyList();
         }

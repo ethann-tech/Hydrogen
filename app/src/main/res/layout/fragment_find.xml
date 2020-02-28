@@ -66,17 +66,12 @@
 
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_img_compress"
+            android:id="@+id/btn_img_compress1"
             app:layout_constraintTop_toBottomOf="@+id/btn_proxy"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             android:text="图片压缩"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
-
-
-
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

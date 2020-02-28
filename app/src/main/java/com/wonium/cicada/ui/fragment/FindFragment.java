@@ -27,7 +27,6 @@ import com.alibaba.android.arouter.launcher.ARouter;
 import com.wonium.cicada.R;
 import com.wonium.cicada.databinding.FragmentFindBinding;
 import com.wonium.cicada.router.PageRouter;
-import com.wonium.cicada.ui.activity.MainActivity;
 import com.wonium.hydrogen.OnNoDoubleClickListener;
 import com.wonium.hydrogen.ui.BaseFragment;
 import com.wonium.hydrogen.utils.ToastUtil;
@@ -91,7 +90,7 @@ public class FindFragment extends BaseFragment {
            }
        });
         mBinding.btnProxy.setOnClickListener(v -> ToastUtil.getInstance().show(getContext(),"是否启用网络代理："+(isWifiProxy()?"yes":"false")+"  ; \n是否启用VPN : "+(isVpnUsed()?"yes":"false")));
-        mBinding.btnImgCompress.setOnClickListener(v -> ARouter.getInstance().build(PageRouter.ACTIVITY_IMG_COMPRESS).navigation(getContext()));
+        mBinding.btnImgCompress1.setOnClickListener(v -> ARouter.getInstance().build(PageRouter.ACTIVITY_IMG_COMPRESS).navigation(getContext()));
     }
 
     private boolean isWifiProxy(){

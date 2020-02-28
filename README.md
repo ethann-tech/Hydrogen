@@ -22,7 +22,7 @@
 
 ```
 dependencies {
-	  implementation 'com.github.ethan-wonium:CicadaAndroid:latestVersion'
+	  implementation 'com.github.wonium-ethan:HydrogenAndroid:latestVersion'
 	 }
 ```
 ### 工具库说明

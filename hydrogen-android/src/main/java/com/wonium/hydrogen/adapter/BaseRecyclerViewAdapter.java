@@ -127,17 +127,23 @@ public abstract class BaseRecyclerViewAdapter<T, VH extends RecyclerView.ViewHol
     public abstract VH onCreateVH(ViewGroup parent, int viewType);
 
     @Override
-    public void onBindViewHolder(@NonNull VH holder, int position) {
-        holder.itemView.setOnClickListener(view -> {
-            if (onItemClickListener!=null){
-                onItemClickListener.onItemClick(view,position);
+    public void onBindViewHolder(@NonNull VH holder,final int position) {
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (onItemClickListener != null) {
+                    onItemClickListener.onItemClick(view, position);
+                }
             }
         });
-        holder.itemView.setOnLongClickListener(view -> {
-                if (onItemLongClickListener!=null){
-                    onItemLongClickListener.onItemLongClick(view,position);
+        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                if (onItemLongClickListener != null) {
+                    onItemLongClickListener.onItemLongClick(view, position);
                 }
-            return false;
+                return false;
+            }
         });
         onBindVH(holder, position);
     }

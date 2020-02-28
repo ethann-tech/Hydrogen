@@ -74,7 +74,12 @@ public class RippleLayout extends RelativeLayout {
     private int rippleColor;
     private int ripplePadding;
     private GestureDetector gestureDetector;
-    private final Runnable runnable = () -> invalidate();
+    private final Runnable runnable = new Runnable() {
+        @Override
+        public void run() {
+            RippleLayout.this.invalidate();
+        }
+    };
 
     private OnRippleCompleteListener onCompletionListener;
 
