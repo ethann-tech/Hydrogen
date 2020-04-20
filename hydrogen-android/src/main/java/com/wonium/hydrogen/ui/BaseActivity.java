@@ -65,7 +65,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-        DensityUtil.getInstance().setCustomDensity(this);
+        DensityUtil.getInstance().setCustomDensity(getApplicationContext());
         ActivityManagerUtil.getInstance().addActivity(this);
         super.onCreate(savedInstanceState);
         mContext = this;
@@ -182,10 +182,12 @@ public abstract class BaseActivity extends AppCompatActivity {
         this.isAllowScreenRotate = isAllowScreenRotate;
     }
 
-
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        ActivityManagerUtil.getInstance().finishActivity(this);
+
+
     }
 
 }
