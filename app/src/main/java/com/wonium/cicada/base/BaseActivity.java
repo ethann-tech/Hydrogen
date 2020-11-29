@@ -145,7 +145,7 @@ public abstract class BaseActivity extends AppCompatActivity {
      *
      * @param layoutResId 布局文件资源ID
      */
-    public abstract void bindLayout(int layoutResId);
+    public   void bindLayout(int layoutResId){}
 
 
     /**
