@@ -24,8 +24,8 @@ import androidx.databinding.DataBindingUtil;
 
 import com.wonium.cicada.R;
 import com.wonium.cicada.databinding.ItemGuidePagerBinding;
-import com.wonium.hydrogen.adapter.BaseRecyclerViewAdapter;
-import com.wonium.hydrogen.adapter.BaseViewHolder;
+import com.wonium.cicada.base.BaseRecyclerViewAdapter;
+import com.wonium.cicada.base.BaseViewHolder;
 
 public class GuidePagerAdapter extends BaseRecyclerViewAdapter<Integer, BaseViewHolder<ItemGuidePagerBinding>> {
 

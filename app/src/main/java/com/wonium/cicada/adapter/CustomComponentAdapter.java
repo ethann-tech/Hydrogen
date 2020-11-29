@@ -23,8 +23,8 @@ import androidx.databinding.DataBindingUtil;
 
 import com.wonium.cicada.R;
 import com.wonium.cicada.databinding.ItemCustomComponentBinding;
-import com.wonium.hydrogen.adapter.BaseRecyclerViewAdapter;
-import com.wonium.hydrogen.adapter.BaseViewHolder;
+import com.wonium.cicada.base.BaseRecyclerViewAdapter;
+import com.wonium.cicada.base.BaseViewHolder;
 import com.wonium.hydrogen.utils.StringUtil;
 /**
  * @ClassName: CustomComponentAdapter
