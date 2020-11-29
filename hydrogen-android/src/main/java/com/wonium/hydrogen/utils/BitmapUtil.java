@@ -47,31 +47,31 @@ import java.nio.ByteBuffer;
  * @Version: 1.0.0
  */
 public class BitmapUtil {
-    /**
-     * 实例对象
-     */
-    private static BitmapUtil mInstance;
+
+    private BitmapUtil() {
+        if (Inner.INSTANCE != null) {
+            throw new RuntimeException("该实例已存在，请通过getInstance方法获取");
+        }
+    }
+
+    private static class Inner {
+        private static final BitmapUtil INSTANCE = new BitmapUtil();
+    }
 
     public static BitmapUtil getInstance() {
-        if (mInstance == null) {
-            synchronized (BlueToothUtil.class) {
-                if (mInstance == null) {
-                    mInstance = new BitmapUtil();
-                }
-            }
-        }
-        return mInstance;
+        return Inner.INSTANCE;
     }
 
 
     /**
      * 创建一个指定宽，高，颜色的bitmap
-     * @param width bitmap的宽，单位是像素
+     *
+     * @param width  bitmap的宽，单位是像素
      * @param height bitmap的高，单位是像素
-     * @param color bitmap 的颜色 例如getResources().getColor(R.color.colorAccent),Color.RED，Color.parseColor("#FFOOFO")等
+     * @param color  bitmap 的颜色 例如getResources().getColor(R.color.colorAccent),Color.RED，Color.parseColor("#FFOOFO")等
      * @return
      */
-    public  Bitmap createBitmap(int width, int height, int color) {
+    public Bitmap createBitmap(int width, int height, int color) {
         Paint paint = new Paint();
         paint.setColor(color);
         paint.setStrokeWidth(10);
@@ -92,7 +92,7 @@ public class BitmapUtil {
      * @return 资源图片转成的Bitmap
      * @throws NullPointerException
      */
-    public  Bitmap imgToBitmap(Context context, int resId) throws NullPointerException {
+    public Bitmap imgToBitmap(Context context, int resId) throws NullPointerException {
         return BitmapFactory.decodeResource(context.getResources(), resId);
     }
 
@@ -102,7 +102,7 @@ public class BitmapUtil {
      * @param bitmap 被计算的bitmap
      * @return bitmap 的长度
      */
-    public  int getBitmapSize(Bitmap bitmap) {
+    public int getBitmapSize(Bitmap bitmap) {
         int length = 0;
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
@@ -117,7 +117,7 @@ public class BitmapUtil {
      * @return
      */
 
-    public  byte[] bitmapToByte(Bitmap bitmap) {
+    public byte[] bitmapToByte(Bitmap bitmap) {
         if (bitmap == null) {
             return new byte[0];
         }
@@ -127,14 +127,13 @@ public class BitmapUtil {
     }
 
 
-
     /**
      * 通过Path 获得Bitmap
      *
      * @param urlPath 文件路径
      * @return bitmap
      */
-    public  Bitmap getBitmapByPath(String urlPath) {
+    public Bitmap getBitmapByPath(String urlPath) {
         Bitmap bitmap = null;
         try {
             URL url = new URL(urlPath);
@@ -160,7 +159,7 @@ public class BitmapUtil {
      * @param srcBitmap 原Bitmap
      * @return new bitmap
      */
-    public  Bitmap flippingBitmap(Bitmap srcBitmap) {
+    public Bitmap flippingBitmap(Bitmap srcBitmap) {
         Matrix matrix = new Matrix();
         matrix.postScale(1, -1);
         matrix.postRotate(0);
@@ -174,17 +173,17 @@ public class BitmapUtil {
      * @param angle
      * @return
      */
-    public  Bitmap rotateBitmap(Bitmap bitmap, float angle) {
+    public Bitmap rotateBitmap(Bitmap bitmap, float angle) {
         Matrix matrix = new Matrix();
         matrix.postRotate(angle);
         return Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
     }
 
 
-	/**
-	  *获取RGB数据，从左上角开始取
-	  */
-    public  byte[] getPixels(Bitmap image) {
+    /**
+     * 获取RGB数据，从左上角开始取
+     */
+    public byte[] getPixels(Bitmap image) {
         int bytes = image.getByteCount();
         ByteBuffer buffer = ByteBuffer.allocate(bytes);
         image.copyPixelsToBuffer(buffer);
@@ -197,7 +196,7 @@ public class BitmapUtil {
      * @param srcBitmap 原Bitmap
      * @return bitmap的RGB数据
      */
-    public  byte[] getRGBDataFormat24(Bitmap srcBitmap) {
+    public byte[] getRGBDataFormat24(Bitmap srcBitmap) {
         int bmpWidth = srcBitmap.getWidth();
         int bmpHeight = srcBitmap.getHeight();
         int bufferSize = bmpHeight * bmpWidth * 3;
@@ -220,7 +219,7 @@ public class BitmapUtil {
      * @param bmp 位图
      * @return 返回转换好的位图
      */
-    public  Bitmap convertToBlackWhite(Bitmap bmp) {
+    public Bitmap convertToBlackWhite(Bitmap bmp) {
         int width = bmp.getWidth(); // 获取位图的宽
         int height = bmp.getHeight(); // 获取位图的高
         int[] pixels = new int[width * height]; // 通过位图的大小创建像素点数组
@@ -283,12 +282,13 @@ public class BitmapUtil {
 
     /**
      * Bitmap 尺寸压缩
+     *
      * @param path 图片地址
-     * @param rqsW  宽度
+     * @param rqsW 宽度
      * @param rqsH 高度
      * @return 压缩后的Bitmap
      */
-    public  Bitmap sizeCompress(String path, int rqsW, int rqsH) {
+    public Bitmap sizeCompress(String path, int rqsW, int rqsH) {
         // 用option设置返回的bitmap对象的一些属性参数
         final BitmapFactory.Options options = new BitmapFactory.Options();
         // 设置仅读取Bitmap的宽高而不读取内容
@@ -306,12 +306,11 @@ public class BitmapUtil {
             final int widthRatio = Math.round((float) width / (float) rqsW);
             inSampleSize = heightRatio < widthRatio ? heightRatio : widthRatio;
             options.inSampleSize = inSampleSize;
-            options.inJustDecodeBounds=false;
+            options.inJustDecodeBounds = false;
         }
         // 主要通过option里的inSampleSize对原图片进行按比例压缩
         return BitmapFactory.decodeFile(path, options);
     }
-
 
 
 }

@@ -61,7 +61,6 @@ public class BlueToothUtil {
      */
     public boolean createBond(Class btClass, BluetoothDevice btDevice) throws Exception {
         Method createBondMethod = btClass.getMethod("createBond");
-
         return (Boolean) createBondMethod.invoke(btDevice);
     }
 
@@ -79,10 +78,7 @@ public class BlueToothUtil {
             Method removeBondMethod = btClass.getDeclaredMethod("setPin", byte[].class);
             Boolean returnValue = (Boolean) removeBondMethod.invoke(btDevice, new Object[]{str.getBytes()});
             Log.e("returnValue", "" + returnValue);
-        } catch (SecurityException e) {
-            e.printStackTrace();
-        } catch (IllegalArgumentException e) {
-
+        } catch (SecurityException | IllegalArgumentException e) {
             e.printStackTrace();
         } catch (Exception e) {
 

@@ -43,22 +43,25 @@ import androidx.annotation.Keep;
  */
 @Keep
 public class ToastUtil {
+
+    private static boolean IS_SHOW = true;
+
     /**
      * 实例对象
      */
-    private static  ToastUtil  instance;
-
-    public static  ToastUtil getInstance() {
-        if (instance==null){
-            synchronized (ToastUtil.class){
-                if (instance==null){
-                    instance =new ToastUtil();
-                }
-            }
+    private ToastUtil() {
+        if (Inner.INSTANCE != null) {
+            throw new RuntimeException("该实例已存在，请通过getInstance方法获取");
         }
-        return instance;
     }
-    private static boolean IS_SHOW = true;
+
+    private static class Inner {
+        private static final ToastUtil INSTANCE = new ToastUtil();
+    }
+
+    public static ToastUtil getInstance() {
+        return Inner.INSTANCE;
+    }
 
     /**
      * 显示时间短
@@ -135,7 +138,6 @@ public class ToastUtil {
      * @param duration 持续时间
      */
     public void showCustom(Context context, CharSequence content, int duration) {
-
         View view1 = LayoutInflater.from(context).inflate(R.layout.layout_toast_view, null, false);
         TextView textView = view1.findViewById(R.id.tv_toast_text);
         textView.setText(content);

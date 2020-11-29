@@ -25,30 +25,40 @@ import java.util.zip.DeflaterOutputStream;
 import java.util.zip.Inflater;
 import java.util.zip.InflaterInputStream;
 
-public class ZLibUtil {
+/**
+ * @ClassName: VerifyUtil.java
+ * @Description: 验证类
+ * @Author: Wonium
+ * @E-mail: wonium@qq.com
+ * @Blog: https://blog.wonium.com
+ * @CreateDate: 2018/11/11 18:46
+ * @UpdateUser: 更新者
+ * @UpdateDate: 2018/11/11 18:46
+ * @UpdateDescription: 更新说明
+ * @Version: 1.0.0
+ */
+class ZlibUtil {
+    private static class Inner {
+        private static final ZlibUtil INSTANCE = new ZlibUtil();
+    }
 
-    private static  ZLibUtil mInstance;
-    private ZLibUtil(){}
-
-    public static ZLibUtil getInstance() {
-        if (mInstance==null){
-            synchronized (ZLibUtil.class){
-                if (mInstance==null){
-                    mInstance =new ZLibUtil();
-                }
-            }
+    private ZlibUtil() {
+        if (Inner.INSTANCE != null) {
+            throw new RuntimeException("该实例已存在，请通过getInstance方法获取");
         }
-        return mInstance;
+    }
+
+    public static ZlibUtil getInstance() {
+        return Inner.INSTANCE;
     }
 
     /**
      * 压缩
      *
-     * @param data
-     *            待压缩数据
+     * @param data 待压缩数据
      * @return byte[] 压缩后的数据
      */
-    public  byte[] compress(byte[] data) {
+    public byte[] compress(byte[] data) {
         byte[] output;
         Deflater compresser = new Deflater();
         compresser.reset();
@@ -79,13 +89,10 @@ public class ZLibUtil {
     /**
      * 压缩
      *
-     * @param data
-     *            待压缩数据
-     *
-     * @param os
-     *            输出流
+     * @param data 待压缩数据
+     * @param os   输出流
      */
-    public  void compress(byte[] data, OutputStream os) {
+    public void compress(byte[] data, OutputStream os) {
         DeflaterOutputStream dos = new DeflaterOutputStream(os);
 
         try {
@@ -102,11 +109,10 @@ public class ZLibUtil {
     /**
      * 解压缩
      *
-     * @param data
-     *            待压缩的数据
+     * @param data 待压缩的数据
      * @return byte[] 解压缩后的数据
      */
-    public  byte[] decompress(byte[] data) {
+    public byte[] decompress(byte[] data) {
         byte[] output = new byte[0];
 
         Inflater decompresser = new Inflater();
@@ -139,11 +145,10 @@ public class ZLibUtil {
     /**
      * 解压缩
      *
-     * @param is
-     *            输入流
+     * @param is 输入流
      * @return byte[] 解压缩后的数据
      */
-    public  byte[] decompress(InputStream is) {
+    public byte[] decompress(InputStream is) {
         InflaterInputStream iis = new InflaterInputStream(is);
         ByteArrayOutputStream o = new ByteArrayOutputStream(1024);
         try {
