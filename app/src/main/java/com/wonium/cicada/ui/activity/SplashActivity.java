@@ -167,6 +167,7 @@ public class SplashActivity extends BaseActivity {
         for (int i = 0; i < len; i++) {
             guideList.add(array.getResourceId(i, 0));
         }
+        array.recycle();
         return guideList;
     }
 

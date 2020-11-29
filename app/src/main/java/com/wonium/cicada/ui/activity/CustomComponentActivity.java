@@ -114,6 +114,8 @@ package com.wonium.cicada.ui.activity;
                         ARouter.getInstance().build(PageRouter.ACTIVITY_RIPPLE_LAYOUT).navigation(getContext());
                         break;
                     case 5: ARouter.getInstance().build(PageRouter.ACTIVITY_W_PROGRESS_DIALOG).navigation(getContext());
+                    break;
+                    case 6:ARouter.getInstance().build(PageRouter.ACTIVITY_CROSS_VIEW).navigation(getContext());
                         default: break;
                 }
             });

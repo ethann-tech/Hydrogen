@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="CircleImageView">
-        <attr name="border_width" format="dimension"/>
-        <attr name="border_color" format="color"/>
+        <attr name="border_width" format="dimension" />
+        <attr name="border_color" format="color" />
     </declare-styleable>
     <!--定时按钮-->
     <declare-styleable name="ScheduledButton">
-        <attr name="scheduled_time" format="integer"/>
-        <attr name="scheduled_initial_delay" format="integer"/>
-        <attr name="scheduled_period" format="integer"/>
+        <attr name="scheduled_time" format="integer" />
+        <attr name="scheduled_initial_delay" format="integer" />
+        <attr name="scheduled_period" format="integer" />
     </declare-styleable>
     <declare-styleable name="RippleLayout">
         <!--水波纹透明度 0-255 默认90-->
         <attr name="rl_alpha" format="integer" />
-        <attr name="rl_frameRate" format="integer"/>
+        <attr name="rl_frameRate" format="integer" />
         <!--波纹持续时间单位毫秒，默认400ms-->
-        <attr name="rl_rippleDuration" format="integer"/>
+        <attr name="rl_rippleDuration" format="integer" />
 
         <!--波纹颜色-->
         <attr name="rl_color" format="color" />
@@ -24,9 +24,9 @@
         <!--波纹类型-->
         <attr name="rl_type" format="enum">
             <!--简单波纹-->
-            <enum name="simpleRipple" value="0"/>
+            <enum name="simpleRipple" value="0" />
             <!--双波纹-->
-            <enum name="doubleRipple" value="1"/>
+            <enum name="doubleRipple" value="1" />
             <!--矩形-->
             <enum name="rectangle" value="2" />
         </attr>
@@ -42,9 +42,15 @@
     <!-- 末行对齐方式 -->
     <declare-styleable name="AlignTextView">
         <attr name="align" format="enum">
-            <enum name="left" value="0"/>
-            <enum name="center" value="1"/>
-            <enum name="right" value="2"/>
+            <enum name="left" value="0" />
+            <enum name="center" value="1" />
+            <enum name="right" value="2" />
         </attr>
     </declare-styleable>
+
+    <!--   CrossView -->
+    <declare-styleable name="CrossView">
+        <attr name="lineColor" format="color" />
+    </declare-styleable>
+
 </resources>

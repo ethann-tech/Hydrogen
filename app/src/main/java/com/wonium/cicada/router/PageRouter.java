@@ -121,7 +121,10 @@ public class PageRouter {
      * 自定义组件
      */
     public final static String ACTIVITY_CUSTOM_COMPONENT="/page/activity/ActivityCustomComponent";
-
+    /**
+     * CrossView
+     */
+    public final static String ACTIVITY_CROSS_VIEW="/page/activity/ActivityCrossView";
     /**
      * ImageView
      */

@@ -12,6 +12,7 @@
         <item>ExpandableListView</item>
         <item>RippleLayout</item>
         <item>WProgressDialog</item>
+        <item>CrossView</item>
     </string-array>
    <string-array name="tools_arrays">
        <item>@string/tools_activity_manager</item>
