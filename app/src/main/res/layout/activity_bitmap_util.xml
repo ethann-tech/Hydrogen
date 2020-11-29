@@ -14,124 +14,116 @@
   ~ limitations under the License.
   -->
 
-<layout xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <data>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-        <variable
-            name="title"
-            type="String" />
-    </data>
+    <include
+        android:id="@+id/include_toolbar_bitmap"
+        layout="@layout/layout_toolbar" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <ImageView
+        android:id="@+id/img_show_create_bitmap"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@null"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include_toolbar_bitmap" />
 
-        <include
-            android:id="@+id/include_toolbar_bitmap"
-            layout="@layout/layout_toolbar"
-            app:title="@{title}" />
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_create_bitmap"
+        style="@style/ButtonStyle"
+        android:text="创建Bitmap"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_show_create_bitmap" />
 
-        <ImageView
-            android:id="@+id/img_show_create_bitmap"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:contentDescription="@null"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/include_toolbar_bitmap" />
+    <ImageView
+        android:id="@+id/img_to_bitmap"
+        android:layout_width="128dp"
+        android:layout_height="128dp"
+        android:contentDescription="@null"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_create_bitmap" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_create_bitmap"
-            style="@style/ButtonStyle"
-            android:text="创建Bitmap"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/img_show_create_bitmap" />
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_img_to_bitmap"
+        style="@style/ButtonStyle"
+        android:layout_width="wrap_content"
+        android:text="ImgToBitmap"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_to_bitmap" />
 
-        <ImageView
-            android:id="@+id/img_to_bitmap"
-            android:layout_width="128dp"
-            android:layout_height="128dp"
-            android:contentDescription="@null"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_create_bitmap" />
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_bitmap_size"
+        style="@style/ButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_marginLeft="@dimen/material_layout_view_right_margin_8dp"
+        android:text="BitmapSize"
+        app:layout_constraintLeft_toRightOf="@+id/btn_img_to_bitmap"
+        app:layout_constraintTop_toBottomOf="@+id/img_to_bitmap" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_img_to_bitmap"
-            style="@style/ButtonStyle"
-            android:layout_width="wrap_content"
-            android:text="ImgToBitmap"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/img_to_bitmap" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_bitmap_size"
-            style="@style/ButtonStyle"
-            android:layout_width="wrap_content"
-            android:layout_marginLeft="@dimen/material_layout_view_right_margin_8dp"
-            android:text="BitmapSize"
-            app:layout_constraintLeft_toRightOf="@+id/btn_img_to_bitmap"
-            app:layout_constraintTop_toBottomOf="@+id/img_to_bitmap" />
-
-        <TextView
-            android:id="@+id/tvBitmapSize"
-            style="@style/ResultTextViewStyle"
-            android:lines="3"
-            app:layout_constraintLeft_toRightOf="@+id/img_to_bitmap"
-            app:layout_constraintTop_toBottomOf="@+id/btn_create_bitmap" />
+    <TextView
+        android:id="@+id/tvBitmapSize"
+        style="@style/ResultTextViewStyle"
+        android:lines="3"
+        app:layout_constraintLeft_toRightOf="@+id/img_to_bitmap"
+        app:layout_constraintTop_toBottomOf="@+id/btn_create_bitmap" />
 
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_bitmap_to_bytes"
-            style="@style/ButtonStyle"
-            android:layout_width="wrap_content"
-            android:layout_marginTop="@dimen/material_layout_view_top_margin_8dp"
-            android:text="bitmapToBytes"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_bitmap_size" />
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_bitmap_to_bytes"
+        style="@style/ButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="@dimen/material_layout_view_top_margin_8dp"
+        android:text="bitmapToBytes"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_bitmap_size" />
 
-        <ImageView
-            app:layout_constraintLeft_toLeftOf="parent"
-            android:id="@+id/img_display_bitmap_form_path"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/btn_bitmap_to_bytes" />
+    <ImageView
+        android:id="@+id/img_display_bitmap_form_path"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_bitmap_to_bytes" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            app:layout_constraintLeft_toLeftOf="parent"
-            android:id="@+id/btn_get_bitmap_by_path"
-            style="@style/ButtonStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/material_layout_view_top_margin_8dp"
-            android:text="根据路径获取Bitmap"
-            app:layout_constraintTop_toBottomOf="@+id/img_display_bitmap_form_path" />
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_get_bitmap_by_path"
+        style="@style/ButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/material_layout_view_top_margin_8dp"
+        android:text="根据路径获取Bitmap"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_display_bitmap_form_path" />
 
-        <ImageView
-            app:layout_constraintLeft_toLeftOf="parent"
-            android:id="@+id/img_flipping_bitmap"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            app:layout_constraintTop_toBottomOf="@+id/btn_get_bitmap_by_path" />
+    <ImageView
+        android:id="@+id/img_flipping_bitmap"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_get_bitmap_by_path" />
 
-        <ImageView
-            android:contentDescription="@null"
-            android:id="@+id/img_rotate_bitmap"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            app:layout_constraintLeft_toRightOf="@+id/img_flipping_bitmap"
-            app:layout_constraintTop_toBottomOf="@+id/btn_get_bitmap_by_path" />
+    <ImageView
+        android:id="@+id/img_rotate_bitmap"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:contentDescription="@null"
+        app:layout_constraintLeft_toRightOf="@+id/img_flipping_bitmap"
+        app:layout_constraintTop_toBottomOf="@+id/btn_get_bitmap_by_path" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_flipping_bitmap"
-            app:layout_constraintLeft_toLeftOf="parent"
-            style="@style/ButtonStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/material_layout_view_top_margin_8dp"
-            android:text="图片翻转"
-            app:layout_constraintTop_toBottomOf="@+id/img_flipping_bitmap" />
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_flipping_bitmap"
+        style="@style/ButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/material_layout_view_top_margin_8dp"
+        android:text="图片翻转"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_flipping_bitmap" />
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</layout>
+</androidx.constraintlayout.widget.ConstraintLayout>
+

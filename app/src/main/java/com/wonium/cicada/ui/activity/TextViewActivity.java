@@ -16,13 +16,13 @@
 
 package com.wonium.cicada.ui.activity;
 
-import androidx.databinding.DataBindingUtil;
+
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.wonium.cicada.R;
 import com.wonium.cicada.databinding.ActivityTextViewBinding;
 import com.wonium.cicada.router.PageRouter;
-import com.wonium.hydrogen.ui.BaseActivity;
+import com.wonium.cicada.base.BaseActivity;
 @Route(path = PageRouter.ACTIVITY_TEXT_VIEW)
 
 public class TextViewActivity extends BaseActivity {
@@ -44,13 +44,14 @@ public class TextViewActivity extends BaseActivity {
 
     @Override
     public void bindLayout(int layoutResId) {
-        mBinding = DataBindingUtil.setContentView(this,layoutResId);
+        mBinding = ActivityTextViewBinding.inflate(getLayoutInflater());
+        setContentView(mBinding.getRoot());
     }
 
     @Override
     public void initView() {
         setSupportActionBar(mBinding.includeTextViewToolbar.toolbar);
-        mBinding.setTitle(getContext().getResources().getString(R.string.activity_text_view));
+        mBinding.includeTextViewToolbar.tvToolbarTitle.setText(getContext().getResources().getString(R.string.activity_text_view));
         mBinding.includeTextViewToolbar.toolbar.setNavigationIcon(R.drawable.ic_arrow_back_24dp);
         mBinding.includeTextViewToolbar.toolbar.setNavigationOnClickListener(v -> finish());
     }

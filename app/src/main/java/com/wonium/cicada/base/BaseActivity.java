@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.wonium.hydrogen.ui;
+package com.wonium.cicada.base;
 
 import android.content.Context;
 import android.content.pm.ActivityInfo;
@@ -30,6 +30,9 @@ import com.wonium.hydrogen.R;
 import com.wonium.hydrogen.utils.ActivityManagerUtil;
 import com.wonium.hydrogen.utils.DensityUtil;
 import com.wonium.hydrogen.utils.StatusBarUtil;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 /**
@@ -61,7 +64,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     private boolean isSetStatusBar = true;
 
     private Context mContext;
-
+    protected Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

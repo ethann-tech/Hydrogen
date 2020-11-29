@@ -1,36 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
-    <data>
-        <variable
-            name="title"
-            type="String" />
-    </data>
 
-    <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-<androidx.appcompat.widget.LinearLayoutCompat
-    android:id="@+id/layout"
-    android:layout_width="360dp"
-    android:background="@color/lightCoral"
-    android:orientation="vertical"
-    android:layout_height="wrap_content">
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="325dp"
-        android:background="@color/aquamarine"
-        android:layout_height="540dp">
-    <TextView
-        android:id="@+id/tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-    </LinearLayout>
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/layout"
+        android:layout_width="360dp"
+        android:layout_height="wrap_content"
+        android:background="@color/lightCoral"
+        android:orientation="vertical">
 
-</androidx.appcompat.widget.LinearLayoutCompat>
+        <LinearLayout
+            android:layout_width="325dp"
+            android:layout_height="540dp"
+            android:background="@color/aquamarine">
 
-
+            <TextView
+                android:id="@+id/tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
-</layout>
+
+</androidx.appcompat.widget.LinearLayoutCompat>
+

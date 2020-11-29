@@ -1,67 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
 
-    <data>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
 
-        <variable
-            name="title"
-            type="String" />
-    </data>
-
-    <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fitsSystemWindows="true"
-        android:orientation="vertical">
-
-        <include
+    <include
         android:id="@+id/include_compress_toolbar"
         layout="@layout/layout_toolbar"
         app:title="@{title}" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+        tools:showIn="@layout/layout_toolbar">
+
+        <ImageView
+            android:id="@+id/img_display_src_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/hint_is_null"
+            android:src="@mipmap/ji_dong"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/img_display_compress_image"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <ImageView
+            android:id="@+id/img_display_compress_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/hint_is_null"
+            android:src="@mipmap/app_launcher"
+            app:layout_constraintLeft_toRightOf="@+id/img_display_src_image"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_size_compress"
+            style="@style/ButtonStyle"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
-            tools:showIn="@layout/layout_toolbar">
-
-            <ImageView
-                android:id="@+id/img_display_src_image"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:contentDescription="@string/hint_is_null"
-                android:src="@mipmap/ji_dong"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toLeftOf="@+id/img_display_compress_image"
-                app:layout_constraintTop_toTopOf="parent" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/material_layout_view_top_margin_8dp"
+            android:text="尺寸压缩"
+            android:textColor="@color/whiteSmoke"
+            android:textSize="@dimen/text_size_16sp"
+            app:layout_constraintTop_toBottomOf="@+id/img_display_src_image" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-            <ImageView
-                android:id="@+id/img_display_compress_image"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:contentDescription="@string/hint_is_null"
-                android:src="@mipmap/app_launcher"
-                app:layout_constraintLeft_toRightOf="@+id/img_display_src_image"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+</androidx.appcompat.widget.LinearLayoutCompat>
 
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_size_compress"
-                style="@style/ButtonStyle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/material_layout_view_top_margin_8dp"
-                android:text="尺寸压缩"
-                android:textColor="@color/whiteSmoke"
-                android:textSize="@dimen/text_size_16sp"
-                app:layout_constraintTop_toBottomOf="@+id/img_display_src_image" />
-
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-    </androidx.appcompat.widget.LinearLayoutCompat>
-</layout>

@@ -22,13 +22,13 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import androidx.databinding.DataBindingUtil;
+
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.wonium.cicada.R;
 import com.wonium.cicada.databinding.ActivityWProgressViewBinding;
 import com.wonium.cicada.router.PageRouter;
-import com.wonium.hydrogen.ui.BaseActivity;
+import com.wonium.cicada.base.BaseActivity;
 import com.wonium.hydrogen.ui.progress.WProgressDialog;
 
 
@@ -48,12 +48,14 @@ public class WProgressDialogActivity extends BaseActivity implements View.OnClic
 
     @Override
     public void bindLayout(int layoutResId) {
-        mBinding = DataBindingUtil.setContentView(this,layoutResId);
+        mBinding = ActivityWProgressViewBinding.inflate(getLayoutInflater());
+        setContentView(mBinding.getRoot());
     }
 
     @Override
     public void initView() {
-        mBinding.setTitle(getString(R.string.activity_w_progress_dialog));
+        mBinding.includeWProgressToolbar.tvToolbarTitle.setText(getString(R.string.activity_w_progress_dialog));
+        setContentView(mBinding.getRoot());
         setSupportActionBar(mBinding.includeWProgressToolbar.toolbar);
         mBinding.includeWProgressToolbar.toolbar.setNavigationIcon(R.drawable.ic_arrow_back_24dp);
     }
@@ -75,78 +77,67 @@ public class WProgressDialogActivity extends BaseActivity implements View.OnClic
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.indeterminate:
-                dialog = WProgressDialog.create(this)
-                        .setStyle(WProgressDialog.Style.SPIN_INDETERMINATE);
-                scheduleDismiss();
-                break;
-            case R.id.label_indeterminate:
-                dialog = WProgressDialog.create(this)
-                        .setStyle(WProgressDialog.Style.SPIN_INDETERMINATE)
-                        .setLabel("Please wait")
-                        .setCancellable(dialogInterface -> Toast.makeText(WProgressDialogActivity.this, "You " +
-                                "cancelled manually!", Toast
-                                .LENGTH_SHORT).show());
+        int id = v.getId();
+        if (id == R.id.indeterminate) {
+            dialog = WProgressDialog.create(this)
+                    .setStyle(WProgressDialog.Style.SPIN_INDETERMINATE);
+            scheduleDismiss();
+        } else if (id == R.id.label_indeterminate) {
+            dialog = WProgressDialog.create(this)
+                    .setStyle(WProgressDialog.Style.SPIN_INDETERMINATE)
+                    .setLabel("Please wait")
+                    .setCancellable(dialogInterface -> Toast.makeText(WProgressDialogActivity.this, "You " +
+                            "cancelled manually!", Toast
+                            .LENGTH_SHORT).show());
 
-                scheduleDismiss();
-                break;
-            case R.id.detail_indeterminate:
-                dialog = WProgressDialog.create(this)
-                        .setStyle(WProgressDialog.Style.SPIN_INDETERMINATE)
-                        .setLabel("Please wait")
-                        .setDetailsLabel("Downloading data");
-                scheduleDismiss();
-                break;
-            case R.id.grace_indeterminate:
-                dialog = WProgressDialog.create(this)
-                        .setStyle(WProgressDialog.Style.SPIN_INDETERMINATE)
-                        .setGraceTime(1000);
-                scheduleDismiss();
-                break;
-            case R.id.determinate:
-                dialog = WProgressDialog.create(WProgressDialogActivity.this)
-                        .setStyle(WProgressDialog.Style.PIE_DETERMINATE)
-                        .setLabel("Please wait");
-                simulateProgressUpdate();
-                break;
-            case R.id.annular_determinate:
-                dialog = WProgressDialog.create(WProgressDialogActivity.this)
-                        .setStyle(WProgressDialog.Style.ANNULAR_DETERMINATE)
-                        .setLabel("Please wait")
-                        .setDetailsLabel("Downloading data");
-                simulateProgressUpdate();
-                break;
-            case R.id.bar_determinate:
-                dialog = WProgressDialog.create(WProgressDialogActivity.this)
-                        .setStyle(WProgressDialog.Style.BAR_DETERMINATE)
-                        .setLabel("Please wait");
-                simulateProgressUpdate();
-                break;
-            case R.id.custom_view:
-                ImageView imageView = new ImageView(this);
-                imageView.setBackgroundResource(R.drawable.loading_animation);
-                AnimationDrawable drawable = (AnimationDrawable) imageView.getBackground();
-                drawable.start();
-                dialog = WProgressDialog.create(this)
-                        .setCustomView(imageView)
-                        .setLabel("This is a custom view");
-                scheduleDismiss();
-                break;
-            case R.id.dim_background:
-                dialog = WProgressDialog.create(this)
-                        .setStyle(WProgressDialog.Style.SPIN_INDETERMINATE)
-                        .setDimAmount(0.5f);
-                scheduleDismiss();
-                break;
-            case R.id.custom_color_animate:
-                //noinspection deprecation
-                dialog = WProgressDialog.create(this)
-                        .setStyle(WProgressDialog.Style.SPIN_INDETERMINATE)
-                        .setWindowColor(getResources().getColor(R.color.colorPrimary))
-                        .setAnimationSpeed(2);
-                scheduleDismiss();
-                break;
+            scheduleDismiss();
+        } else if (id == R.id.detail_indeterminate) {
+            dialog = WProgressDialog.create(this)
+                    .setStyle(WProgressDialog.Style.SPIN_INDETERMINATE)
+                    .setLabel("Please wait")
+                    .setDetailsLabel("Downloading data");
+            scheduleDismiss();
+        } else if (id == R.id.grace_indeterminate) {
+            dialog = WProgressDialog.create(this)
+                    .setStyle(WProgressDialog.Style.SPIN_INDETERMINATE)
+                    .setGraceTime(1000);
+            scheduleDismiss();
+        } else if (id == R.id.determinate) {
+            dialog = WProgressDialog.create(WProgressDialogActivity.this)
+                    .setStyle(WProgressDialog.Style.PIE_DETERMINATE)
+                    .setLabel("Please wait");
+            simulateProgressUpdate();
+        } else if (id == R.id.annular_determinate) {
+            dialog = WProgressDialog.create(WProgressDialogActivity.this)
+                    .setStyle(WProgressDialog.Style.ANNULAR_DETERMINATE)
+                    .setLabel("Please wait")
+                    .setDetailsLabel("Downloading data");
+            simulateProgressUpdate();
+        } else if (id == R.id.bar_determinate) {
+            dialog = WProgressDialog.create(WProgressDialogActivity.this)
+                    .setStyle(WProgressDialog.Style.BAR_DETERMINATE)
+                    .setLabel("Please wait");
+            simulateProgressUpdate();
+        } else if (id == R.id.custom_view) {
+            ImageView imageView = new ImageView(this);
+            imageView.setBackgroundResource(R.drawable.loading_animation);
+            AnimationDrawable drawable = (AnimationDrawable) imageView.getBackground();
+            drawable.start();
+            dialog = WProgressDialog.create(this)
+                    .setCustomView(imageView)
+                    .setLabel("This is a custom view");
+            scheduleDismiss();
+        } else if (id == R.id.dim_background) {
+            dialog = WProgressDialog.create(this)
+                    .setStyle(WProgressDialog.Style.SPIN_INDETERMINATE)
+                    .setDimAmount(0.5f);
+            scheduleDismiss();
+        } else if (id == R.id.custom_color_animate) {//noinspection deprecation
+            dialog = WProgressDialog.create(this)
+                    .setStyle(WProgressDialog.Style.SPIN_INDETERMINATE)
+                    .setWindowColor(getResources().getColor(R.color.colorPrimary))
+                    .setAnimationSpeed(2);
+            scheduleDismiss();
         }
 
         dialog.show();

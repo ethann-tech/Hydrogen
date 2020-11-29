@@ -3,6 +3,6 @@
     <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <application>
-        <activity android:name=".ui.BaseActivity" />
+        <activity android:name="com.wonium.cicada.base.BaseActivity" />
     </application>
 </manifest>

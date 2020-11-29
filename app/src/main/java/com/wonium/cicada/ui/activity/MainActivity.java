@@ -26,12 +26,11 @@ import com.wonium.cicada.ui.fragment.FindFragment;
 import com.wonium.cicada.ui.fragment.FriendFragment;
 import com.wonium.cicada.ui.fragment.MyFragment;
 import com.wonium.cicada.ui.fragment.VideoFragment;
-import com.wonium.hydrogen.ui.BaseActivity;
+import com.wonium.cicada.base.BaseActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -64,14 +63,15 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void bindLayout(int layoutResId) {
-        mBinding = DataBindingUtil.setContentView(this, layoutResId);
+        mBinding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(mBinding.getRoot());
     }
 
     @Override
     public void initView() {
         // 开启状态栏沉浸
         setStatusBar(true);
-        mBinding.setTitle(getString(R.string.app_name));
+        mBinding.includeToolbar.tvToolbarTitle.setText(getString(R.string.app_name));
         initFragment();
     }
 

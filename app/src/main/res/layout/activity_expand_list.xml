@@ -14,36 +14,28 @@
   ~ limitations under the License.
   ~
   -->
-<layout>
 
-    <data>
 
-        <variable
-            name="title"
-            type="String" />
-    </data>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+    <include
+        android:id="@+id/include_expandable_toolbar"
+        layout="@layout/layout_toolbar" />
+
+    <ExpandableListView
+        android:id="@+id/expand"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        xmlns:tools="http://schemas.android.com/tools">
-        <include
-            android:id="@+id/include_expandable_toolbar"
-            app:title="@{title}"
-            layout="@layout/layout_toolbar" />
+        android:layout_height="wrap_content"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:showIn="@layout/layout_toolbar" />
 
-        <ExpandableListView
-            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
-            android:id="@+id/expand"
-            tools:showIn="@layout/layout_toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 
-</layout>

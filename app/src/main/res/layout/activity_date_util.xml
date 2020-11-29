@@ -16,23 +16,12 @@
   ~ limitations under the License.
   ~
   -->
-<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-
-    <data>
-
-        <variable
-            name="title"
-            type="String" />
-
-        <variable
-            name="content"
-            type="String" />
-    </data>
-
-    <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
 
         <include
             android:id="@+id/include_date_util_toolbar"
@@ -51,9 +40,9 @@
                 android:layout_height="match_parent">
 
                 <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvContent"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@{content}"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -65,5 +54,3 @@
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
-
-</layout>

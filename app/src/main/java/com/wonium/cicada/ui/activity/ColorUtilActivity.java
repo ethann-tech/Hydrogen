@@ -18,7 +18,7 @@ package com.wonium.cicada.ui.activity;
 
 import android.graphics.Color;
 
-import androidx.databinding.DataBindingUtil;
+
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -28,7 +28,7 @@ import com.wonium.cicada.adapter.ColorGradientatorAdapter;
 import com.wonium.cicada.databinding.ActivityColorUtilBinding;
 import com.wonium.cicada.router.PageRouter;
 import com.wonium.hydrogen.UniversalItemDecoration;
-import com.wonium.hydrogen.ui.BaseActivity;
+import com.wonium.cicada.base.BaseActivity;
 import com.wonium.hydrogen.utils.ColorUtil;
 
 import java.util.Arrays;
@@ -59,14 +59,15 @@ public class ColorUtilActivity extends BaseActivity {
 
     @Override
     public void bindLayout(int layoutResId) {
-        mBinding = DataBindingUtil.setContentView(this, layoutResId);
-        mBinding.setGradientColors("生成红，蓝亮色之间的过渡色，默认30种颜色，首位相接");
-        mBinding.setNextColorByCurrentColor("根据当前显色显示下一个颜色");
+        mBinding = ActivityColorUtilBinding.inflate(getLayoutInflater());
+        setContentView(mBinding.getRoot());
+        mBinding.tvGradientColors.setText("生成红，蓝亮色之间的过渡色，默认30种颜色，首位相接");
+        mBinding.tvNextColorByCurrentColor.setText("根据当前显色显示下一个颜色");
     }
 
     @Override
     public void initView() {
-        mBinding.setTitle(getResources().getString(R.string.tools_color));
+        mBinding.includeToolbarColor.tvToolbarTitle.setText(getResources().getString(R.string.tools_color));
         setSupportActionBar(mBinding.includeToolbarColor.toolbar);
         mBinding.includeToolbarColor.toolbar.setNavigationIcon(R.drawable.ic_arrow_back_24dp);
         mBinding.includeToolbarColor.toolbar.setNavigationOnClickListener(v -> finish());
@@ -77,8 +78,8 @@ public class ColorUtilActivity extends BaseActivity {
     public void initListener() {
         if (adapter != null) {
             adapter.setOnItemClickListener((view, position) -> {
-                mBinding.setCurrentColor(adapter.getData(position));
-                mBinding.setNextColor(ColorUtil.getInstance().getNextClorByCurrentColor(adapter.getData(position), gradientColors));
+                mBinding.imgCurrentColor.setImageResource(adapter.getData(position));
+                mBinding.tvNextColorByCurrentColor.setText(ColorUtil.getInstance().getNextClorByCurrentColor(adapter.getData(position), gradientColors));
             });
         }
     }
@@ -89,7 +90,10 @@ public class ColorUtilActivity extends BaseActivity {
         Integer[] baseColors = new Integer[]{Color.RED, Color.BLUE};
         gradientColors = ColorUtil.getInstance().getGradientColors(baseColors);
 
-        List<Integer> gradientColorsList = Arrays.stream(gradientColors).boxed().collect(Collectors.toList());
+        List<Integer> gradientColorsList = null;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+            gradientColorsList = Arrays.stream(gradientColors).boxed().collect(Collectors.toList());
+        }
         adapter = new ColorGradientatorAdapter(getContext());
         LinearLayoutManager manager = new LinearLayoutManager(getContext());
         manager.setOrientation(RecyclerView.HORIZONTAL);

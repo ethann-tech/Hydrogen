@@ -20,7 +20,6 @@ package com.wonium.cicada.ui.activity;
 import android.os.Bundle;
 import android.widget.ExpandableListView;
 
-import androidx.databinding.DataBindingUtil;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.wonium.cicada.R;
@@ -30,7 +29,7 @@ import com.wonium.cicada.bean.WorkChild;
 import com.wonium.cicada.bean.WorkGroup;
 import com.wonium.cicada.databinding.ActivityExpandListBinding;
 import com.wonium.cicada.router.PageRouter;
-import com.wonium.hydrogen.ui.BaseActivity;
+import com.wonium.cicada.base.BaseActivity;
 
 
 import java.util.ArrayList;
@@ -72,14 +71,15 @@ public class ExpandListActivity extends BaseActivity {
 
     @Override
     public void bindLayout(int layoutResId) {
-        mBinding = DataBindingUtil.setContentView(this,layoutResId);
+        mBinding = ActivityExpandListBinding.inflate(getLayoutInflater());
+        setContentView(mBinding.getRoot());
     }
 
     @Override
     public void initView() {
         setSupportActionBar(mBinding.includeExpandableToolbar.toolbar);
         mBinding.includeExpandableToolbar.toolbar.setNavigationIcon(R.drawable.ic_arrow_back_24dp);
-        mBinding.setTitle(getString(R.string.activity_expandable_list));
+        mBinding.includeExpandableToolbar.tvToolbarTitle.setText(getString(R.string.activity_expandable_list));
         // 初始化数据
         init();
         mExpandableListView = findViewById(R.id.expand);

@@ -16,13 +16,11 @@
 
 package com.wonium.cicada.ui.activity;
 
-import androidx.databinding.DataBindingUtil;
-
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.wonium.cicada.R;
 import com.wonium.cicada.databinding.ActivityImageViewBinding;
 import com.wonium.cicada.router.PageRouter;
-import com.wonium.hydrogen.ui.BaseActivity;
+import com.wonium.cicada.base.BaseActivity;
 
 /**
  * @ClassName: ImageViewActivity
@@ -57,14 +55,14 @@ public class ImageViewActivity extends BaseActivity {
 
     @Override
     public void bindLayout(int layoutResId) {
-        mBinding = DataBindingUtil.setContentView(this, layoutResId);
+        mBinding = ActivityImageViewBinding.inflate(getLayoutInflater());
     }
 
     @Override
     public void initView() {
         setStatusBar(true);
         setSupportActionBar(mBinding.includeImageViewToolbar.toolbar);
-        mBinding.setTitle(getResources().getString(R.string.activity_image_view));
+        mBinding.includeImageViewToolbar.tvToolbarTitle.setText(getResources().getString(R.string.activity_image_view));
         mBinding.includeImageViewToolbar.toolbar.setNavigationIcon(R.drawable.ic_arrow_back_24dp);
     }
 

@@ -17,13 +17,12 @@
 package com.wonium.cicada.ui.activity;
 
 
-import androidx.databinding.DataBindingUtil;
-
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.wonium.cicada.R;
+import com.wonium.cicada.databinding.ActivityBitmapUtilBinding;
 import com.wonium.cicada.databinding.ActivityByteUtilBinding;
 import com.wonium.cicada.router.PageRouter;
-import com.wonium.hydrogen.ui.BaseActivity;
+import com.wonium.cicada.base.BaseActivity;
 import com.wonium.hydrogen.utils.ByteUtil;
 
 import org.slf4j.Logger;
@@ -47,6 +46,7 @@ import java.nio.ByteOrder;
 public class ByteUtilActivity extends BaseActivity {
     private ActivityByteUtilBinding mBinding;
     private Logger logger = LoggerFactory.getLogger(this.getClass());
+
     @Override
     protected int getStatusColor() {
         return getContext().getResources().getColor(R.color.black);
@@ -65,13 +65,14 @@ public class ByteUtilActivity extends BaseActivity {
 
     @Override
     public void bindLayout(int layoutResId) {
-        mBinding = DataBindingUtil.setContentView(this, layoutResId);
+        mBinding = ActivityByteUtilBinding.inflate(getLayoutInflater());
+        setContentView(mBinding.getRoot());
     }
 
     @Override
     public void initView() {
 
-        mBinding.setTitle(getString(R.string.tools_byte));
+        mBinding.includeToolbarByte.tvToolbarTitle.setText(getString(R.string.tools_byte));
         setSupportActionBar(mBinding.includeToolbarByte.toolbar);
         mBinding.includeToolbarByte.toolbar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_arrow_back_24dp));
         // getBitValue
@@ -101,8 +102,8 @@ public class ByteUtilActivity extends BaseActivity {
         logger.debug("byteArrayToInt Little-Endian-->" + ByteUtil.getInstance().byteArrayToInt(byteInt, ByteOrder.LITTLE_ENDIAN));
 
         // intToByteArray 83951936
-         logger.debug("intToByteArray Big-Endian-->" + ByteUtil.getInstance().printByteArrayToBinary(ByteUtil.getInstance().intToByteArray(83951936, ByteOrder.BIG_ENDIAN)));
-         logger.debug("intToByteArray Little-Endian-->" + ByteUtil.getInstance().printByteArrayToBinary(ByteUtil.getInstance().intToByteArray(83951936, ByteOrder.LITTLE_ENDIAN)));
+        logger.debug("intToByteArray Big-Endian-->" + ByteUtil.getInstance().printByteArrayToBinary(ByteUtil.getInstance().intToByteArray(83951936, ByteOrder.BIG_ENDIAN)));
+        logger.debug("intToByteArray Little-Endian-->" + ByteUtil.getInstance().printByteArrayToBinary(ByteUtil.getInstance().intToByteArray(83951936, ByteOrder.LITTLE_ENDIAN)));
 
         // byteArrayToFloat
         byte[] byteFloat = new byte[4];
@@ -110,8 +111,8 @@ public class ByteUtilActivity extends BaseActivity {
         byteFloat[1] = 0;
         byteFloat[2] = 0;
         byteFloat[3] = 0;
-         logger.debug("byteArrayToFloat Big-Endian-->" + ByteUtil.getInstance().byteArrayToFloat(byteFloat, ByteOrder.BIG_ENDIAN));
-         logger.debug("byteArrayToFloat Little-Endian-->" + ByteUtil.getInstance().byteArrayToFloat(byteFloat, ByteOrder.LITTLE_ENDIAN));
+        logger.debug("byteArrayToFloat Big-Endian-->" + ByteUtil.getInstance().byteArrayToFloat(byteFloat, ByteOrder.BIG_ENDIAN));
+        logger.debug("byteArrayToFloat Little-Endian-->" + ByteUtil.getInstance().byteArrayToFloat(byteFloat, ByteOrder.LITTLE_ENDIAN));
     }
 
     @Override

@@ -17,13 +17,11 @@
 package com.wonium.cicada.ui.activity;
 
 
-import androidx.databinding.DataBindingUtil;
-
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.wonium.cicada.R;
 import com.wonium.cicada.databinding.ActivityDateUtilBinding;
 import com.wonium.cicada.router.PageRouter;
-import com.wonium.hydrogen.ui.BaseActivity;
+import com.wonium.cicada.base.BaseActivity;
 import com.wonium.hydrogen.utils.DateUtil;
 
 @Route(path = PageRouter.ACTIVITY_DATE_UTIL)
@@ -53,24 +51,24 @@ public class DateUtilActivity extends BaseActivity {
 
     @Override
     public void bindLayout(int layoutResId) {
-        mBinding = DataBindingUtil.setContentView(this, layoutResId);
+        mBinding = ActivityDateUtilBinding.inflate(getLayoutInflater());
+        setContentView(mBinding.getRoot());
     }
 
     @Override
     public void initView() {
         setSupportActionBar(mBinding.includeDateUtilToolbar.toolbar);
-        mBinding.setTitle(getString(R.string.tools_date_util));
+        mBinding.includeDateUtilToolbar.tvToolbarTitle.setText(getString(R.string.tools_date_util));
         mBinding.includeDateUtilToolbar.toolbar.setNavigationIcon(R.drawable.ic_arrow_back_24dp);
         displayTestCase();
     }
 
 
-
-    private void displayTestCase(){
-        StringBuilder builder =new StringBuilder();
+    private void displayTestCase() {
+        StringBuilder builder = new StringBuilder();
         builder.append("使用方法：").append("\n").append("函数：\n").append(" String getDateTimeFromMillis(long timeInMillis)");
         builder.append("\n返回时间间隔的常用表示 例如：3天前、3分钟前、刚刚等等：");
-        builder.append( DateUtil.getInstance().getTimeIntervalIntro(System.currentTimeMillis()-30*3600*1000,false));
+        builder.append(DateUtil.getInstance().getTimeIntervalIntro(System.currentTimeMillis() - 30 * 3600 * 1000, false));
         builder.append("\n\n获得当天0点时间,单位毫秒数\nDateUtil.getInstance().getTimesMorning()\n\n");
         builder.append(DateUtil.getInstance().getTimesMorning());
 
@@ -89,7 +87,7 @@ public class DateUtilActivity extends BaseActivity {
         builder.append("\n\n获得本月最后一天24点时间,单位毫秒数\nDateUtil.getInstance().getTimesMonthNight()\n\n");
         builder.append(DateUtil.getInstance().getTimesMonthNight());
 
-        mBinding.setContent(builder.toString());
+        mBinding.tvContent.setText(builder.toString());
     }
 
 }

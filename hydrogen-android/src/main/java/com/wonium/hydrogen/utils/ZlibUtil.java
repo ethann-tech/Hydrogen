@@ -37,7 +37,7 @@ import java.util.zip.InflaterInputStream;
  * @UpdateDescription: 更新说明
  * @Version: 1.0.0
  */
-class ZlibUtil {
+public class ZlibUtil {
     private static class Inner {
         private static final ZlibUtil INSTANCE = new ZlibUtil();
     }

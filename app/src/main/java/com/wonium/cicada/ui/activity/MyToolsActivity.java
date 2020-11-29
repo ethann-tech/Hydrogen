@@ -17,7 +17,6 @@
 package com.wonium.cicada.ui.activity;
 
 
-import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -31,7 +30,7 @@ import com.wonium.cicada.presenter.impl.MainPresenterImpl;
 import com.wonium.cicada.router.PageRouter;
 import com.wonium.cicada.ui.view.MainView;
 import com.wonium.hydrogen.UniversalItemDecoration;
-import com.wonium.hydrogen.ui.BaseActivity;
+import com.wonium.cicada.base.BaseActivity;
 
 import java.util.List;
 
@@ -54,7 +53,8 @@ public class MyToolsActivity extends BaseActivity implements MainView {
 
     @Override
     public void bindLayout(int layoutResId) {
-        mBinding = DataBindingUtil.setContentView(this, layoutResId);
+        mBinding = ActivityMyToolsBinding.inflate(getLayoutInflater());
+        setContentView(mBinding.getRoot());
     }
 
     @Override
@@ -63,7 +63,7 @@ public class MyToolsActivity extends BaseActivity implements MainView {
         setStatusBar(true);
         setSupportActionBar(mBinding.includeToolsToolbar.toolbar);
         mBinding.includeToolsToolbar.toolbar.setNavigationIcon(R.drawable.ic_arrow_back_24dp);
-        mBinding.setTitle(getResources().getString(R.string.activity_tools));
+        mBinding.includeToolsToolbar.tvToolbarTitle.setText(getResources().getString(R.string.activity_tools));
         LinearLayoutManager manager = new LinearLayoutManager(getContext());
         manager.setOrientation(RecyclerView.VERTICAL);
         mBinding.includeToolsRecycler.viewRecycler.setLayoutManager(manager);

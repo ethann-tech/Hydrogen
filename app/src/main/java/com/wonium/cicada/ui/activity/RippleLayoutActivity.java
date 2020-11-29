@@ -16,13 +16,12 @@
 
 package com.wonium.cicada.ui.activity;
 
-import androidx.databinding.DataBindingUtil;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.wonium.cicada.R;
 import com.wonium.cicada.databinding.ActivityRippleLayoutBinding;
 import com.wonium.cicada.router.PageRouter;
-import com.wonium.hydrogen.ui.BaseActivity;
+import com.wonium.cicada.base.BaseActivity;
 
 @Route(path = PageRouter.ACTIVITY_RIPPLE_LAYOUT)
 public class RippleLayoutActivity extends BaseActivity {
@@ -39,12 +38,13 @@ public class RippleLayoutActivity extends BaseActivity {
 
     @Override
     public void bindLayout(int layoutResId) {
-        mBinding= DataBindingUtil.setContentView(this,layoutResId);
+        mBinding= ActivityRippleLayoutBinding.inflate(getLayoutInflater());
+        setContentView(mBinding.getRoot());
     }
 
     @Override
     public void initView() {
-        mBinding.setTitle(getResources().getString(R.string.activity_ripple_layout));
+        mBinding.includeRippleToolbar.tvToolbarTitle.setText(getResources().getString(R.string.activity_ripple_layout));
         setSupportActionBar(mBinding.includeRippleToolbar.toolbar);
         mBinding.includeRippleToolbar.toolbar.setNavigationIcon(R.drawable.ic_arrow_back_24dp);
         mBinding.includeRippleToolbar.toolbar.setNavigationOnClickListener(v -> finish());
