@@ -33,7 +33,7 @@ public class MyAdapter extends BaseRecyclerViewAdapter<String, BaseViewHolder<It
 
     @Override
     public BaseViewHolder<ItemMyRecyclerViewBinding> onCreateVH(ViewGroup parent, int viewType) {
-        ItemMyRecyclerViewBinding mBinding = ItemMyRecyclerViewBinding.inflate(getInflater());
+        ItemMyRecyclerViewBinding mBinding = ItemMyRecyclerViewBinding.inflate(getInflater(),parent,false);
         return new BaseViewHolder<>(mBinding);
     }
 

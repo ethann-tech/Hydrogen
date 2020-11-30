@@ -42,7 +42,7 @@ public class CustomComponentAdapter extends BaseRecyclerViewAdapter<String, Base
 
     @Override
     public BaseViewHolder<ItemCustomComponentBinding> onCreateVH(ViewGroup parent, int viewType) {
-        ItemCustomComponentBinding mBinding = ItemCustomComponentBinding.inflate(getInflater());
+        ItemCustomComponentBinding mBinding = ItemCustomComponentBinding.inflate(getInflater(),parent,false);
         return new BaseViewHolder<>(mBinding);
     }
 
