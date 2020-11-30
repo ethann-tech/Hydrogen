@@ -22,27 +22,30 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 
 public class PackageInfoUtil {
+    private PackageInfoUtil() {
+        if (Inner.INSTANCE != null) {
+            throw new RuntimeException("该实例已存在，请通过getInstance方法获取");
+        }
+    }
+
+    private static class Inner {
+        private static final PackageInfoUtil INSTANCE = new PackageInfoUtil();
+    }
 
     /**
      * 实例对象
      */
-    private static PackageInfoUtil mInstance;
-    public static PackageInfoUtil getInstance(){
-        if (mInstance==null){
-            synchronized (DeviceUtil.class){
-                if (mInstance==null){
-                    mInstance =new PackageInfoUtil();
-                }
-            }
-        }
-        return mInstance;
+    public static PackageInfoUtil getInstance() {
+        return Inner.INSTANCE;
     }
+
     /**
      * 获取版本号
+     *
      * @param context
      * @return
      */
-    public  int getVersionCode(Context context) {
+    public int getVersionCode(Context context) {
         PackageManager manager = context.getPackageManager();
         try {
             PackageInfo info = manager.getPackageInfo(context.getPackageName(), 0);
@@ -54,15 +57,16 @@ public class PackageInfoUtil {
     }
 
     /**
-     *获取版本名
+     * 获取版本名
+     *
      * @param context
      * @return 版本名称
      */
-    public  String getVersionName(Context context){
-        PackageManager manager =context.getPackageManager();
+    public String getVersionName(Context context) {
+        PackageManager manager = context.getPackageManager();
         try {
-            PackageInfo info =manager.getPackageInfo(context.getPackageName(),0);
-            return  info.versionName;
+            PackageInfo info = manager.getPackageInfo(context.getPackageName(), 0);
+            return info.versionName;
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }

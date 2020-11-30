@@ -18,17 +18,16 @@ package com.wonium.cicada.ui.activity;
 
 import android.app.Activity;
 
-import androidx.databinding.DataBindingUtil;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.wonium.cicada.R;
+
 import com.wonium.cicada.databinding.ActivityActivityManagerBinding;
 import com.wonium.cicada.router.PageRouter;
-import com.wonium.hydrogen.ui.BaseActivity;
+import com.wonium.cicada.base.BaseActivity;
 import com.wonium.hydrogen.utils.ActivityManagerUtil;
 import com.wonium.hydrogen.utils.StringUtil;
 import com.wonium.hydrogen.utils.ToastUtil;
-
 
 
 /**
@@ -39,12 +38,13 @@ import com.wonium.hydrogen.utils.ToastUtil;
  * @Blog: https://blog.wonium.com
  * @CreateDate: 2018/11/20 14:12
  * @UpdateUser: 添加更新者
- * @UpdateDate:  2018/11/20 14:12
+ * @UpdateDate: 2018/11/20 14:12
  * @UpdateDescription: 更新描述
  * @Version:
  */
 @Route(path = PageRouter.ACTIVITY_MANAGER_ACTIVITY)
 public class ActivityManagerActivity extends BaseActivity {
+
     private ActivityActivityManagerBinding mBinding;
 
     @Override
@@ -65,13 +65,14 @@ public class ActivityManagerActivity extends BaseActivity {
 
     @Override
     public void bindLayout(int layoutResId) {
-        mBinding = DataBindingUtil.setContentView(this, layoutResId);
+        mBinding = ActivityActivityManagerBinding.inflate(getLayoutInflater());
+        setContentView(mBinding.getRoot());
     }
 
     @Override
     public void initView() {
         setSupportActionBar(mBinding.includeToolbarActivityManager.toolbar);
-        mBinding.setTitle("ActivityManagerUtil");
+        mBinding.includeToolbarActivityManager.tvToolbarTitle.setText("ActivityManagerUtil");
     }
 
 
@@ -92,11 +93,11 @@ public class ActivityManagerActivity extends BaseActivity {
         // 移除给定的activity
         mBinding.btnRemoveActivityForParam.setOnClickListener(v -> ActivityManagerUtil.getInstance().finishActivity(this));
         // 根据activity 的class 移除
-        mBinding.btnRemoveActivityByClassName.setOnClickListener(v->ActivityManagerUtil.getInstance().finishActivity(this.getClass()));
+        mBinding.btnRemoveActivityByClassName.setOnClickListener(v -> ActivityManagerUtil.getInstance().finishActivity(this.getClass()));
         // 获取当前的activity
-        mBinding.btnGetCurrentActivity.setOnClickListener(v ->{
-            Activity activity =ActivityManagerUtil.getInstance().currentActivity();
-            ToastUtil.getInstance().show(this,"currentActivity->"+activity.getClass().getSimpleName());
+        mBinding.btnGetCurrentActivity.setOnClickListener(v -> {
+            Activity activity = ActivityManagerUtil.getInstance().currentActivity();
+            ToastUtil.getInstance().show(this, "currentActivity->" + activity.getClass().getSimpleName());
         });
         // 获取activity栈的大小
         mBinding.btnShowStackSize.setOnClickListener(v -> ToastUtil.getInstance().show(this, StringUtil.getInstance().valueOf(ActivityManagerUtil.getInstance().size())));

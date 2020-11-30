@@ -28,13 +28,13 @@ import androidx.annotation.Keep;
 
 /**
  * @ClassName: MediaUtil
- * @Description: 添加描述
+ * @Description: 音视频工具类
  * @Author: Wonium
  * @E-mail: wonium@qq.com
  * @Blog: https://blog.wonium.com
  * @CreateDate: 2018/12/11 17:34
  * @UpdateUser: 添加更新者
- * @UpdateDate:  2018/12/11 17:34
+ * @UpdateDate: 2018/12/11 17:34
  * @UpdateDescription: 更新描述
  * @Version:
  */
@@ -43,24 +43,28 @@ public class MediaUtil {
     /**
      * 多媒体工具类
      */
-    private static MediaUtil mInstance;
-    public static MediaUtil getInstance(){
-        if(mInstance==null){
-            synchronized (MediaUtil.class){
-             if (mInstance==null){
-                 mInstance =new MediaUtil();
-             }
-            }
+
+    private MediaUtil() {
+        if (Inner.INSTANCE != null) {
+            throw new RuntimeException("该实例不存在，请通过getInstance方法获取");
         }
-        return mInstance;
     }
+
+    private static class Inner {
+        private static final MediaUtil INSTANCE = new MediaUtil();
+    }
+
+    public static MediaUtil getInstance() {
+        return Inner.INSTANCE;
+    }
+
     /**
      * @param context 上下文
-     * @param path  文件存放路径 例如  nternal_background/bg00001.mp4;
+     * @param path    文件存放路径 例如  nternal_background/bg00001.mp4;
      * @return
      */
-    public Bitmap getFrameAtTimeFromAssetsVideo(Context context,String path){
-        MediaMetadataRetriever retriever =new MediaMetadataRetriever();
+    public Bitmap getFrameAtTimeFromAssetsVideo(Context context, String path) {
+        MediaMetadataRetriever retriever = new MediaMetadataRetriever();
         try {
             AssetFileDescriptor fileDescriptor = context.getAssets().openFd(path);
             retriever.setDataSource(fileDescriptor.getFileDescriptor(), fileDescriptor.getStartOffset(), fileDescriptor.getLength());

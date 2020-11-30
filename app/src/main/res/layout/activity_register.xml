@@ -1,27 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto">
-
-    <data>
-
-        <variable
-            name="nickname"
-            type="String" />
-
-        <variable
-            name="phone_number"
-            type="String" />
-
-        <variable
-            name="verify_code"
-            type="String" />
-    </data>
 
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:clipToPadding="true"
-        android:fitsSystemWindows="true">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:clipToPadding="true"
+    android:fitsSystemWindows="true">
 
         <LinearLayout
             android:id="@+id/layout_register_app_name"
@@ -164,4 +149,3 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-</layout>

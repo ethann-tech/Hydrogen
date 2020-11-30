@@ -23,15 +23,15 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.wonium.cicada.R;
 import com.wonium.cicada.databinding.FragmentFindBinding;
 import com.wonium.cicada.router.PageRouter;
-import com.wonium.cicada.ui.activity.MainActivity;
 import com.wonium.hydrogen.OnNoDoubleClickListener;
 import com.wonium.hydrogen.ui.BaseFragment;
 import com.wonium.hydrogen.utils.ToastUtil;
-import androidx.databinding.DataBindingUtil;
+
 import java.net.NetworkInterface;
 import java.util.Collections;
 import java.util.Enumeration;
@@ -50,15 +50,16 @@ import java.util.Enumeration;
  * @Version: 1.0.0
  */
 public class FindFragment extends BaseFragment {
-    private static final String TAG =FindFragment.class.getSimpleName();
+    private static final String TAG = FindFragment.class.getSimpleName();
     private FragmentFindBinding mBinding;
     private String args1;
     private String args2;
-    public static FindFragment newInstance(String args1,String args2) {
+
+    public static FindFragment newInstance(String args1, String args2) {
         Bundle args = new Bundle();
         FindFragment fragment = new FindFragment();
-        fragment.args1 =args1;
-        fragment.args2 =args2;
+        fragment.args1 = args1;
+        fragment.args2 = args2;
         fragment.setArguments(args);
         return fragment;
     }
@@ -70,31 +71,30 @@ public class FindFragment extends BaseFragment {
 
     @Override
     protected View initBinding(LayoutInflater inflater, ViewGroup container) {
-
-        mBinding = DataBindingUtil.inflate(inflater,getLayoutResId(),container,false);
+        mBinding = FragmentFindBinding.inflate(inflater);
         return mBinding.getRoot();
     }
 
     @Override
     protected void initView(View view) {
-        mBinding.setBtnFind("测试TestGridView");
+        mBinding.btnTest.setText("测试TestGridView");
     }
 
     @Override
     protected void initListener() {
         super.initListener();
         mBinding.btnTest.setOnClickListener(v -> ARouter.getInstance().build(PageRouter.TEST_GRID_VIEW).navigation());
-       mBinding.btnCustomLoading.setOnClickListener(new OnNoDoubleClickListener() {
-           @Override
-           public void onNoDoubleClick(View v) {
-                    ToastUtil.getInstance().show(getContext(),"OnNoDoubleClickListener");
-           }
-       });
-        mBinding.btnProxy.setOnClickListener(v -> ToastUtil.getInstance().show(getContext(),"是否启用网络代理："+(isWifiProxy()?"yes":"false")+"  ; \n是否启用VPN : "+(isVpnUsed()?"yes":"false")));
-        mBinding.btnImgCompress.setOnClickListener(v -> ARouter.getInstance().build(PageRouter.ACTIVITY_IMG_COMPRESS).navigation(getContext()));
+        mBinding.btnCustomLoading.setOnClickListener(new OnNoDoubleClickListener() {
+            @Override
+            public void onNoDoubleClick(View v) {
+                ToastUtil.getInstance().show(getContext(), "OnNoDoubleClickListener");
+            }
+        });
+        mBinding.btnProxy.setOnClickListener(v -> ToastUtil.getInstance().show(getContext(), "是否启用网络代理：" + (isWifiProxy() ? "yes" : "false") + "  ; \n是否启用VPN : " + (isVpnUsed() ? "yes" : "false")));
+        mBinding.btnImgCompress1.setOnClickListener(v -> ARouter.getInstance().build(PageRouter.ACTIVITY_IMG_COMPRESS).navigation(getContext()));
     }
 
-    private boolean isWifiProxy(){
+    private boolean isWifiProxy() {
         final boolean is_ics_or_later = Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT;
         String proxyAddress;
         int proxyPort;
@@ -104,7 +104,7 @@ public class FindFragment extends BaseFragment {
             proxyPort = Integer.parseInt((portstr != null ? portstr : "-1"));
             System.out.println(proxyAddress + "~");
             System.out.println("port = " + proxyPort);
-        }else {
+        } else {
             proxyAddress = android.net.Proxy.getHost(getContext());
             proxyPort = android.net.Proxy.getPort(getContext());
             Log.e("address = ", proxyAddress + "~");
@@ -116,13 +116,13 @@ public class FindFragment extends BaseFragment {
     public static boolean isVpnUsed() {
         try {
             Enumeration<NetworkInterface> niList = NetworkInterface.getNetworkInterfaces();
-            if(niList != null) {
+            if (niList != null) {
                 for (NetworkInterface intf : Collections.list(niList)) {
-                    if(!intf.isUp() || intf.getInterfaceAddresses().size() == 0) {
+                    if (!intf.isUp() || intf.getInterfaceAddresses().size() == 0) {
                         continue;
                     }
                     Log.d(TAG, "isVpnUsed() NetworkInterface Name: " + intf.getName());
-                    if ("tun0".equals(intf.getName()) || "ppp0".equals(intf.getName())){
+                    if ("tun0".equals(intf.getName()) || "ppp0".equals(intf.getName())) {
                         return true; // The VPN is up
                     }
                 }

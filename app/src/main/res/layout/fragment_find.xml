@@ -1,19 +1,7 @@
-<layout xmlns:app="http://schemas.android.com/apk/res-auto">
-
-    <data>
-
-        <variable
-            name="content"
-            type="String" />
-
-        <variable
-            name="btnFind"
-            type="String" />
-    </data>
-
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_test"
@@ -66,17 +54,12 @@
 
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_img_compress"
+            android:id="@+id/btn_img_compress1"
             app:layout_constraintTop_toBottomOf="@+id/btn_proxy"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             android:text="图片压缩"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
-
-
-
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
-</layout>
+

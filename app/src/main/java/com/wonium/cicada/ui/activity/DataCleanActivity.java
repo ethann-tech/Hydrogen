@@ -17,13 +17,13 @@
 package com.wonium.cicada.ui.activity;
 
 
-import androidx.databinding.DataBindingUtil;
+
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.wonium.cicada.R;
 import com.wonium.cicada.databinding.ActivityDataCleanBinding;
 import com.wonium.cicada.router.PageRouter;
-import com.wonium.hydrogen.ui.BaseActivity;
+import com.wonium.cicada.base.BaseActivity;
 import com.wonium.hydrogen.utils.DataCleanUtil;
 import com.wonium.hydrogen.utils.StringUtil;
 
@@ -73,7 +73,8 @@ public class DataCleanActivity extends BaseActivity {
 
     @Override
     public void bindLayout(int layoutResId) {
-        binding = DataBindingUtil.setContentView(this, layoutResId);
+        binding = ActivityDataCleanBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
     }
 
     @Override
@@ -81,6 +82,6 @@ public class DataCleanActivity extends BaseActivity {
         setSupportActionBar(binding.includeLayoutAcacheToolbar.toolbar);
         binding.includeLayoutAcacheToolbar.toolbar.setNavigationIcon(R.drawable.ic_arrow_back_24dp);
         binding.includeLayoutAcacheToolbar.toolbar.setNavigationOnClickListener(v -> finish());
-        binding.setTitle(getString(R.string.tools_data_clean));
+        binding.includeLayoutAcacheToolbar.tvToolbarTitle.setText(getString(R.string.tools_data_clean));
     }
 }

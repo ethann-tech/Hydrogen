@@ -16,18 +16,20 @@
 
 package com.wonium.cicada.ui.activity;
 
-import androidx.databinding.DataBindingUtil;
-
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.wonium.cicada.R;
 import com.wonium.cicada.databinding.ActivityMd5UtilBinding;
 import com.wonium.cicada.router.PageRouter;
-import com.wonium.hydrogen.ui.BaseActivity;
+import com.wonium.cicada.base.BaseActivity;
 import com.wonium.hydrogen.utils.Md5Util;
 
+/**
+ * @author ethan
+ */
 @Route(path = PageRouter.ACTIVITY_MD5_UTIL)
 public class MD5UtilActivity extends BaseActivity {
     private ActivityMd5UtilBinding mBinding;
+
     @Override
     public void initWindowAttributes() {
         setAllowFullScreen(false);
@@ -41,19 +43,20 @@ public class MD5UtilActivity extends BaseActivity {
 
     @Override
     public void bindLayout(int layoutResId) {
-        mBinding = DataBindingUtil.setContentView(this,layoutResId);
+        mBinding = ActivityMd5UtilBinding.inflate(getLayoutInflater());
+        setContentView(mBinding.getRoot());
     }
 
     @Override
     public void initView() {
         setSupportActionBar(mBinding.includeMd5Toolbar.toolbar);
-        mBinding.setTitle(getString(R.string.tools_md5));
+        mBinding.includeMd5Toolbar.tvToolbarTitle.setText(getString(R.string.tools_md5));
         mBinding.includeMd5Toolbar.toolbar.setNavigationIcon(R.drawable.ic_arrow_back_24dp);
         mBinding.includeMd5Toolbar.toolbar.setNavigationOnClickListener(v -> finish());
-        StringBuilder builder =new StringBuilder();
+        StringBuilder builder = new StringBuilder();
         builder.append("原字符串 ： wonium\n")
-        .append("加密后字符串： ").append(Md5Util.getInstance().getMD5String("wonium"));
-        mBinding.setTestCase(builder.toString());
+                .append("加密后字符串： ").append(Md5Util.getInstance().getMD5String("wonium"));
+        mBinding.tvMd5TestCase.setText(builder.toString());
     }
 
     @Override

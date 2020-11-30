@@ -41,21 +41,24 @@ public class StringUtil {
     /**
      * 实例对象
      */
-    private static  StringUtil  instance;
-
-    public static  StringUtil getInstance() {
-        if (instance==null){
-            synchronized (StringUtil.class){
-                if (instance==null){
-                    instance =new StringUtil();
-                }
-            }
+    private StringUtil() {
+        if (Inner.INSTANCE != null) {
+            throw new RuntimeException("该实例已存在，请使用getInstance方法获取");
         }
-        return instance;
+    }
+
+    private static class Inner {
+        private static final StringUtil INSTANCE = new StringUtil();
+    }
+
+
+    public static StringUtil getInstance() {
+        return Inner.INSTANCE;
     }
 
     /**
      * 判空操作 如果为null 返回true 否则返回false
+     *
      * @param text 被判断字符串
      * @return boolean  true 为空，false 不为空
      */
@@ -65,6 +68,7 @@ public class StringUtil {
 
     /**
      * 字符串判空  如果为空则返回 “”空字符串，如果不为空则返回原字符串
+     *
      * @param text 被判断的字符串
      * @return String
      */
@@ -78,8 +82,9 @@ public class StringUtil {
 
     /**
      * 将任意类型对象转换成字符串
+     *
      * @param value 被转换对象
-     * @param <T> 泛型对象
+     * @param <T>   泛型对象
      * @return String  被转换对象转换后的字符串
      */
     public <T> String valueOf(T value) {
@@ -89,8 +94,8 @@ public class StringUtil {
     /**
      * 从Map集合中获取给定Key对应的Value
      *
-     * @param map 字符串集合
-     * @param key map 中的key
+     * @param map          字符串集合
+     * @param key          map 中的key
      * @param defaultValue 默认值
      * @return String  key 对应的值
      */

@@ -95,7 +95,7 @@
 -keep class com.google.android.material.**
 
 
-# ARouter start
+# ################################## ARouter #############################################################
 -keep public class com.alibaba.android.arouter.routes.**{*;}
 -keep public class com.alibaba.android.arouter.facade.**{*;}
 -keep class * implements com.alibaba.android.arouter.facade.template.ISyringe{*;}
@@ -103,7 +103,6 @@
 -keep interface * implements com.alibaba.android.arouter.facade.template.IProvider
 # If single-type injection is used, that is, no interface is defined to implement IProvider, the following rules need to be added to protect the implementation
 -keep class * implements com.alibaba.android.arouter.facade.template.IProvider
-# ARouter end
 #-keep public class com.google.android.material.**{*;}
 ################################## QMUI #############################################################
 -keep class **_FragmentFinder { *; }

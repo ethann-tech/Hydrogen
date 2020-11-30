@@ -22,16 +22,17 @@ import android.os.Environment;
 
 import com.wonium.cicada.R;
 import com.wonium.cicada.databinding.ActivityZlibBinding;
-import com.wonium.hydrogen.ui.BaseActivity;
+import com.wonium.cicada.base.BaseActivity;
 import com.wonium.hydrogen.utils.ByteUtil;
 import com.wonium.hydrogen.utils.FileUtil;
 import com.wonium.hydrogen.utils.ToastUtil;
-import com.wonium.hydrogen.utils.ZLibUtil;
+import com.wonium.hydrogen.utils.ZlibUtil;
+
 
 import java.io.IOException;
 
 import androidx.annotation.NonNull;
-import androidx.databinding.DataBindingUtil;
+
 
 import ru.alexbykov.nopermission.PermissionHelper;
 
@@ -59,7 +60,8 @@ public class ZLibActivity extends BaseActivity {
     @Override
     public void bindLayout(int layoutResId) {
 
-        mBinding = DataBindingUtil.setContentView(this, layoutResId);
+        mBinding = ActivityZlibBinding.inflate(getLayoutInflater());
+        setContentView(mBinding.getRoot());
 
     }
 
@@ -78,7 +80,7 @@ public class ZLibActivity extends BaseActivity {
     public void initListener() {
         mBinding.btnCompress.setOnClickListener(view -> {
             src = mBinding.tvSrc.getText().toString().getBytes();
-            compressSrc = ZLibUtil.getInstance().compress(src);
+            compressSrc = ZlibUtil.getInstance().compress(src);
 
             new Thread(() -> {
                 String pathPre = Environment.getExternalStorageDirectory() + FileUtil.getInstance().generateFilePath("test", "compressPre", ".zhd");
@@ -96,7 +98,7 @@ public class ZLibActivity extends BaseActivity {
             System.out.println(ByteUtil.getInstance().bytesToHex(compressSrc));
             mBinding.tvCompress.setText(new String(compressSrc));
         });
-        mBinding.btnUnCompress.setOnClickListener(view -> mBinding.tvResult.setText(new String(ZLibUtil.getInstance().decompress(compressSrc))));
+        mBinding.btnUnCompress.setOnClickListener(view -> mBinding.tvResult.setText(new String(ZlibUtil.getInstance().decompress(compressSrc))));
     }
 
     public void onSuccess() {

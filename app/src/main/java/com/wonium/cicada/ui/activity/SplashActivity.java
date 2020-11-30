@@ -23,7 +23,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.LinearLayout;
 
 import androidx.appcompat.widget.AppCompatImageView;
-import androidx.databinding.DataBindingUtil;
+
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
@@ -31,7 +31,7 @@ import com.alibaba.android.arouter.launcher.ARouter;
 import com.wonium.cicada.R;
 import com.wonium.cicada.databinding.ActivitySplashBinding;
 import com.wonium.cicada.router.PageRouter;
-import com.wonium.hydrogen.ui.BaseActivity;
+import com.wonium.cicada.base.BaseActivity;
 import com.wonium.hydrogen.utils.DensityUtil;
 import com.wonium.hydrogen.utils.SharedPreferencesUtil;
 import com.wonium.cicada.adapter.GuidePagerAdapter;
@@ -61,7 +61,8 @@ public class SplashActivity extends BaseActivity {
 
     @Override
     public void bindLayout(int layoutResId) {
-        mBinding = DataBindingUtil.setContentView(this, layoutResId);
+        mBinding = ActivitySplashBinding.inflate(getLayoutInflater());
+        setContentView(mBinding.getRoot());
     }
 
     @Override
@@ -167,6 +168,7 @@ public class SplashActivity extends BaseActivity {
         for (int i = 0; i < len; i++) {
             guideList.add(array.getResourceId(i, 0));
         }
+        array.recycle();
         return guideList;
     }
 

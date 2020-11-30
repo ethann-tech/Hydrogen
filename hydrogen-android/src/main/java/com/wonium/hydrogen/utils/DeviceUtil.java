@@ -48,31 +48,33 @@ import androidx.annotation.Keep;
  */
 @Keep
 public class DeviceUtil {
+
+    private DeviceUtil() {
+        if (Inner.INSTANCE != null) {
+            throw new RuntimeException("该实例已存在，请通过getInstance方法获取");
+        }
+    }
+    private static class Inner {
+        private static final DeviceUtil INSTANCE = new DeviceUtil();
+    }
+
     /**
      * 实例对象
      */
-    private static DeviceUtil mInstance;
-    public static DeviceUtil getInstance(){
-        if (mInstance==null){
-            synchronized (DeviceUtil.class){
-                if (mInstance==null){
-                    mInstance =new DeviceUtil();
-                }
-            }
-        }
-        return mInstance;
+    public static DeviceUtil getInstance() {
+        return Inner.INSTANCE;
     }
 
     /**
      * 获取设备IMEI
+     *
      * @param activity
      * @return
      */
 
     @SuppressLint("MissingPermission")
-    public  String getDeviceIMEI(Activity activity) {
+    public String getDeviceIMEI(Activity activity) {
         TelephonyManager manager = (TelephonyManager) activity.getSystemService(Context.TELEPHONY_SERVICE);
-        assert manager != null;
         return manager.getDeviceId();
     }
 
@@ -145,59 +147,68 @@ public class DeviceUtil {
 
     /**
      * 获取手机号
+     *
      * @param context 上下文
      * @return 手机号
      */
-    @SuppressLint ({"MissingPermission", "HardwareIds"})
-    public String getPhoneNumber(Context context){
+    @SuppressLint({"MissingPermission", "HardwareIds"})
+    public String getPhoneNumber(Context context) {
         TelephonyManager manager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
         assert manager != null;
-        return  manager.getLine1Number();
+        return manager.getLine1Number();
     }
 
     /**
      * 获取手机品牌
+     *
      * @return Build.BRAND
      */
-    public String getBrand(){
-        return  Build.BRAND;
+    public String getBrand() {
+        return Build.BRAND;
     }
+
     /**
      * 获得手机名称
+     *
      * @return 手机名称
      */
-    public  String getMobileName(){
-        return  Build.MANUFACTURER+" "+ Build.MODEL;
+    public String getMobileName() {
+        return Build.MANUFACTURER + " " + Build.MODEL;
     }
 
     /**
      * 获取手机型号
+     *
      * @return Build.MODEL
      */
-    public String getModel(){
+    public String getModel() {
         return Build.MODEL;
     }
 
     /**
      * 获取手机唯一的id
+     *
      * @return Settings.Secure.Android_ID
      */
-    public String getAndroidId(Context context){
-        return  Settings.Secure.getString(context.getContentResolver(),Settings.Secure.ANDROID_ID);
+    public String getAndroidId(Context context) {
+        return Settings.Secure.getString(context.getContentResolver(), Settings.Secure.ANDROID_ID);
     }
+
     /**
      * 获得系统版本号
+     *
      * @return 系统版本号
      */
-    public  int getOSVersion(){
+    public int getOSVersion() {
         return Build.VERSION.SDK_INT;
     }
 
     /**
      * 获得序列号
+     *
      * @return 序列号
      */
-    public  String getSerialNum() {
+    public String getSerialNum() {
         String serialNum = null;
         try {
             Class<?> c = Class.forName("android.os.SystemProperties");

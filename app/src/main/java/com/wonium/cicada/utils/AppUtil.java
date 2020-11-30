@@ -19,17 +19,18 @@ package com.wonium.cicada.utils;
 
 public class AppUtil {
 
-    private static AppUtil mInstance;
-    public static  AppUtil getInstance(){
-        if (mInstance==null){
-            synchronized (AppUtil.class){
-                if (mInstance==null){
-                    mInstance =new AppUtil();
-
-                }
-            }
+    private AppUtil() {
+        if (Inner.INSTANCE != null) {
+            throw new RuntimeException("该实例已存在，请通过getInstance方法获取");
         }
-        return mInstance;
+    }
+
+    private static class Inner {
+        private static final AppUtil INSTANCE = new AppUtil();
+    }
+
+    public static AppUtil getInstance() {
+        return Inner.INSTANCE;
     }
 
 }

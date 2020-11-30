@@ -39,16 +39,18 @@ public class ByteUtil {
     /**
      * 实例对象
      */
-    private static ByteUtil mInstance;
-    public static ByteUtil getInstance() {
-        if (mInstance == null) {
-            synchronized (ByteUtil.class) {
-                if (mInstance == null) {
-                    mInstance = new ByteUtil();
-                }
-            }
+    private ByteUtil() {
+        if (Inner.INSTANCE != null) {
+            throw new RuntimeException("该实例已存在，请通过getInstance方法获取");
         }
-        return mInstance;
+    }
+
+    private static class Inner {
+        private static final ByteUtil INSTANCE = new ByteUtil();
+    }
+
+    public static ByteUtil getInstance() {
+        return Inner.INSTANCE;
     }
 
     /**
@@ -64,9 +66,9 @@ public class ByteUtil {
     }
 
     /**
-     * @param result 返回结果
-     * @param bitValue  bitn-bitm位
-     * @param offset 下标偏移位置
+     * @param result   返回结果
+     * @param bitValue bitn-bitm位
+     * @param offset   下标偏移位置
      * @return byte
      */
     private byte setBitValue(byte result, byte bitValue, int offset) {
@@ -97,8 +99,8 @@ public class ByteUtil {
     /**
      * 将一个字节数组转成short,endian判断字节序，如果 endian ByteOrder.BIG_ENDIAN 则为大端在前，endian ByteOrder.LITTLE_ENDIAN 则为小端在前
      *
-     * @param bytes 字节数组
-     * @param endian  字节序 By
+     * @param bytes  字节数组
+     * @param endian 字节序 By
      * @return short 一个short类型的整数
      */
     public short byteArrayToShort(byte[] bytes, ByteOrder endian) {
@@ -116,7 +118,7 @@ public class ByteUtil {
     /**
      * short 转字节数组
      *
-     * @param value short类型的证书
+     * @param value  short类型的证书
      * @param endian 字节序
      * @return byte[]
      */
@@ -199,14 +201,15 @@ public class ByteUtil {
 
     /**
      * float 转ByteArray
-     * @param value float类型数值
+     *
+     * @param value  float类型数值
      * @param endian 字节序大小端
      * @return
      */
 
-    public byte[] floatToByteArray(float value,ByteOrder endian){
-        byte[] bytes =new byte[4];
-        int fl=Float.floatToIntBits(value);
+    public byte[] floatToByteArray(float value, ByteOrder endian) {
+        byte[] bytes = new byte[4];
+        int fl = Float.floatToIntBits(value);
         if (endian == ByteOrder.BIG_ENDIAN) {
             bytes[0] = (byte) ((fl >> 24) & 0xFF);
             bytes[1] = (byte) ((fl >> 16) & 0xFF);
@@ -222,7 +225,6 @@ public class ByteUtil {
     }
 
     /**
-     *
      * @param bytes
      * @param endian
      */
@@ -243,7 +245,8 @@ public class ByteUtil {
 
     /**
      * long 转字节数组
-     * @param value 一个long 类型的数值
+     *
+     * @param value  一个long 类型的数值
      * @param endian 字节序 大端小端
      * @return byte[] 字节数组
      */
@@ -343,7 +346,6 @@ public class ByteUtil {
     }
 
     /**
-     *
      * @param data 字节数组
      * @return string 字节数组专成String
      */

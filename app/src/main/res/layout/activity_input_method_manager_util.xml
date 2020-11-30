@@ -1,15 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <data>
-        <variable
-            name="title"
-            type="String" />
-
-        <variable
-            name="testCase"
-            type="String" />
-    </data>
 
     <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
@@ -18,10 +8,11 @@
 
         <include
             android:id="@+id/include_immu_toolbar"
-            app:title="@{title}"
+
             layout="@layout/layout_toolbar" />
 
         <TextView
+            android:id="@+id/tvTestCase"
             android:layout_width="match_parent"
             android:text="@{testCase}"
             android:layout_height="wrap_content" />
@@ -59,6 +50,6 @@
 
 
     </androidx.appcompat.widget.LinearLayoutCompat>
-</layout>
+
 
 

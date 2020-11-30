@@ -44,23 +44,24 @@ public class DensityUtil {
     private static float sNonCompatScaledDensity;
 
 
-
+    private DensityUtil() {
+        if (Inner.INSTANCE != null) {
+            throw new RuntimeException("该实例已存在，请通过getInstance方法获取");
+        }
+    }
+    private static class Inner {
+        private static final DensityUtil INSTANCE = new DensityUtil();
+    }
 
     /**
      * 实例对象
      */
-
-    private static DensityUtil mInstance;
-    public static DensityUtil getInstance(){
-        if (mInstance==null){
-            synchronized (DensityUtil.class){
-                if (mInstance==null){
-                    mInstance =new DensityUtil();
-                }
-            }
-        }
-        return mInstance;
+    public static DensityUtil getInstance() {
+        return Inner.INSTANCE;
     }
+
+
+
     /**
      * 根据手机的分辨率从 dp 的单位 转成为 px(像素)
      *
@@ -115,17 +116,18 @@ public class DensityUtil {
      * @param context 上下文
      * @return scaledDensity 缩放密度
      */
-    public  float getScaledDensity(Context context) {
+    public float getScaledDensity(Context context) {
         DisplayMetrics dm = context.getResources().getDisplayMetrics();
         return dm.scaledDensity;
     }
+
     /**
      * 获取density
      *
      * @param context 上下文
      * @return density 密度 真实使用的密度
      */
-    public  float getDensity(Context context) {
+    public float getDensity(Context context) {
         DisplayMetrics dm = context.getResources().getDisplayMetrics();
         return dm.density;
     }
@@ -136,43 +138,46 @@ public class DensityUtil {
      * @param context 上下文
      * @return densityDpi 当前密度下的dpi
      */
-    public  float getDensityDpi(Context context) {
+    public float getDensityDpi(Context context) {
         DisplayMetrics dm = context.getResources().getDisplayMetrics();
         return dm.densityDpi;
     }
 
 
-
     /**
      * 设置自定义Density 适配使用
+     *
      * @param context 当前activity
      */
-    public  void setCustomDensity(Context context){
-        DisplayMetrics appDisplayMetrics =context.getApplicationContext().getResources().getDisplayMetrics();
-        if (sNonCompatDensity ==0){
-            sNonCompatDensity =appDisplayMetrics.density;
-            sNonCompatScaledDensity =appDisplayMetrics.scaledDensity;
+    public void setCustomDensity(Context context) {
+        DisplayMetrics appDisplayMetrics = context.getApplicationContext().getResources().getDisplayMetrics();
+        if (sNonCompatDensity == 0) {
+            sNonCompatDensity = appDisplayMetrics.density;
+            sNonCompatScaledDensity = appDisplayMetrics.scaledDensity;
             context.getApplicationContext().registerComponentCallbacks(new ComponentCallbacks() {
                 @Override
                 public void onConfigurationChanged(Configuration newConfig) {
-                    if (newConfig!=null&&newConfig.fontScale>0){
-                        sNonCompatScaledDensity =context.getApplicationContext().getResources().getDisplayMetrics().scaledDensity;
+                    if (newConfig != null && newConfig.fontScale > 0) {
+                        sNonCompatScaledDensity = context.getApplicationContext().getResources().getDisplayMetrics().scaledDensity;
                     }
                 }
+
                 @Override
                 public void onLowMemory() {
                 }
             });
         }
-        final  float targetDensity =appDisplayMetrics.widthPixels/360;
-        final  float targetScaleDensity =targetDensity*(sNonCompatScaledDensity/sNonCompatDensity);
-        final  int targetDensityDpi = (int) (160 *targetDensity);
-        appDisplayMetrics.density =targetDensity;
+        final float targetDensity = appDisplayMetrics.widthPixels / 360;
+        final float targetScaleDensity = targetDensity * (sNonCompatScaledDensity / sNonCompatDensity);
+        final int targetDensityDpi = (int) (160 * targetDensity);
+        appDisplayMetrics.density = targetDensity;
         appDisplayMetrics.scaledDensity = targetScaleDensity;
-        appDisplayMetrics.densityDpi =targetDensityDpi;
-        final  DisplayMetrics activityDisplayMetrics =context.getApplicationContext().getResources().getDisplayMetrics();
-        activityDisplayMetrics.density =targetDensity;
-        activityDisplayMetrics.scaledDensity =targetScaleDensity;
-        activityDisplayMetrics.densityDpi =targetDensityDpi;
+        appDisplayMetrics.densityDpi = targetDensityDpi;
+        final DisplayMetrics activityDisplayMetrics = context.getApplicationContext().getResources().getDisplayMetrics();
+        activityDisplayMetrics.density = targetDensity;
+        activityDisplayMetrics.scaledDensity = targetScaleDensity;
+        activityDisplayMetrics.densityDpi = targetDensityDpi;
     }
+
+
 }

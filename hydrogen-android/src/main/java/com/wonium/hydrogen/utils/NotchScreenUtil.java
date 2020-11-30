@@ -26,14 +26,28 @@ public class NotchScreenUtil {
      * 刘海屏、水滴屏等异型屏支持的Android系统版本：8.0-》全面屏  8.0以上-》刘海屏、水滴屏等异型屏
      * true 支持，false 不支持
      */
-    public static boolean isNotchSupportVersion(Context context){
+    private NotchScreenUtil() {
+        if (Inner.INSTANCE != null) {
+            throw new RuntimeException("该实例已存在，请通过getInstance方法获取");
+        }
+    }
+
+    private static class Inner {
+        private static final NotchScreenUtil INSTANCE = new NotchScreenUtil();
+    }
+
+    public static NotchScreenUtil getInstance() {
+        return Inner.INSTANCE;
+    }
+
+
+    public boolean isNotchSupportVersion(Context context) {
 
         // 低于 API 21的，都不会是全面屏。。。
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
             return false;
         }
-        return  (isAllScreenDevice(context)||isNotch(context));
-
+        return (isAllScreenDevice(context) || isNotch(context));
     }
 
 
@@ -43,7 +57,7 @@ public class NotchScreenUtil {
     private volatile static boolean mHasCheckAllScreen;
     private volatile static boolean mIsAllScreenDevice;
 
-    public static boolean isAllScreenDevice(Context context) {
+    public boolean isAllScreenDevice(Context context) {
         if (mHasCheckAllScreen) {
             return mIsAllScreenDevice;
         }
@@ -75,24 +89,29 @@ public class NotchScreenUtil {
 
     /**
      * 检查流行机型是否存在刘海屏
+     *
      * @param context 上下文
      * @return true 存在 false 不存
      */
-    public static boolean isNotch(Context context){
+    public boolean isNotch(Context context) {
         return isNotch_VIVO(context) || isNotch_OPPO(context) || isNotch_HUAWEI(context) || isNotch_XIAOMI(context);
     }
 
 
-
-    //检查vivo是否存在刘海屏、水滴屏等异型屏
-    public static boolean isNotch_VIVO(Context context){
+    /**
+     * 检查vivo是否存在刘海屏、水滴屏等异型屏
+     *
+     * @param context
+     * @return
+     */
+    public boolean isNotch_VIVO(Context context) {
         boolean isNotch = false;
         try {
             ClassLoader cl = context.getClassLoader();
             Class cls = cl.loadClass("android.util.FtFeature");
             Method method = cls.getMethod("isFeatureSupport", int.class);
             // 0x00000020：是否有刘海  0x00000008：是否有圆角
-            isNotch = (boolean) method.invoke(cls,0x00000020);
+            isNotch = (boolean) method.invoke(cls, 0x00000020);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (NoSuchMethodException e) {
@@ -101,24 +120,35 @@ public class NotchScreenUtil {
             e.printStackTrace();
         } catch (InvocationTargetException e) {
             e.printStackTrace();
-        }finally {
-            return isNotch;
-        }
-    }
-    //检查oppo是否存在刘海屏、水滴屏等异型屏
-    public static boolean isNotch_OPPO(Context context){
-        boolean isNotch = false;
-        try {
-            isNotch = context.getPackageManager().hasSystemFeature("com.oppo.feature.screen.heteromorphism");
-        }catch (Exception e){
-            e.printStackTrace();
-        }finally {
+        } finally {
             return isNotch;
         }
     }
 
-    //检查huawei是否存在刘海屏、水滴屏等异型屏
-    public static boolean isNotch_HUAWEI(Context context) {
+    /**
+     * 检查oppo是否存在刘海屏、水滴屏等异型屏
+     *
+     * @param context
+     * @return
+     */
+    public boolean isNotch_OPPO(Context context) {
+        boolean isNotch = false;
+        try {
+            isNotch = context.getPackageManager().hasSystemFeature("com.oppo.feature.screen.heteromorphism");
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            return isNotch;
+        }
+    }
+
+    /**
+     * 检查huawei是否存在刘海屏、水滴屏等异型屏
+     *
+     * @param context
+     * @return
+     */
+    public boolean isNotch_HUAWEI(Context context) {
         boolean isNotch = false;
         try {
             ClassLoader cl = context.getClassLoader();
@@ -136,8 +166,11 @@ public class NotchScreenUtil {
         }
     }
 
-    // 检查xiaomi是否存在刘海屏、水滴屏等异型屏
-    public static boolean isNotch_XIAOMI(Context context){
+    /**
+     * 检查xiaomi是否存在刘海屏、水滴屏等异型屏
+     */
+
+    public boolean isNotch_XIAOMI(Context context) {
         boolean isNotch = false;
         try {
             ClassLoader cl = context.getClassLoader();
@@ -152,11 +185,10 @@ public class NotchScreenUtil {
             e.printStackTrace();
         } catch (InvocationTargetException e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             return isNotch;
         }
     }
-
 
 
 }

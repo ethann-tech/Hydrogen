@@ -18,7 +18,7 @@ package com.wonium.cicada.ui.activity;
 
 
 import com.wonium.cicada.R;
-import com.wonium.hydrogen.ui.BaseActivity;
+import com.wonium.cicada.base.BaseActivity;
 
 public class ProgressActivity extends BaseActivity {
     @Override

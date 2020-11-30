@@ -19,13 +19,12 @@ package com.wonium.cicada.ui.activity;
 import android.Manifest;
 
 import androidx.annotation.NonNull;
-import androidx.databinding.DataBindingUtil;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.wonium.cicada.R;
 import com.wonium.cicada.databinding.ActivityIntentUtilBinding;
 import com.wonium.cicada.router.PageRouter;
-import com.wonium.hydrogen.ui.BaseActivity;
+import com.wonium.cicada.base.BaseActivity;
 import com.wonium.hydrogen.utils.IntentUtil;
 import com.wonium.hydrogen.utils.ToastUtil;
 
@@ -50,12 +49,13 @@ public class IntentUtilActivity extends BaseActivity {
 
     @Override
     public void bindLayout(int layoutResId) {
-        mBinding = DataBindingUtil.setContentView(this, layoutResId);
+        mBinding = ActivityIntentUtilBinding.inflate(getLayoutInflater());
+        setContentView(mBinding.getRoot());
     }
 
     @Override
     public void initView() {
-        mBinding.setTitle(getResources().getString(R.string.tools_intent));
+        mBinding.includeIntentUtil.tvToolbarTitle.setText(getResources().getString(R.string.tools_intent));
         setSupportActionBar(mBinding.includeIntentUtil.toolbar);
         mBinding.includeIntentUtil.toolbar.setNavigationIcon(R.drawable.ic_arrow_back_24dp);
         mPermissionHelper = new PermissionHelper(this);

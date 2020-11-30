@@ -26,17 +26,16 @@ import com.wonium.cicada.databinding.FragmentVideoBinding;
 import com.wonium.hydrogen.ui.BaseFragment;
 import com.wonium.hydrogen.utils.ToastUtil;
 
-import androidx.databinding.DataBindingUtil;
-
 public class VideoFragment extends BaseFragment {
     private FragmentVideoBinding mBinding;
     private String args1;
     private String args2;
-    public static VideoFragment newInstance(String args1,String args2) {
+
+    public static VideoFragment newInstance(String args1, String args2) {
         Bundle args = new Bundle();
         VideoFragment fragment = new VideoFragment();
-        fragment.args1 =args1;
-        fragment.args1 =args2;
+        fragment.args1 = args1;
+        fragment.args1 = args2;
         fragment.setArguments(args);
         return fragment;
     }
@@ -48,14 +47,14 @@ public class VideoFragment extends BaseFragment {
 
     @Override
     protected View initBinding(LayoutInflater inflater, ViewGroup container) {
-        mBinding = DataBindingUtil.inflate(inflater,getLayoutResId(),container,false);
+        mBinding = FragmentVideoBinding.inflate(inflater);
         return mBinding.getRoot();
     }
 
     @Override
     protected void initView(View view) {
         mBinding.editFixedText.setFixedText("ZH-");
-        mBinding.btnTest.setOnClickListener(v -> ToastUtil.getInstance().show(getContext(),mBinding.editFixedText.getText().toString().trim()));
+        mBinding.btnTest.setOnClickListener(v -> ToastUtil.getInstance().show(getContext(), mBinding.editFixedText.getText().toString().trim()));
     }
 
     @Override

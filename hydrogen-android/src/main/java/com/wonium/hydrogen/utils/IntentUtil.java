@@ -36,24 +36,27 @@ import androidx.annotation.Keep;
  */
 @Keep
 public class IntentUtil {
+
+    private IntentUtil() {
+        if (Inner.INSTANCE != null) {
+            throw new RuntimeException("该实例已存在，请通过getInstance方法获取");
+        }
+    }
+
     /**
      * 实例对象
      */
-    private static IntentUtil mInstance;
+    private static class Inner {
+        private static final IntentUtil INSTANCE = new IntentUtil();
+    }
 
     public static IntentUtil getInstance() {
-        if (mInstance == null) {
-            synchronized (IntentUtil.class) {
-                if (mInstance == null) {
-                    mInstance = new IntentUtil();
-                }
-            }
-        }
-        return mInstance;
+        return Inner.INSTANCE;
     }
 
     /**
      * 跳转到拨号页面
+     *
      * @param context 上下文
      * @param phone   手机号
      */

@@ -19,25 +19,40 @@ package com.wonium.hydrogen.utils;
 import android.os.Build;
 
 
+/**
+ * @ClassName: ActivityManagerUtil.java
+ * @Description: Activity统一管理工具包
+ * @Author: ethan
+ * @E-mail: ethan.nj@qq.com
+ * @Blog: https://blog.wonium.com
+ * @CreateDate: 2018/11/11 20:40
+ * @UpdateUser: 更新者
+ * @UpdateDate: 2018/11/11 20:40
+ * @UpdateDescription: 调整Size 方法名
+ * @Version: 1.0.1
+ */
 public class AndroidVersionUtil {
 
-    private static AndroidVersionUtil mInstance;
-    public static AndroidVersionUtil getInstance(){
-        if (mInstance==null){
-            synchronized (AndroidVersionUtil.class){
-                if (mInstance==null){
-                    mInstance =new AndroidVersionUtil();
-                }
-            }
+    private AndroidVersionUtil() {
+        if (Inner.INSTANCE != null) {
+            throw new RuntimeException("该实例已存在，请通过getInstance方法获取");
         }
-        return mInstance;
     }
+
+    private static class Inner {
+        private static final AndroidVersionUtil INSTANCE = new AndroidVersionUtil();
+    }
+
+    public static AndroidVersionUtil getInstance() {
+        return Inner.INSTANCE;
+    }
+
     /**
      * 是否在2.2版本及以上
      *
      * @return 是否在2.2版本及以上
      */
-    public  boolean isFroyo() {
+    public boolean isFroyo() {
         return Build.VERSION.SDK_INT >= Build.VERSION_CODES.FROYO;
     }
 
@@ -46,7 +61,7 @@ public class AndroidVersionUtil {
      *
      * @return 是否在2.3版本及以上
      */
-    public  boolean isGingerbread() {
+    public boolean isGingerbread() {
         return Build.VERSION.SDK_INT >= Build.VERSION_CODES.GINGERBREAD;
     }
 
@@ -55,7 +70,7 @@ public class AndroidVersionUtil {
      *
      * @return 是否在2.3.3版本及以上
      */
-    public  boolean isGingerbreadMR1() {
+    public boolean isGingerbreadMR1() {
         return Build.VERSION.SDK_INT >= Build.VERSION_CODES.GINGERBREAD_MR1;
     }
 
@@ -64,7 +79,7 @@ public class AndroidVersionUtil {
      *
      * @return 是否在3.0版本及以上
      */
-    public  boolean isHoneycomb() {
+    public boolean isHoneycomb() {
         return Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB;
     }
 
@@ -73,7 +88,7 @@ public class AndroidVersionUtil {
      *
      * @return 是否在3.1版本及以上
      */
-    public  boolean isHoneycombMR1() {
+    public boolean isHoneycombMR1() {
         return Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB_MR1;
     }
 
@@ -82,7 +97,7 @@ public class AndroidVersionUtil {
      *
      * @return 是否在4.0版本及以上
      */
-    public  boolean isIceCreamSandwich() {
+    public boolean isIceCreamSandwich() {
         return Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH;
     }
 
@@ -91,7 +106,7 @@ public class AndroidVersionUtil {
      *
      * @return 是否在4.0.3版本及以上
      */
-    public  boolean isIceCreamSandwichMR1() {
+    public boolean isIceCreamSandwichMR1() {
         return Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1;
     }
 
@@ -100,7 +115,7 @@ public class AndroidVersionUtil {
      *
      * @return 是否在4.1版本及以上
      */
-    public  boolean isJellyBean() {
+    public boolean isJellyBean() {
         return Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN;
     }
 
@@ -118,7 +133,7 @@ public class AndroidVersionUtil {
      *
      * @return 是否在5.0.1版本及以上
      */
-    public  boolean isLollipop() {
+    public boolean isLollipop() {
         return Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP;
     }
 }

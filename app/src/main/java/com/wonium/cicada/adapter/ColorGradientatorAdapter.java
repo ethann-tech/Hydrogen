@@ -19,12 +19,9 @@ package com.wonium.cicada.adapter;
 import android.content.Context;
 import android.view.ViewGroup;
 
-import androidx.databinding.DataBindingUtil;
-
-import com.wonium.cicada.R;
 import com.wonium.cicada.databinding.ItemColorUtilGradientatorBinding;
-import com.wonium.hydrogen.adapter.BaseRecyclerViewAdapter;
-import com.wonium.hydrogen.adapter.BaseViewHolder;
+import com.wonium.cicada.base.BaseRecyclerViewAdapter;
+import com.wonium.cicada.base.BaseViewHolder;
 
 public class ColorGradientatorAdapter extends BaseRecyclerViewAdapter<Integer, BaseViewHolder<ItemColorUtilGradientatorBinding>> {
     public ColorGradientatorAdapter(Context context) {
@@ -33,12 +30,12 @@ public class ColorGradientatorAdapter extends BaseRecyclerViewAdapter<Integer, B
 
     @Override
     public BaseViewHolder<ItemColorUtilGradientatorBinding> onCreateVH(ViewGroup parent, int viewType) {
-        ItemColorUtilGradientatorBinding mBinding = DataBindingUtil.inflate(getInflater(), R.layout.item_color_util_gradientator, parent, false);
+        ItemColorUtilGradientatorBinding mBinding = ItemColorUtilGradientatorBinding.inflate(getInflater());
         return new BaseViewHolder<>(mBinding);
     }
 
     @Override
     public void onBindVH(BaseViewHolder<ItemColorUtilGradientatorBinding> holder, int position) {
-        holder.getBinding().setColor(getData(position));
+        holder.getBinding().itemGradientator.setImageResource(getData(position));
     }
 }

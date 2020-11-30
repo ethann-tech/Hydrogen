@@ -1,28 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <data>
 
-        <variable
-            name="title"
-            type="String" />
-    </data>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+    <include
+        android:id="@+id/include_custom_dialog_toolbar"
+        layout="@layout/layout_toolbar" />
 
-        <include
-            android:id="@+id/include_custom_dialog_toolbar"
-            layout="@layout/layout_toolbar"
-            app:title="@{title}" />
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_loading_dialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="LoadingDialog"
+        android:textAllCaps="false" />
+</LinearLayout>
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_loading_dialog"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="LoadingDialog"
-            android:textAllCaps="false" />
-    </LinearLayout>
-</layout>

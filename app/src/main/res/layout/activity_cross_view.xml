@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<com.qmuiteam.qmui.layout.QMUILinearLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <include
+            android:id="@+id/include_component_toolbar"
+            layout="@layout/layout_toolbar" />
+
+        <com.wonium.hydrogen.ui.widget.CrossView
+            android:id="@+id/sample_cross_view"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:background="@drawable/cross_view_selector"
+            android:padding="20dp"
+            app:lineColor="@android:color/black" />
+
+    </com.qmuiteam.qmui.layout.QMUILinearLayout>
+

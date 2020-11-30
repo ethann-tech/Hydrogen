@@ -57,6 +57,7 @@
         <activity android:name="com.wonium.cicada.ui.activity.CustomDialogActivity" />
         <activity android:name="com.wonium.cicada.ui.activity.ByteUtilActivity" />
         <activity android:name="com.wonium.cicada.ui.activity.ExpandListActivity" />
+        <activity android:name=".ui.activity.CrossViewActivity" android:exported="false"/>
         <activity
             android:name="com.wonium.cicada.ui.activity.ColorUtilActivity"
             android:launchMode="singleTask" />

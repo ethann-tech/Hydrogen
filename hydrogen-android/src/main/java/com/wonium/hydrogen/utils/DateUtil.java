@@ -41,20 +41,21 @@ import java.util.Locale;
  */
 @Keep
 public class DateUtil {
+
+    private DateUtil() {
+        if (Inner.INSTANCE != null) {
+            throw new RuntimeException("该实例已存在，请通过getInstance方法获取");
+        }
+    }
+    private static class Inner {
+        private static final DateUtil INSTANCE = new DateUtil();
+    }
+
     /**
      * 实例对象
      */
-    private static DateUtil mInstance;
-
     public static DateUtil getInstance() {
-        if (mInstance == null) {
-            synchronized (DateUtil.class) {
-                if (mInstance == null) {
-                    mInstance = new DateUtil();
-                }
-            }
-        }
-        return mInstance;
+        return Inner.INSTANCE;
     }
 
     /**

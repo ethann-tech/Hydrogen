@@ -55,16 +55,19 @@ public class NetWorkUtil {
     /**
      * 实例对象
      */
-    private static NetWorkUtil mInstance;
-    public static NetWorkUtil getInstance(){
-        if(mInstance==null){
-            synchronized (MediaUtil.class){
-                if (mInstance==null){
-                    mInstance =new NetWorkUtil();
-                }
-            }
+    private NetWorkUtil() {
+        if (Inner.INSTANCE != null) {
+            throw new RuntimeException("该实例已存在，请通过getInstance方法获取");
         }
-        return mInstance;
+    }
+
+    private static class Inner {
+        private static final NetWorkUtil INSTANCE = new NetWorkUtil();
+    }
+
+    public static NetWorkUtil getInstance() {
+
+        return Inner.INSTANCE;
     }
 
     /**
@@ -99,6 +102,7 @@ public class NetWorkUtil {
 
     /**
      * 检测wifi是否连接
+     *
      * @param context 上下文
      * @return
      */
@@ -128,6 +132,7 @@ public class NetWorkUtil {
 
     /**
      * 检测GPS是否打开
+     *
      * @param context 上下文
      * @return true 已开启gps false 已关闭gps
      */
@@ -386,7 +391,7 @@ public class NetWorkUtil {
         } else if (netWorkType == TelephonyManager.NETWORK_TYPE_HSDPA
                 || netWorkType == TelephonyManager.NETWORK_TYPE_HSPA
                 || netWorkType == TelephonyManager.NETWORK_TYPE_HSUPA
-                || netWorkType == TelephonyManager.NETWORK_TYPE_UMTS ) {
+                || netWorkType == TelephonyManager.NETWORK_TYPE_UMTS) {
             //3G网络最佳范围  >-90dBm  越大越好  ps:中国移动3G获取不到  返回的无效dbm值是正数（85dbm）
             //在这个范围的已经确定是3G，但不同运营商的3G有不同的获取方法，故在此需做判断 判断运营商与网络类型的工具类在最下方
             String operatorCode = getNetworkOperatorCode(context);//获取当前运营商

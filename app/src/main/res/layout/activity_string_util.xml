@@ -13,33 +13,12 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
-<layout xmlns:bind="http://schemas.android.com/apk/res-auto">
 
-    <data>
-
-        <variable
-            name="toolbarTitle"
-            type="String" />
-
-        <variable
-            name="isNull"
-            type="String" />
-        <variable
-            name="isEmpty"
-            type="String"/>
-        <variable
-            name="valueOf"
-            type="String"/>
-        <variable
-            name="getStringFromMap"
-            type="String"/>
-
-    </data>
-
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
 
         <include
             android:id="@+id/include_toolbar"
@@ -55,6 +34,7 @@
                 android:hint="@string/hint_is_null" />
 
             <TextView
+                android:id="@+id/tvResultIsNull"
                 style="@style/ResultTextViewStyle"
                 android:hint="@string/hint_result"
                 android:text="@{isNull}" />
@@ -74,6 +54,7 @@
                 android:hint="@string/hint_is_empty" />
 
             <TextView
+                android:id="@+id/tvIsEmpty"
                 style="@style/ResultTextViewStyle"
                 android:text="@{isEmpty}" />
 
@@ -94,6 +75,7 @@
                 android:hint="@string/hint_value_of" />
 
             <TextView
+                android:id="@+id/tvValueOf"
                 style="@style/ResultTextViewStyle"
                 android:text="@{valueOf}" />
 
@@ -111,6 +93,7 @@
 
 
             <TextView
+                android:id="@+id/tvStringForMap"
                 style="@style/ResultTextViewStyle"
                 android:hint="@string/hint_click_bottom_button_check"
                 android:text="@{getStringFromMap}" />
@@ -128,5 +111,5 @@
             android:layout_height="wrap_content" />
     </LinearLayout>
 
-</layout>
+
 

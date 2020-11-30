@@ -17,13 +17,11 @@
 package com.wonium.cicada.ui.activity;
 
 
-import androidx.databinding.DataBindingUtil;
-
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.wonium.cicada.R;
 import com.wonium.cicada.databinding.ActivityFileUtilBinding;
 import com.wonium.cicada.router.PageRouter;
-import com.wonium.hydrogen.ui.BaseActivity;
+import com.wonium.cicada.base.BaseActivity;
 import com.wonium.hydrogen.utils.FileUtil;
 
 @Route(path = PageRouter.ACTIVITY_FILE_UTIL)
@@ -56,13 +54,14 @@ public class FileUtilActivity extends BaseActivity {
 
     @Override
     public void bindLayout(int layoutResId) {
-        mBinding = DataBindingUtil.setContentView(this, layoutResId);
+        mBinding = ActivityFileUtilBinding.inflate(getLayoutInflater());
+        setContentView(mBinding.getRoot());
     }
 
     @Override
     public void initView() {
         setSupportActionBar(mBinding.includeToolbarFile.toolbar);
-        mBinding.setTitle(getString(R.string.tools_file));
+        mBinding.includeToolbarFile.tvToolbarTitle.setText(getString(R.string.tools_file));
         mBinding.tvFileResult.setText("点击按钮读取wonium文件");
         mBinding.includeToolbarFile.toolbar.setNavigationIcon(R.drawable.ic_arrow_back_24dp);
 

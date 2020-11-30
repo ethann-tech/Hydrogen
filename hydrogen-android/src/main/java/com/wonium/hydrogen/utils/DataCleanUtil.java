@@ -35,20 +35,21 @@ import java.math.BigDecimal;
  * @Version: 1.0.0
  */
 public class DataCleanUtil {
+
+    private DataCleanUtil() {
+        if (Inner.INSTANCE != null) {
+            throw new RuntimeException("该实例已存在，请通过getInstance方法获取");
+        }
+    }
+    private static class Inner {
+        private static final DataCleanUtil INSTANCE = new DataCleanUtil();
+    }
+
     /**
      * 实例对象
      */
-   private static DataCleanUtil  mInstance;
-
     public static DataCleanUtil getInstance() {
-        if (mInstance==null){
-            synchronized (DataCleanUtil.class){
-                if (mInstance==null){
-                    mInstance =new DataCleanUtil();
-                }
-            }
-        }
-        return mInstance;
+        return Inner.INSTANCE;
     }
 
     public  String getTotalCacheSize(Context context) {

@@ -1,22 +1,22 @@
     /*
- * Copyright (C) 2019 Ethan.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *    http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+     * Copyright (C) 2019 Ethan.
+     *
+     * Licensed under the Apache License, Version 2.0 (the "License");
+     * you may not use this file except in compliance with the License.
+     * You may obtain a copy of the License at
+     *
+     *    http://www.apache.org/licenses/LICENSE-2.0
+     *
+     * Unless required by applicable law or agreed to in writing, software
+     * distributed under the License is distributed on an "AS IS" BASIS,
+     * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     * See the License for the specific language governing permissions and
+     * limitations under the License.
+     */
 
-package com.wonium.cicada.ui.activity;
+    package com.wonium.cicada.ui.activity;
 
-    import androidx.databinding.DataBindingUtil;
+
     import androidx.recyclerview.widget.LinearLayoutManager;
     import androidx.recyclerview.widget.RecyclerView;
 
@@ -27,7 +27,7 @@ package com.wonium.cicada.ui.activity;
     import com.wonium.cicada.databinding.ActivityCustomComponentBinding;
     import com.wonium.cicada.router.PageRouter;
     import com.wonium.hydrogen.UniversalItemDecoration;
-    import com.wonium.hydrogen.ui.BaseActivity;
+    import com.wonium.cicada.base.BaseActivity;
 
     import java.util.Arrays;
 
@@ -65,13 +65,14 @@ package com.wonium.cicada.ui.activity;
 
         @Override
         public void bindLayout(int layoutResId) {
-            mBinding = DataBindingUtil.setContentView(this, layoutResId);
+            mBinding = ActivityCustomComponentBinding.inflate(getLayoutInflater());
+            setContentView(mBinding.getRoot());
         }
 
         @Override
         public void initView() {
             setStatusBar(true);
-            mBinding.setTitle(getResources().getString(R.string.activity_custom_component));
+            mBinding.includeComponentToolbar.tvToolbarTitle.setText(getResources().getString(R.string.activity_custom_component));
             setSupportActionBar(mBinding.includeComponentToolbar.toolbar);
             mBinding.includeComponentToolbar.toolbar.setNavigationIcon(R.drawable.ic_arrow_back_24dp);
             mBinding.includeComponentToolbar.toolbar.setNavigationOnClickListener(v -> finish());
@@ -113,8 +114,13 @@ package com.wonium.cicada.ui.activity;
                     case 4:
                         ARouter.getInstance().build(PageRouter.ACTIVITY_RIPPLE_LAYOUT).navigation(getContext());
                         break;
-                    case 5: ARouter.getInstance().build(PageRouter.ACTIVITY_W_PROGRESS_DIALOG).navigation(getContext());
-                        default: break;
+                    case 5:
+                        ARouter.getInstance().build(PageRouter.ACTIVITY_W_PROGRESS_DIALOG).navigation(getContext());
+                        break;
+                    case 6:
+                        ARouter.getInstance().build(PageRouter.ACTIVITY_CROSS_VIEW).navigation(getContext());
+                    default:
+                        break;
                 }
             });
         }
