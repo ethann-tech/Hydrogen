@@ -19,9 +19,6 @@ package com.wonium.cicada.adapter;
 import android.content.Context;
 import android.view.ViewGroup;
 
-import androidx.databinding.DataBindingUtil;
-
-import com.wonium.cicada.R;
 import com.wonium.cicada.databinding.ItemCustomComponentBinding;
 import com.wonium.cicada.base.BaseRecyclerViewAdapter;
 import com.wonium.cicada.base.BaseViewHolder;
@@ -45,12 +42,12 @@ public class CustomComponentAdapter extends BaseRecyclerViewAdapter<String, Base
 
     @Override
     public BaseViewHolder<ItemCustomComponentBinding> onCreateVH(ViewGroup parent, int viewType) {
-        ItemCustomComponentBinding mBinding = DataBindingUtil.inflate(getInflater(), R.layout.item_custom_component,parent,false);
+        ItemCustomComponentBinding mBinding = ItemCustomComponentBinding.inflate(getInflater());
         return new BaseViewHolder<>(mBinding);
     }
 
     @Override
     public void onBindVH(BaseViewHolder<ItemCustomComponentBinding> holder, int position) {
-            holder.getBinding().setComponentName(StringUtil.getInstance().isEmpty(getData(position)));
+            holder.getBinding().componentName.setText(StringUtil.getInstance().isEmpty(getData(position)));
     }
 }

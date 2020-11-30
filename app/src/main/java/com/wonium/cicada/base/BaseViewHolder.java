@@ -17,8 +17,9 @@
 package com.wonium.cicada.base;
 
 import androidx.annotation.Keep;
-import androidx.databinding.ViewDataBinding;
+
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewbinding.ViewBinding;
 
 /**
  * @ClassName: BaseViewHolder.java
@@ -33,7 +34,7 @@ import androidx.recyclerview.widget.RecyclerView;
  * @Version: 1.0.0
  */
 @Keep
-public class BaseViewHolder<B extends ViewDataBinding> extends RecyclerView.ViewHolder {
+public class BaseViewHolder<B extends ViewBinding> extends RecyclerView.ViewHolder {
     private B mBinding;
 
     public BaseViewHolder(B binding) {

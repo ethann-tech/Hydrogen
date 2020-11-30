@@ -20,9 +20,6 @@ import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 
-import androidx.databinding.DataBindingUtil;
-
-import com.wonium.cicada.R;
 import com.wonium.cicada.databinding.ItemGuidePagerBinding;
 import com.wonium.cicada.base.BaseRecyclerViewAdapter;
 import com.wonium.cicada.base.BaseViewHolder;
@@ -35,7 +32,7 @@ public class GuidePagerAdapter extends BaseRecyclerViewAdapter<Integer, BaseView
 
     @Override
     public BaseViewHolder<ItemGuidePagerBinding> onCreateVH(ViewGroup parent, int viewType) {
-        ItemGuidePagerBinding mBinding = DataBindingUtil.inflate(getInflater(), R.layout.item_guide_pager,parent,false);
+        ItemGuidePagerBinding mBinding = ItemGuidePagerBinding.inflate(getInflater());
         return new BaseViewHolder<>(mBinding);
     }
 
@@ -43,6 +40,5 @@ public class GuidePagerAdapter extends BaseRecyclerViewAdapter<Integer, BaseView
     public void onBindVH(BaseViewHolder<ItemGuidePagerBinding> holder, int position) {
         holder.getBinding().itemGuide.setImageResource(getData(position));
         holder.getBinding().itemGuide.setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
-
     }
 }

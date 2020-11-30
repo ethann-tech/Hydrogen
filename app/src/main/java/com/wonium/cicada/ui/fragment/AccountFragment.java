@@ -29,7 +29,7 @@ import com.wonium.cicada.databinding.FragmentAccountBinding;
 import com.wonium.cicada.router.PageRouter;
 import com.wonium.hydrogen.ui.BaseFragment;
 
-import androidx.databinding.DataBindingUtil;
+
 
 public class AccountFragment extends BaseFragment {
     private FragmentAccountBinding mBinding;
@@ -53,7 +53,7 @@ public class AccountFragment extends BaseFragment {
 
     @Override
     protected View initBinding(LayoutInflater inflater, ViewGroup container) {
-        mBinding = DataBindingUtil.inflate(inflater,getLayoutResId(),container,false);
+        mBinding = FragmentAccountBinding.inflate(inflater);
         return mBinding.getRoot();
     }
 
