@@ -37,20 +37,21 @@ import androidx.annotation.Keep;
 @Keep
 public class MathUtil {
 
-    /**
-     * 实例对象
-     */
-    private static MathUtil mInstance;
-
-    public static MathUtil getInstance() {
-        if (mInstance == null) {
-            synchronized (MathUtil.class) {
-                if (mInstance == null) {
-                    mInstance = new MathUtil();
-                }
-            }
+    private MathUtil() {
+        if (Inner.INSTANCE != null) {
+            throw new RuntimeException("该实例已存在，请通过getInstance方法获取");
         }
-        return mInstance;
+    }
+
+    private static class Inner {
+        private static final MathUtil INSTANCE = new MathUtil();
+    }
+
+    /**
+     * 获取实例对象
+     */
+    public static MathUtil getInstance() {
+        return Inner.INSTANCE;
     }
 
     /**
@@ -60,7 +61,7 @@ public class MathUtil {
      * @param v2 加数
      * @return 两个参数的和
      */
-    public  double add(double v1, double v2) {
+    public double add(double v1, double v2) {
         BigDecimal b1 = new BigDecimal(Double.toString(v1));
         BigDecimal b2 = new BigDecimal(Double.toString(v2));
 
@@ -74,7 +75,7 @@ public class MathUtil {
      * @param v2 减数
      * @return 两个参数的差
      */
-    public  double sub(double v1, double v2) {
+    public double sub(double v1, double v2) {
         BigDecimal b1 = new BigDecimal(Double.toString(v1));
         BigDecimal b2 = new BigDecimal(Double.toString(v2));
 
@@ -88,7 +89,7 @@ public class MathUtil {
      * @param v2 乘数
      * @return 两个参数的积
      */
-    public  double mul(double v1, double v2) {
+    public double mul(double v1, double v2) {
         BigDecimal b1 = new BigDecimal(Double.toString(v1));
         BigDecimal b2 = new BigDecimal(Double.toString(v2));
 
@@ -103,7 +104,7 @@ public class MathUtil {
      * @param v2 除数
      * @return 两个参数的商
      */
-    public  double div(double v1, double v2) {
+    public double div(double v1, double v2) {
         // 默认除法运算精度
         final int defDivScale = 10;
         return div(v1, v2, defDivScale);
@@ -118,7 +119,7 @@ public class MathUtil {
      * @param scale 表示表示需要精确到小数点以后几位。
      * @return 两个参数的商
      */
-    public  double div(double v1, double v2, int scale) {
+    public double div(double v1, double v2, int scale) {
         if (scale < 0) {
             throw new IllegalArgumentException("The scale must be a positive integer or zero");
         }
@@ -136,7 +137,7 @@ public class MathUtil {
      * @param scale 小数点后保留几位
      * @return 四舍五入后的结果
      */
-    public  double round(double v, int scale) {
+    public double round(double v, int scale) {
         if (scale < 0) {
             throw new IllegalArgumentException("The scale must be a positive integer or zero");
         }
@@ -147,29 +148,30 @@ public class MathUtil {
         return b.divide(one, scale, BigDecimal.ROUND_HALF_UP).doubleValue();
     }
 
-    public  String keepTwo(double number) {
+    public String keepTwo(double number) {
         DecimalFormat df = new DecimalFormat("#.000000");
         return df.format(number);
     }
 
-    public  String keepTwo2(double number) {
+    public String keepTwo2(double number) {
         DecimalFormat df = new DecimalFormat("#.0");
         return df.format(number);
 
     }
 
     /**
-     *对于具有零或负范围值，生成得到的字符串，好像将该值转换为具有零刻度一个数值上等于值仿佛零范围值的所有尾部零都出现在结果中。
-     *
+     * 对于具有零或负范围值，生成得到的字符串，好像将该值转换为具有零刻度一个数值上等于值仿佛零范围值的所有尾部零都出现在结果中。
+     * <p>
      * ' - '整个字符串是由一个减号字符的前缀(' u002D')如果非标度值小于零。如果非标度值为零或正数无符号字符作为前缀。
-     *
+     * <p>
      * 如果此方法的结果传递给构造函数的字符串，此BigDecimal的只有数值一定会被收回;新的BigDecimal表示可以具有不同的精度。
-     *
+     * <p>
      * 尤其是，如果此BigDecimal具有负的精度，从该方法中得到的字符串将有刻度的零点时由字符串构造处理。
+     *
      * @param number 被转换数值
      * @return 返回此BigDecimal的字符串表示形式不带指数字段。为具有正的精度值，中位数的小数点右边的数字用于指示精度
      */
-    public  String toPlainString(double number) {
+    public String toPlainString(double number) {
         BigDecimal db = new BigDecimal(number);
         return db.toPlainString();
     }

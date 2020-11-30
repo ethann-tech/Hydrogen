@@ -39,20 +39,23 @@ import androidx.annotation.Keep;
  */
 @Keep
 public class ShellUtil {
+    private ShellUtil() {
+        if (Inner.INSTANCE != null) {
+            throw new RuntimeException("该实例已存在，请通过getInstance方法获取");
+        }
+    }
+
     /**
      * 实例对象
      */
-    private static ShellUtil mInstance;
-    public static ShellUtil getInstance(){
-        if(mInstance==null){
-            synchronized (MediaUtil.class){
-                if (mInstance==null){
-                    mInstance =new ShellUtil();
-                }
-            }
-        }
-        return mInstance;
+    private static class Inner {
+        private static ShellUtil INSTANCE = new ShellUtil();
     }
+
+    public static ShellUtil getInstance() {
+        return Inner.INSTANCE;
+    }
+
     private static final String LINE_SEP = System.getProperty("line.separator");
 
 
@@ -136,7 +139,9 @@ public class ShellUtil {
             process = Runtime.getRuntime().exec(isRoot ? "su" : "sh");
             os = new DataOutputStream(process.getOutputStream());
             for (String command : commands) {
-                if (command == null) { continue;}
+                if (command == null) {
+                    continue;
+                }
                 os.write(command.getBytes());
                 os.writeBytes(LINE_SEP);
                 os.flush();

@@ -38,7 +38,16 @@ import androidx.annotation.Keep;
 @Keep
 public class InputMethodManagerUtil {
     private InputMethodManager inputMethodManager;
-    private static InputMethodManagerUtil mInstance;
+
+    private InputMethodManagerUtil() {
+        if (Inner.INSTANCE != null) {
+            throw new RuntimeException("该实例已存在，请通过getInstance方法获取");
+        }
+    }
+
+    private static class Inner {
+        private static final InputMethodManagerUtil INSTANCE = new InputMethodManagerUtil();
+    }
 
     /**
      * 返回一个对象
@@ -47,15 +56,8 @@ public class InputMethodManagerUtil {
      * @return
      */
     public static InputMethodManagerUtil getInstance(Context context) {
-        if (mInstance == null) {
-            synchronized (InputMethodManagerUtil.class) {
-                if (mInstance == null) {
-                    mInstance = new InputMethodManagerUtil();
-                }
-            }
-        }
-        mInstance.inputMethodManager = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
-        return mInstance;
+        Inner.INSTANCE.inputMethodManager = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
+        return Inner.INSTANCE;
     }
 
     /**
@@ -73,9 +75,9 @@ public class InputMethodManagerUtil {
      * @param activity 软键盘所在的页面
      */
     public void hideSoftInput(Activity activity) {
-        View view =activity.getCurrentFocus();
-        if (view ==null){
-            view =new View(activity);
+        View view = activity.getCurrentFocus();
+        if (view == null) {
+            view = new View(activity);
         }
         inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
     }

@@ -39,17 +39,18 @@ public class SharedPreferencesUtil {
     /**
      * 实例对象
      */
-    private static SharedPreferencesUtil mInstance;
+    private SharedPreferencesUtil() {
+        if (Inner.INSTANCE != null) {
+            throw new RuntimeException("该实例已存在，请通过getInstance方法获取");
+        }
+    }
+
+    private static class Inner {
+        private static final SharedPreferencesUtil INSTANCE = new SharedPreferencesUtil();
+    }
 
     public static SharedPreferencesUtil getInstance() {
-        if (mInstance == null) {
-            synchronized (MediaUtil.class) {
-                if (mInstance == null) {
-                    mInstance = new SharedPreferencesUtil();
-                }
-            }
-        }
-        return mInstance;
+        return Inner.INSTANCE;
     }
 
 

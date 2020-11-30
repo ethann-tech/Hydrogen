@@ -30,31 +30,35 @@ import java.io.IOException;
  * @UpdateDate: 2018/11/29 22:56
  * @UpdateDescription: 更新说明
  * @Version:
-*/
+ */
 
-public  class CloseUtil {
+public class CloseUtil {
+    private CloseUtil() {
+        if (Inner.INSTANCE != null) {
+            throw new RuntimeException("该实例已存在，请通过getInstance方法获取");
+        }
+    }
+
+    private static class Inner {
+        private static final CloseUtil INSTANCE = new CloseUtil();
+    }
+
     /**
      * 实例对象
      */
-    private static CloseUtil mInstance;
-    public static CloseUtil getInstance(){
-        if (mInstance==null){
-            synchronized (CloseUtil.class){
-                if (mInstance==null){
-                    mInstance =new CloseUtil();
-                }
-            }
-        }
-        return mInstance;
+    public static CloseUtil getInstance() {
+        return Inner.INSTANCE;
     }
-    
+
     /**
      * 关闭 IO
      *
      * @param closeables closeables
      */
-    public  void closeIO(final Closeable... closeables) {
-        if (closeables == null) {return;}
+    public void closeIO(final Closeable... closeables) {
+        if (closeables == null) {
+            return;
+        }
         for (Closeable closeable : closeables) {
             if (closeable != null) {
                 try {
@@ -71,8 +75,10 @@ public  class CloseUtil {
      *
      * @param closeables closeables
      */
-    public  void closeIOQuietly(final Closeable... closeables) {
-        if (closeables == null) {return;}
+    public void closeIOQuietly(final Closeable... closeables) {
+        if (closeables == null) {
+            return;
+        }
         for (Closeable closeable : closeables) {
             if (closeable != null) {
                 try {

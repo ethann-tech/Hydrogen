@@ -18,17 +18,21 @@ package com.wonium.hydrogen.utils;
 import android.graphics.Color;
 public class ColorUtil {
 
-    private static ColorUtil mInstance;
-
-    public static ColorUtil getInstance() {
-        if (mInstance == null) {
-            synchronized (ColorUtil.class) {
-                if (mInstance == null) {
-                    mInstance = new ColorUtil();
-                }
-            }
+    private ColorUtil() {
+        if (Inner.INSTANCE != null) {
+            throw new RuntimeException("该实例已存在，请通过getInstance方法获取");
         }
-        return mInstance;
+    }
+
+    private static class Inner {
+        private static final ColorUtil INSTANCE = new ColorUtil();
+    }
+
+    /**
+     * 实例对象
+     */
+    public static ColorUtil getInstance() {
+        return Inner.INSTANCE;
     }
 
     public int intToColor(int color) {

@@ -44,23 +44,24 @@ public class DensityUtil {
     private static float sNonCompatScaledDensity;
 
 
-
+    private DensityUtil() {
+        if (Inner.INSTANCE != null) {
+            throw new RuntimeException("该实例已存在，请通过getInstance方法获取");
+        }
+    }
+    private static class Inner {
+        private static final DensityUtil INSTANCE = new DensityUtil();
+    }
 
     /**
      * 实例对象
      */
-
-    private static DensityUtil mInstance;
-    public static DensityUtil getInstance(){
-        if (mInstance==null){
-            synchronized (DensityUtil.class){
-                if (mInstance==null){
-                    mInstance =new DensityUtil();
-                }
-            }
-        }
-        return mInstance;
+    public static DensityUtil getInstance() {
+        return Inner.INSTANCE;
     }
+
+
+
     /**
      * 根据手机的分辨率从 dp 的单位 转成为 px(像素)
      *
