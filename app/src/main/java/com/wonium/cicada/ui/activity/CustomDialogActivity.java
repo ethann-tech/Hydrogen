@@ -16,16 +16,16 @@
 
 package com.wonium.cicada.ui.activity;
 
-import androidx.databinding.DataBindingUtil;
-
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.wonium.cicada.R;
 import com.wonium.cicada.databinding.ActivityCustomDialogBinding;
 import com.wonium.cicada.router.PageRouter;
-import com.wonium.hydrogen.ui.BaseActivity;
+import com.wonium.cicada.base.BaseActivity;
 import com.wonium.hydrogen.ui.widget.LoadingDialog;
 
-
+/**
+ * @author fxhhq
+ */
 @Route(path = PageRouter.ACTIVITY_CUSTOM_DIALOG)
 public class CustomDialogActivity extends BaseActivity {
     private ActivityCustomDialogBinding mBinding;
@@ -47,14 +47,15 @@ public class CustomDialogActivity extends BaseActivity {
 
     @Override
     public void bindLayout(int layoutResId) {
-        mBinding = DataBindingUtil.setContentView(this, layoutResId);
+        mBinding = ActivityCustomDialogBinding.inflate(getLayoutInflater());
+        setContentView(mBinding.getRoot());
     }
 
     @Override
     public void initView() {
         setStatusBar(true);
         setSupportActionBar(mBinding.includeCustomDialogToolbar.toolbar);
-        mBinding.setTitle(getResources().getString(R.string.activity_custom_dialog));
+        mBinding.includeCustomDialogToolbar.tvToolbarTitle.setText(getResources().getString(R.string.activity_custom_dialog));
         mBinding.includeCustomDialogToolbar.toolbar.setNavigationOnClickListener(v -> finish());
         mBinding.includeCustomDialogToolbar.toolbar.setNavigationIcon(R.drawable.ic_arrow_back_24dp);
     }

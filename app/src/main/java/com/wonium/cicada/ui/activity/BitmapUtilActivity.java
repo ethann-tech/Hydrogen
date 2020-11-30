@@ -18,20 +18,17 @@ package com.wonium.cicada.ui.activity;
 
 import android.graphics.Bitmap;
 
-import androidx.databinding.DataBindingUtil;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.wonium.cicada.R;
+
 import com.wonium.cicada.databinding.ActivityBitmapUtilBinding;
 import com.wonium.cicada.router.PageRouter;
-import com.wonium.hydrogen.ui.BaseActivity;
+import com.wonium.cicada.base.BaseActivity;
 import com.wonium.hydrogen.utils.BitmapUtil;
 import com.wonium.hydrogen.utils.ByteUtil;
 import com.wonium.hydrogen.utils.ThreadPoolUtil;
 import com.wonium.hydrogen.utils.ToastUtil;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 
 /**
@@ -50,7 +47,7 @@ import org.slf4j.LoggerFactory;
 @Route(path = PageRouter.ACTIVITY_BITMAP_UTIL)
 public class BitmapUtilActivity extends BaseActivity {
     private ActivityBitmapUtilBinding mBinding;
-    private Logger logger = LoggerFactory.getLogger(this.getClass());
+
     @Override
     public void initListener() {
         mBinding.includeToolbarBitmap.toolbar.setNavigationOnClickListener(v -> finish());
@@ -95,9 +92,9 @@ public class BitmapUtilActivity extends BaseActivity {
 
     private void getBitmapFromPath() {
         String path = "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1542904680889&di=f436ad37f1dd8cacdac4c4ea138f685d&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimage%2Fc0%253Dshijue1%252C0%252C0%252C294%252C40%2Fsign%3D8987b62f0055b31988f48a362bc0e853%2Feac4b74543a98226e9b8d1098082b9014a90eba7.jpg";
-        ThreadPoolUtil.INSTANCE.execute(()->{
-            Bitmap bitmap =BitmapUtil.getInstance().getBitmapByPath(path);
-            if (bitmap!=null){
+        ThreadPoolUtil.INSTANCE.execute(() -> {
+            Bitmap bitmap = BitmapUtil.getInstance().getBitmapByPath(path);
+            if (bitmap != null) {
                 runOnUiThread(() -> mBinding.imgDisplayBitmapFormPath.setImageBitmap(bitmap));
             }
         });
@@ -106,11 +103,11 @@ public class BitmapUtilActivity extends BaseActivity {
     /**
      * 图片反转
      */
-    private void flippingBitmap(){
+    private void flippingBitmap() {
         Bitmap bitmap = BitmapUtil.getInstance().imgToBitmap(getContext(), R.mipmap.app_launcher);
-      mBinding.btnFlippingBitmap.setOnClickListener(v -> {
-          mBinding.imgFlippingBitmap.setImageBitmap(BitmapUtil.getInstance().flippingBitmap(bitmap));
-      });
+        mBinding.btnFlippingBitmap.setOnClickListener(v -> {
+            mBinding.imgFlippingBitmap.setImageBitmap(BitmapUtil.getInstance().flippingBitmap(bitmap));
+        });
     }
 
 
@@ -121,8 +118,8 @@ public class BitmapUtilActivity extends BaseActivity {
 
     @Override
     public void initWindowAttributes() {
-    setAllowFullScreen(false);
-    setScreenRotate(false);
+        setAllowFullScreen(false);
+        setScreenRotate(false);
     }
 
     @Override
@@ -132,7 +129,8 @@ public class BitmapUtilActivity extends BaseActivity {
 
     @Override
     public void bindLayout(int layoutResId) {
-        mBinding = DataBindingUtil.setContentView(this, layoutResId);
+        mBinding = ActivityBitmapUtilBinding.inflate(getLayoutInflater());
+        setContentView(mBinding.getRoot());
     }
 
     @Override
@@ -140,17 +138,17 @@ public class BitmapUtilActivity extends BaseActivity {
         setStatusBar(true);
         setSupportActionBar(mBinding.includeToolbarBitmap.toolbar);
         mBinding.includeToolbarBitmap.toolbar.setNavigationIcon(R.drawable.ic_arrow_back_24dp);
-        mBinding.setTitle(getResources().getString(R.string.tools_bitmap));
+        mBinding.includeToolbarBitmap.tvToolbarTitle.setText(getResources().getString(R.string.tools_bitmap));
         flippingBitmap();
 
         //图片旋转
         Bitmap bitmap = BitmapUtil.getInstance().imgToBitmap(getContext(), R.mipmap.app_launcher);
-        mBinding.imgRotateBitmap.setImageBitmap(BitmapUtil.getInstance().rotateBitmap(bitmap,-90));
+        mBinding.imgRotateBitmap.setImageBitmap(BitmapUtil.getInstance().rotateBitmap(bitmap, -90));
         // 打印RGBA数据
-        byte[] bytes=BitmapUtil.getInstance().getPixels(bitmap);
-        logger.debug("打印RGBA数据————>: "+ByteUtil.getInstance().printByteArrayToBinary(bytes));
+        byte[] bytes = BitmapUtil.getInstance().getPixels(bitmap);
+        logger.debug("打印RGBA数据————>: " + ByteUtil.getInstance().printByteArrayToBinary(bytes));
         // 打印RGB数据 24位
-        byte[] bytes24=BitmapUtil.getInstance().getRGBDataFormat24(bitmap);
-        logger.debug("打印RGB数据24位————>: "+ByteUtil.getInstance().printByteArrayToBinary(bytes24));
+        byte[] bytes24 = BitmapUtil.getInstance().getRGBDataFormat24(bitmap);
+        logger.debug("打印RGB数据24位————>: " + ByteUtil.getInstance().printByteArrayToBinary(bytes24));
     }
 }

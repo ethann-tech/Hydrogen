@@ -23,35 +23,27 @@ import java.util.regex.Pattern;
 
 import androidx.annotation.Keep;
 
+import static java.util.regex.Pattern.*;
 
-/**
- * @ClassName: VerifyUtil.java
- * @Description: 验证类
- * @Author: Wonium
- * @E-mail: wonium@qq.com
- * @Blog: https://blog.wonium.com
- * @CreateDate: 2018/11/11 18:46
- * @UpdateUser: 更新者
- * @UpdateDate: 2018/11/11 18:46
- * @UpdateDescription: 更新说明
- * @Version: 1.0.0
- */
+
+
 @Keep
 public class VerifyUtil {
     /**
      * 实例对象
      */
-    private static VerifyUtil instance;
+    private VerifyUtil() {
+        if (Inner.INSTANCE != null) {
+            throw new RuntimeException("该实例已存在，请通过getInstance方法获取");
+        }
+    }
+
+    private static class Inner {
+        private static final VerifyUtil INSTANCE = new VerifyUtil();
+    }
 
     public static VerifyUtil getInstance() {
-        if (instance == null) {
-            synchronized (VerifyUtil.class) {
-                if (instance == null) {
-                    instance = new VerifyUtil();
-                }
-            }
-        }
-        return instance;
+        return Inner.INSTANCE;
     }
 
     /**
@@ -62,7 +54,7 @@ public class VerifyUtil {
      */
     public boolean checkPasswrd(String password) {
 
-        return Pattern.matches("^[a-zA-Z]\\w{5,19}$", password);
+        return matches("^[a-zA-Z]\\w{5,19}$", password);
     }
 
     /**
@@ -72,7 +64,7 @@ public class VerifyUtil {
      * @return
      */
     public boolean isMobileNO(String mobiles) {
-        return Pattern.matches("^((13[0-9])|(15[^4,\\D])|(16[0-9])|(17[0-9])|(18[0-9]))\\d{8}$", mobiles);
+        return matches("^((13[0-9])|(15[^4,\\D])|(16[0-9])|(17[0-9])|(18[0-9]))\\d{8}$", mobiles);
     }
 
 
@@ -99,7 +91,7 @@ public class VerifyUtil {
      */
     public boolean checkIdCard(String idCard) {
         String regex = "[1-9]\\d{13,16}[a-zA-Z0-9]{1}";
-        return Pattern.matches(regex, idCard);
+        return matches(regex, idCard);
     }
 
 
@@ -110,7 +102,7 @@ public class VerifyUtil {
      * @return 合法返回true 不合法返回false
      */
     public boolean isSmsCode(String smsCode) {
-        return Pattern.matches("\\d{6}", smsCode);
+        return matches("\\d{6}", smsCode);
     }
 
 
@@ -161,7 +153,7 @@ public class VerifyUtil {
      */
     public boolean checkDigit(String digit) {
         String regex = "\\-?[1-9]\\d+";
-        return Pattern.matches(regex, digit);
+        return matches(regex, digit);
     }
 
     /**
@@ -172,7 +164,7 @@ public class VerifyUtil {
      */
     public boolean checkDecimals(String decimals) {
         String regex = "\\-?[1-9]\\d+(\\.\\d+)?";
-        return Pattern.matches(regex, decimals);
+        return matches(regex, decimals);
     }
 
 
@@ -184,7 +176,7 @@ public class VerifyUtil {
      */
     public boolean checkBlankSpace(String blankSpace) {
         String regex = "\\s+";
-        return Pattern.matches(regex, blankSpace);
+        return matches(regex, blankSpace);
     }
 
     /**
@@ -195,7 +187,7 @@ public class VerifyUtil {
      */
     public boolean checkChinese(String chinese) {
         String regex = "^[\u4E00-\u9FA5]+$";
-        return Pattern.matches(regex, chinese);
+        return matches(regex, chinese);
     }
 
     /**
@@ -206,7 +198,7 @@ public class VerifyUtil {
      */
     public boolean checkBirthday(String birthday) {
         String regex = "[1-9]{4}([-./])\\d{1,2}\\1\\d{1,2}";
-        return Pattern.matches(regex, birthday);
+        return matches(regex, birthday);
     }
 
     /**
@@ -217,7 +209,7 @@ public class VerifyUtil {
      */
     public boolean checkURL(String url) {
         String regex = "(https?://(w{3}\\.)?)?\\w+\\.\\w+(\\.[a-zA-Z]+)*(:\\d{1,5})?(/\\w*)*(\\??(.+=.*)?(&.+=.*)?)?";
-        return Pattern.matches(regex, url);
+        return matches(regex, url);
     }
 
     /**
@@ -228,7 +220,7 @@ public class VerifyUtil {
      */
     public boolean checkPostcode(String postcode) {
         String regex = "[1-9]\\d{5}";
-        return Pattern.matches(regex, postcode);
+        return matches(regex, postcode);
     }
 
     /**
@@ -239,7 +231,7 @@ public class VerifyUtil {
      */
     public boolean checkIpAddress(String ipAddress) {
         String regex = "[1-9](\\d{1,2})?\\.(0|([1-9](\\d{1,2})?))\\.(0|([1-9](\\d{1,2})?))\\.(0|([1-9](\\d{1,2})?))";
-        return Pattern.matches(regex, ipAddress);
+        return matches(regex, ipAddress);
     }
 
 
@@ -253,8 +245,8 @@ public class VerifyUtil {
         if (TextUtils.isEmpty(str)) {
             return false;
         }
-
-        Pattern p = Pattern.compile("^[a-zA-Z0-9]+$");// 从开头到结尾必须全部为字母或者数字
+        // 从开头到结尾必须全部为字母或者数字
+        Pattern p = compile("^[a-zA-Z0-9]+$");
         Matcher m = p.matcher(str);
 
         return m.find();
@@ -268,17 +260,20 @@ public class VerifyUtil {
      * @return 是否为连续字母
      */
     public boolean isContinuousWord(String str) {
-        if (TextUtils.isEmpty(str))
+        if (TextUtils.isEmpty(str)) {
             return false;
-        if (!isAlphaBetaString(str))
+        }
+        if (!isAlphaBetaString(str)) {
             return true;
+        }
         int len = str.length();
         String local = str.toLowerCase();
         for (int i = 0; i < len - 1; i++) {
             char curChar = local.charAt(i);
             char verifyChar = (char) (curChar + 1);
-            if (curChar == 'z')
+            if (curChar == 'z') {
                 verifyChar = 'a';
+            }
             char nextChar = local.charAt(i + 1);
             if (nextChar != verifyChar) {
                 return false;
@@ -297,8 +292,8 @@ public class VerifyUtil {
         if (TextUtils.isEmpty(str)) {
             return false;
         }
-
-        Pattern p = Pattern.compile("^[a-zA-Z]+$");// 从开头到结尾必须全部为字母或者数字
+        // 从开头到结尾必须全部为字母或者数字
+        Pattern p = compile("^[a-zA-Z]+$");
         Matcher m = p.matcher(str);
 
         return m.find();
@@ -311,7 +306,7 @@ public class VerifyUtil {
      * @return 是否是合法的邮箱
      */
     public boolean isValidEmail(String str) {
-        Pattern pattern = Pattern.compile("[\\w!#$%&'*+/=?^_`{|}~-]+(?:\\.[\\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\\w](?:[\\w-]*[\\w])?\\.)+[\\w](?:[\\w-]*[\\w])?");
+        Pattern pattern = compile("[\\w!#$%&'*+/=?^_`{|}~-]+(?:\\.[\\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\\w](?:[\\w-]*[\\w])?\\.)+[\\w](?:[\\w-]*[\\w])?");
         Matcher isValid = pattern.matcher(str);
         return isValid.matches();
 
@@ -324,16 +319,19 @@ public class VerifyUtil {
      * @return 是否为连续数字
      */
     public boolean isContinuousNum(String str) {
-        if (TextUtils.isEmpty(str))
+        if (TextUtils.isEmpty(str)) {
             return false;
-        if (!isNumbericString(str))
+        }
+        if (!isNumbericString(str)) {
             return true;
+        }
         int len = str.length();
         for (int i = 0; i < len - 1; i++) {
             char curChar = str.charAt(i);
             char verifyChar = (char) (curChar + 1);
-            if (curChar == '9')
+            if (curChar == '9') {
                 verifyChar = '0';
+            }
             char nextChar = str.charAt(i + 1);
             if (nextChar != verifyChar) {
                 return false;
@@ -352,7 +350,8 @@ public class VerifyUtil {
         if (TextUtils.isEmpty(str)) {
             return false;
         }
-        Pattern p = Pattern.compile("^[0-9]+$");// 从开头到结尾必须全部为数字
+        // 从开头到结尾必须全部为数字
+        Pattern p = compile("^[0-9]+$");
         Matcher m = p.matcher(str);
         return m.find();
     }
@@ -371,9 +370,11 @@ public class VerifyUtil {
         if (len <= 1) {
             return false;
         } else {
-            char firstChar = str.charAt(0);// 第一个字符
+            // 第一个字符
+            char firstChar = str.charAt(0);
             for (int i = 1; i < len; i++) {
-                char nextChar = str.charAt(i);// 第i个字符
+                // 第i个字符
+                char nextChar = str.charAt(i);
                 if (firstChar != nextChar) {
                     return false;
                 }
@@ -381,10 +382,11 @@ public class VerifyUtil {
             return true;
         }
     }
+
     /**
-     *  判断是否是英语
+     * 判断是否是英语
      */
-    public  boolean isEnglish(String charaString) {
+    public boolean isEnglish(String charaString) {
         return charaString.matches("^[a-zA-Z]*");
     }
 
@@ -396,7 +398,7 @@ public class VerifyUtil {
      */
     public boolean hasSpecialCharacter(String str) {
         String regEx = "[`~!@#$%^&*()+=|{}':;',\\[\\].<>?~！@#￥%……&*（）——+|{}【】‘；：”“’。，、？]";
-        Pattern p = Pattern.compile(regEx);
+        Pattern p = compile(regEx);
         Matcher m = p.matcher(str);
         return m.find();
     }
@@ -408,7 +410,7 @@ public class VerifyUtil {
      * @return 是否含数字
      */
     public boolean hasNumeric(String str) {
-        Pattern pattern = Pattern.compile("[0-9]+");
+        Pattern pattern = compile("[0-9]+");
         return pattern.matcher(str).find();
     }
 

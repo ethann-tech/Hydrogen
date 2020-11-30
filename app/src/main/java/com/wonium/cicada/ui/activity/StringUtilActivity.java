@@ -18,7 +18,6 @@ package com.wonium.cicada.ui.activity;
 
 
 
-import androidx.databinding.DataBindingUtil;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.wonium.cicada.R;
@@ -27,7 +26,7 @@ import com.wonium.cicada.presenter.StringPresenter;
 import com.wonium.cicada.presenter.impl.StringPresenterImpl;
 import com.wonium.cicada.router.PageRouter;
 import com.wonium.cicada.ui.view.StringView;
-import com.wonium.hydrogen.ui.BaseActivity;
+import com.wonium.cicada.base.BaseActivity;
 import com.wonium.hydrogen.utils.StringUtil;
 
 import org.slf4j.Logger;
@@ -81,13 +80,14 @@ public class StringUtilActivity extends BaseActivity implements StringView {
 
     @Override
     public void bindLayout(int layoutResId) {
-        mBinding = DataBindingUtil.setContentView(this, layoutResId);
+        mBinding = ActivityStringUtilBinding.inflate(getLayoutInflater());
+        setContentView(mBinding.getRoot());
     }
 
     @Override
     public void initView() {
         setSupportActionBar(mBinding.includeToolbar.toolbar);
-        mBinding.setToolbarTitle("StringUtil");
+        mBinding.includeToolbar.tvToolbarTitle.setText("StringUtil");
         mBinding.includeToolbar.toolbar.setNavigationIcon(R.drawable.ic_arrow_back_24dp);
         mPresenter = new StringPresenterImpl(this);
         try {
@@ -96,7 +96,7 @@ public class StringUtilActivity extends BaseActivity implements StringView {
                     .append("更改字符集 例如 wonium-->").append(StringUtil.getInstance().changeCharSet("wonium", "UTF-8"));
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
-            logger.error("LOG:StringUtilActivity:initView ={}","更改字符集方法需要处理 UnsupportedEncodingException异常");
+            logger.error("LOG:StringUtilActivity:initView ={}", "更改字符集方法需要处理 UnsupportedEncodingException异常");
 
         }
 
@@ -105,21 +105,21 @@ public class StringUtilActivity extends BaseActivity implements StringView {
 
     @Override
     public void showTestIsNullMessage(String message) {
-        mBinding.setIsNull(message);
+        mBinding.tvResultIsNull.setText(message);
     }
 
     @Override
     public void showTestIsEmptyMessage(String message) {
-        mBinding.setIsEmpty(message);
+        mBinding.tvIsEmpty.setText(message);
     }
 
     @Override
     public void showTestValueOfMessage(String message) {
-        mBinding.setValueOf(message);
+        mBinding.tvValueOf.setText(message);
     }
 
     @Override
     public void showTestGetStringFromMap(String message) {
-        mBinding.setGetStringFromMap(message);
+        mBinding.tvStringForMap.setText(message);
     }
 }

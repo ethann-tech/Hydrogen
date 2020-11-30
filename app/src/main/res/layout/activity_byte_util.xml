@@ -14,33 +14,24 @@
   ~ limitations under the License.
   ~
   -->
-<layout xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <data>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-        <variable
-            name="title"
-            type="String" />
-    </data>
+    <include
+        android:id="@+id/include_toolbar_byte"
+        layout="@layout/layout_toolbar" />
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/btn_byte_array_to_short"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_marginTop="@dimen/material_layout_view_top_margin_8dp"
+        android:gravity="center"
+        android:text="查看Log"
+        android:textSize="@dimen/text_size_32sp" />
 
-        <include
-            android:id="@+id/include_toolbar_byte"
-            layout="@layout/layout_toolbar"
-            app:title="@{title}" />
+</LinearLayout>
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/btn_byte_array_to_short"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:textSize="@dimen/text_size_32sp"
-            android:layout_marginTop="@dimen/material_layout_view_top_margin_8dp"
-            android:text="查看Log" />
-
-    </LinearLayout>
-</layout>

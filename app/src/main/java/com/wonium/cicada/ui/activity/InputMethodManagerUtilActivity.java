@@ -20,13 +20,13 @@ package com.wonium.cicada.ui.activity;
 
 import android.view.View;
 
-import androidx.databinding.DataBindingUtil;
+
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.wonium.cicada.R;
 import com.wonium.cicada.databinding.ActivityInputMethodManagerUtilBinding;
 import com.wonium.cicada.router.PageRouter;
-import com.wonium.hydrogen.ui.BaseActivity;
+import com.wonium.cicada.base.BaseActivity;
 import com.wonium.hydrogen.utils.InputMethodManagerUtil;
 
 @Route(path = PageRouter.ACTIVITY_INPUT_METHOD_MANAGER_UTIL)
@@ -46,12 +46,13 @@ public class InputMethodManagerUtilActivity extends BaseActivity {
 
     @Override
     public void bindLayout(int layoutResId) {
-        mBinding = DataBindingUtil.setContentView(this,layoutResId);
+        mBinding = ActivityInputMethodManagerUtilBinding.inflate(getLayoutInflater());
+        setContentView(mBinding.getRoot());
     }
 
     @Override
     public void initView() {
-        mBinding.setTitle(getString(R.string.tools_input_method_manager));
+        mBinding.includeImmuToolbar.tvToolbarTitle.setText(getString(R.string.tools_input_method_manager));
         mBinding.includeImmuToolbar.toolbar.setNavigationIcon(R.drawable.ic_arrow_back_24dp);
 
     }

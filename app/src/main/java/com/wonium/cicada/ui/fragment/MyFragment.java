@@ -30,7 +30,6 @@ import com.wonium.hydrogen.UniversalItemDecoration;
 import com.wonium.hydrogen.ui.BaseFragment;
 import com.wonium.hydrogen.utils.ToastUtil;
 
-import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -60,7 +59,7 @@ public class MyFragment extends BaseFragment {
 
     @Override
     protected View initBinding(LayoutInflater inflater, ViewGroup container) {
-        mBinding = DataBindingUtil.inflate(inflater, getLayoutResId(), container, false);
+        mBinding = FragmentMyBinding.inflate(inflater);
         return mBinding.getRoot();
     }
 
@@ -107,7 +106,6 @@ public class MyFragment extends BaseFragment {
                 ARouter.getInstance().build(PageRouter.ACTIVITY_CUSTOM_COMPONENT).navigation(getContext());
                 break;
             case 2:
-
                 break;
             default:
                 break;

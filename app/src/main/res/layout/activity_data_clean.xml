@@ -15,49 +15,40 @@
   ~
   -->
 
-<layout xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:bind="http://schemas.android.com/tools">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <data>
-        <variable
-            name="title"
-            type="String" />
-    </data>
+    <include
+        android:id="@+id/include_layout_acache_toolbar"
+        layout="@layout/layout_toolbar" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <include
-            android:id="@+id/include_layout_acache_toolbar"
-            layout="@layout/layout_toolbar"
-            bind:title="@{title}" />
-
-        <TextView
-            android:id="@+id/tv_acache_result"
-            style="@style/ResultTextViewStyle"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/include_layout_acache_toolbar" />
+    <TextView
+        android:id="@+id/tv_acache_result"
+        style="@style/ResultTextViewStyle"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include_layout_acache_toolbar" />
 
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_get_acache"
-            style="@style/ButtonStyle"
-            android:layout_marginTop="@dimen/material_layout_view_top_margin_8dp"
-            android:text="获取缓存"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_acache_result" />
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_get_acache"
+        style="@style/ButtonStyle"
+        android:layout_marginTop="@dimen/material_layout_view_top_margin_8dp"
+        android:text="获取缓存"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_acache_result" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_clean_acache"
-            style="@style/ButtonStyle"
-            android:layout_marginTop="@dimen/material_layout_view_top_margin_8dp"
-            android:text="清除缓存"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_get_acache" />
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_clean_acache"
+        style="@style/ButtonStyle"
+        android:layout_marginTop="@dimen/material_layout_view_top_margin_8dp"
+        android:text="清除缓存"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_get_acache" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</layout>
+</androidx.constraintlayout.widget.ConstraintLayout>
+

@@ -19,12 +19,9 @@ package com.wonium.cicada.adapter;
 import android.content.Context;
 import android.view.ViewGroup;
 
-import androidx.databinding.DataBindingUtil;
-
-import com.wonium.cicada.R;
 import com.wonium.cicada.databinding.ItemMyRecyclerViewBinding;
-import com.wonium.hydrogen.adapter.BaseRecyclerViewAdapter;
-import com.wonium.hydrogen.adapter.BaseViewHolder;
+import com.wonium.cicada.base.BaseRecyclerViewAdapter;
+import com.wonium.cicada.base.BaseViewHolder;
 
 import java.util.Locale;
 
@@ -36,13 +33,13 @@ public class MyAdapter extends BaseRecyclerViewAdapter<String, BaseViewHolder<It
 
     @Override
     public BaseViewHolder<ItemMyRecyclerViewBinding> onCreateVH(ViewGroup parent, int viewType) {
-        ItemMyRecyclerViewBinding mBinding= DataBindingUtil.inflate(getInflater(), R.layout.item_my_recycler_view,parent,false);
-        return  new BaseViewHolder<>(mBinding);
+        ItemMyRecyclerViewBinding mBinding = ItemMyRecyclerViewBinding.inflate(getInflater(),parent,false);
+        return new BaseViewHolder<>(mBinding);
     }
 
     @Override
     public void onBindVH(BaseViewHolder<ItemMyRecyclerViewBinding> holder, int position) {
         holder.getBinding().tvItemData.setText(getData(position));
-        holder.getBinding().tvNumber.setText(String.format(Locale.CHINA,"%d",position));
+        holder.getBinding().tvNumber.setText(String.format(Locale.CHINA, "%d", position));
     }
 }

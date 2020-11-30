@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.wonium.hydrogen.adapter;
+package com.wonium.cicada.base;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -25,7 +25,7 @@ import android.widget.BaseAdapter;
 import java.util.List;
 
 import androidx.annotation.Keep;
-import androidx.databinding.ViewDataBinding;
+import androidx.viewbinding.ViewBinding;
 
 /**
  * @ClassName: BaseSpinnerAdapter.java
@@ -130,13 +130,13 @@ public abstract class BaseSpinnerAdapter<T> extends BaseAdapter {
      * ViveHolder内部类
      */
     public static final class ViewHolder {
-        private ViewDataBinding binding;
+        private ViewBinding binding;
 
-        public ViewHolder(ViewDataBinding binding) {
+        public ViewHolder(ViewBinding binding) {
             this.binding = binding;
         }
 
-        public ViewDataBinding getBinding() {
+        public ViewBinding getBinding() {
             return binding;
         }
     }

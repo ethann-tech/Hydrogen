@@ -27,36 +27,34 @@ import androidx.annotation.Keep;
 /**
  * @ClassName: ActivityManagerUtil.java
  * @Description: Activity统一管理工具包
- * @Author: Wonium
- * @E-mail: wonium@qq.com
+ * @Author: ethan
+ * @E-mail: ethan.nj@qq.com
  * @Blog: https://blog.wonium.com
  * @CreateDate: 2018/11/11 20:40
  * @UpdateUser: 更新者
  * @UpdateDate: 2018/11/11 20:40
  * @UpdateDescription: 调整Size 方法名
- * @Version: 1.0.0
+ * @Version: 1.0.1
  */
 @Keep
 public class ActivityManagerUtil {
 
     private static LinkedList<Activity> activityStack = new LinkedList<>();
 
-    private static ActivityManagerUtil instance;
-
-    private ActivityManagerUtil() {}
+    private ActivityManagerUtil() {
+        if (Inner.INSTANCE != null) {
+            throw new RuntimeException("该实例已存在，请通过getInstance方法获取");
+        }
+    }
+    private static class Inner {
+        private static final ActivityManagerUtil INSTANCE = new ActivityManagerUtil();
+    }
 
     /**
      * 单一实例
      */
     public static ActivityManagerUtil getInstance() {
-        if (instance == null) {
-            synchronized (ActivityManagerUtil.class) {
-                if (instance == null) {
-                    instance = new ActivityManagerUtil();
-                }
-            }
-        }
-        return instance;
+        return Inner.INSTANCE;
     }
 
     /**

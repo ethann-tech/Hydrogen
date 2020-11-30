@@ -22,7 +22,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.wonium.cicada.R;
-import com.wonium.hydrogen.adapter.BaseListAdapter;
+import com.wonium.cicada.base.BaseListAdapter;
 
 public class TestGridViewAdapter extends BaseListAdapter<String, TestGridViewAdapter.GridViewHolder> {
     private final String TAG =TestGridViewAdapter.class.getSimpleName();

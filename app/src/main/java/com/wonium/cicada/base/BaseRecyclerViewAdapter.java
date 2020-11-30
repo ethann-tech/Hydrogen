@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.wonium.hydrogen.adapter;
+package com.wonium.cicada.base;
 
 import android.content.Context;
 import android.view.LayoutInflater;

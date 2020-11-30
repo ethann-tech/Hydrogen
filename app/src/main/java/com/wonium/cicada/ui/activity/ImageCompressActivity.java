@@ -22,7 +22,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import androidx.annotation.Nullable;
-import androidx.databinding.DataBindingUtil;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.bumptech.glide.Glide;
@@ -32,7 +31,7 @@ import com.wonium.cicada.R;
 import com.wonium.cicada.config.RequestCode;
 import com.wonium.cicada.databinding.ActivityImageCompressBinding;
 import com.wonium.cicada.router.PageRouter;
-import com.wonium.hydrogen.ui.BaseActivity;
+import com.wonium.cicada.base.BaseActivity;
 import com.wonium.hydrogen.utils.BitmapUtil;
 
 import java.util.List;
@@ -60,13 +59,14 @@ public class ImageCompressActivity extends BaseActivity {
 
     @Override
     public void bindLayout(int layoutResId) {
-        mBinding = DataBindingUtil.setContentView(this, layoutResId);
+        mBinding = ActivityImageCompressBinding.inflate(getLayoutInflater());
+        setContentView(mBinding.getRoot());
     }
 
     @Override
     public void initView() {
         setSupportActionBar(mBinding.includeCompressToolbar.toolbar);
-        mBinding.setTitle("图片压缩");
+        mBinding.includeCompressToolbar.tvToolbarTitle.setText("图片压缩");
         mBinding.includeCompressToolbar.toolbar.setNavigationIcon(R.drawable.ic_arrow_back_24dp);
     }
 
@@ -85,12 +85,8 @@ public class ImageCompressActivity extends BaseActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.nav_select:
-                openImagePicker(RequestCode.REQUEST_SELECT_IMAGES_CODE);
-                break;
-            default:
-                break;
+        if (item.getItemId() == R.id.nav_select) {
+            openImagePicker(RequestCode.REQUEST_SELECT_IMAGES_CODE);
         }
         return super.onOptionsItemSelected(item);
     }
@@ -122,7 +118,7 @@ public class ImageCompressActivity extends BaseActivity {
 
     private void sizeCompress(String path) {
 //        Glide.with(getContext()).load(path).into(mBinding.imgDisplaySrcImage);
-        Bitmap bitmap = BitmapUtil.getInstance().sizeCompress(path,128,64);
+        Bitmap bitmap = BitmapUtil.getInstance().sizeCompress(path, 128, 64);
         Glide.with(getContext()).load(bitmap).placeholder(R.drawable.icon_image_error_1).error(R.drawable.icon_image_error).into(mBinding.imgDisplayCompressImage);
     }
 

@@ -14,25 +14,17 @@
   ~ limitations under the License.
   ~
   -->
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.coordinatorlayout.widget.CoordinatorLayout android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-
-    <data>
-
-        <variable
-            name="title"
-            type="String" />
-    </data>
-
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
 
         <include
             android:id="@+id/include_layout_device_toolbar"
             layout="@layout/layout_toolbar"
-            app:title="@{title}" />
+             />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -60,4 +52,3 @@
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 
-</layout>

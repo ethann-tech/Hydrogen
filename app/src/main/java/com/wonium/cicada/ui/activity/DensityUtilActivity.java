@@ -16,17 +16,21 @@
 
 package com.wonium.cicada.ui.activity;
 
-import androidx.databinding.DataBindingUtil;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.wonium.cicada.R;
 import com.wonium.cicada.databinding.ActivityDensityUtilBinding;
 import com.wonium.cicada.router.PageRouter;
-import com.wonium.hydrogen.ui.BaseActivity;
+import com.wonium.cicada.base.BaseActivity;
 import com.wonium.hydrogen.utils.DensityUtil;
+
+/**
+ * @author fxhhq
+ */
 @Route(path = PageRouter.ACTIVITY_DENSITY_UTIL)
 public class DensityUtilActivity extends BaseActivity {
     private ActivityDensityUtilBinding mBinding;
+
     @Override
     protected int getStatusColor() {
         return getResources().getColor(R.color.black);
@@ -45,20 +49,21 @@ public class DensityUtilActivity extends BaseActivity {
 
     @Override
     public void bindLayout(int layoutResId) {
-        mBinding = DataBindingUtil.setContentView(this,layoutResId);
+        mBinding = ActivityDensityUtilBinding.inflate(getLayoutInflater());
+        setContentView(mBinding.getRoot());
     }
 
     @Override
     public void initView() {
-        mBinding.setTitle(getResources().getString(R.string.tools_density));
+        mBinding.includeDensityUtilToolbar.tvToolbarTitle.setText(getResources().getString(R.string.tools_density));
         setSupportActionBar(mBinding.includeDensityUtilToolbar.toolbar);
         mBinding.includeDensityUtilToolbar.toolbar.setNavigationIcon(R.drawable.ic_arrow_back_24dp);
-        StringBuilder builder =new StringBuilder();
+        StringBuilder builder = new StringBuilder();
         builder.append("DensityUtil是一个屏幕信息获取数值的转换类\n")
                 .append("使用示例：\n")
-        .append(" DensityUtil.getInstance().dip2px(getContext(),10)-->")
-        .append( DensityUtil.getInstance().dip2px(getContext(),10));
-        mBinding.setTestCase(builder.toString());
+                .append(" DensityUtil.getInstance().dip2px(getContext(),10)-->")
+                .append(DensityUtil.getInstance().dip2px(getContext(), 10));
+        mBinding.tv.setText(builder.toString());
     }
 
     @Override
