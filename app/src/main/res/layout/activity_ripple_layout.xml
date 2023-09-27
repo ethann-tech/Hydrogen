@@ -10,7 +10,7 @@
         android:id="@+id/include_ripple_toolbar"
         layout="@layout/layout_toolbar" />
 
-    <com.wonium.hydrogen.ui.widget.RippleLayout
+    <com.ethan.hydrogen.ui.widget.RippleLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/material_layout_view_left_margin_8dp"
@@ -32,10 +32,10 @@
             android:text="@string/activity_ripple_layout"
             android:textAllCaps="false"
             android:textColor="@color/whiteSmoke" />
-    </com.wonium.hydrogen.ui.widget.RippleLayout>
+    </com.ethan.hydrogen.ui.widget.RippleLayout>
 
 
-    <com.wonium.hydrogen.ui.widget.RippleLayout
+    <com.ethan.hydrogen.ui.widget.RippleLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/material_layout_view_left_margin_8dp"
@@ -58,9 +58,9 @@
             android:text="@string/activity_ripple_layout"
             android:textAllCaps="false"
             android:textColor="@color/whiteSmoke" />
-    </com.wonium.hydrogen.ui.widget.RippleLayout>
+    </com.ethan.hydrogen.ui.widget.RippleLayout>
 
-    <com.wonium.hydrogen.ui.widget.RippleLayout
+    <com.ethan.hydrogen.ui.widget.RippleLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/material_layout_view_left_margin_8dp"
@@ -85,9 +85,9 @@
             android:text="@string/activity_ripple_layout"
             android:textAllCaps="false"
             android:textColor="@color/whiteSmoke" />
-    </com.wonium.hydrogen.ui.widget.RippleLayout>
+    </com.ethan.hydrogen.ui.widget.RippleLayout>
 
-    <com.wonium.hydrogen.ui.widget.RippleLayout
+    <com.ethan.hydrogen.ui.widget.RippleLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/material_layout_view_left_margin_8dp"
@@ -118,10 +118,10 @@
             android:text="@string/activity_ripple_layout"
             android:textAllCaps="false"
             android:textColor="@color/black" />
-    </com.wonium.hydrogen.ui.widget.RippleLayout>
+    </com.ethan.hydrogen.ui.widget.RippleLayout>
 
 
-    <com.wonium.hydrogen.ui.widget.RippleLayout
+    <com.ethan.hydrogen.ui.widget.RippleLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/material_layout_view_left_margin_8dp"
@@ -151,7 +151,7 @@
             android:text="@string/activity_ripple_layout"
             android:textAllCaps="false"
             android:textColor="@color/black" />
-    </com.wonium.hydrogen.ui.widget.RippleLayout>
+    </com.ethan.hydrogen.ui.widget.RippleLayout>
 
 
 </androidx.appcompat.widget.LinearLayoutCompat>
