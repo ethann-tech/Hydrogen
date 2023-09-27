@@ -14,7 +14,7 @@
             layout="@layout/layout_toolbar"
             />
 
-        <com.wonium.hydrogen.ui.widget.CircleImageView
+        <com.ethan.hydrogen.ui.widget.CircleImageView
             android:layout_width="@dimen/material_component_button_height_56dp"
             android:layout_height="@dimen/material_component_button_height_56dp"
             android:src="@mipmap/app_launcher"

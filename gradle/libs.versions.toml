@@ -1,0 +1,100 @@
+[versions]
+compileSdk = "33"
+minSdk = '26'
+targetSdk = "33"
+versionCode = "1"
+versionName = "1.0.0"
+packageName ="com.ethan.hydrogen.demo"
+[libraries]
+#
+# androidx & kotlin
+#
+androidx-core = 'androidx.core:core-ktx:1.9.0'
+androidx-appcompat = 'androidx.appcompat:appcompat:1.6.1'
+androidx-material = 'com.google.android.material:material:1.9.0'
+androidx-constraintlayout = 'androidx.constraintlayout:constraintlayout:2.1.4'
+
+androidx-lifecycle-runtime-ktx = 'androidx.lifecycle:lifecycle-runtime-ktx:2.6.1'
+androidx-lifecycle-livedata-ktx = 'androidx.lifecycle:lifecycle-livedata-ktx:2.6.1'
+androidx-lifecycle-viewmodel = 'androidx.lifecycle:lifecycle-viewmodel:2.6.1'
+androidx-lifecycle-viewmodel-ktx = 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1'
+androidx-lifecycle-extensions = 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+androidx-navigation-fragment-ktx = 'androidx.navigation:navigation-fragment-ktx:2.5.3'
+androidx-navigation-ui-ktx = 'androidx.navigation:navigation-ui-ktx:2.5.3'
+androidx-splashscreen = 'androidx.core:core-splashscreen:1.0.1'
+
+google-hilt-android ='com.google.dagger:hilt-android:2.44'
+google-hilt-android-compiler = 'com.google.dagger:hilt-android-compiler:2.44'
+
+jetbrains-annotations = 'org.jetbrains:annotations:24.0.1'
+# 必备
+okhttp3-okhttp = 'com.squareup.okhttp3:okhttp:5.0.0-alpha.2'
+
+kotlin-stdlib = 'org.jetbrains.kotlin:kotlin-stdlib:1.9.0'
+# 数据解析
+fastjson = 'com.alibaba:fastjson:1.2.83'
+gson = 'com.google.code.gson:gson:2.10'
+
+greenrobot-eventbus = 'org.greenrobot:eventbus:3.3.1'
+# 图片处理
+glide = 'com.github.bumptech.glide:glide:4.14.2'
+imagepicker ='com.lcw.library:imagepicker:2.2.7'
+# commons
+#
+commons-io = 'commons-io:commons-io:2.4'
+commons-lang = 'org.apache.commons:commons-lang3:3.12.0'
+commons-compress ='org.apache.commons:commons-compress:1.12'
+
+# 日志框架
+slf4j-api ='org.slf4j:slf4j-api:1.7.36'
+logback-android ='com.github.tony19:logback-android:2.0.1'
+logback-classic ='ch.qos.logback:logback-classic:1.2.11'
+# 权限管理
+permissions-xxpermissions = 'com.github.getActivity:XXPermissions:18.0'
+permissions-nopermission = 'ru.alexbykov:nopermission:1.1.2'
+## 状态栏沉浸
+ultimatebarx= 'com.gitee.zackratos:UltimateBarX:0.8.0'
+# viewbinding
+viewbinding-ktx='com.github.DylanCaiCoding.ViewBindingKTX:viewbinding-ktx:2.1.0'
+
+baserecyclerviewadapterhelper = 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.10'
+recyclerview-flexibledivider ='com.yqritc:recyclerview-flexibledivider:1.4.0'
+xrecyclerview = 'com.jcodecraeer:xrecyclerview:1.6.0'
+#
+# test
+#
+test-junit = 'junit:junit:4.13.2'
+test-android-ext = 'androidx.test.ext:junit:1.1.5'
+test-android-espresso = 'androidx.test.espresso:espresso-core:3.5.1'
+
+arouter-api='com.alibaba:arouter-api:1.5.1'
+arouter-compiler='com.alibaba:arouter-compiler:1.5.1'
+
+# qmui
+qmuiteam-qmui ='com.qmuiteam:qmui:2.0.1'
+qmuiteam-arch ='com.qmuiteam:arch:2.0.1'
+qmuiteam-arch-compiler = 'com.qmuiteam:arch-compiler:2.0.1' # kapt
+tencent-mmkv-static ='com.tencent:mmkv-static:1.2.14'
+
+wsmanager='com.rabtman.wsmanager:wsmanager:1.0.2'
+
+kotlin-android-ext = 'com.github.ethaannn:kotlin-android-ext:1.1.2'
+
+# other
+androidwheelview = 'com.github.weidongjian:androidWheelView:1.0.0'
+streamex = 'one.util:streamex:0.8.1'
+avi-library= 'com.wang.avi:library:2.1.3'
+
+# 友盟
+umsdk-common='com.umeng.umsdk:common:9.5.0'
+umsdk-asms = 'com.umeng.umsdk:asms:1.4.1'
+umsdk-apm = 'com.umeng.umsdk:apm:1.7.0'
+umsdk-abtest = 'com.umeng.umsdk:abtest:1.0.0'
+
+# 常用核心三方库
+base-popup ='io.github.razerdp:BasePopup:3.2.1'
+toaster= 'com.github.getActivity:Toaster:12.3'
+
+
+leakcanary-android ='com.squareup.leakcanary:leakcanary-android:2.10'
+

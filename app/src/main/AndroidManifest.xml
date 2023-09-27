@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    package="com.wonium.cicada">
+    xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
@@ -16,14 +15,14 @@
     <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
-        android:name="com.wonium.cicada.App"
+        android:name=".App"
         android:icon="@mipmap/app_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
         <!--启动引导页-->
         <activity
-            android:name="com.wonium.cicada.ui.activity.SplashActivity"
+            android:name=".ui.activity.SplashActivity"
             android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,58 +30,58 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.wonium.cicada.ui.activity.LoginActivity"
+            android:name=".ui.activity.LoginActivity"
             android:launchMode="singleTask" />
         <activity
-            android:name="com.wonium.cicada.ui.activity.MainActivity"
+            android:name=".ui.activity.MainActivity"
             android:launchMode="singleInstance" />
-        <activity android:name="com.wonium.cicada.ui.activity.ZLibActivity" />
-        <activity android:name="com.wonium.cicada.ui.activity.TestGridViewActivity" />
-        <activity android:name="com.wonium.cicada.ui.activity.ProgressActivity" />
+        <activity android:name=".ui.activity.ZLibActivity" />
+        <activity android:name=".ui.activity.TestGridViewActivity" />
+        <activity android:name=".ui.activity.ProgressActivity" />
         <activity
-            android:name="com.wonium.cicada.ui.activity.ImageCompressActivity"
+            android:name=".ui.activity.ImageCompressActivity"
             android:launchMode="singleTask" />
         <!--我的工具页面-->
-        <activity android:name="com.wonium.cicada.ui.activity.MyToolsActivity" />
-        <activity android:name="com.wonium.cicada.ui.activity.ActivityManagerActivity" />
-        <activity android:name="com.wonium.cicada.ui.activity.BitmapUtilActivity" />
-        <activity android:name="com.wonium.cicada.ui.activity.DataCleanActivity" />
-        <activity android:name="com.wonium.cicada.ui.activity.DateUtilActivity" />
-        <activity android:name="com.wonium.cicada.ui.activity.DeviceUtilActivity" />
-        <activity android:name="com.wonium.cicada.ui.activity.FileUtilActivity" />
-        <activity android:name="com.wonium.cicada.ui.activity.StringUtilActivity" />
-        <activity android:name="com.wonium.cicada.ui.activity.CustomComponentActivity" />
-        <activity android:name="com.wonium.cicada.ui.activity.ImageViewActivity" />
-        <activity android:name="com.wonium.cicada.ui.activity.TextViewActivity" />
-        <activity android:name="com.wonium.cicada.ui.activity.CustomDialogActivity" />
-        <activity android:name="com.wonium.cicada.ui.activity.ByteUtilActivity" />
-        <activity android:name="com.wonium.cicada.ui.activity.ExpandListActivity" />
+        <activity android:name=".ui.activity.MyToolsActivity" />
+        <activity android:name=".ui.activity.ActivityManagerActivity" />
+        <activity android:name=".ui.activity.BitmapUtilActivity" />
+        <activity android:name=".ui.activity.DataCleanActivity" />
+        <activity android:name=".ui.activity.DateUtilActivity" />
+        <activity android:name=".ui.activity.DeviceUtilActivity" />
+        <activity android:name=".ui.activity.FileUtilActivity" />
+        <activity android:name=".ui.activity.StringUtilActivity" />
+        <activity android:name=".ui.activity.CustomComponentActivity" />
+        <activity android:name=".ui.activity.ImageViewActivity" />
+        <activity android:name=".ui.activity.TextViewActivity" />
+        <activity android:name=".ui.activity.CustomDialogActivity" />
+        <activity android:name=".ui.activity.ByteUtilActivity" />
+        <activity android:name=".ui.activity.ExpandListActivity" />
         <activity android:name=".ui.activity.CrossViewActivity" android:exported="false"/>
         <activity
-            android:name="com.wonium.cicada.ui.activity.ColorUtilActivity"
+            android:name=".ui.activity.ColorUtilActivity"
             android:launchMode="singleTask" />
         <activity
-            android:name="com.wonium.cicada.ui.activity.DensityUtilActivity"
+            android:name=".ui.activity.DensityUtilActivity"
             android:launchMode="singleTask" />
         <activity
-            android:name="com.wonium.cicada.ui.activity.InputMethodManagerUtilActivity"
+            android:name=".ui.activity.InputMethodManagerUtilActivity"
             android:launchMode="singleTask" />
         <activity
-            android:name="com.wonium.cicada.ui.activity.IntentUtilActivity"
+            android:name=".ui.activity.IntentUtilActivity"
             android:launchMode="singleTask" />
         <activity
-            android:name="com.wonium.cicada.ui.activity.MD5UtilActivity"
+            android:name=".ui.activity.MD5UtilActivity"
             android:launchMode="singleTask" />
         <activity
-            android:name="com.wonium.cicada.ui.activity.RippleLayoutActivity"
+            android:name=".ui.activity.RippleLayoutActivity"
             android:launchMode="singleTask" />
         <activity
-            android:name="com.wonium.cicada.ui.activity.WProgressDialogActivity"
+            android:name=".ui.activity.WProgressDialogActivity"
             android:launchMode="singleTask" />
         <!--<activity android:name=".ui.ui.activity.SecondActivity" />-->
         <!-- 登陆页面 -->
         <activity
-            android:name="com.wonium.cicada.ui.activity.RegisterActivity"
+            android:name=".ui.activity.RegisterActivity"
             android:launchMode="singleTask" />
         <!--&lt;!&ndash;H5页面&ndash;&gt;-->
         <!--<activity android:name=".ui.ui.activity.H5Activity"/>-->

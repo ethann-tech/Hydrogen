@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-        <com.wonium.hydrogen.ui.FixedEditText
+        <com.ethan.hydrogen.ui.FixedEditText
             android:id="@+id/edit_fixed_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
