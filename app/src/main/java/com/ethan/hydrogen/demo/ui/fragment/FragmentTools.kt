@@ -111,6 +111,12 @@ class FragmentTools : BaseFragment() {
         mLogger.info("LOG:MainActivity:onCreate 2022-08-23T07:57:00.000+0000 转成毫秒={}", DateUtil.getInstance().parseDate("2022-08-23T07:57:00.000+0000", DateUtil.DATE_FORMAT_DATE_FORMAT_YEAR_MONTH_DAY_HOUR_MIN_SECOND_SSSZ))
         mLogger.info("LOG:MainActivity:onCreate 1661241420000 格式化={}", DateUtil.getInstance().formatDate(1661241420000, DateUtil.DATE_FORMAT_DATE_FORMAT_YEAR_MONTH_DAY_HOUR_MIN_SECOND_SSSZ))
         mLogger.info("LOG:MainActivity:onCreate 获取两个日期之间的日期集合={}", Gson().toJson(DateUtil.getInstance().findDates("2023-06-15", DateUtil.DATE_FORMAT_YEAR_MONTH_DAY, "2023-08-20", DateUtil.DATE_FORMAT_YEAR_MONTH_DAY, DateUtil.DATE_FORMAT_YEAR_MONTH_DAY)))
+        mLogger.info("LOG:FragmentTools:printDateUtil prettyDuration={} ", DateUtil.getInstance().prettyDuration(1661241420000))
+        mLogger.info("LOG:FragmentTools:printDateUtil prettyDuration={} ", DateUtil.getInstance().prettyDuration((3600*24*30+2340)*1000L))
+        mLogger.info("LOG:FragmentTools:printDateUtil prettyDuration={} ", DateUtil.getInstance().prettyDuration(1800*1000))
+        mLogger.info("LOG:FragmentTools:printDateUtil prettyDuration={} ", DateUtil.getInstance().prettyDuration(900*1000))
+        mLogger.info("LOG:FragmentTools:printDateUtil prettyDuration={} ", DateUtil.getInstance().prettyDuration(450*1000))
+        mLogger.info("LOG:FragmentTools:printDateUtil prettyDuration={} ", DateUtil.getInstance().prettyDuration(200*1000))
     }
 
 }
