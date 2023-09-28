@@ -1,32 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/nav_find"
+        android:id="@+id/nav_tools"
         android:icon="@drawable/ic_nav_find_black_24dp"
-        android:title="@string/nav_find" />
+        android:title="@string/title_tools" />
 
     <item
-        android:id="@+id/nav_video"
-        android:icon="@drawable/ic_nav_video_black_24dp"
+        android:id="@+id/nav_view"
         android:checked="true"
-        android:title="@string/nav_video" />
+        android:icon="@drawable/ic_nav_video_black_24dp"
+        android:title="@string/nav_view" />
 
     <item
-        android:id="@+id/nav_my"
-        android:icon="@drawable/ic_nav_my_black_24dp"
-        android:title="@string/nav_my" />
-
-    <item
-        android:id="@+id/nav_friend"
+        android:id="@+id/nav_libs"
         android:icon="@drawable/ic_nav_friend_black_24dp"
-        android:title="@string/nav_friend" />
+        android:title="@string/nav_repositories" />
 
     <item
-        android:id="@+id/nav_account"
-        android:icon="@drawable/ic_nav_person_black_24dp"
-        app:showAsAction="always"
-        android:title="@string/nav_account" />
+        android:id="@+id/nav_mine"
+        android:icon="@drawable/ic_nav_my_black_24dp"
+        android:title="@string/nav_mine" />
+
 
 </menu>

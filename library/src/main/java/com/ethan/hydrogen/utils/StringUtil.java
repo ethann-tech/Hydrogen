@@ -20,28 +20,20 @@ import android.text.TextUtils;
 
 import java.io.UnsupportedEncodingException;
 import java.util.Map;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import androidx.annotation.Keep;
 
 /**
- * @ClassName: StringUtil.java
- * @Description: String 工具类
- * @Author: Ethan
- * @E-mail: wonium@qq.com
- * @Blog: https://blog.wonium.com
- * @CreateDate: 2018/11/11 15:03
- * @UpdateUser: 更新者
- * @UpdateDate: 2018/11/11 15:03
- * @UpdateDescription: 更新说明
- * @Version: 1.0.0
+ * @author ethan
  */
 @Keep
 public class StringUtil {
     /**
      * 实例对象
      */
-    private StringUtil() {   }
+    private StringUtil() {}
 
     private static class Inner {
         private static final StringUtil INSTANCE = new StringUtil();
@@ -69,7 +61,7 @@ public class StringUtil {
      * @return String
      */
     public String isEmpty(String text) {
-        if (text == null || "".equals(text) || text.length() == 0) {
+        if(text == null || "".equals(text) || text.length() == 0) {
             return "";
         } else {
             return text;
@@ -84,7 +76,7 @@ public class StringUtil {
      * @return String  被转换对象转换后的字符串
      */
     public <T> String valueOf(T value) {
-        if(value==null){
+        if(value == null) {
             return "";
         }
         return String.valueOf(value);
@@ -100,7 +92,8 @@ public class StringUtil {
      */
     public String getStringFromMap(Map map, String key, String defaultValue) {
         Object obj = map.get(key);
-        return obj == null ? defaultValue : (obj instanceof Number && Pattern.matches("^[-\\+]?[\\d]*\\.0*$", obj.toString()) ? String.valueOf(Long.valueOf(((Number) obj).longValue())) : obj.toString());
+        return obj == null ? defaultValue : (obj instanceof Number && Pattern.matches("^[-\\+]?[\\d]*\\.0*$", obj.toString()) ? String.valueOf(
+                Long.valueOf(((Number) obj).longValue())) : obj.toString());
     }
 
     /**
@@ -121,7 +114,7 @@ public class StringUtil {
      * @return 字符型数字
      */
     public String formatInt(int value) {
-        if (value < 10) {
+        if(value < 10) {
             return "0" + value;
         } else {
             return String.valueOf(value);
@@ -137,7 +130,7 @@ public class StringUtil {
      * @throws UnsupportedEncodingException
      */
     public String changeCharSet(String str, String newCharset) throws UnsupportedEncodingException {
-        if (str != null) {
+        if(str != null) {
             // 用默认字符编码解码字符串。
             byte[] bs = str.getBytes();
             // 用新的字符编码生成字符串
@@ -145,4 +138,41 @@ public class StringUtil {
         }
         return null;
     }
+
+    /**
+     * 检测是否有emoji表情
+     *
+     * @param source
+     * @return
+     */
+    public boolean containsEmoji(String source) {
+        int len = source.length();
+        for(int i = 0; i < len; i++) {
+            char codePoint = source.charAt(i);
+            //如果不能匹配,则该字符是Emoji表情
+            if(isEmojiCharacter(codePoint)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean isEmojiCharacter(char codePoint) {
+        return !(codePoint == 0x0 || codePoint == 0x9 || codePoint == 0xA || codePoint == 0xD || codePoint >= 0x20 && codePoint <= 0xD7FF);
+
+    }
+
+    /**
+     * 判断是否含有特殊字符
+     *
+     * @param str
+     * @return true为包含，false为不包含
+     */
+    public boolean isSpecialChar(String str) {
+        String regEx = "[ _`~!@#$%^&*()+=|{}':;',\\[\\].<>/?~！@#￥%……&*（）——+|{}【】‘；：”“’。，、？]|\n|\r|\t";
+        Pattern p = Pattern.compile(regEx);
+        Matcher m = p.matcher(str);
+        return m.find();
+    }
+
 }

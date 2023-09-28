@@ -56,11 +56,7 @@ import androidx.annotation.Keep;
 @Keep
 public class FileUtil {
 
-    private FileUtil() {
-        if (Inner.INSTANCE != null) {
-            throw new RuntimeException("该实例已存在，请通过getInstance方法获取");
-        }
-    }
+    private FileUtil() {}
 
     private static class Inner {
         private static final FileUtil INSTANCE = new FileUtil();
@@ -111,7 +107,7 @@ public class FileUtil {
             ByteArrayOutputStream arrayOutputStream = new ByteArrayOutputStream();
             while (true) {
                 int readLength = is.read(buffer);
-                if (readLength == -1) {
+                if(readLength == -1) {
                     break;
                 }
                 arrayOutputStream.write(buffer, 0, readLength);
@@ -127,7 +123,7 @@ public class FileUtil {
             content = null;
         } finally {
             try {
-                if (is != null) {
+                if(is != null) {
                     is.close();
                 }
             } catch (IOException ioe) {
@@ -157,10 +153,10 @@ public class FileUtil {
     public String generateFilePath(String dir, String name, String uffix) {
 
         String filePath = SEPARATOR + dir + SEPARATOR + name + uffix;
-        if (!isFileExist(filePath)) {
+        if(!isFileExist(filePath)) {
             File file = new File(filePath);
             File fileDir = file.getParentFile();
-            if (!fileDir.exists()) {
+            if(!fileDir.exists()) {
                 fileDir.mkdirs();
             }
 
@@ -214,17 +210,17 @@ public class FileUtil {
      * @return String字符串
      */
     public String readFile(String filePath, String charsetName) throws IOException {
-        if (TextUtils.isEmpty(filePath)) {
+        if(TextUtils.isEmpty(filePath)) {
             return null;
         }
 
-        if (TextUtils.isEmpty(charsetName)) {
+        if(TextUtils.isEmpty(charsetName)) {
             charsetName = "utf-8";
         }
 
         File file = new File(filePath);
         StringBuilder fileContent = new StringBuilder();
-        if (!file.isFile()) {
+        if(!file.isFile()) {
             return null;
         }
 
@@ -234,14 +230,14 @@ public class FileUtil {
             reader = new BufferedReader(is);
             String line;
             while ((line = reader.readLine()) != null) {
-                if (!"".equals(fileContent.toString())) {
+                if(!"".equals(fileContent.toString())) {
                     fileContent.append("\r\n");
                 }
                 fileContent.append(line);
             }
             return fileContent.toString();
         } finally {
-            if (reader != null) {
+            if(reader != null) {
                 try {
                     reader.close();
                 } catch (IOException e) {
@@ -270,17 +266,17 @@ public class FileUtil {
      * @return 文件不存在返回null，否则返回字符串集合
      */
     public List<String> readFileToList(String filePath, String charsetName) throws IOException {
-        if (TextUtils.isEmpty(filePath)) {
+        if(TextUtils.isEmpty(filePath)) {
             return null;
         }
 
-        if (TextUtils.isEmpty(charsetName)) {
+        if(TextUtils.isEmpty(charsetName)) {
             charsetName = "utf-8";
         }
 
         File file = new File(filePath);
         List<String> fileContent = new ArrayList<>();
-        if (!file.isFile()) {
+        if(!file.isFile()) {
             return null;
         }
         BufferedReader reader = null;
@@ -293,7 +289,7 @@ public class FileUtil {
             }
             return fileContent;
         } finally {
-            if (reader != null) {
+            if(reader != null) {
                 try {
                     reader.close();
                 } catch (IOException e) {
@@ -313,11 +309,11 @@ public class FileUtil {
      * @throws IOException
      */
     public boolean writeFile(String filePath, String content, boolean append) throws IOException {
-        if (TextUtils.isEmpty(filePath)) {
+        if(TextUtils.isEmpty(filePath)) {
             return false;
         }
 
-        if (TextUtils.isEmpty(content)) {
+        if(TextUtils.isEmpty(content)) {
             return false;
         }
 
@@ -329,7 +325,7 @@ public class FileUtil {
             fileWriter.flush();
             return true;
         } finally {
-            if (fileWriter != null) {
+            if(fileWriter != null) {
                 try {
                     fileWriter.close();
                 } catch (IOException e) {
@@ -364,10 +360,10 @@ public class FileUtil {
      * @throws IOException
      */
     public boolean writeFile(String filePath, InputStream stream, boolean append) throws IOException {
-        if (TextUtils.isEmpty(filePath)) {
+        if(TextUtils.isEmpty(filePath)) {
             throw new NullPointerException("filePath is Empty");
         }
-        if (stream == null) {
+        if(stream == null) {
             throw new NullPointerException("InputStream is null");
         }
         return writeFile(new File(filePath), stream, append);
@@ -383,7 +379,7 @@ public class FileUtil {
     public String writeFile(String filePath, byte[] data) {
 
         File file = new File(filePath);
-        if (file.exists()) {
+        if(file.exists()) {
             file.delete();
         }
         FileOutputStream fos;
@@ -424,7 +420,7 @@ public class FileUtil {
      * @throws IOException
      */
     public boolean writeFile(File file, InputStream stream, boolean append) throws IOException {
-        if (file == null) {
+        if(file == null) {
             throw new NullPointerException("file = null");
         }
 
@@ -440,7 +436,7 @@ public class FileUtil {
             out.flush();
             return true;
         } finally {
-            if (out != null) {
+            if(out != null) {
                 try {
                     out.close();
                     stream.close();
@@ -478,25 +474,25 @@ public class FileUtil {
      * @return 某个目录下的所有文件名
      */
     public List<String> getFileNameList(String dirPath, FilenameFilter fileFilter) {
-        if (fileFilter == null) {
+        if(fileFilter == null) {
             return getFileNameList(dirPath);
         }
 
-        if (TextUtils.isEmpty(dirPath)) {
+        if(TextUtils.isEmpty(dirPath)) {
             return Collections.emptyList();
         }
 
         File dir = new File(dirPath);
 
         File[] files = dir.listFiles(fileFilter);
-        if (files == null) {
+        if(files == null) {
             return Collections.emptyList();
         }
 
 
         List<String> conList = new ArrayList<>();
-        for (File file : files) {
-            if (file.isFile()) {
+        for(File file : files) {
+            if(file.isFile()) {
                 conList.add(file.getName());
             }
         }
@@ -510,19 +506,19 @@ public class FileUtil {
      * @return 某个目录下的所有文件名
      */
     public List<String> getFileNameList(String dirPath) {
-        if (TextUtils.isEmpty(dirPath)) {
+        if(TextUtils.isEmpty(dirPath)) {
             return Collections.emptyList();
         }
 
         File dir = new File(dirPath);
         File[] files = dir.listFiles();
-        if (files == null) {
+        if(files == null) {
             return Collections.emptyList();
         }
 
         List<String> conList = new ArrayList<>();
-        for (File file : files) {
-            if (file.isFile()) {
+        for(File file : files) {
+            if(file.isFile()) {
                 conList.add(file.getName());
             }
         }
@@ -536,7 +532,7 @@ public class FileUtil {
      * @return 某个目录下的所有文件名
      */
     public List<String> getFileNameList(String dirPath, final String extension) {
-        if (TextUtils.isEmpty(dirPath)) {
+        if(TextUtils.isEmpty(dirPath)) {
             return Collections.emptyList();
         }
 
@@ -547,13 +543,13 @@ public class FileUtil {
                 return filename.indexOf("." + extension) > 0;
             }
         });
-        if (files == null) {
+        if(files == null) {
             return Collections.emptyList();
         }
 
         List<String> conList = new ArrayList<>();
-        for (File file : files) {
-            if (file.isFile()) {
+        for(File file : files) {
+            if(file.isFile()) {
                 conList.add(file.getName());
             }
 
@@ -568,12 +564,12 @@ public class FileUtil {
      * @return 如果没有扩展名，返回""
      */
     public String getFileExtension(String filePath) {
-        if (TextUtils.isEmpty(filePath)) {
+        if(TextUtils.isEmpty(filePath)) {
             return filePath;
         }
         int extenPosi = filePath.lastIndexOf(FILE_EXTENSION_SEPARATOR);
         int filePosi = filePath.lastIndexOf(File.separator);
-        if (extenPosi == -1) {
+        if(extenPosi == -1) {
             return "";
         }
         return (filePosi >= extenPosi) ? "" : filePath.substring(extenPosi + 1);
@@ -586,7 +582,7 @@ public class FileUtil {
      * @return
      */
     public boolean createFile(String path) {
-        if (TextUtils.isEmpty(path)) {
+        if(TextUtils.isEmpty(path)) {
             return false;
         }
 
@@ -600,10 +596,10 @@ public class FileUtil {
      * @return 创建成功返回true
      */
     public boolean createFile(File file) {
-        if (file == null || !makeDirs(getFolderName(file.getAbsolutePath()))) {
+        if(file == null || !makeDirs(getFolderName(file.getAbsolutePath()))) {
             return false;
         }
-        if (!file.exists()) {
+        if(!file.exists()) {
             try {
                 return file.createNewFile();
             } catch (IOException e) {
@@ -621,7 +617,7 @@ public class FileUtil {
      * @return 如果路径为空时，返回false；如果目录创建成功，则返回true，否则返回false
      */
     public boolean makeDirs(String filePath) {
-        if (TextUtils.isEmpty(filePath)) {
+        if(TextUtils.isEmpty(filePath)) {
             return false;
         }
         File folder = new File(filePath);
@@ -635,7 +631,7 @@ public class FileUtil {
      * @return 如果目录创建成功，则返回true，否则返回false
      */
     public boolean makeDirs(File dir) {
-        if (dir == null) {
+        if(dir == null) {
             return false;
         }
         return (dir.exists() && dir.isDirectory()) || dir.mkdirs();
@@ -649,7 +645,7 @@ public class FileUtil {
      * 就返回true；如果不是文件或者不存在，则返回false
      */
     public boolean isFileExist(String filePath) {
-        if (TextUtils.isEmpty(filePath)) {
+        if(TextUtils.isEmpty(filePath)) {
             return false;
         }
         File file = new File(filePath);
@@ -663,20 +659,18 @@ public class FileUtil {
      * @return
      */
     public String getFileNameWithoutExtension(String filePath) {
-        if (TextUtils.isEmpty(filePath)) {
+        if(TextUtils.isEmpty(filePath)) {
             return filePath;
         }
         int extenPosi = filePath.lastIndexOf(FILE_EXTENSION_SEPARATOR);
         int filePosi = filePath.lastIndexOf(File.separator);
-        if (filePosi == -1) {
-            return (extenPosi == -1 ? filePath : filePath.substring(0,
-                    extenPosi));
+        if(filePosi == -1) {
+            return (extenPosi == -1 ? filePath : filePath.substring(0, extenPosi));
         }
-        if (extenPosi == -1) {
+        if(extenPosi == -1) {
             return filePath.substring(filePosi + 1);
         }
-        return (filePosi < extenPosi ? filePath.substring(filePosi + 1,
-                extenPosi) : filePath.substring(filePosi + 1));
+        return (filePosi < extenPosi ? filePath.substring(filePosi + 1, extenPosi) : filePath.substring(filePosi + 1));
     }
 
     /**
@@ -686,7 +680,7 @@ public class FileUtil {
      * @return 如果路径为空或空串，返回路径名；不为空时，返回文件名
      */
     public String getFileName(String filePath) {
-        if (TextUtils.isEmpty(filePath)) {
+        if(TextUtils.isEmpty(filePath)) {
             return filePath;
         }
         int filePosi = filePath.lastIndexOf(File.separator);
@@ -701,7 +695,7 @@ public class FileUtil {
      * 如果不是根目录，返回所在目录名称，格式如：C:/Windows/Boot
      */
     public String getFolderName(String filePath) {
-        if (TextUtils.isEmpty(filePath)) {
+        if(TextUtils.isEmpty(filePath)) {
             return filePath;
         }
         int filePosi = filePath.lastIndexOf(File.separator);
@@ -716,7 +710,7 @@ public class FileUtil {
      * 返回true；如果不是文件夹或者不存在，则返回false
      */
     public boolean isFolderExist(String directoryPath) {
-        if (TextUtils.isEmpty(directoryPath)) {
+        if(TextUtils.isEmpty(directoryPath)) {
             return false;
         }
         File dire = new File(directoryPath);
@@ -731,7 +725,7 @@ public class FileUtil {
      * 文件删除异常返回false
      */
     public boolean deleteFile(String path) {
-        if (TextUtils.isEmpty(path)) {
+        if(TextUtils.isEmpty(path)) {
             return true;
         }
         return deleteFile(new File(path));
@@ -745,27 +739,27 @@ public class FileUtil {
      * 文件删除异常返回false
      */
     public boolean deleteFile(File file) {
-        if (file == null) {
+        if(file == null) {
             throw new NullPointerException("file is null");
         }
-        if (!file.exists()) {
+        if(!file.exists()) {
             return true;
         }
-        if (file.isFile()) {
+        if(file.isFile()) {
             return file.delete();
         }
-        if (!file.isDirectory()) {
+        if(!file.isDirectory()) {
             return false;
         }
 
         File[] files = file.listFiles();
-        if (files == null) {
+        if(files == null) {
             return true;
         }
-        for (File f : files) {
-            if (f.isFile()) {
+        for(File f : files) {
+            if(f.isFile()) {
                 f.delete();
-            } else if (f.isDirectory()) {
+            } else if(f.isDirectory()) {
                 deleteFile(f.getAbsolutePath());
             }
         }
@@ -779,32 +773,32 @@ public class FileUtil {
      * @param filter
      */
     public void delete(String dir, FilenameFilter filter) {
-        if (TextUtils.isEmpty(dir)) {
+        if(TextUtils.isEmpty(dir)) {
             return;
         }
         File file = new File(dir);
-        if (!file.exists()) {
+        if(!file.exists()) {
             return;
         }
-        if (file.isFile()) {
+        if(file.isFile()) {
             file.delete();
         }
-        if (!file.isDirectory()) {
+        if(!file.isDirectory()) {
             return;
         }
 
         File[] lists;
-        if (filter != null) {
+        if(filter != null) {
             lists = file.listFiles(filter);
         } else {
             lists = file.listFiles();
         }
 
-        if (lists == null) {
+        if(lists == null) {
             return;
         }
-        for (File f : lists) {
-            if (f.isFile()) {
+        for(File f : lists) {
+            if(f.isFile()) {
                 f.delete();
             }
         }
@@ -817,7 +811,7 @@ public class FileUtil {
      * @return 返回当前目录的大小 ，注：当文件不存在，为空，或者为空白字符串，返回 -1
      */
     public long getFileSize(String path) {
-        if (TextUtils.isEmpty(path)) {
+        if(TextUtils.isEmpty(path)) {
             return -1;
         }
         File file = new File(path);
@@ -846,8 +840,8 @@ public class FileUtil {
         suffixList.add("pptm");
 
         String lowSuffix = suffix.toLowerCase();
-        for (String value : suffixList) {
-            if (lowSuffix.contains(value)) {
+        for(String value : suffixList) {
+            if(lowSuffix.contains(value)) {
                 return true;
             }
         }
@@ -870,7 +864,7 @@ public class FileUtil {
             int numRead = 0;
             while (numRead != -1) {
                 numRead = inputStream.read(buffer);
-                if (numRead > 0) {
+                if(numRead > 0) {
                     // Update the digest
                     digest.update(buffer, 0, numRead);
                 }
@@ -882,7 +876,7 @@ public class FileUtil {
         } catch (Exception e) {
             return null;
         } finally {
-            if (inputStream != null) {
+            if(inputStream != null) {
                 try {
                     inputStream.close(); // Close the InputStream
                 } catch (Exception e) {
@@ -910,7 +904,7 @@ public class FileUtil {
             int numRead = 0;
             while (numRead != -1) {
                 numRead = inputStream.read(buffer);
-                if (numRead > 0) {
+                if(numRead > 0) {
                     // Update the digest
                     digest.update(buffer, 0, numRead);
                 }
@@ -922,7 +916,7 @@ public class FileUtil {
         } catch (Exception e) {
             return null;
         } finally {
-            if (inputStream != null) {
+            if(inputStream != null) {
                 try {
                     inputStream.close(); // Close the InputStream
                 } catch (Exception e) {
@@ -951,7 +945,7 @@ public class FileUtil {
             int numRead = 0;
             while (numRead != -1) {
                 numRead = inputStream.read(buffer);
-                if (numRead > 0) {
+                if(numRead > 0) {
                     // Update the digest
                     digest.update(buffer, 0, numRead);
                 }
@@ -963,7 +957,7 @@ public class FileUtil {
         } catch (Exception e) {
             return null;
         } finally {
-            if (inputStream != null) {
+            if(inputStream != null) {
                 try {
                     inputStream.close(); // Close the InputStream
                 } catch (Exception e) {
@@ -981,7 +975,7 @@ public class FileUtil {
      */
     public String convertHashToString(byte[] hashBytes) {
         StringBuilder returnVal = new StringBuilder();
-        for (byte hashByte : hashBytes) {
+        for(byte hashByte : hashBytes) {
             returnVal.append(Integer.toString((hashByte & 0xff) + 0x100, 16).substring(1));
         }
         return returnVal.toString().toLowerCase();
@@ -1007,8 +1001,8 @@ public class FileUtil {
         }
 
         StringBuilder hex = new StringBuilder(hash.length * 2);
-        for (byte b : hash) {
-            if ((b & 0xFF) < 0x10) {
+        for(byte b : hash) {
+            if((b & 0xFF) < 0x10) {
                 hex.append("0");
             }
             hex.append(Integer.toHexString(b & 0xFF));
@@ -1028,12 +1022,12 @@ public class FileUtil {
             File fileOrDirectory = new File(src);
             out = new ZipOutputStream(new FileOutputStream(outFile));
             //如果此文件是一个文件，否则为false。
-            if (fileOrDirectory.isFile()) {
+            if(fileOrDirectory.isFile()) {
                 zipFileOrDirectory(out, fileOrDirectory, "");
             } else {
                 //返回一个文件或空阵列。
                 File[] entries = fileOrDirectory.listFiles();
-                for (File entry : entries) {
+                for(File entry : entries) {
                     // 递归压缩，更新curPaths
                     zipFileOrDirectory(out, entry, "");
                 }
@@ -1042,7 +1036,7 @@ public class FileUtil {
             ex.printStackTrace();
         } finally {
             //关闭输出流
-            if (out != null) {
+            if(out != null) {
                 try {
                     out.close();
                 } catch (IOException ex) {
@@ -1057,14 +1051,13 @@ public class FileUtil {
         FileInputStream in = null;
         try {
             //如果此文件是一个目录，否则返回false。
-            if (!fileOrDirectory.isDirectory()) {
+            if(!fileOrDirectory.isDirectory()) {
                 // 压缩文件
                 byte[] buffer = new byte[4096];
                 int bytesRead;
                 in = new FileInputStream(fileOrDirectory);
                 //实例代表一个条目内的ZIP归档
-                ZipEntry entry = new ZipEntry(curPath
-                        + fileOrDirectory.getName());
+                ZipEntry entry = new ZipEntry(curPath + fileOrDirectory.getName());
                 //条目的信息写入底层流
                 out.putNextEntry(entry);
                 while ((bytesRead = in.read(buffer)) != -1) {
@@ -1074,7 +1067,7 @@ public class FileUtil {
             } else {
                 // 压缩目录
                 File[] entries = fileOrDirectory.listFiles();
-                for (File entry : entries) {
+                for(File entry : entries) {
                     // 递归压缩，更新curPaths
                     zipFileOrDirectory(out, entry, curPath + fileOrDirectory.getName() + "/");
                 }
@@ -1083,7 +1076,7 @@ public class FileUtil {
             ex.printStackTrace();
             // throw ex;
         } finally {
-            if (in != null) {
+            if(in != null) {
                 try {
                     in.close();
                 } catch (IOException ex) {

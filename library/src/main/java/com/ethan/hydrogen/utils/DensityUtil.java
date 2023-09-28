@@ -17,25 +17,15 @@
 package com.ethan.hydrogen.utils;
 
 
-import android.app.Application;
 import android.content.ComponentCallbacks;
 import android.content.Context;
 import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.util.DisplayMetrics;
+
 import androidx.annotation.Keep;
 
-/**
- * @ClassName: DensityUtil.java
- * @Description: 尺寸工具包
- * @Author: Wonium
- * @E-mail: wonium@qq.com
- * @Blog: https://blog.wonium.com
- * @CreateDate: 2018/11/11 19:57
- * @UpdateUser: 更新者
- * @UpdateDate: 2018/11/11 19:57
- * @UpdateDescription: 更新说明
- * @Version: 1.0.0
- */
+
 @Keep
 public class DensityUtil {
 
@@ -43,11 +33,8 @@ public class DensityUtil {
     private static float sNonCompatScaledDensity;
 
 
-    private DensityUtil() {
-        if (Inner.INSTANCE != null) {
-            throw new RuntimeException("该实例已存在，请通过getInstance方法获取");
-        }
-    }
+    private DensityUtil() {}
+
     private static class Inner {
         private static final DensityUtil INSTANCE = new DensityUtil();
     }
@@ -58,7 +45,6 @@ public class DensityUtil {
     public static DensityUtil getInstance() {
         return Inner.INSTANCE;
     }
-
 
 
     /**
@@ -150,13 +136,13 @@ public class DensityUtil {
      */
     public void setCustomDensity(Context context) {
         DisplayMetrics appDisplayMetrics = context.getApplicationContext().getResources().getDisplayMetrics();
-        if (sNonCompatDensity == 0) {
+        if(sNonCompatDensity == 0) {
             sNonCompatDensity = appDisplayMetrics.density;
             sNonCompatScaledDensity = appDisplayMetrics.scaledDensity;
             context.getApplicationContext().registerComponentCallbacks(new ComponentCallbacks() {
                 @Override
                 public void onConfigurationChanged(Configuration newConfig) {
-                    if (newConfig != null && newConfig.fontScale > 0) {
+                    if(newConfig != null && newConfig.fontScale > 0) {
                         sNonCompatScaledDensity = context.getApplicationContext().getResources().getDisplayMetrics().scaledDensity;
                     }
                 }
@@ -166,7 +152,7 @@ public class DensityUtil {
                 }
             });
         }
-        final float targetDensity = appDisplayMetrics.widthPixels / 360;
+        final float targetDensity = appDisplayMetrics.widthPixels / 360F;
         final float targetScaleDensity = targetDensity * (sNonCompatScaledDensity / sNonCompatDensity);
         final int targetDensityDpi = (int) (160 * targetDensity);
         appDisplayMetrics.density = targetDensity;
@@ -178,5 +164,20 @@ public class DensityUtil {
         activityDisplayMetrics.densityDpi = targetDensityDpi;
     }
 
+
+
+
+
+    public static int getScreenWidth(Context context) {
+        final Resources resources = context.getApplicationContext().getResources();
+        final DisplayMetrics dm = resources.getDisplayMetrics();
+        return dm.widthPixels;
+    }
+
+    public static int getScreenHeight(Context context) {
+        final Resources resources = context.getApplicationContext().getResources();
+        final DisplayMetrics dm = resources.getDisplayMetrics();
+        return dm.heightPixels;
+    }
 
 }

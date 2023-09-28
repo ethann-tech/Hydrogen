@@ -13,66 +13,63 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package com.ethan.hydrogen.demo
 
-package com.ethan.hydrogen.demo;
+import com.alibaba.android.arouter.BuildConfig
+import com.alibaba.android.arouter.launcher.ARouter
+import com.ethan.hydrogen.demo.common.ApplicationLifecycle
+import com.ethan.hydrogen.demo.common.log.ImplLoggerManager
+import com.ethan.hydrogen.utils.DateUtil
+import com.qmuiteam.qmui.arch.QMUISwipeBackActivityManager
+import kotlinx.coroutines.delay
+import org.slf4j.LoggerFactory
+import java.util.Date
+import kotlin.coroutines.coroutineContext
 
-import android.app.Application;
-
-import com.alibaba.android.arouter.BuildConfig;
-import com.alibaba.android.arouter.launcher.ARouter;
-import com.ethan.hydrogen.utils.DateUtil;
-import com.qmuiteam.qmui.arch.QMUISwipeBackActivityManager;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import java.util.Date;
-
-
-public class App extends Application {
-    private static App mInstance;
-    private Logger logger = LoggerFactory.getLogger(this.getClass());
-
-    @Override
-    public void onCreate() {
-        super.onCreate();
-        mInstance = this;
-        initARouter();
-        initLogger();
-        QMUISwipeBackActivityManager.init(this);
+class App : ApplicationLifecycle() {
+    private val mLoggerManager by lazy { ImplLoggerManager(mContext = this.baseContext) }
+    private val mLogger: org.slf4j.Logger = org.slf4j.LoggerFactory.getLogger(this.javaClass)
+    override suspend fun onCreatedBySuspend() {
+        super.onCreatedBySuspend()
+        instance = this
+        initARouter()
+        initLogger()
+        QMUISwipeBackActivityManager.init(this)
     }
 
-    public static App getInstance() {
-        return mInstance;
-    }
 
     /**
      * 初始化页面路由
      */
-    private void initARouter() {
-        logger.debug("initARouter: " + BuildConfig.DEBUG);
-        logger.debug("LOG:App:initARouter init={}", "hydrogen");
-        if(BuildConfig.DEBUG) {
-            ARouter.openLog();
-            ARouter.openDebug();
-            ARouter.printStackTrace();
-        }
-        ARouter.init(this);
+    private fun initARouter() {
 
+        if (BuildConfig.DEBUG) {
+            ARouter.openLog()
+            ARouter.openDebug()
+            ARouter.printStackTrace()
+        }
+        ARouter.init(this)
     }
 
     /**
      * 初始化Logger
      */
-    private void initLogger() {
-        logger = LoggerFactory.getLogger(this.getClass());
-        logger.error("LOG:Application:onCreate =================================================================================");
-        logger.debug("LOG:Application:onCreate content=debug !!! this log should remove !!!");
-        logger.trace("LOG:Application:onCreate content=trace !!! this log should remove !!!");
-        logger.info("LOG:Application:onCreate content=info  !!! this log should remove !!!");
-        logger.warn("LOG:Application:onCreate content=warn  !!! this log should remove !!!");
-        logger.error("LOG:Application:onCreate content=error !!! this log should remove !!!");
-        logger.info("LOG:Application:onCreate apk build time={}", com.ethan.hydrogen.utils.DateUtil.formatDate(new Date(), DateUtil.DATE_FORMAT_YEAR_MONTH_DAY_HOUR_MIN_SECOND));
-        logger.error("LOG:Application:onCreate =================================================================================");
+    private suspend fun initLogger() {
+        mLoggerManager.init()
+        mLogger.debug("LOG:ApplicationTest:onCreate 1={}", 1)
+        mLogger.debug("LOG:ApplicationTest:onCreate coroutineContext={}", coroutineContext)
+        mLogger.error("LOG:Application:onCreate =================================================================================")
+        mLogger.debug("LOG:Application:onCreate content=debug !!! this log should remove !!!")
+        mLogger.trace("LOG:Application:onCreate content=trace !!! this log should remove !!!")
+        mLogger.info("LOG:Application:onCreate content=info  !!! this log should remove !!!")
+        mLogger.warn("LOG:Application:onCreate content=warn  !!! this log should remove !!!")
+        mLogger.error("LOG:Application:onCreate content=error !!! this log should remove !!!")
+        mLogger.info("LOG:Application:onCreate apk build time={}", DateUtil.getInstance().formatDate(Date(), DateUtil.DATE_FORMAT_YEAR_MONTH_DAY_HOUR_MIN_SECOND))
+        mLogger.error("LOG:Application:onCreate =================================================================================")
+    }
+
+    companion object {
+        var instance: App? = null
+            private set
     }
 }

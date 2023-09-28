@@ -20,7 +20,6 @@
     <string name="fast_login">第三方账号快速登录</string>
 
 
-
     <string name="tools_acache">ACacheUtil</string>
     <string name="tools_activity_manager">ActivityManagerUtils</string>
     <string name="tools_bitmap">BitmapUtil</string>
@@ -52,12 +51,10 @@
     <string name="hint_click_bottom_button_check">点击下方按钮验证</string>
 
     <!--navigation-->
-    <string name="nav_find">发现</string>
-    <string name="nav_video">视频</string>
-    <string name="nav_my">我的</string>
-    <string name="nav_friend">朋友</string>
-    <string name="nav_account">账号</string>
-    <string name="msg_H5">H5</string>
+    <string name="title_tools">工具</string>
+    <string name="nav_view">View</string>
+    <string name="nav_repositories">库</string>
+    <string name="nav_mine">我的</string>
     <!--navigation end-->
     <!--menu start-->
     <string name="nav_select">选择</string>

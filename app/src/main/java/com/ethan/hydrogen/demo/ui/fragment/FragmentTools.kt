@@ -13,110 +13,104 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package com.ethan.hydrogen.demo.ui.fragment
 
-package com.ethan.hydrogen.demo.ui.fragment;
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.chad.library.adapter.base.util.setOnDebouncedItemClick
+import com.ethan.hydrogen.demo.R
+import com.ethan.hydrogen.demo.adapter.AdapterSimpleData
+import com.ethan.hydrogen.demo.databinding.FragmentToolsBinding
+import com.ethan.hydrogen.ui.BaseFragment
+import com.ethan.hydrogen.utils.DateUtil
+import com.ethan.hydrogen.utils.FileUtil
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
+import java.util.Date
 
-import android.os.Build;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+class FragmentTools : BaseFragment() {
+    private val mLogger: org.slf4j.Logger = org.slf4j.LoggerFactory.getLogger(this.javaClass)
+    private val mBinding: FragmentToolsBinding by lazy { FragmentToolsBinding.inflate(layoutInflater) }
+    private var args1: String? = null
+    private var args2: String? = null
+    private val mAdapter = AdapterSimpleData()
 
-import com.alibaba.android.arouter.launcher.ARouter;
-import com.ethan.hydrogen.OnNoDoubleClickListener;
-import com.ethan.hydrogen.demo.R;
-import com.ethan.hydrogen.demo.databinding.FragmentFindBinding;
-import com.ethan.hydrogen.ui.BaseFragment;
-import com.ethan.hydrogen.utils.ToastUtil;
-import com.ethan.hydrogen.demo.router.PageRouter;
-import java.net.NetworkInterface;
-import java.util.Collections;
-import java.util.Enumeration;
-
-public class FindFragment extends BaseFragment {
-    private static final String TAG = FindFragment.class.getSimpleName();
-    private FragmentFindBinding mBinding;
-    private String args1;
-    private String args2;
-
-    public static FindFragment newInstance(String args1, String args2) {
-        Bundle args = new Bundle();
-        FindFragment fragment = new FindFragment();
-        fragment.args1 = args1;
-        fragment.args2 = args2;
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    protected int getLayoutResId() {
-        return R.layout.fragment_find;
-    }
-
-    @Override
-    protected View initBinding(LayoutInflater inflater, ViewGroup container) {
-        mBinding = FragmentFindBinding.inflate(inflater);
-        return mBinding.getRoot();
-    }
-
-    @Override
-    protected void initView(View view) {
-        mBinding.btnTest.setText("测试TestGridView");
-    }
-
-    @Override
-    protected void initListener() {
-        super.initListener();
-        mBinding.btnTest.setOnClickListener(v -> ARouter.getInstance().build(PageRouter.TEST_GRID_VIEW).navigation());
-        mBinding.btnCustomLoading.setOnClickListener(new OnNoDoubleClickListener() {
-            @Override
-            public void onNoDoubleClick(View v) {
-                ToastUtil.getInstance().show(getContext(), "OnNoDoubleClickListener");
-            }
-        });
-        mBinding.btnProxy.setOnClickListener(v -> ToastUtil.getInstance().show(getContext(), "是否启用网络代理：" + (isWifiProxy() ? "yes" : "false") + "  ; \n是否启用VPN : " + (isVpnUsed() ? "yes" : "false")));
-        mBinding.btnImgCompress1.setOnClickListener(v -> ARouter.getInstance().build(PageRouter.ACTIVITY_IMG_COMPRESS).navigation(getContext()));
-    }
-
-    private boolean isWifiProxy() {
-        final boolean is_ics_or_later = Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT;
-        String proxyAddress;
-        int proxyPort;
-        if (is_ics_or_later) {
-            proxyAddress = System.getProperty("http.proxyHost");
-            String portstr = System.getProperty("http.proxyPort");
-            proxyPort = Integer.parseInt((portstr != null ? portstr : "-1"));
-            System.out.println(proxyAddress + "~");
-            System.out.println("port = " + proxyPort);
-        } else {
-            proxyAddress = android.net.Proxy.getHost(getContext());
-            proxyPort = android.net.Proxy.getPort(getContext());
-            Log.e("address = ", proxyAddress + "~");
-            Log.e("port = ", proxyPort + "~");
+    companion object {
+        private val TAG = FragmentTools::class.java.simpleName
+        fun newInstance(args1: String?, args2: String?): FragmentTools {
+            val args = Bundle()
+            val fragment = FragmentTools()
+            fragment.args1 = args1
+            fragment.args2 = args2
+            fragment.arguments = args
+            return fragment
         }
-        return (!TextUtils.isEmpty(proxyAddress)) && (proxyPort != -1);
     }
 
-    public static boolean isVpnUsed() {
-        try {
-            Enumeration<NetworkInterface> niList = NetworkInterface.getNetworkInterfaces();
-            if (niList != null) {
-                for (NetworkInterface intf : Collections.list(niList)) {
-                    if (!intf.isUp() || intf.getInterfaceAddresses().size() == 0) {
-                        continue;
-                    }
-                    Log.d(TAG, "isVpnUsed() NetworkInterface Name: " + intf.getName());
-                    if ("tun0".equals(intf.getName()) || "ppp0".equals(intf.getName())) {
-                        return true; // The VPN is up
-                    }
+    override fun getLayoutResId(): Int = R.layout.fragment_tools
+
+    override fun initBinding(inflater: LayoutInflater, container: ViewGroup): View = mBinding.root
+
+    override fun initView(view: View) {
+        mBinding.recycler.apply {
+            layoutManager = LinearLayoutManager(context).apply {
+                orientation = LinearLayoutManager.VERTICAL
+            }
+            adapter = mAdapter
+        }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        requestData()
+    }
+
+    private fun requestData() {
+        val data = FileUtil.getInstance().readAssetsFile(context, "tools.json")
+        val itemList = Gson().fromJson<List<String>>(data, object : TypeToken<List<String>>() {}.type)
+        mAdapter.addAll(itemList)
+        mLogger.info("LOG:FragmentTools:requestData data={}", data)
+    }
+
+
+    override fun initListener() {
+        super.initListener()
+
+        mAdapter.setOnDebouncedItemClick(500L) { adapter, view, position ->
+            mLogger.info("LOG:FragmentTools:initListener position={}", position)
+            when (position) {
+                0 -> {
+                    printDateUtil()
                 }
             }
-        } catch (Throwable e) {
-            e.printStackTrace();
         }
-        return false;
+    }
+
+    private fun printDateUtil() {
+
+        mLogger.info("LOG:MainActivity:onCreate dateFormat={}", DateUtil.getCurrentDate())
+        mLogger.info("LOG:MainActivity:onCreate formatDate={}", DateUtil.getInstance().formatDate(Date(), DateUtil.DATE_FORMAT_YEAR_MONTH_DAY_HOUR_MIN_SECOND))
+        mLogger.info("LOG:MainActivity:onCreate formatDate={}", DateUtil.getInstance().formatDate(System.currentTimeMillis(), DateUtil.DATE_FORMAT_YEAR_MONTH_DAY_HOUR_MIN))
+        mLogger.info("LOG:MainActivity:onCreate formatDate={}", DateUtil.getInstance().formatDate(System.currentTimeMillis(), DateUtil.DATE_FORMAT_YEAR_MONTH_DAY_HOUR))
+        mLogger.info("LOG:MainActivity:onCreate formatDate={}", DateUtil.getInstance().formatDate(System.currentTimeMillis(), DateUtil.DATE_FORMAT_YEAR_MONTH_DAY_HOUR))
+        mLogger.info("LOG:MainActivity:onCreate formatDate={}", DateUtil.getInstance().formatDate(System.currentTimeMillis(), DateUtil.DATE_FORMAT_YEAR_MONTH_DAY))
+        mLogger.info("LOG:MainActivity:onCreate formatDate={}", DateUtil.getInstance().formatDate(System.currentTimeMillis(), DateUtil.DATE_FORMAT_YEAR_MONTH))
+        mLogger.info("LOG:MainActivity:onCreate formatDate={}", DateUtil.getInstance().formatDate(System.currentTimeMillis(), DateUtil.DATE_FORMAT_MONTH_DAY))
+        mLogger.info("LOG:MainActivity:onCreate formatDate={}", DateUtil.getInstance().formatDate(System.currentTimeMillis(), DateUtil.DATE_FORMAT_YEAR))
+        mLogger.info("LOG:MainActivity:onCreate formatDate={}", DateUtil.getInstance().formatDate(System.currentTimeMillis(), DateUtil.DATE_FORMAT_MONTH))
+        mLogger.info("LOG:MainActivity:onCreate formatDate={}", DateUtil.getInstance().formatDate(System.currentTimeMillis(), DateUtil.DATE_FORMAT_DAY))
+        mLogger.info("LOG:MainActivity:onCreate formatDate={}", DateUtil.getInstance().formatDate(System.currentTimeMillis(), DateUtil.DATE_FORMAT_HOUR_MIN_SECOND))
+        mLogger.info("LOG:MainActivity:onCreate formatDate={}", DateUtil.getInstance().formatDate(System.currentTimeMillis(), DateUtil.DATE_FORMAT_HOUR_MIN))
+        mLogger.info("LOG:MainActivity:onCreate 日期对应的秒数 Second={}", DateUtil.convertToSeconds(Date()))
+        mLogger.info("LOG:MainActivity:onCreate 日期对应的分钟数 Minutes={}", DateUtil.convertToMinutes(Date()))
+        mLogger.info("LOG:MainActivity:onCreate 日期对应的小时数 Hours={}", DateUtil.convertToHours(Date()))
+        mLogger.info("LOG:MainActivity:onCreate Year={}", DateUtil.getYear(Date())) //1661241420000
+        mLogger.info("LOG:MainActivity:onCreate 2022-08-23T07:57:00.000+0000 转成毫秒={}", DateUtil.getInstance().parseDate("2022-08-23T07:57:00.000+0000", DateUtil.DATE_FORMAT_DATE_FORMAT_YEAR_MONTH_DAY_HOUR_MIN_SECOND_SSSZ))
+        mLogger.info("LOG:MainActivity:onCreate 1661241420000 格式化={}", DateUtil.getInstance().formatDate(1661241420000, DateUtil.DATE_FORMAT_DATE_FORMAT_YEAR_MONTH_DAY_HOUR_MIN_SECOND_SSSZ))
+        mLogger.info("LOG:MainActivity:onCreate 获取两个日期之间的日期集合={}", Gson().toJson(DateUtil.getInstance().findDates("2023-06-15", DateUtil.DATE_FORMAT_YEAR_MONTH_DAY, "2023-08-20", DateUtil.DATE_FORMAT_YEAR_MONTH_DAY, DateUtil.DATE_FORMAT_YEAR_MONTH_DAY)))
     }
 
 }

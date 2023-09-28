@@ -21,9 +21,12 @@ import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 
+import androidx.core.content.res.ResourcesCompat;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 
 /**
  * 读取res目录下的内容的工具类
@@ -50,7 +53,7 @@ public class ResourceUtil {
 
 
     private ResourceUtil() {
-        if (Inner.INSTANCE != null) {
+        if(Inner.INSTANCE != null) {
             throw new RuntimeException("该实例已存在，请通过getInstance方法获取");
         }
     }
@@ -60,7 +63,7 @@ public class ResourceUtil {
     }
 
 
-    public ResourceUtil getInstance() {
+    public static ResourceUtil getInstance() {
         return Inner.INSTANCE;
     }
 
@@ -102,10 +105,9 @@ public class ResourceUtil {
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
-            if (is != null) {
+            if(is != null) {
                 try {
                     is.close();
-                    is = null;
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -133,10 +135,9 @@ public class ResourceUtil {
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
-            if (is != null) {
+            if(is != null) {
                 try {
                     is.close();
-                    is = null;
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -146,23 +147,7 @@ public class ResourceUtil {
         return buffer;
     }
 
-    /**
-     * 从assets目录读取文本
-     *
-     * @param context  上下文
-     * @param fileName 文件名
-     * @return 文本内容
-     */
-    public String readStringFromAssets(Context context, String fileName) {
-        String result = null;
-        byte[] buffer = readBytesFromAssets(context, fileName);
-        try {
-            result = new String(buffer, "UTF-8");
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
-        return result;
-    }
+
 
     /**
      * 从raw目录读取文本
@@ -201,7 +186,7 @@ public class ResourceUtil {
      * @return 颜色
      */
     public int getColor(Context context, int colorId) {
-        return context.getResources().getColor(colorId);
+        return ResourcesCompat.getColor(context.getResources(), colorId, null);
     }
 
     /**

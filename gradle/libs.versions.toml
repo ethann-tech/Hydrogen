@@ -57,7 +57,7 @@ ultimatebarx= 'com.gitee.zackratos:UltimateBarX:0.8.0'
 # viewbinding
 viewbinding-ktx='com.github.DylanCaiCoding.ViewBindingKTX:viewbinding-ktx:2.1.0'
 
-baserecyclerviewadapterhelper = 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.10'
+baserecyclerviewadapterhelper = 'io.github.cymchad:BaseRecyclerViewAdapterHelper:4.0.1'
 recyclerview-flexibledivider ='com.yqritc:recyclerview-flexibledivider:1.4.0'
 xrecyclerview = 'com.jcodecraeer:xrecyclerview:1.6.0'
 #

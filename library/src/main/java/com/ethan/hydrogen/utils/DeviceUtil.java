@@ -25,12 +25,14 @@ import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.provider.Settings;
 import android.telephony.TelephonyManager;
+import android.util.DisplayMetrics;
 
 import java.lang.reflect.Method;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.net.SocketException;
 import java.util.Enumeration;
+import java.util.TimeZone;
 
 import androidx.annotation.Keep;
 
@@ -50,10 +52,11 @@ import androidx.annotation.Keep;
 public class DeviceUtil {
 
     private DeviceUtil() {
-        if (Inner.INSTANCE != null) {
+        if(Inner.INSTANCE != null) {
             throw new RuntimeException("该实例已存在，请通过getInstance方法获取");
         }
     }
+
     private static class Inner {
         private static final DeviceUtil INSTANCE = new DeviceUtil();
     }
@@ -89,11 +92,11 @@ public class DeviceUtil {
     public String getMacAddress(Context context) {
         String macAddress = "00:00:00:00:00:00";
         try {
-            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+            if(Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
                 WifiManager manager = (WifiManager) context.getApplicationContext().getSystemService(Context.WIFI_SERVICE);
-                if (manager != null) {
+                if(manager != null) {
                     WifiInfo info = manager.getConnectionInfo();
-                    if (info != null) {
+                    if(info != null) {
                         macAddress = info.getMacAddress();
                     }
                 }
@@ -101,8 +104,8 @@ public class DeviceUtil {
                 InetAddress ip = getLocalInetAddress();
                 byte[] b = NetworkInterface.getByInetAddress(ip).getHardwareAddress();
                 StringBuilder buffer = new StringBuilder();
-                for (int i = 0; i < b.length; i++) {
-                    if (i != 0) {
+                for(int i = 0; i < b.length; i++) {
+                    if(i != 0) {
                         buffer.append(':');
                     }
                     String str = Integer.toHexString(b[i] & 0xFF);
@@ -129,13 +132,13 @@ public class DeviceUtil {
                 Enumeration<InetAddress> enIp = ni.getInetAddresses();
                 while (enIp.hasMoreElements()) {
                     ip = enIp.nextElement();
-                    if (!ip.isLoopbackAddress() && !ip.getHostAddress().contains(":")) {
+                    if(!ip.isLoopbackAddress() && !ip.getHostAddress().contains(":")) {
                         break;
                     } else {
                         ip = null;
                     }
                 }
-                if (ip != null) {
+                if(ip != null) {
                     break;
                 }
             }
@@ -218,6 +221,54 @@ public class DeviceUtil {
         }
 
         return serialNum;
+    }
+
+
+    public static String getIMEI(Context context) {
+        try {
+            if(context == null) {
+                return "";
+            }
+            TelephonyManager telephonyManager = (TelephonyManager) context.getApplicationContext().getSystemService(Context.TELEPHONY_SERVICE);
+            @SuppressLint("MissingPermission") String imei = telephonyManager.getDeviceId();
+            if(imei != null && !imei.equals("")) {
+                return imei;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return "";
+    }
+
+
+    /**
+     * 获取屏幕分辨率
+     *
+     * @param context 上下文
+     * @return 屏幕分辨率
+     */
+    public static String getPhoneSize(final Context context) {
+        DisplayMetrics dm = new DisplayMetrics();
+        dm = context.getResources().getDisplayMetrics();
+        float density = dm.density; // 屏幕密度（像素比例：0.75/1.0/1.5/2.0）
+        int densityDPI = dm.densityDpi; // 屏幕密度（每寸像素：120/160/240/320）
+        float xdpi = dm.xdpi;
+        float ydpi = dm.ydpi;
+        int screenWidth = dm.widthPixels; // 屏幕宽（像素，如：480px）
+        int screenHeight = dm.heightPixels; // 屏幕高（像素，如：800px）
+
+        return screenWidth + "*" + screenHeight;
+    }
+    /**
+     * 获取当前时区
+     *
+     * @return 当前时区
+     */
+    public static String getCurrentTimeZone() {
+        TimeZone tz = TimeZone.getDefault();
+        return tz.getDisplayName(false, TimeZone.SHORT);
+
     }
 
 }

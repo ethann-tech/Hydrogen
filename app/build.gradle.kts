@@ -97,5 +97,6 @@ dependencies { //implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation(libs.slf4j.api)
     implementation(libs.logback.android)
     implementation(libs.toaster)
+    implementation(libs.baserecyclerviewadapterhelper)
 
 }

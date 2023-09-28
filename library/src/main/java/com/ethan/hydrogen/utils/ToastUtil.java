@@ -30,16 +30,7 @@ import androidx.annotation.Keep;
 
 
 /**
- * @ClassName: ToastUtil.java
- * @Description: Toast工具类
- * @Author: Wonium
- * @E-mail: wonium@qq.com
- * @Blog: https://blog.wonium.com
- * @CreateDate: 2018/11/11 11:04
- * @UpdateUser: 更新者
- * @UpdateDate: 2018/11/11 11:04
- * @UpdateDescription: 更新说明
- * @Version: 1.0.0
+ * @author ethan
  */
 @Keep
 public class ToastUtil {
@@ -50,7 +41,7 @@ public class ToastUtil {
      * 实例对象
      */
     private ToastUtil() {
-        if (Inner.INSTANCE != null) {
+        if(Inner.INSTANCE != null) {
             throw new RuntimeException("该实例已存在，请通过getInstance方法获取");
         }
     }
@@ -70,7 +61,7 @@ public class ToastUtil {
      * @param content 显示内容
      */
     private void showShort(Context context, CharSequence content) {
-        if (IS_SHOW) {
+        if(IS_SHOW) {
             Toast.makeText(context, content, Toast.LENGTH_SHORT).show();
         }
     }
@@ -82,7 +73,7 @@ public class ToastUtil {
      * @param content 显示内容
      */
     private void showLong(Context context, CharSequence content) {
-        if (IS_SHOW) {
+        if(IS_SHOW) {
             Toast.makeText(context, content, Toast.LENGTH_LONG).show();
         }
     }
@@ -96,7 +87,7 @@ public class ToastUtil {
      */
 
     public void showDuration(Context context, CharSequence content, int duration) {
-        if (IS_SHOW) {
+        if(IS_SHOW) {
             Toast.makeText(context, content, duration).show();
         }
     }
@@ -109,7 +100,7 @@ public class ToastUtil {
      * @param duration 持续时间
      */
     public void showUiThread(final Context context, final CharSequence content, final int duration) {
-        if (IS_SHOW) {
+        if(IS_SHOW) {
             ((Activity) context).runOnUiThread(() -> Toast.makeText(context, content, duration).show());
         }
     }
@@ -122,7 +113,7 @@ public class ToastUtil {
      * @param content 显示内容
      */
     public void show(Context context, CharSequence content) {
-        if (content.length() > 6) {
+        if(content.length() > 6) {
             showShort(context, content);
         } else {
             showLong(context, content);

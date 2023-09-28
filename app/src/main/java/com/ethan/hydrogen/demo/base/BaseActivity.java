@@ -25,6 +25,7 @@ import android.view.WindowManager;
 import androidx.annotation.Keep;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.res.ResourcesCompat;
 
 import com.ethan.hydrogen.R;
 import com.ethan.hydrogen.utils.ActivityManagerUtil;
@@ -36,16 +37,7 @@ import org.slf4j.LoggerFactory;
 
 
 /**
- * @ClassName: BaseActivity.java
- * @Description: activity 公共基类
- * @Author: Wonium
- * @E-mail: wonium@qq.com
- * @Blog: https://blog.wonium.com
- * @CreateDate: 2018/11/17 10:08
- * @UpdateUser: update user
- * @UpdateDate: 2018/11/17 10:08
- * @UpdateDescription: 更新说明
- * @Version: 1.0.1
+ * @author ethan
  */
 @Keep
 public abstract class BaseActivity extends AppCompatActivity {
@@ -73,24 +65,24 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         mContext = this;
         initWindowAttributes();
-        if (mAllowFullScreen) {
+        if(mAllowFullScreen) {
             getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
             requestWindowFeature(Window.FEATURE_NO_TITLE);
         }
         bindLayout(getLayoutResId());
         initView();
-        if (isSetStatusBar) {
+        if(isSetStatusBar) {
             setStatusBar();
         }
-        if (isAllowScreenRotate) {
+        if(isAllowScreenRotate) {
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         } else {
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         }
-        if (savedInstanceState != null) {
+        if(savedInstanceState != null) {
             initParam(savedInstanceState);
         } else {
-            if (getIntent() != null && getIntent().getExtras() != null) {
+            if(getIntent() != null && getIntent().getExtras() != null) {
                 initParam(getIntent().getExtras());
             }
         }
@@ -128,7 +120,7 @@ public abstract class BaseActivity extends AppCompatActivity {
      * @return
      */
     protected int getStatusColor() {
-        return getResources().getColor(R.color.black);
+        return ResourcesCompat.getColor(getResources(), R.color.black, null);
     }
 
     /**
@@ -148,7 +140,7 @@ public abstract class BaseActivity extends AppCompatActivity {
      *
      * @param layoutResId 布局文件资源ID
      */
-    public   void bindLayout(int layoutResId){}
+    public void bindLayout(int layoutResId) {}
 
 
     /**

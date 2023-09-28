@@ -17,11 +17,13 @@
 package com.ethan.hydrogen.demo;
 
 import android.widget.ImageView;
+
 import com.ethan.hydrogen.R;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.DecodeFormat;
 import com.bumptech.glide.request.RequestOptions;
 import com.lcw.library.imagepicker.utils.ImageLoader;
+
 /**
  * 实现自定义图片加载
  * Create by: chenWei.li
@@ -31,16 +33,13 @@ import com.lcw.library.imagepicker.utils.ImageLoader;
  */
 public class GlideLoader implements ImageLoader {
 
-    private RequestOptions mOptions = new RequestOptions()
-            .centerCrop()
-            .dontAnimate()
-            .format(DecodeFormat.PREFER_RGB_565)
-            .placeholder(com.ethan.hydrogen.demo.R.mipmap.ic_launcher)
-            .error(R.drawable.icon_image_error);
+    private final RequestOptions mOptions = new RequestOptions().centerCrop()
+                                                                .dontAnimate()
+                                                                .format(DecodeFormat.PREFER_RGB_565)
+                                                                .placeholder(com.ethan.hydrogen.demo.R.mipmap.ic_launcher)
+                                                                .error(R.drawable.icon_image_error);
 
-    private RequestOptions mPreOptions = new RequestOptions()
-            .skipMemoryCache(true)
-            .error(R.drawable.icon_image_error);
+    private final RequestOptions mPreOptions = new RequestOptions().skipMemoryCache(true).error(R.drawable.icon_image_error);
 
     @Override
     public void loadImage(ImageView imageView, String imagePath) {
@@ -58,6 +57,6 @@ public class GlideLoader implements ImageLoader {
     @Override
     public void clearMemoryCache() {
         //清理缓存
-        Glide.get(App.getInstance().getApplicationContext()).clearMemory();
+        Glide.get(App.Companion.getInstance().getApplicationContext()).clearMemory();
     }
 }

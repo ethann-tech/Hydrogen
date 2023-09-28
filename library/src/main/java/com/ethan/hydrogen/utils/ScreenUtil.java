@@ -1,8 +1,8 @@
 package com.ethan.hydrogen.utils;
 
+import android.app.KeyguardManager;
 import android.content.Context;
 import android.graphics.Point;
-import android.os.Build;
 import android.view.Display;
 import android.view.WindowManager;
 
@@ -21,32 +21,28 @@ import java.lang.reflect.Method;
  * UpdateDescription: 更新说明
  * @Version: 1.0.0
  **/
-public class NotchScreenUtil {
+public class ScreenUtil {
     /**
      * 刘海屏、水滴屏等异型屏支持的Android系统版本：8.0-》全面屏  8.0以上-》刘海屏、水滴屏等异型屏
      * true 支持，false 不支持
      */
-    private NotchScreenUtil() {
-        if (Inner.INSTANCE != null) {
+    private ScreenUtil() {
+        if(Inner.INSTANCE != null) {
             throw new RuntimeException("该实例已存在，请通过getInstance方法获取");
         }
     }
 
     private static class Inner {
-        private static final NotchScreenUtil INSTANCE = new NotchScreenUtil();
+        private static final ScreenUtil INSTANCE = new ScreenUtil();
     }
 
-    public static NotchScreenUtil getInstance() {
+    public static ScreenUtil getInstance() {
         return Inner.INSTANCE;
     }
 
 
     public boolean isNotchSupportVersion(Context context) {
-
         // 低于 API 21的，都不会是全面屏。。。
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
-            return false;
-        }
         return (isAllScreenDevice(context) || isNotch(context));
     }
 
@@ -58,29 +54,26 @@ public class NotchScreenUtil {
     private volatile static boolean mIsAllScreenDevice;
 
     public boolean isAllScreenDevice(Context context) {
-        if (mHasCheckAllScreen) {
+        if(mHasCheckAllScreen) {
             return mIsAllScreenDevice;
         }
         mHasCheckAllScreen = true;
         mIsAllScreenDevice = false;
         // 低于 API 21的，都不会是全面屏。。。
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
-            return false;
-        }
         WindowManager windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
-        if (windowManager != null) {
+        if(windowManager != null) {
             Display display = windowManager.getDefaultDisplay();
             Point point = new Point();
             display.getRealSize(point);
             float width, height;
-            if (point.x < point.y) {
+            if(point.x < point.y) {
                 width = point.x;
                 height = point.y;
             } else {
                 width = point.y;
                 height = point.x;
             }
-            if (height / width >= 1.97f) {
+            if(height / width >= 1.97f) {
                 mIsAllScreenDevice = true;
             }
         }
@@ -112,9 +105,7 @@ public class NotchScreenUtil {
             Method method = cls.getMethod("isFeatureSupport", int.class);
             // 0x00000020：是否有刘海  0x00000008：是否有圆角
             isNotch = (boolean) method.invoke(cls, 0x00000020);
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (NoSuchMethodException e) {
+        } catch (ClassNotFoundException | NoSuchMethodException e) {
             e.printStackTrace();
         } catch (IllegalAccessException e) {
             e.printStackTrace();
@@ -189,6 +180,19 @@ public class NotchScreenUtil {
             return isNotch;
         }
     }
-
+    /**
+     * 判断是否锁屏
+     *
+     * @param context 上下文
+     * @return
+     */
+    public static boolean isScreenLock(Context context) {
+        KeyguardManager mKeyguardManager = (KeyguardManager) context.getSystemService(Context.KEYGUARD_SERVICE);
+        boolean flag = false;
+        if(mKeyguardManager != null) {
+            flag = mKeyguardManager.inKeyguardRestrictedInputMode();
+        }
+        return flag;
+    }
 
 }

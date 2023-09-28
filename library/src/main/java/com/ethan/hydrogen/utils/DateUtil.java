@@ -48,9 +48,8 @@ import java.util.stream.Collectors;
 @Keep
 public class DateUtil {
 
-    private DateUtil() {
-        throw new RuntimeException("该实例已存在，请通过getInstance方法获取");
-    }
+    private DateUtil() {}
+
     private static class Inner {
         private static final DateUtil INSTANCE = new DateUtil();
     }
@@ -218,7 +217,7 @@ public class DateUtil {
      * @return yyyy-MM-dd HH:mm:ss
      */
     public String dateSimpleFormat(Date date, SimpleDateFormat format) {
-        if (format == null)
+        if(format == null)
             format = defaultDateTimeFormat.get();
         assert format != null;
         return (date == null ? "" : format.format(date));
@@ -264,7 +263,7 @@ public class DateUtil {
      * @throws ParseException 日期格式转换出错
      */
     private Date getDateByFormat(String strDate, SimpleDateFormat format) {
-        if (format == null)
+        if(format == null)
             format = defaultDateTimeFormat.get();
         try {
             assert format != null;
@@ -411,7 +410,7 @@ public class DateUtil {
      */
     public Date getCalcTime(Date date, int hOffset, int mOffset, int sOffset) {
         Calendar cal = Calendar.getInstance();
-        if (date != null)
+        if(date != null)
             cal.setTime(date);
         cal.add(Calendar.HOUR_OF_DAY, hOffset);
         cal.add(Calendar.MINUTE, mOffset);
@@ -475,19 +474,19 @@ public class DateUtil {
         calendar.setTimeInMillis(millis);
         Calendar curCalendar = Calendar.getInstance();
         //如果需要转换的时间比当前时间晚,且忽略将来时间表示
-        if (calendar.after(curCalendar) && ignoreLater) {
+        if(calendar.after(curCalendar) && ignoreLater) {
             return "刚刚";
         }
         // 和当前时间的年份和月份是否相同
-        if (calendar.get(Calendar.YEAR) == curCalendar.get(Calendar.YEAR) && calendar.get(Calendar.MONTH) == curCalendar.get(Calendar.MONTH)) {
+        if(calendar.get(Calendar.YEAR) == curCalendar.get(Calendar.YEAR) && calendar.get(Calendar.MONTH) == curCalendar.get(Calendar.MONTH)) {
             // 年月日是否都相同
             int day1 = calendar.get(Calendar.DAY_OF_YEAR);
             int day2 = curCalendar.get(Calendar.DAY_OF_YEAR);
-            if (day1 < day2) {//以前
+            if(day1 < day2) {//以前
                 long hour1 = calendar.getTimeInMillis();
                 long hour2 = curCalendar.getTimeInMillis();
                 long distance = (hour2 - hour1) / 1000 / 60 / 60;
-                if (distance < 24) {
+                if(distance < 24) {
                     return distance + "小时前";
                 } else {
                     SimpleDateFormat sdf = defaultDateFormat.get();
@@ -496,21 +495,21 @@ public class DateUtil {
 
                 //return (day2 - day1) + "天前";
                 //以后
-            } else if (day1 > day2) {
+            } else if(day1 > day2) {
                 return (day1 - day2) + "天后";
             } else {
                 int hour1 = calendar.get(Calendar.HOUR_OF_DAY);
                 int hour2 = curCalendar.get(Calendar.HOUR_OF_DAY);
-                if (hour1 < hour2) {//以前
+                if(hour1 < hour2) {//以前
                     return (hour2 - hour1) + "小时前";
-                } else if (hour1 > hour2) {//以后
+                } else if(hour1 > hour2) {//以后
                     return (hour1 - hour2) + "小时后";
                 } else {
                     int minute1 = calendar.get(Calendar.MINUTE);
                     int minute2 = curCalendar.get(Calendar.MINUTE);
-                    if (minute1 < minute2) {//以前
+                    if(minute1 < minute2) {//以前
                         return (minute2 - minute1) + "分钟前";
-                    } else if (minute1 > minute2) {//以后
+                    } else if(minute1 > minute2) {//以后
                         return (minute1 - minute2) + "分钟后";
                     } else {
                         //忽略秒
@@ -541,38 +540,38 @@ public class DateUtil {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        if (date == null) {
+        if(date == null) {
             return "";
         }
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
         Calendar curCalendar = Calendar.getInstance();
         //如果需要转换的时间比当前时间晚,且忽略将来时间表示
-        if (calendar.after(curCalendar) && ignoreLater) {
+        if(calendar.after(curCalendar) && ignoreLater) {
             return "刚刚";
         }
         //和当前时间的年份和月份是否相同
-        if (calendar.get(Calendar.YEAR) == curCalendar.get(Calendar.YEAR) && calendar.get(Calendar.MONTH) == curCalendar.get(Calendar.MONTH)) {
+        if(calendar.get(Calendar.YEAR) == curCalendar.get(Calendar.YEAR) && calendar.get(Calendar.MONTH) == curCalendar.get(Calendar.MONTH)) {
             //年月日是否都相同
             int day1 = calendar.get(Calendar.DAY_OF_YEAR);
             int day2 = curCalendar.get(Calendar.DAY_OF_YEAR);
-            if (day1 < day2) {//以前
+            if(day1 < day2) {//以前
                 return (day2 - day1) + "天前";
-            } else if (day1 > day2) {//以后
+            } else if(day1 > day2) {//以后
                 return (day1 - day2) + "天后";
             } else {
                 int hour1 = calendar.get(Calendar.HOUR_OF_DAY);
                 int hour2 = curCalendar.get(Calendar.HOUR_OF_DAY);
-                if (hour1 < hour2) {//以前
+                if(hour1 < hour2) {//以前
                     return (hour2 - hour1) + "小时前";
-                } else if (hour1 > hour2) {//以后
+                } else if(hour1 > hour2) {//以后
                     return (hour1 - hour2) + "小时后";
                 } else {
                     int minute1 = calendar.get(Calendar.MINUTE);
                     int minute2 = curCalendar.get(Calendar.MINUTE);
-                    if (minute1 < minute2) {//以前
+                    if(minute1 < minute2) {//以前
                         return (minute2 - minute1) + "分钟前";
-                    } else if (minute1 > minute2) {//以后
+                    } else if(minute1 > minute2) {//以后
                         return (minute1 - minute2) + "分钟后";
                     } else {
                         //忽略秒
@@ -581,7 +580,7 @@ public class DateUtil {
                 }
             }
         } else {
-            SimpleDateFormat sdf = new SimpleDateFormat("M-d",Locale.CHINA);
+            SimpleDateFormat sdf = new SimpleDateFormat("M-d", Locale.CHINA);
             return sdf.format(calendar.getTime());
         }
     }
@@ -597,13 +596,13 @@ public class DateUtil {
         calendar.setTimeInMillis(timestamp * 1000);
         Calendar curCalendar = Calendar.getInstance();
 
-        if (calendar.get(Calendar.DAY_OF_YEAR) == curCalendar.get(Calendar.DAY_OF_YEAR)) {
+        if(calendar.get(Calendar.DAY_OF_YEAR) == curCalendar.get(Calendar.DAY_OF_YEAR)) {
             Date d = new Date(timestamp * 1000);
-            SimpleDateFormat sf = new SimpleDateFormat("HH:mm",Locale.CHINA);
+            SimpleDateFormat sf = new SimpleDateFormat("HH:mm", Locale.CHINA);
             return sf.format(d);
-        } else if (calendar.get(Calendar.DAY_OF_YEAR) == (curCalendar.get(Calendar.DAY_OF_YEAR) - 1)) {
+        } else if(calendar.get(Calendar.DAY_OF_YEAR) == (curCalendar.get(Calendar.DAY_OF_YEAR) - 1)) {
             return "昨天";
-        } else if (calendar.get(Calendar.WEEK_OF_YEAR) == curCalendar.get(Calendar.WEEK_OF_YEAR)) {
+        } else if(calendar.get(Calendar.WEEK_OF_YEAR) == curCalendar.get(Calendar.WEEK_OF_YEAR)) {
             int week = calendar.get(Calendar.DAY_OF_WEEK_IN_MONTH);
             switch (week) {
                 case 0:
@@ -637,17 +636,17 @@ public class DateUtil {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        if (date == null) {
+        if(date == null) {
             return "";
         }
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
         Calendar curCalendar = Calendar.getInstance();
-        if (calendar.get(Calendar.DAY_OF_YEAR) == curCalendar.get(Calendar.DAY_OF_YEAR)) {
+        if(calendar.get(Calendar.DAY_OF_YEAR) == curCalendar.get(Calendar.DAY_OF_YEAR)) {
             Date d = curCalendar.getTime();
             SimpleDateFormat sf = new SimpleDateFormat("HH:mm", Locale.CHINA);
             return sf.format(d);
-        } else if (calendar.get(Calendar.YEAR) == curCalendar.get(Calendar.YEAR)) {
+        } else if(calendar.get(Calendar.YEAR) == curCalendar.get(Calendar.YEAR)) {
             SimpleDateFormat sdf = new SimpleDateFormat("MM-dd", Locale.CHINA);
             return sdf.format(calendar.getTime());
         } else {
@@ -668,11 +667,11 @@ public class DateUtil {
         Calendar curCalendar = Calendar.getInstance();
         Date d = new Date(timestamp * 1000);
         SimpleDateFormat sf = new SimpleDateFormat("HH:mm", Locale.CHINA);
-        if (calendar.get(Calendar.DAY_OF_YEAR) == curCalendar.get(Calendar.DAY_OF_YEAR)) {
+        if(calendar.get(Calendar.DAY_OF_YEAR) == curCalendar.get(Calendar.DAY_OF_YEAR)) {
             return sf.format(d);
-        } else if (calendar.get(Calendar.DAY_OF_YEAR) == curCalendar.get(Calendar.DAY_OF_YEAR) - 1) {
+        } else if(calendar.get(Calendar.DAY_OF_YEAR) == curCalendar.get(Calendar.DAY_OF_YEAR) - 1) {
             return "昨天 " + sf.format(d);
-        } else if (calendar.get(Calendar.WEEK_OF_YEAR) == curCalendar.get(Calendar.WEEK_OF_YEAR)) {
+        } else if(calendar.get(Calendar.WEEK_OF_YEAR) == curCalendar.get(Calendar.WEEK_OF_YEAR)) {
             int week = calendar.get(Calendar.DAY_OF_WEEK_IN_MONTH);
             String weekStr = "";
             switch (week) {
@@ -802,7 +801,7 @@ public class DateUtil {
     /**
      * 获取指定指定月份的天数
      *
-     * @param year 2020
+     * @param year  2020
      * @param month 1
      * @return 31  单位（天）
      */
@@ -844,7 +843,7 @@ public class DateUtil {
      * @param format 被格式化日期的格式
      * @return 格式化后的日期
      */
-    public static String formatDate(Date date, String format) {
+    public String formatDate(Date date, String format) {
         SimpleDateFormat sdf = new SimpleDateFormat(format, Locale.ENGLISH);
         return sdf.format(date);
     }
@@ -856,7 +855,7 @@ public class DateUtil {
      * @param format 被格式化日期的格式
      * @return 格式化后的日期
      */
-    public static String formatDate(long date, String format) {
+    public String formatDate(long date, String format) {
         return formatDate(new Date(date), format);
     }
 
@@ -867,9 +866,9 @@ public class DateUtil {
      * @param format 被解析日期的格式
      * @return 毫秒 东八区时间
      */
-    public static long parseDateToMilliseconds(String date, String format) {
+    public long parseDateToMilliseconds(String date, String format) {
         try {
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern(format,Locale.ENGLISH);
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern(format, Locale.ENGLISH);
             LocalDateTime ldt = LocalDateTime.parse(date, formatter);
             return ldt.toInstant(ZoneOffset.of("+8")).toEpochMilli();
         } catch (Exception e) {
@@ -885,7 +884,7 @@ public class DateUtil {
      * @param format 被解析日期的格式
      * @return 解析后的日期
      */
-    public static Date parseDate(String date, String format) {
+    public Date parseDate(String date, String format) {
         SimpleDateFormat sdf = new SimpleDateFormat(format, Locale.ENGLISH);
         try {
             return sdf.parse(date);
@@ -897,6 +896,7 @@ public class DateUtil {
 
     /**
      * 将日期转行成秒
+     *
      * @param date 被转换日期
      * @return 秒
      */
@@ -906,6 +906,7 @@ public class DateUtil {
 
     /**
      * 将日期转换成分钟
+     *
      * @param date 被转换日期
      * @return 分钟
      */
@@ -915,6 +916,7 @@ public class DateUtil {
 
     /**
      * 将日期转换成小时
+     *
      * @param date 日期
      * @return 转换后的小时
      */
@@ -924,15 +926,18 @@ public class DateUtil {
 
     /**
      * 获取年份
+     *
      * @param date 日期
      * @return 年份
      */
     public static int getYear(Date date) {
         return getYear(date, Locale.CHINA);
     }
+
     /**
      * 获取年份
-     * @param date 日期
+     *
+     * @param date   日期
      * @param locale 位置
      * @return 年份
      */
@@ -978,7 +983,7 @@ public class DateUtil {
      * @param formatResult 两个日期之间的日期格式
      * @return 两个日期之间的日期集合
      */
-    public static List<String> findDates(String dayBegin, String formatBegin, String dayEnd, String formatEnd, String formatResult) {
+    public List<String> findDates(String dayBegin, String formatBegin, String dayEnd, String formatEnd, String formatResult) {
         Date dateBegin = parseDate(dayBegin, formatBegin);
         Date dateEnd = parseDate(dayEnd, formatEnd);
         return findDates(dateBegin, dateEnd).stream().map(date -> formatDate(date, formatResult)).collect(Collectors.toList());
@@ -990,35 +995,35 @@ public class DateUtil {
         boolean backward = seconds < 0;
         String suffix = backward ? "后" : "前";
         seconds = Math.abs(seconds);
-        if (seconds < 5) {
+        if(seconds < 5) {
             return backward ? "即将" : "刚刚";
         }
-        if (seconds < 60) {
+        if(seconds < 60) {
             return seconds + "秒" + suffix;
         }
         seconds /= 60;
-        if (seconds < 29) {
+        if(seconds < 29) {
             return seconds + "分钟" + suffix;
         }
-        if (seconds < 31) {
+        if(seconds < 31) {
             return "半小时" + suffix;
         }
-        if (seconds < 60) {
+        if(seconds < 60) {
             return seconds + "分钟" + suffix;
         }
         long m = seconds % 60;
         seconds /= 60;
-        if (seconds < 24) {
+        if(seconds < 24) {
             return (28 < m && m < 32 && seconds < 10 ? seconds + "个半小时" : seconds + "小时" + m + "分钟") + suffix;
         }
         seconds /= 24;
-        if (seconds < 30) {
-            if (seconds % 7 == 0) {
+        if(seconds < 30) {
+            if(seconds % 7 == 0) {
                 return seconds / 7 + "周" + suffix;
             }
             return seconds + "天" + suffix;
         }
-        if (seconds < 365) {
+        if(seconds < 365) {
             return seconds / 30 + "月" + suffix;
         }
         return seconds / 365 + "年" + suffix;
