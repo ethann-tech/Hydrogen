@@ -67,6 +67,7 @@ test-junit = 'junit:junit:4.13.2'
 test-android-ext = 'androidx.test.ext:junit:1.1.5'
 test-android-espresso = 'androidx.test.espresso:espresso-core:3.5.1'
 
+#router
 arouter-api='com.alibaba:arouter-api:1.5.1'
 arouter-compiler='com.alibaba:arouter-compiler:1.5.1'
 

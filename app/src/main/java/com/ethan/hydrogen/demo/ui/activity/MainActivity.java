@@ -17,6 +17,9 @@
 package com.ethan.hydrogen.demo.ui.activity;
 
 
+import android.content.Context;
+import android.content.Intent;
+
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.ethan.hydrogen.demo.R;
 import com.ethan.hydrogen.demo.databinding.ActivityMainBinding;
@@ -35,21 +38,16 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 /**
- * @ClassName: MainActivity
- * @Description: 添加描述
- * @Author: Wonium
- * @E-mail: wonium@qq.com
- * @Blog: https://blog.wonium.com
- * @CreateDate: 2018/11/28 14:14
- * @UpdateUser: 添加更新者
- * @UpdateDate: 2018/11/28 14:14
- * @UpdateDescription: 更新描述
- * @Version:
+ * @author ethan
  */
-@Route(path = PageRouter.ACTIVITY_MAIN)
 public class MainActivity extends BaseActivity {
     private ActivityMainBinding mBinding;
     private List<Fragment> fragments;
+
+    public static void start(Context context) {
+        context.startActivity(new Intent(context, MainActivity.class));
+    }
+
 
     @Override
     public void initWindowAttributes() {
@@ -77,10 +75,11 @@ public class MainActivity extends BaseActivity {
 
     /**
      * 设置状态栏颜色
+     *
      * @return
      */
     @Override
-    protected int getStatusColor () {
+    protected int getStatusColor() {
         return getResources().getColor(com.ethan.hydrogen.R.color.black);
     }
 
@@ -88,55 +87,45 @@ public class MainActivity extends BaseActivity {
     public void initListener() {
         mBinding.includeMainContent.bottomNavigationView.setOnNavigationItemSelectedListener(menuItem -> {
             int itemId;
-            //switch (menuItem.getItemId()) {
-            //    case R.id.nav_video:
-            //        itemId=1;
-            //        break;
-            //    case R.id.nav_my:
-            //        itemId =2;
-            //        break;
-            //    case R.id.nav_friend:
-            //        itemId=3;
-            //        break;
-            //    case R.id.nav_account:
-            //        itemId=4;
-            //        break;
-            //    case R.id.nav_find:
-            //    default:
-            //        itemId=0;
-            //        break;
-            //}
-            //replaceFragment(lastShowFragment,itemId);
+            int id = menuItem.getItemId();
+            if(id == R.id.nav_video) {
+                itemId = 1;
+            } else if(id == R.id.nav_my) {
+                itemId = 2;
+            } else if(id == R.id.nav_friend) {
+                itemId = 3;
+            } else if(id == R.id.nav_account) {
+                itemId = 4;
+            } else {
+                itemId = 0;
+            }
+            replaceFragment(lastShowFragment, itemId);
             return true;
         });
     }
-    private int lastShowFragment=0;
+
+    private int lastShowFragment = 0;
 
     private void initFragment() {
 
         fragments = new ArrayList<>();
         fragments.add(FindFragment.newInstance("FindFragment", "0"));
         fragments.add(VideoFragment.newInstance("VideoFragment", "1"));
-        fragments.add(MyFragment.newInstance("MyFragment","2"));
-        fragments.add(FriendFragment.newInstance("FriendFragment","3"));
-        fragments.add(AccountFragment.newInstance("AccountFragment","4"));
-        getSupportFragmentManager()
-                .beginTransaction()
-                .add(mBinding.includeMainContent.container.getId(),fragments.get(0))
-                .show(fragments.get(0))
-                .commitAllowingStateLoss();
+        fragments.add(MyFragment.newInstance("MyFragment", "2"));
+        fragments.add(FriendFragment.newInstance("FriendFragment", "3"));
+        fragments.add(AccountFragment.newInstance("AccountFragment", "4"));
+        getSupportFragmentManager().beginTransaction().add(mBinding.includeMainContent.container.getId(), fragments.get(0)).show(fragments.get(0)).commitAllowingStateLoss();
     }
 
-    private  void replaceFragment(int lastShowFragment,int index){
-        FragmentTransaction transaction =getSupportFragmentManager().beginTransaction();
+    private void replaceFragment(int lastShowFragment, int index) {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.hide(fragments.get(lastShowFragment));
-        this.lastShowFragment =index;
-        if (!fragments.get(index).isAdded()){
-            transaction.add(mBinding.includeMainContent.container.getId(),fragments.get(index));
+        this.lastShowFragment = index;
+        if(!fragments.get(index).isAdded()) {
+            transaction.add(mBinding.includeMainContent.container.getId(), fragments.get(index));
         }
         transaction.show(fragments.get(index)).commitAllowingStateLoss();
     }
-
 
 
 }

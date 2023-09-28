@@ -33,6 +33,7 @@ public class GuidePagerAdapter extends BaseRecyclerViewAdapter<Integer, BaseView
     @Override
     public BaseViewHolder<ItemGuidePagerBinding> onCreateVH(ViewGroup parent, int viewType) {
         ItemGuidePagerBinding mBinding = ItemGuidePagerBinding.inflate(getInflater());
+        mBinding.getRoot().setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         return new BaseViewHolder<>(mBinding);
     }
 

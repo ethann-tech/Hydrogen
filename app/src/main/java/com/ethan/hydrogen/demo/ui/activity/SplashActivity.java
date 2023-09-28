@@ -24,6 +24,7 @@ import android.widget.LinearLayout;
 
 import androidx.appcompat.widget.AppCompatImageView;
 
+import androidx.core.content.res.ResourcesCompat;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
@@ -36,14 +37,15 @@ import com.ethan.hydrogen.utils.SharedPreferencesUtil;
 import com.ethan.hydrogen.demo.adapter.GuidePagerAdapter;
 import com.ethan.hydrogen.demo.config.AppConfig;
 import com.ethan.hydrogen.demo.R;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
-@Route(path = PageRouter.ACTIVITY_SPLASH)
+
 public class SplashActivity extends BaseActivity {
-    private int[] images = new int[]{R.drawable.indicator_select, R.drawable.indicator_unselect};
+    private final int[] images = new int[]{R.drawable.indicator_select, R.drawable.indicator_unselect};
     private List<Integer> guideList = new ArrayList<>();
     private ActivitySplashBinding mBinding;
 
@@ -73,7 +75,7 @@ public class SplashActivity extends BaseActivity {
 
     private void isFirstLauncher() {
         boolean isFirst = SharedPreferencesUtil.getInstance().getBoolean(this, AppConfig.IS_FIRST_LAUNCHER, true);
-        if (isFirst) {
+        if(isFirst) {
             launcherGuide();
         } else {
             launcherSplash();
@@ -97,7 +99,7 @@ public class SplashActivity extends BaseActivity {
             @Override
             public void onPageSelected(int position) {
                 super.onPageSelected(position);
-                if (position == guideList.size() - 1) {
+                if(position == guideList.size() - 1) {
                     mBinding.btnInto.setVisibility(View.VISIBLE);
                 } else {
                     mBinding.btnInto.setVisibility(View.GONE);
@@ -109,7 +111,7 @@ public class SplashActivity extends BaseActivity {
 
 
     public void setCurrentDot(int position) {
-        for (int i = 0; i < mBinding.splashViewGroup.getChildCount(); i++) {
+        for(int i = 0; i < mBinding.splashViewGroup.getChildCount(); i++) {
             ((AppCompatImageView) mBinding.splashViewGroup.getChildAt(i)).setImageResource(i == position ? images[0] : images[1]);
         }
     }
@@ -119,15 +121,16 @@ public class SplashActivity extends BaseActivity {
      * 初始化指示器
      */
     private void initIndicator() {
-        for (int i = 0; i < guideList.size(); i++) {
+        for(int i = 0; i < guideList.size(); i++) {
             AppCompatImageView img = new AppCompatImageView(SplashActivity.this);
-            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(DensityUtil.getInstance().dip2px(getContext(), 10), DensityUtil.getInstance().dip2px(getContext(), 10));
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(DensityUtil.getInstance().dip2px(getContext(), 10),
+                    DensityUtil.getInstance().dip2px(getContext(), 10));
             params.setMargins(10, 0, 10, 0);
             img.setLayoutParams(params);
-            if (i == 0) {
-                img.setImageDrawable(getResources().getDrawable(images[0]));
+            if(i == 0) {
+                img.setImageDrawable(ResourcesCompat.getDrawable(getResources(), images[0], null));
             } else {
-                img.setImageDrawable(getResources().getDrawable(images[1]));
+                img.setImageDrawable(ResourcesCompat.getDrawable(getResources(), images[1], null));
             }
             mBinding.splashViewGroup.addView(img);
         }
@@ -145,7 +148,7 @@ public class SplashActivity extends BaseActivity {
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
-                ARouter.getInstance().build(PageRouter.ACTIVITY_MAIN).navigation(getContext());
+                MainActivity.start(getContext());
                 finish();
             }
         }, 3000);
@@ -164,7 +167,7 @@ public class SplashActivity extends BaseActivity {
         TypedArray array = getResources().obtainTypedArray(R.array.item_splash);
         int len = array.length();
         List<Integer> guideList = new ArrayList<>(len);
-        for (int i = 0; i < len; i++) {
+        for(int i = 0; i < len; i++) {
             guideList.add(array.getResourceId(i, 0));
         }
         array.recycle();
