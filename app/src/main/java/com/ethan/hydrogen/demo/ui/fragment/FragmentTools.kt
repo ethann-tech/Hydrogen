@@ -79,7 +79,7 @@ class FragmentTools : BaseFragment() {
     override fun initListener() {
         super.initListener()
 
-        mAdapter.setOnDebouncedItemClick(500L) { adapter, view, position ->
+        mAdapter.setOnDebouncedItemClick(500L) { _, _, position ->
             mLogger.info("LOG:FragmentTools:initListener position={}", position)
             when (position) {
                 0 -> {
@@ -117,6 +117,13 @@ class FragmentTools : BaseFragment() {
         mLogger.info("LOG:FragmentTools:printDateUtil prettyDuration={} ", DateUtil.getInstance().prettyDuration(900*1000))
         mLogger.info("LOG:FragmentTools:printDateUtil prettyDuration={} ", DateUtil.getInstance().prettyDuration(450*1000))
         mLogger.info("LOG:FragmentTools:printDateUtil prettyDuration={} ", DateUtil.getInstance().prettyDuration(200*1000))
+        mLogger.info("LOG:FragmentTools:printDateUtil getDateFromMillis={}", DateUtil.getInstance().getDateFromMillis(1661241420000))
+        mLogger.info("LOG:FragmentTools:printDateUtil getDateTimeFromMillis={}", DateUtil.getInstance().getDateTimeFromMillis(1661241420000))
+
+        mLogger.info("LOG:FragmentTools:printDateUtil getDateFormat={}", DateUtil.getInstance().getDateFormat(2023,9,23))
+        mLogger.info("LOG:FragmentTools:printDateUtil getTimeFormat={}", DateUtil.getInstance().getTimeFormat(Date()))
+        mLogger.info("LOG:FragmentTools:printDateUtil getIntervalDays={}", DateUtil.getInstance().getIntervalDays("2023-06-15", "2023-06-30"))
+
     }
 
 }

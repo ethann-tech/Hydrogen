@@ -149,30 +149,8 @@ public class DateUtil {
         return dateSimpleFormat(date, defaultTimeFormat.get());
     }
 
-    /**
-     * 格式化日期显示格式
-     *
-     * @param sdate  原始日期格式 "yyyy-MM-dd"
-     * @param format 格式化后日期格式
-     * @return 格式化后的日期显示
-     */
-    public String dateFormat(String sdate, String format) {
-        SimpleDateFormat formatter = new SimpleDateFormat(format, Locale.CHINA);
-        java.sql.Date date = java.sql.Date.valueOf(sdate);
-        return dateSimpleFormat(date, formatter);
-    }
 
-    /**
-     * 格式化日期显示格式
-     *
-     * @param date   Date对象
-     * @param format 格式化后日期格式
-     * @return 格式化后的日期显示
-     */
-    public String dateFormat(Date date, String format) {
-        SimpleDateFormat formatter = new SimpleDateFormat(format, Locale.CHINA);
-        return dateSimpleFormat(date, formatter);
-    }
+
 
     /**
      * 将date转成字符串
@@ -190,15 +168,6 @@ public class DateUtil {
         return (date == null ? "" : format.format(date));
     }
 
-    /**
-     * 将"yyyy-MM-dd HH:mm:ss" 格式的字符串转成Date
-     *
-     * @param strDate 时间字符串
-     * @return Date
-     */
-    public Date getDateByDateTimeFormat(String strDate) {
-        return getDateByFormat(strDate, defaultDateTimeFormat.get());
-    }
 
     /**
      * 将"yyyy-MM-dd" 格式的字符串转成Date
@@ -210,16 +179,6 @@ public class DateUtil {
         return getDateByFormat(strDate, defaultDateFormat.get());
     }
 
-    /**
-     * 将指定格式的时间字符串转成Date对象
-     *
-     * @param strDate 时间字符串
-     * @param format  格式化字符串
-     * @return Date
-     */
-    public Date getDateByFormat(String strDate, String format) {
-        return getDateByFormat(strDate, new SimpleDateFormat(format, Locale.CHINA));
-    }
 
     /**
      * 将String字符串按照一定格式转成Date<br>
@@ -377,8 +336,9 @@ public class DateUtil {
      */
     public Date getCalcTime(Date date, int hOffset, int mOffset, int sOffset) {
         Calendar cal = Calendar.getInstance();
-        if(date != null)
+        if(date != null) {
             cal.setTime(date);
+        }
         cal.add(Calendar.HOUR_OF_DAY, hOffset);
         cal.add(Calendar.MINUTE, mOffset);
         cal.add(Calendar.SECOND, sOffset);
