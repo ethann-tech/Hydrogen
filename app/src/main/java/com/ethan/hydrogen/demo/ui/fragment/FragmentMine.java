@@ -23,13 +23,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.alibaba.android.arouter.launcher.ARouter;
 import com.ethan.hydrogen.UniversalItemDecoration;
 import com.ethan.hydrogen.demo.R;
 import com.ethan.hydrogen.demo.databinding.FragmentMyBinding;
 import com.ethan.hydrogen.ui.BaseFragment;
 import com.ethan.hydrogen.demo.adapter.MyAdapter;
-import com.ethan.hydrogen.demo.router.PageRouter;
 import com.ethan.hydrogen.utils.ToastUtil;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -39,15 +37,15 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
-public class MyFragment extends BaseFragment {
+public class FragmentMine extends BaseFragment {
     private FragmentMyBinding mBinding;
     private String args1;
     private String args2;
     private MyAdapter mAdapter;
 
-    public static MyFragment newInstance(String args1, String args2) {
+    public static FragmentMine newInstance(String args1, String args2) {
         Bundle args = new Bundle();
-        MyFragment fragment = new MyFragment();
+        FragmentMine fragment = new FragmentMine();
         fragment.args1 = args1;
         fragment.args1 = args2;
         fragment.setArguments(args);
@@ -102,10 +100,10 @@ public class MyFragment extends BaseFragment {
     private void goPageByPosition(int position) {
         switch (position) {
             case 0:
-                ARouter.getInstance().build(PageRouter.MY_TOOLS_ACTIVITY).navigation(getContext());
+                //ARouter.getInstance().build(PageRouter.MY_TOOLS_ACTIVITY).navigation(getContext());
                 break;
             case 1:
-                ARouter.getInstance().build(PageRouter.ACTIVITY_CUSTOM_COMPONENT).navigation(getContext());
+                //ARouter.getInstance().build(PageRouter.ACTIVITY_CUSTOM_COMPONENT).navigation(getContext());
                 break;
             case 2:
                 break;

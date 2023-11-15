@@ -22,14 +22,15 @@ import android.view.View;
 
 
 
-import com.alibaba.android.arouter.facade.annotation.Route;
 import com.ethan.hydrogen.demo.R;
 import com.ethan.hydrogen.demo.databinding.ActivityInputMethodManagerUtilBinding;
 import com.ethan.hydrogen.utils.InputMethodManagerUtil;
 import com.ethan.hydrogen.demo.router.PageRouter;
 import com.ethan.hydrogen.demo.base.BaseActivity;
 
-@Route(path = PageRouter.ACTIVITY_INPUT_METHOD_MANAGER_UTIL)
+import zlc.season.butterfly.annotation.Agile;
+
+@Agile(scheme = PageRouter.ACTIVITY_INPUT_METHOD_MANAGER_UTIL)
 public class InputMethodManagerUtilActivity extends BaseActivity {
     private ActivityInputMethodManagerUtilBinding mBinding;
 

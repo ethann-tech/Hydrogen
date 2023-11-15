@@ -21,7 +21,6 @@ import android.os.Bundle;
 import android.widget.ExpandableListView;
 
 
-import com.alibaba.android.arouter.facade.annotation.Route;
 import com.ethan.hydrogen.demo.R;
 import com.ethan.hydrogen.demo.databinding.ActivityExpandListBinding;
 import com.ethan.hydrogen.demo.adapter.MyWorkAdapter;
@@ -35,7 +34,9 @@ import com.ethan.hydrogen.demo.base.BaseActivity;
 import java.util.ArrayList;
 import java.util.List;
 
-@Route(path = PageRouter.ACTIVITY_EXPAND_LIST)
+import zlc.season.butterfly.annotation.Agile;
+
+@Agile(scheme = PageRouter.ACTIVITY_EXPAND_LIST)
 public class ExpandListActivity extends BaseActivity {
     private ExpandableListView mExpandableListView;
     private MyWorkAdapter mMyWorkAdapter;

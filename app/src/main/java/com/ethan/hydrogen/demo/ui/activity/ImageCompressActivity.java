@@ -23,7 +23,6 @@ import android.view.MenuItem;
 
 import androidx.annotation.Nullable;
 
-import com.alibaba.android.arouter.facade.annotation.Route;
 import com.bumptech.glide.Glide;
 import com.ethan.hydrogen.demo.R;
 import com.ethan.hydrogen.demo.databinding.ActivityImageCompressBinding;
@@ -36,7 +35,9 @@ import com.ethan.hydrogen.utils.BitmapUtil;
 
 import java.util.List;
 
-@Route(path = PageRouter.ACTIVITY_IMG_COMPRESS)
+import zlc.season.butterfly.annotation.Agile;
+
+@Agile(scheme = PageRouter.ACTIVITY_IMG_COMPRESS)
 public class ImageCompressActivity extends BaseActivity {
     private ActivityImageCompressBinding mBinding;
     private List<String> mImagePaths;

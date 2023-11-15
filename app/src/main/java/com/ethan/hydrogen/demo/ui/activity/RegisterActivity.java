@@ -16,12 +16,13 @@
 
 package com.ethan.hydrogen.demo.ui.activity;
 
-import com.alibaba.android.arouter.facade.annotation.Route;
 import com.ethan.hydrogen.demo.databinding.ActivityRegisterBinding;
 import com.ethan.hydrogen.demo.router.PageRouter;
 import com.ethan.hydrogen.demo.base.BaseActivity;
 
-@Route(path = PageRouter.ACTIVITY_REGISTER)
+import zlc.season.butterfly.annotation.Agile;
+
+@Agile(scheme = PageRouter.ACTIVITY_REGISTER)
 public class RegisterActivity extends BaseActivity {
     private ActivityRegisterBinding mBinding;
 

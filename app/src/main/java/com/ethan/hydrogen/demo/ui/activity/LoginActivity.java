@@ -16,14 +16,15 @@
 
 package com.ethan.hydrogen.demo.ui.activity;
 
-import com.alibaba.android.arouter.facade.annotation.Route;
-import com.alibaba.android.arouter.launcher.ARouter;
 import com.ethan.hydrogen.demo.R;
 import com.ethan.hydrogen.demo.databinding.ActivityLoginBinding;
 import com.ethan.hydrogen.demo.router.PageRouter;
 import com.ethan.hydrogen.demo.base.BaseActivity;
 
-@Route(path = PageRouter.ACTIVITY_LOGIN)
+import zlc.season.butterfly.Butterfly;
+import zlc.season.butterfly.annotation.Agile;
+
+@Agile(scheme = PageRouter.ACTIVITY_LOGIN)
 public class LoginActivity extends BaseActivity {
     private ActivityLoginBinding mBinding;
 
@@ -56,7 +57,7 @@ public class LoginActivity extends BaseActivity {
 
     @Override
     public void initListener() {
-        mBinding.btnLogin.setOnClickListener(v -> ARouter.getInstance().build(PageRouter.ACTIVITY_MAIN).navigation(getContext()));
-        mBinding.tvRegisterAccount.setOnClickListener(v -> ARouter.getInstance().build(PageRouter.ACTIVITY_REGISTER).navigation(getContext()));
+        mBinding.btnLogin.setOnClickListener(v -> Butterfly.INSTANCE.agile(PageRouter.ACTIVITY_MAIN));
+        mBinding.tvRegisterAccount.setOnClickListener(v -> Butterfly.INSTANCE.agile(PageRouter.ACTIVITY_REGISTER).carry(getContext(),null,null,null));
     }
 }

@@ -19,7 +19,6 @@ package com.ethan.hydrogen.demo.ui.activity;
 import android.app.Activity;
 
 
-import com.alibaba.android.arouter.facade.annotation.Route;
 
 import com.ethan.hydrogen.demo.databinding.ActivityActivityManagerBinding;
 import com.ethan.hydrogen.utils.ActivityManagerUtil;
@@ -29,6 +28,9 @@ import com.ethan.hydrogen.demo.router.PageRouter;
 import com.ethan.hydrogen.demo.base.BaseActivity;
 
 import com.ethan.hydrogen.demo.R;
+
+import zlc.season.butterfly.annotation.Agile;
+
 /**
  * @ClassName: ActivityManagerActivity
  * @Description: 添加描述
@@ -41,7 +43,7 @@ import com.ethan.hydrogen.demo.R;
  * @UpdateDescription: 更新描述
  * @Version:
  */
-@Route(path = PageRouter.ACTIVITY_MANAGER_ACTIVITY)
+@Agile(scheme = PageRouter.ACTIVITY_MANAGER_ACTIVITY)
 public class ActivityManagerActivity extends BaseActivity {
 
     private ActivityActivityManagerBinding mBinding;

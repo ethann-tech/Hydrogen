@@ -108,3 +108,14 @@
 -keep class **_FragmentFinder { *; }
 -keep class com.qmuiteam.qmui.arch.record.** { *; }
 -keep class androidx.fragment.app.* { *; }
+
+
+#######################Butterfly############################################
+-keep public class zlc.season.butterfly.module.**
+-keep public class zlc.season.butterfly.annotation.**
+-keep public class zlc.season.butterfly.ButterflyCore {*;}
+-keep public class * extends zlc.season.butterfly.Action
+
+-keep @zlc.season.butterfly.annotation.Agile class * {*;}
+-keep @zlc.season.butterfly.annotation.Evade class * {*;}
+-keep @zlc.season.butterfly.annotation.EvadeImpl class * {*;}

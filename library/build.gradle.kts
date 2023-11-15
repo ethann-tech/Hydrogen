@@ -41,7 +41,6 @@ dependencies { //implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.lifecycle.extensions)
     implementation(libs.gson)
-
     implementation(libs.slf4j.api)
     implementation(libs.logback.android)
     implementation(libs.toaster)

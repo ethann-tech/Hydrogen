@@ -21,22 +21,23 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.alibaba.android.arouter.launcher.ARouter;
 import com.ethan.hydrogen.demo.R;
 import com.ethan.hydrogen.demo.databinding.FragmentAccountBinding;
 import com.ethan.hydrogen.ui.BaseFragment;
 import com.ethan.hydrogen.demo.router.PageRouter;
 
+import zlc.season.butterfly.Butterfly;
 
-public class AccountFragment extends BaseFragment {
+
+public class FragmentAccount extends BaseFragment {
     private FragmentAccountBinding mBinding;
     private String args1;
     private String args2;
 
 
-    public static AccountFragment newInstance(String args1, String args2) {
+    public static FragmentAccount newInstance(String args1, String args2) {
         Bundle args = new Bundle();
-        AccountFragment fragment = new AccountFragment();
+        FragmentAccount fragment = new FragmentAccount();
         fragment.args1 = args1;
         fragment.args2 = args2;
         fragment.setArguments(args);
@@ -62,6 +63,6 @@ public class AccountFragment extends BaseFragment {
     @Override
     protected void initListener() {
         super.initListener();
-        mBinding.btnFitter.setOnClickListener(v -> ARouter.getInstance().build(PageRouter.ACTIVITY_FITTER).navigation());
+        mBinding.btnFitter.setOnClickListener(v -> Butterfly.INSTANCE.agile(PageRouter.ACTIVITY_FITTER).carry(requireContext(), null, null, null));
     }
 }

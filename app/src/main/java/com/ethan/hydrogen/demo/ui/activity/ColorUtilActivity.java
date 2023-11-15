@@ -21,7 +21,6 @@ import android.graphics.Color;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.alibaba.android.arouter.facade.annotation.Route;
 import com.ethan.hydrogen.UniversalItemDecoration;
 import com.ethan.hydrogen.demo.R;
 import com.ethan.hydrogen.demo.databinding.ActivityColorUtilBinding;
@@ -34,7 +33,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Route(path = PageRouter.ACTIVITY_COLOR_UTIL)
+import zlc.season.butterfly.annotation.Agile;
+
+@Agile(scheme = PageRouter.ACTIVITY_COLOR_UTIL)
 public class ColorUtilActivity extends BaseActivity {
     private ActivityColorUtilBinding mBinding;
     private ColorGradientatorAdapter adapter;

@@ -498,7 +498,7 @@ public class DateUtil {
      *
      * @return yyyy-MM-dd
      */
-    public static String getCurrentDate() {
+    public String getCurrentDate() {
         Date date = new Date(System.currentTimeMillis());
         SimpleDateFormat format = new SimpleDateFormat(DATE_FORMAT_YEAR_MONTH_DAY, Locale.ENGLISH);
         return format.format(date);

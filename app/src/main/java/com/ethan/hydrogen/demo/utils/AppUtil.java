@@ -19,11 +19,7 @@ package com.ethan.hydrogen.demo.utils;
 
 public class AppUtil {
 
-    private AppUtil() {
-        if (Inner.INSTANCE != null) {
-            throw new RuntimeException("该实例已存在，请通过getInstance方法获取");
-        }
-    }
+    private AppUtil() {}
 
     private static class Inner {
         private static final AppUtil INSTANCE = new AppUtil();

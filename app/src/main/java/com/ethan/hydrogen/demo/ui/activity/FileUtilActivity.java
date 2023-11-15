@@ -17,7 +17,6 @@
 package com.ethan.hydrogen.demo.ui.activity;
 
 
-import com.alibaba.android.arouter.facade.annotation.Route;
 
 import com.ethan.hydrogen.demo.databinding.ActivityFileUtilBinding;
 import com.ethan.hydrogen.demo.router.PageRouter;
@@ -25,7 +24,9 @@ import com.ethan.hydrogen.demo.base.BaseActivity;
 import com.ethan.hydrogen.utils.FileUtil;
 import com.ethan.hydrogen.demo.R;
 
-@Route(path = PageRouter.ACTIVITY_FILE_UTIL)
+import zlc.season.butterfly.annotation.Agile;
+
+@Agile(scheme = PageRouter.ACTIVITY_FILE_UTIL)
 public class FileUtilActivity extends BaseActivity {
 
     private ActivityFileUtilBinding mBinding;

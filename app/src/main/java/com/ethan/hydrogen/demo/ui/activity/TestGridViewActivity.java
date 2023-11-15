@@ -19,7 +19,6 @@ package com.ethan.hydrogen.demo.ui.activity;
 
 
 
-import com.alibaba.android.arouter.facade.annotation.Route;
 import com.ethan.hydrogen.demo.R;
 import com.ethan.hydrogen.demo.databinding.ActivityTestGridBinding;
 import com.ethan.hydrogen.demo.adapter.TestGridViewAdapter;
@@ -29,8 +28,10 @@ import com.ethan.hydrogen.demo.base.BaseActivity;
 import java.util.ArrayList;
 import java.util.List;
 
+import zlc.season.butterfly.annotation.Agile;
 
-@Route(path = PageRouter.TEST_GRID_VIEW)
+
+@Agile(scheme = PageRouter.TEST_GRID_VIEW)
 public class TestGridViewActivity extends BaseActivity {
     private ActivityTestGridBinding mBinding;
     private TestGridViewAdapter adapter;

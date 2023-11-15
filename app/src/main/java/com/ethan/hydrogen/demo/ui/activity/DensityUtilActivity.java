@@ -17,7 +17,6 @@
 package com.ethan.hydrogen.demo.ui.activity;
 
 
-import com.alibaba.android.arouter.facade.annotation.Route;
 import com.ethan.hydrogen.demo.R;
 import com.ethan.hydrogen.demo.databinding.ActivityDensityUtilBinding;
 
@@ -25,10 +24,12 @@ import com.ethan.hydrogen.demo.router.PageRouter;
 import com.ethan.hydrogen.demo.base.BaseActivity;
 import com.ethan.hydrogen.utils.DensityUtil;
 
+import zlc.season.butterfly.annotation.Agile;
+
 /**
  * @author fxhhq
  */
-@Route(path = PageRouter.ACTIVITY_DENSITY_UTIL)
+@Agile(scheme = PageRouter.ACTIVITY_DENSITY_UTIL)
 public class DensityUtilActivity extends BaseActivity {
     private ActivityDensityUtilBinding mBinding;
 

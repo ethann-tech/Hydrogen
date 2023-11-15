@@ -16,17 +16,18 @@
 
 package com.ethan.hydrogen.demo.ui.activity;
 
-import com.alibaba.android.arouter.facade.annotation.Route;
 import com.ethan.hydrogen.demo.databinding.ActivityCustomDialogBinding;
 import com.ethan.hydrogen.ui.widget.LoadingDialog;
 import com.ethan.hydrogen.demo.R;
 import com.ethan.hydrogen.demo.router.PageRouter;
 import com.ethan.hydrogen.demo.base.BaseActivity;
 
+import zlc.season.butterfly.annotation.Agile;
+
 /**
  * @author fxhhq
  */
-@Route(path = PageRouter.ACTIVITY_CUSTOM_DIALOG)
+@Agile(scheme = PageRouter.ACTIVITY_CUSTOM_DIALOG)
 public class CustomDialogActivity extends BaseActivity {
     private ActivityCustomDialogBinding mBinding;
 

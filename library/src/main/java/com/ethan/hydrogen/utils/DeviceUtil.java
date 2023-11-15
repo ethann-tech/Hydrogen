@@ -19,6 +19,7 @@ package com.ethan.hydrogen.utils;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.admin.DevicePolicyManager;
 import android.content.Context;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
@@ -37,25 +38,11 @@ import java.util.TimeZone;
 import androidx.annotation.Keep;
 
 /**
- * @ClassName: DeviceUtil.java
- * @Description: 类描述
- * @Author: Wonium
- * @E-mail: wonium@qq.com
- * @Blog: https://blog.wonium.com
- * @CreateDate: 2018/11/11 20:12
- * @UpdateUser: 更新者
- * @UpdateDate: 2018/11/11 20:12
- * @UpdateDescription: 更新说明
- * @Version: 1.0.0
+ * @author ethan
  */
-@Keep
 public class DeviceUtil {
 
-    private DeviceUtil() {
-        if(Inner.INSTANCE != null) {
-            throw new RuntimeException("该实例已存在，请通过getInstance方法获取");
-        }
-    }
+    private DeviceUtil() { }
 
     private static class Inner {
         private static final DeviceUtil INSTANCE = new DeviceUtil();
@@ -68,18 +55,6 @@ public class DeviceUtil {
         return Inner.INSTANCE;
     }
 
-    /**
-     * 获取设备IMEI
-     *
-     * @param activity
-     * @return
-     */
-
-    @SuppressLint("MissingPermission")
-    public String getDeviceIMEI(Activity activity) {
-        TelephonyManager manager = (TelephonyManager) activity.getSystemService(Context.TELEPHONY_SERVICE);
-        return manager.getDeviceId();
-    }
 
 
     /**
@@ -92,27 +67,17 @@ public class DeviceUtil {
     public String getMacAddress(Context context) {
         String macAddress = "00:00:00:00:00:00";
         try {
-            if(Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
-                WifiManager manager = (WifiManager) context.getApplicationContext().getSystemService(Context.WIFI_SERVICE);
-                if(manager != null) {
-                    WifiInfo info = manager.getConnectionInfo();
-                    if(info != null) {
-                        macAddress = info.getMacAddress();
-                    }
+            InetAddress ip = getLocalInetAddress();
+            byte[] b = NetworkInterface.getByInetAddress(ip).getHardwareAddress();
+            StringBuilder buffer = new StringBuilder();
+            for(int i = 0; i < b.length; i++) {
+                if(i != 0) {
+                    buffer.append(':');
                 }
-            } else {
-                InetAddress ip = getLocalInetAddress();
-                byte[] b = NetworkInterface.getByInetAddress(ip).getHardwareAddress();
-                StringBuilder buffer = new StringBuilder();
-                for(int i = 0; i < b.length; i++) {
-                    if(i != 0) {
-                        buffer.append(':');
-                    }
-                    String str = Integer.toHexString(b[i] & 0xFF);
-                    buffer.append(str.length() == 1 ? 0 + str : str);
-                }
-                macAddress = buffer.toString().toUpperCase();
+                String str = Integer.toHexString(b[i] & 0xFF);
+                buffer.append(str.length() == 1 ? 0 + str : str);
             }
+            macAddress = buffer.toString().toUpperCase();
         } catch (SocketException e) {
             e.printStackTrace();
         }
@@ -154,7 +119,6 @@ public class DeviceUtil {
      * @param context 上下文
      * @return 手机号
      */
-    @SuppressLint({"MissingPermission", "HardwareIds"})
     public String getPhoneNumber(Context context) {
         TelephonyManager manager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
         assert manager != null;
@@ -217,7 +181,8 @@ public class DeviceUtil {
             Class<?> c = Class.forName("android.os.SystemProperties");
             Method get = c.getMethod("get", String.class, String.class);
             serialNum = (String) (get.invoke(c, "ro.serialno", "unknown"));
-        } catch (Exception ignored) {
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
         return serialNum;
@@ -230,7 +195,7 @@ public class DeviceUtil {
                 return "";
             }
             TelephonyManager telephonyManager = (TelephonyManager) context.getApplicationContext().getSystemService(Context.TELEPHONY_SERVICE);
-            @SuppressLint("MissingPermission") String imei = telephonyManager.getDeviceId();
+            String imei = telephonyManager.getImei();
             if(imei != null && !imei.equals("")) {
                 return imei;
             }

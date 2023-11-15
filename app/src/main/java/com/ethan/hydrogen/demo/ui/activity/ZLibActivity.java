@@ -68,9 +68,11 @@ public class ZLibActivity extends BaseActivity {
     @Override
     public void initView() {
         helper = new PermissionHelper(this);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-            helper.check(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE).onSuccess(this::onSuccess).onDenied(this::onDenied).onNeverAskAgain(this::onNeverAskAgain).run();
-        }
+        helper.check(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE)
+              .onSuccess(this::onSuccess)
+              .onDenied(this::onDenied)
+              .onNeverAskAgain(this::onNeverAskAgain)
+              .run();
     }
 
     /**

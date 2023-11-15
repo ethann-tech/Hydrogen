@@ -17,6 +17,7 @@
 package com.ethan.hydrogen.demo.ui.activity;
 
 import android.content.res.TypedArray;
+import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -27,8 +28,6 @@ import androidx.appcompat.widget.AppCompatImageView;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.viewpager2.widget.ViewPager2;
 
-import com.alibaba.android.arouter.facade.annotation.Route;
-import com.alibaba.android.arouter.launcher.ARouter;
 import com.ethan.hydrogen.demo.databinding.ActivitySplashBinding;
 import com.ethan.hydrogen.demo.router.PageRouter;
 import com.ethan.hydrogen.demo.base.BaseActivity;
@@ -42,6 +41,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
+
+import kotlin.Unit;
+import kotlin.jvm.functions.Function0;
+import kotlin.jvm.functions.Function1;
+import zlc.season.butterfly.Butterfly;
 
 
 public class SplashActivity extends BaseActivity {
@@ -158,7 +162,7 @@ public class SplashActivity extends BaseActivity {
     public void initListener() {
         mBinding.btnInto.setOnClickListener(v -> {
             SharedPreferencesUtil.getInstance().setBoolean(getContext(), AppConfig.IS_FIRST_LAUNCHER, false);
-            ARouter.getInstance().build(PageRouter.ACTIVITY_MAIN).navigation(getContext());
+            Butterfly.INSTANCE.agile(PageRouter.ACTIVITY_MAIN).carry(getContext(), throwable -> null, () -> null, bundle -> null);
             finish();
         });
     }

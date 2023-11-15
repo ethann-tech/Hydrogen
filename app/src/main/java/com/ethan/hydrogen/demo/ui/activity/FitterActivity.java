@@ -3,14 +3,15 @@ package com.ethan.hydrogen.demo.ui.activity;
 import androidx.appcompat.widget.LinearLayoutCompat;
 
 
-import com.alibaba.android.arouter.facade.annotation.Route;
 import com.ethan.hydrogen.demo.R;
 import com.ethan.hydrogen.demo.databinding.ActivityFitterBinding;
 import com.ethan.hydrogen.demo.router.PageRouter;
 import com.ethan.hydrogen.demo.base.BaseActivity;
 import com.ethan.hydrogen.utils.DensityUtil;
 
-@Route(path = PageRouter.ACTIVITY_FITTER)
+import zlc.season.butterfly.annotation.Agile;
+
+@Agile(scheme = PageRouter.ACTIVITY_FITTER)
 public class FitterActivity extends BaseActivity {
     private ActivityFitterBinding mBinding;
 

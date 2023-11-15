@@ -24,14 +24,15 @@ import android.widget.Toast;
 
 
 
-import com.alibaba.android.arouter.facade.annotation.Route;
 import com.ethan.hydrogen.demo.databinding.ActivityWProgressViewBinding;
 import com.ethan.hydrogen.demo.router.PageRouter;
 import com.ethan.hydrogen.demo.base.BaseActivity;
 import com.ethan.hydrogen.ui.progress.WProgressDialog;
 import com.ethan.hydrogen.demo.R;
 
-@Route(path = PageRouter.ACTIVITY_W_PROGRESS_DIALOG)
+import zlc.season.butterfly.annotation.Agile;
+
+@Agile(scheme = PageRouter.ACTIVITY_W_PROGRESS_DIALOG)
 public class WProgressDialogActivity extends BaseActivity implements View.OnClickListener {
     private ActivityWProgressViewBinding mBinding;
     private WProgressDialog dialog;

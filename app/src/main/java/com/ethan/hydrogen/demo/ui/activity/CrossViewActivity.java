@@ -5,10 +5,11 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 
 
-import com.alibaba.android.arouter.facade.annotation.Route;
 import com.ethan.hydrogen.demo.databinding.ActivityCrossViewBinding;
 import com.ethan.hydrogen.demo.router.PageRouter;
 import com.ethan.hydrogen.demo.base.BaseActivity;
+
+import zlc.season.butterfly.annotation.Agile;
 
 
 /**
@@ -23,7 +24,7 @@ import com.ethan.hydrogen.demo.base.BaseActivity;
  * @UpdateDescription: 更新说明
  * @Version: 1.0.1
  */
-@Route(path = PageRouter.ACTIVITY_CROSS_VIEW)
+@Agile(scheme = PageRouter.ACTIVITY_CROSS_VIEW)
 public class CrossViewActivity extends BaseActivity {
     private ActivityCrossViewBinding mBinding;
 

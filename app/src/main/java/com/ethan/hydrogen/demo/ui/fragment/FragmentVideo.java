@@ -22,18 +22,18 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.ethan.hydrogen.demo.R;
-import com.ethan.hydrogen.demo.databinding.FragmentFriendBinding;
+import com.ethan.hydrogen.demo.databinding.FragmentVideoBinding;
 import com.ethan.hydrogen.ui.BaseFragment;
+import com.ethan.hydrogen.utils.ToastUtil;
 
-
-public class FriendFragment extends BaseFragment {
-    private FragmentFriendBinding mBinding;
+public class FragmentVideo extends BaseFragment {
+    private FragmentVideoBinding mBinding;
     private String args1;
     private String args2;
 
-    public static FriendFragment newInstance(String args1, String args2) {
+    public static FragmentVideo newInstance(String args1, String args2) {
         Bundle args = new Bundle();
-        FriendFragment fragment = new FriendFragment();
+        FragmentVideo fragment = new FragmentVideo();
         fragment.args1 = args1;
         fragment.args1 = args2;
         fragment.setArguments(args);
@@ -42,18 +42,19 @@ public class FriendFragment extends BaseFragment {
 
     @Override
     protected int getLayoutResId() {
-        return R.layout.fragment_friend;
+        return R.layout.fragment_video;
     }
 
     @Override
     protected View initBinding(LayoutInflater inflater, ViewGroup container) {
-        mBinding = FragmentFriendBinding.inflate(inflater);
+        mBinding = FragmentVideoBinding.inflate(inflater);
         return mBinding.getRoot();
     }
 
     @Override
     protected void initView(View view) {
-
+        mBinding.editFixedText.setFixedText("ZH-");
+        mBinding.btnTest.setOnClickListener(v -> ToastUtil.getInstance().show(getContext(), mBinding.editFixedText.getText().toString().trim()));
     }
 
     @Override

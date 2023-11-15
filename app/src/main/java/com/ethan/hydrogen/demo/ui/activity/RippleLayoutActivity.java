@@ -17,13 +17,14 @@
 package com.ethan.hydrogen.demo.ui.activity;
 
 
-import com.alibaba.android.arouter.facade.annotation.Route;
 import com.ethan.hydrogen.demo.R;
 import com.ethan.hydrogen.demo.databinding.ActivityRippleLayoutBinding;
 import com.ethan.hydrogen.demo.router.PageRouter;
 import com.ethan.hydrogen.demo.base.BaseActivity;
 
-@Route(path = PageRouter.ACTIVITY_RIPPLE_LAYOUT)
+import zlc.season.butterfly.annotation.Agile;
+
+@Agile(scheme = PageRouter.ACTIVITY_RIPPLE_LAYOUT)
 public class RippleLayoutActivity extends BaseActivity {
     private ActivityRippleLayoutBinding mBinding;
     @Override

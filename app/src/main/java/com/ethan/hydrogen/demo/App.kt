@@ -15,8 +15,6 @@
  */
 package com.ethan.hydrogen.demo
 
-import com.alibaba.android.arouter.BuildConfig
-import com.alibaba.android.arouter.launcher.ARouter
 import com.ethan.hydrogen.demo.common.ApplicationLifecycle
 import com.ethan.hydrogen.demo.common.log.ImplLoggerManager
 import com.ethan.hydrogen.utils.DateUtil
@@ -32,24 +30,12 @@ class App : ApplicationLifecycle() {
     override suspend fun onCreatedBySuspend() {
         super.onCreatedBySuspend()
         instance = this
-        initARouter()
+
         initLogger()
         QMUISwipeBackActivityManager.init(this)
     }
 
 
-    /**
-     * 初始化页面路由
-     */
-    private fun initARouter() {
-
-        if (BuildConfig.DEBUG) {
-            ARouter.openLog()
-            ARouter.openDebug()
-            ARouter.printStackTrace()
-        }
-        ARouter.init(this)
-    }
 
     /**
      * 初始化Logger

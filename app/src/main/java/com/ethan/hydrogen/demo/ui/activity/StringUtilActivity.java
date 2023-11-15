@@ -19,7 +19,6 @@ package com.ethan.hydrogen.demo.ui.activity;
 
 
 
-import com.alibaba.android.arouter.facade.annotation.Route;
 import com.ethan.hydrogen.demo.databinding.ActivityStringUtilBinding;
 import com.ethan.hydrogen.utils.StringUtil;
 import com.ethan.hydrogen.demo.R;
@@ -34,6 +33,8 @@ import org.slf4j.LoggerFactory;
 
 import java.io.UnsupportedEncodingException;
 
+import zlc.season.butterfly.annotation.Agile;
+
 /**
  * @ClassName: StringUtilActivity.java
  * @Description: 类描述
@@ -46,7 +47,7 @@ import java.io.UnsupportedEncodingException;
  * @UpdateDescription: 更新说明
  * @Version: 1.0.0
  */
-@Route(path = PageRouter.ACTIVITY_STRING_UTIL)
+@Agile(scheme = PageRouter.ACTIVITY_STRING_UTIL)
 public class StringUtilActivity extends BaseActivity implements StringView {
     private ActivityStringUtilBinding mBinding;
     private StringPresenter mPresenter;

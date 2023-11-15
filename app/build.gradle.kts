@@ -1,3 +1,5 @@
+import java.util.Date
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -6,22 +8,16 @@ plugins {
 
 
 android {
-    compileSdk = 33
+    compileSdk = 34
     namespace = libs.versions.packageName.get()
     defaultConfig {
+        multiDexEnabled = true
         applicationId = "com.ethan.hydrogen.demo"
         minSdk = 26
         versionCode = 12
         versionName = "v0.1.9"
-        testInstrumentationRunner =
-            "android.support.test.runner.AndroidJUnitRunner" //setProperty('archivesBaseName', "$applicationId-official-$versionName-$versionCode-"+releaseTime())
-        //buildConfigField 'String', 'BUILD_TIME', '"' + (new Date()).format('yyyy-MM-dd HH:mm:ss') + '"'
+        testInstrumentationRunner = "android.support.test.runner.AndroidJUnitRunner" //setProperty('archivesBaseName', "$applicationId-official-$versionName-$versionCode-"+releaseTime())
 
-        kapt {
-            arguments {
-                arg("AROUTER_MODULE_NAME", project.name)
-            }
-        }
     }
     kotlinOptions {
         jvmTarget = "17"
@@ -50,7 +46,7 @@ android {
         debug {
             isDebuggable =true
             isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro","proguard-dic-6.txt","proguard-log.pro")
         }
     }
 
@@ -61,22 +57,17 @@ android {
 
 }
 
-dependencies { //implementation fileTree(include: ['*.jar'], dir: 'libs')
+dependencies {
+    implementation(fileTree("dir" to "libs", "include" to listOf("*.jar")))
     // 测试相关
-
     implementation(libs.permissions.nopermission)
-    //
-    implementation (libs.arouter.api)
-    implementation(libs.arouter.compiler)
-    //
     debugImplementation (libs.leakcanary.android)
     implementation (libs.imagepicker)  // 图片视频选择器
 
+    implementation(libs.butterfly)
+    implementation(libs.butterfly.compose)
+    kapt(libs.butterfly.compiler)
 
-    //// QMUI
-    implementation (libs.qmuiteam.arch)
-    implementation (libs.qmuiteam.qmui)
-    //kapt (libs.qmuiteam.arch.compiler)
     implementation(platform("org.jetbrains.kotlin:kotlin-bom:1.8.0"))
     implementation(project(mapOf("path" to ":library")))
     testImplementation(libs.test.junit)
@@ -98,5 +89,9 @@ dependencies { //implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation(libs.logback.android)
     implementation(libs.toaster)
     implementation(libs.baserecyclerviewadapterhelper)
+    implementation(libs.qmuiteam.qmui)
+    implementation(libs.qmuiteam.arch)
+    kapt(libs.qmuiteam.arch.compiler)
+
 
 }

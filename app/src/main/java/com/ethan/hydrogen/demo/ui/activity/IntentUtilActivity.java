@@ -20,7 +20,6 @@ import android.Manifest;
 
 import androidx.annotation.NonNull;
 
-import com.alibaba.android.arouter.facade.annotation.Route;
 import com.ethan.hydrogen.demo.R;
 import com.ethan.hydrogen.demo.databinding.ActivityIntentUtilBinding;
 import com.ethan.hydrogen.utils.IntentUtil;
@@ -30,9 +29,10 @@ import com.ethan.hydrogen.demo.base.BaseActivity;
 
 
 import ru.alexbykov.nopermission.PermissionHelper;
+import zlc.season.butterfly.annotation.Agile;
 
 
-@Route(path = PageRouter.ACTIVITY_INTENT_UTIL)
+@Agile(scheme = PageRouter.ACTIVITY_INTENT_UTIL)
 public class IntentUtilActivity extends BaseActivity {
     private ActivityIntentUtilBinding mBinding;
     private PermissionHelper mPermissionHelper;

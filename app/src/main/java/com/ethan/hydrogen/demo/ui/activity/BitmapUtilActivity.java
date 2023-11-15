@@ -18,7 +18,6 @@ package com.ethan.hydrogen.demo.ui.activity;
 
 import android.graphics.Bitmap;
 
-import com.alibaba.android.arouter.facade.annotation.Route;
 import com.ethan.hydrogen.demo.R;
 import com.ethan.hydrogen.demo.base.BaseActivity;
 import com.ethan.hydrogen.demo.databinding.ActivityBitmapUtilBinding;
@@ -28,21 +27,11 @@ import com.ethan.hydrogen.utils.ByteUtil;
 import com.ethan.hydrogen.utils.ThreadPoolUtil;
 import com.ethan.hydrogen.utils.ToastUtil;
 
+import zlc.season.butterfly.annotation.Agile;
 
-/**
- * @ClassName: BitmapUtilActivity.java
- * @Description: bitmapUtil 示例页面
- * @Author: Wonium
- * @E-mail: wonium@qq.com
- * @Blog: https://blog.wonium.com
- * @CreateDate: 2018/11/20 21:59
- * @UpdateUser: update user
- * @UpdateDate: 2018/11/20 21:59
- * @UpdateDescription: 更新说明
- * @Version: 1.0.0
- */
 
-@Route(path = PageRouter.ACTIVITY_BITMAP_UTIL)
+
+@Agile(scheme = PageRouter.ACTIVITY_BITMAP_UTIL)
 public class BitmapUtilActivity extends BaseActivity {
     private ActivityBitmapUtilBinding mBinding;
 

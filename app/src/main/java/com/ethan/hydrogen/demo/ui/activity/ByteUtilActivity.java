@@ -18,7 +18,6 @@ package com.ethan.hydrogen.demo.ui.activity;
 
 
 
-import com.alibaba.android.arouter.facade.annotation.Route;
 import com.ethan.hydrogen.demo.R;
 import com.ethan.hydrogen.demo.databinding.ActivityByteUtilBinding;
 import com.ethan.hydrogen.utils.ByteUtil;
@@ -29,6 +28,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.nio.ByteOrder;
+
+import zlc.season.butterfly.annotation.Agile;
 
 /**
  * @ClassName: ByteActivity
@@ -42,10 +43,10 @@ import java.nio.ByteOrder;
  * @UpdateDescription: 更新描述 二进制
  * @Version:
  */
-@Route(path = PageRouter.ACTIVITY_BYTE_UTIL)
+@Agile(scheme = PageRouter.ACTIVITY_BYTE_UTIL)
 public class ByteUtilActivity extends BaseActivity {
     private ActivityByteUtilBinding mBinding;
-    private Logger logger = LoggerFactory.getLogger(this.getClass());
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Override
     protected int getStatusColor() {

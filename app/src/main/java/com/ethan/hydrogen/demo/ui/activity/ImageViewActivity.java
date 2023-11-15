@@ -16,25 +16,15 @@
 
 package com.ethan.hydrogen.demo.ui.activity;
 
-import com.alibaba.android.arouter.facade.annotation.Route;
 import com.ethan.hydrogen.demo.databinding.ActivityImageViewBinding;
 import com.ethan.hydrogen.demo.R;
 import com.ethan.hydrogen.demo.router.PageRouter;
 import com.ethan.hydrogen.demo.base.BaseActivity;
 
-/**
- * @ClassName: ImageViewActivity
- * @Description:
- * @author: dahai
- * @E-mail:
- * @Blog:
- * @CreateDate: 2019/6/3 17:46
- * @UpdateUser: dahai
- * @UpdateDate: 2019/6/3 17:46
- * @UpdateDescription:
- * @Version:
- */
-@Route(path = PageRouter.ACTIVITY_IMAGE_VIEW)
+import zlc.season.butterfly.annotation.Agile;
+
+
+@Agile(scheme = PageRouter.ACTIVITY_IMAGE_VIEW)
 public class ImageViewActivity extends BaseActivity {
     private ActivityImageViewBinding mBinding;
 

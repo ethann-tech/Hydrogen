@@ -17,16 +17,18 @@
 package com.ethan.hydrogen.demo.ui.activity;
 
 
-
-import com.alibaba.android.arouter.facade.annotation.Route;
 import com.ethan.hydrogen.demo.R;
 import com.ethan.hydrogen.demo.databinding.ActivityTextViewBinding;
 import com.ethan.hydrogen.demo.router.PageRouter;
 import com.ethan.hydrogen.demo.base.BaseActivity;
-@Route(path = PageRouter.ACTIVITY_TEXT_VIEW)
+
+import zlc.season.butterfly.annotation.Agile;
+
+@Agile(scheme = PageRouter.ACTIVITY_TEXT_VIEW)
 
 public class TextViewActivity extends BaseActivity {
     private ActivityTextViewBinding mBinding;
+
     @Override
     protected int getStatusColor() {
         return getResources().getColor(com.ethan.hydrogen.R.color.black);

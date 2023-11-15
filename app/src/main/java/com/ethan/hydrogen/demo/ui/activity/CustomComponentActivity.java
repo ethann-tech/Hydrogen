@@ -20,8 +20,6 @@
     import androidx.recyclerview.widget.LinearLayoutManager;
     import androidx.recyclerview.widget.RecyclerView;
 
-    import com.alibaba.android.arouter.facade.annotation.Route;
-    import com.alibaba.android.arouter.launcher.ARouter;
     import com.ethan.hydrogen.UniversalItemDecoration;
     import com.ethan.hydrogen.demo.databinding.ActivityCustomComponentBinding;
     import com.ethan.hydrogen.demo.R;
@@ -30,6 +28,9 @@
     import com.ethan.hydrogen.demo.base.BaseActivity;
 
     import java.util.Arrays;
+
+    import zlc.season.butterfly.Butterfly;
+    import zlc.season.butterfly.annotation.Agile;
 
     /**
      * @ClassName: CustomComponentActivity
@@ -43,7 +44,7 @@
      * @UpdateDescription:
      * @Version:
      */
-    @Route(path = PageRouter.ACTIVITY_CUSTOM_COMPONENT)
+    @Agile(scheme = PageRouter.ACTIVITY_CUSTOM_COMPONENT)
     public class CustomComponentActivity extends BaseActivity {
         private ActivityCustomComponentBinding mBinding;
         private CustomComponentAdapter mAdapter;
@@ -100,25 +101,25 @@
             mAdapter.setOnItemClickListener((view, position) -> {
                 switch (position) {
                     case 0:
-                        ARouter.getInstance().build(PageRouter.ACTIVITY_IMAGE_VIEW).navigation(getContext());
+                        Butterfly.INSTANCE.agile(PageRouter.ACTIVITY_IMAGE_VIEW) ;
                         break;
                     case 1:
-                        ARouter.getInstance().build(PageRouter.ACTIVITY_TEXT_VIEW).navigation(getContext());
+                        Butterfly.INSTANCE.agile(PageRouter.ACTIVITY_TEXT_VIEW) ;
                         break;
                     case 2:
-                        ARouter.getInstance().build(PageRouter.ACTIVITY_CUSTOM_DIALOG).navigation(getContext());
+                        Butterfly.INSTANCE.agile(PageRouter.ACTIVITY_CUSTOM_DIALOG) ;
                         break;
                     case 3:
-                        ARouter.getInstance().build(PageRouter.ACTIVITY_EXPAND_LIST).navigation(getContext());
+                        Butterfly.INSTANCE.agile(PageRouter.ACTIVITY_EXPAND_LIST) ;
                         break;
                     case 4:
-                        ARouter.getInstance().build(PageRouter.ACTIVITY_RIPPLE_LAYOUT).navigation(getContext());
+                        Butterfly.INSTANCE.agile(PageRouter.ACTIVITY_RIPPLE_LAYOUT) ;
                         break;
                     case 5:
-                        ARouter.getInstance().build(PageRouter.ACTIVITY_W_PROGRESS_DIALOG).navigation(getContext());
+                        Butterfly.INSTANCE.agile(PageRouter.ACTIVITY_W_PROGRESS_DIALOG) ;
                         break;
                     case 6:
-                        ARouter.getInstance().build(PageRouter.ACTIVITY_CROSS_VIEW).navigation(getContext());
+                        Butterfly.INSTANCE.agile(PageRouter.ACTIVITY_CROSS_VIEW) ;
                     default:
                         break;
                 }

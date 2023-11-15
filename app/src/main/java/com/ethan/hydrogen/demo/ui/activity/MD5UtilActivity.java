@@ -16,16 +16,18 @@
 
 package com.ethan.hydrogen.demo.ui.activity;
 
-import com.alibaba.android.arouter.facade.annotation.Route;
 import com.ethan.hydrogen.demo.databinding.ActivityMd5UtilBinding;
 import com.ethan.hydrogen.demo.router.PageRouter;
 import com.ethan.hydrogen.demo.base.BaseActivity;
 import com.ethan.hydrogen.utils.Md5Util;
 import com.ethan.hydrogen.demo.R;
+
+import zlc.season.butterfly.annotation.Agile;
+
 /**
  * @author ethan
  */
-@Route(path = PageRouter.ACTIVITY_MD5_UTIL)
+@Agile(scheme= PageRouter.ACTIVITY_MD5_UTIL)
 public class MD5UtilActivity extends BaseActivity {
     private ActivityMd5UtilBinding mBinding;
 

@@ -19,7 +19,7 @@ package com.ethan.hydrogen.demo.ui.activity;
 
 
 
-import com.alibaba.android.arouter.facade.annotation.Route;
+
 import com.ethan.hydrogen.demo.databinding.ActivityDataCleanBinding;
 import com.ethan.hydrogen.demo.R;
 import com.ethan.hydrogen.demo.router.PageRouter;
@@ -27,19 +27,10 @@ import com.ethan.hydrogen.demo.base.BaseActivity;
 import com.ethan.hydrogen.utils.DataCleanUtil;
 import com.ethan.hydrogen.utils.StringUtil;
 
-/**
- * @ClassName: AcacheActivity.java
- * @Description: 类描述
- * @Author: Wonium
- * @E-mail: wonium@qq.com
- * @Blog: https://blog.wonium.com
- * @CreateDate: 2018/11/17 15:25
- * @UpdateUser: update user
- * @UpdateDate: 2018/11/17 15:25
- * @UpdateDescription: 更新说明
- * @Version: 1.0.0
- */
-@Route(path = PageRouter.ACTIVITY_DATA_CLEAR)
+import zlc.season.butterfly.annotation.Agile;
+
+
+@Agile(scheme = PageRouter.ACTIVITY_DATA_CLEAR)
 public class DataCleanActivity extends BaseActivity {
     private ActivityDataCleanBinding binding;
 

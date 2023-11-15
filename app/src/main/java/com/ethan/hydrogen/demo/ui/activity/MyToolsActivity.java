@@ -20,8 +20,7 @@ package com.ethan.hydrogen.demo.ui.activity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.alibaba.android.arouter.facade.annotation.Route;
-import com.alibaba.android.arouter.launcher.ARouter;
+
 import com.ethan.hydrogen.demo.R;
 import com.ethan.hydrogen.demo.adapter.MyAdapter;
 import com.ethan.hydrogen.demo.databinding.ActivityMyToolsBinding;
@@ -34,7 +33,10 @@ import com.ethan.hydrogen.demo.base.BaseActivity;
 
 import java.util.List;
 
-@Route(path = PageRouter.MY_TOOLS_ACTIVITY)
+import zlc.season.butterfly.Butterfly;
+import zlc.season.butterfly.annotation.Agile;
+
+@Agile(scheme = PageRouter.MY_TOOLS_ACTIVITY)
 public class MyToolsActivity extends BaseActivity implements MainView {
     private ActivityMyToolsBinding mBinding;
     private MyAdapter myAdapter;
@@ -87,42 +89,42 @@ public class MyToolsActivity extends BaseActivity implements MainView {
         myAdapter.setOnItemClickListener((view, position) -> {
             switch (position) {
                 case 0:
-                    ARouter.getInstance().build(PageRouter.ACTIVITY_MANAGER_ACTIVITY).navigation(getContext());
+                    Butterfly.INSTANCE.agile(PageRouter.ACTIVITY_MANAGER_ACTIVITY) ;
                     break;
                 case 1:
-                    ARouter.getInstance().build(PageRouter.ACTIVITY_BITMAP_UTIL).navigation(getContext());
+                    Butterfly.INSTANCE.agile(PageRouter.ACTIVITY_BITMAP_UTIL);
                     break;
                 case 2:
-                    ARouter.getInstance().build(PageRouter.ACTIVITY_BYTE_UTIL).navigation(getContext());
+                    Butterfly.INSTANCE.agile(PageRouter.ACTIVITY_BYTE_UTIL);
                     break;
                 case 3:
-                    ARouter.getInstance().build(PageRouter.ACTIVITY_COLOR_UTIL).navigation(getContext());
+                    Butterfly.INSTANCE.agile(PageRouter.ACTIVITY_COLOR_UTIL);
                     break;
                 case 4:
-                    ARouter.getInstance().build(PageRouter.ACTIVITY_DATA_CLEAR).navigation(getContext());
+                    Butterfly.INSTANCE.agile(PageRouter.ACTIVITY_DATA_CLEAR);
                     break;
                 case 5:
-                    ARouter.getInstance().build(PageRouter.ACTIVITY_DATE_UTIL).navigation(getContext());
+                    Butterfly.INSTANCE.agile(PageRouter.ACTIVITY_DATE_UTIL);
                     break;
                 case 6:
-                    ARouter.getInstance().build(PageRouter.ACTIVITY_DEVICE_UTIL).navigation(getContext());
+                    Butterfly.INSTANCE.agile(PageRouter.ACTIVITY_DEVICE_UTIL);
                     break;
                 case 7:
-                    ARouter.getInstance().build(PageRouter.ACTIVITY_DENSITY_UTIL).navigation(getContext());
+                    Butterfly.INSTANCE.agile(PageRouter.ACTIVITY_DENSITY_UTIL);
                     break;
                 case 8:
-                    ARouter.getInstance().build(PageRouter.ACTIVITY_FILE_UTIL).navigation(getContext());
+                    Butterfly.INSTANCE.agile(PageRouter.ACTIVITY_FILE_UTIL);
                 case 9:
-                    ARouter.getInstance().build(PageRouter.ACTIVITY_INPUT_METHOD_MANAGER_UTIL).navigation(getContext());
+                    Butterfly.INSTANCE.agile(PageRouter.ACTIVITY_INPUT_METHOD_MANAGER_UTIL) ;
                     break;
                 case 10:
-                    ARouter.getInstance().build(PageRouter.ACTIVITY_INTENT_UTIL).navigation(getContext());
+                    Butterfly.INSTANCE.agile(PageRouter.ACTIVITY_INTENT_UTIL);
                     break;
                 case 11:
-                    ARouter.getInstance().build(PageRouter.ACTIVITY_MD5_UTIL).navigation(getContext());
+                    Butterfly.INSTANCE.agile(PageRouter.ACTIVITY_MD5_UTIL);
                     break;
                 case 15:
-                    ARouter.getInstance().build(PageRouter.ACTIVITY_STRING_UTIL).navigation(getContext());
+                    Butterfly.INSTANCE.agile(PageRouter.ACTIVITY_STRING_UTIL) ;
                     break;
                 default:
 

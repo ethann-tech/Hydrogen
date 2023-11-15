@@ -26,6 +26,7 @@ import com.ethan.hydrogen.demo.adapter.AdapterSimpleData
 import com.ethan.hydrogen.demo.databinding.FragmentToolsBinding
 import com.ethan.hydrogen.ui.BaseFragment
 import com.ethan.hydrogen.utils.DateUtil
+import com.ethan.hydrogen.utils.DeviceUtil
 import com.ethan.hydrogen.utils.FileUtil
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -85,15 +86,21 @@ class FragmentTools : BaseFragment() {
                 0 -> {
                     printDateUtil()
                 }
+                1 ->{
+                    printDeviceUtil()
+                }
             }
         }
     }
 
     private fun printDateUtil() {
 
-        mLogger.info("LOG:MainActivity:onCreate dateFormat={}", DateUtil.getCurrentDate())
+        mLogger.info("LOG:MainActivity:onCreate dateFormat={}", DateUtil.getInstance().currentDate)
+        mLogger.info("LOG:FragmentTools:printDateUtil DateUtil.hasCode={}", DateUtil.getInstance().hashCode())
         mLogger.info("LOG:MainActivity:onCreate formatDate={}", DateUtil.getInstance().formatDate(Date(), DateUtil.DATE_FORMAT_YEAR_MONTH_DAY_HOUR_MIN_SECOND))
+        mLogger.info("LOG:FragmentTools:printDateUtil DateUtil.hasCode={}", DateUtil.getInstance().hashCode())
         mLogger.info("LOG:MainActivity:onCreate formatDate={}", DateUtil.getInstance().formatDate(System.currentTimeMillis(), DateUtil.DATE_FORMAT_YEAR_MONTH_DAY_HOUR_MIN))
+        mLogger.info("LOG:FragmentTools:printDateUtil DateUtil.hasCode={}", DateUtil.getInstance().hashCode())
         mLogger.info("LOG:MainActivity:onCreate formatDate={}", DateUtil.getInstance().formatDate(System.currentTimeMillis(), DateUtil.DATE_FORMAT_YEAR_MONTH_DAY_HOUR))
         mLogger.info("LOG:MainActivity:onCreate formatDate={}", DateUtil.getInstance().formatDate(System.currentTimeMillis(), DateUtil.DATE_FORMAT_YEAR_MONTH_DAY_HOUR))
         mLogger.info("LOG:MainActivity:onCreate formatDate={}", DateUtil.getInstance().formatDate(System.currentTimeMillis(), DateUtil.DATE_FORMAT_YEAR_MONTH_DAY))
@@ -124,6 +131,11 @@ class FragmentTools : BaseFragment() {
         mLogger.info("LOG:FragmentTools:printDateUtil getTimeFormat={}", DateUtil.getInstance().getTimeFormat(Date()))
         mLogger.info("LOG:FragmentTools:printDateUtil getIntervalDays={}", DateUtil.getInstance().getIntervalDays("2023-06-15", "2023-06-30"))
 
+    }
+
+    private fun printDeviceUtil() {
+        mLogger.info("LOG:FragmentTools:printDeviceUtil getOSVersion={}", DeviceUtil.getInstance().osVersion)
+        mLogger.info("LOG:MainActivity:onCreate getAndroidId={}", DeviceUtil.getInstance().getAndroidId(requireActivity()))
     }
 
 }

@@ -21,11 +21,11 @@ import android.view.MenuItem
 import com.ethan.hydrogen.demo.R
 import com.ethan.hydrogen.demo.base.BaseActivity
 import com.ethan.hydrogen.demo.databinding.ActivityMainBinding
-import com.ethan.hydrogen.demo.ui.fragment.AccountFragment
+import com.ethan.hydrogen.demo.ui.fragment.FragmentAccount
 import com.ethan.hydrogen.demo.ui.fragment.FragmentTools
-import com.ethan.hydrogen.demo.ui.fragment.FriendFragment
-import com.ethan.hydrogen.demo.ui.fragment.MyFragment
-import com.ethan.hydrogen.demo.ui.fragment.VideoFragment
+import com.ethan.hydrogen.demo.ui.fragment.FragmentFriend
+import com.ethan.hydrogen.demo.ui.fragment.FragmentMine
+import com.ethan.hydrogen.demo.ui.fragment.FragmentVideo
 import com.ethan.hydrogen.ui.BaseFragment
 import com.ethan.hydrogen.utils.ResourceUtil
 
@@ -38,10 +38,10 @@ class MainActivity : BaseActivity() {
     private val fragments: MutableList<BaseFragment> by lazy {
         mutableListOf<BaseFragment>().apply {
             add(FragmentTools.newInstance(args1 = "FragmentTools", args2 = "0"))
-            add(VideoFragment.newInstance("VideoFragment", "1"))
-            add(MyFragment.newInstance("MyFragment", "2"))
-            add(FriendFragment.newInstance("FriendFragment", "3"))
-            add(AccountFragment.newInstance("AccountFragment", "4"))
+            add(FragmentVideo.newInstance("VideoFragment", "1"))
+            add(FragmentMine.newInstance("MyFragment", "2"))
+            add(FragmentFriend.newInstance("FriendFragment", "3"))
+            add(FragmentAccount.newInstance("AccountFragment", "4"))
         }
 
     }

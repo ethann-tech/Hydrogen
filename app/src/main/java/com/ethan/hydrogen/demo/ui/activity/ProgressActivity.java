@@ -17,7 +17,6 @@
 package com.ethan.hydrogen.demo.ui.activity;
 
 
-import com.ethan.hydrogen.demo.R;
 import com.ethan.hydrogen.demo.base.BaseActivity;
 
 public class ProgressActivity extends BaseActivity {
