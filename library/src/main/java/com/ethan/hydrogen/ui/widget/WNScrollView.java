@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.wonium.hydrogen.ui.widget;
+package com.ethan.hydrogen.ui.widget;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -53,7 +53,7 @@ public class WNScrollView extends ScrollView {
                 break;
             case MotionEvent.ACTION_MOVE:
                 int moveY = (int) e.getRawY();
-                if (Math.abs(moveY - downY) > mTouchSlop) {
+                if(Math.abs(moveY - downY) > mTouchSlop) {
                     return true;
                 }
         }
