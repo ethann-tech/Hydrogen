@@ -4,18 +4,17 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("kotlin-kapt")
 }
-
-
 android {
-    compileSdk = 34
+    compileSdk = libs.versions.compileSdk.get().toInt()
     namespace = libs.versions.packageName.get()
     defaultConfig {
         multiDexEnabled = true
-        applicationId = "com.ethan.hydrogen.demo"
-        minSdk = 26
-        versionCode = 12
-        versionName = "v0.1.9"
-        testInstrumentationRunner = "android.support.test.runner.AndroidJUnitRunner" //setProperty('archivesBaseName', "$applicationId-official-$versionName-$versionCode-"+releaseTime())
+        applicationId = libs.versions.packageName.get()
+        minSdk = libs.versions.minSdk.get().toInt()
+        versionCode = libs.versions.versionCode.get().toInt()
+        versionName = libs.versions.versionName.get()
+        testInstrumentationRunner = "android.support.test.runner.AndroidJUnitRunner"
+    //setProperty('archivesBaseName', "$applicationId-official-$versionName-$versionCode-"+releaseTime())
 
     }
     kotlinOptions {

@@ -10,8 +10,9 @@ android {
     }
 
     buildTypes {
-        release { // 代码混淆 false 不混淆，true 混淆
-            isMinifyEnabled = false // zipalign 优化 这个也要单独领出来说一下
+        release {
+            // 代码混淆 false 不混淆，true 混淆
+            isMinifyEnabled = false
             isZipAlignEnabled = true
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
@@ -25,9 +26,9 @@ android {
     }
 }
 
-dependencies { //implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation(platform("org.jetbrains.kotlin:kotlin-bom:1.8.0"))
-    implementation(files("libs\\zxing-core-3.3.3.jar"))
+dependencies {
+    implementation(fileTree("dir" to "libs", "include" to listOf("*.jar")))
+    implementation(files("libs/zxing-core-3.3.3.jar"))
     testImplementation(libs.test.junit)
     androidTestImplementation(libs.test.android.ext)
     androidTestImplementation(libs.test.android.espresso)
