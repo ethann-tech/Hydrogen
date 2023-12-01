@@ -53,14 +53,14 @@ public class InputMethodManagerUtilActivity extends BaseActivity {
 
     @Override
     public void initView() {
-        mBinding.includeImmuToolbar.tvToolbarTitle.setText(getString(R.string.tools_input_method_manager));
-        mBinding.includeImmuToolbar.toolbar.setNavigationIcon(com.ethan.hydrogen.R.drawable.ic_arrow_back_24dp);
+        mBinding.includeToolbar.tvToolbarTitle.setText(getString(R.string.tools_input_method_manager));
+        mBinding.includeToolbar.toolbar.setNavigationIcon(com.ethan.hydrogen.R.drawable.ic_arrow_back_24dp);
 
     }
 
     @Override
     public void initListener() {
-        mBinding.includeImmuToolbar.toolbar.setNavigationOnClickListener(v -> finish());
+        mBinding.includeToolbar.toolbar.setNavigationOnClickListener(v -> finish());
     }
 
     public void onOpenSoftKeyBoard(View view) {

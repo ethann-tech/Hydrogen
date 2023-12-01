@@ -13,7 +13,7 @@
             android:layout_width="wrap_content"
             android:text="跑马灯效果"
             android:layout_height="wrap_content" />
-        <com.wonium.hydrogen.ui.widget.MarqueeTextView
+        <com.ethan.hydrogen.ui.widget.MarqueeTextView
             android:id="@+id/tv_marquee"
             android:ellipsize="marquee"
             android:layout_width="match_parent"

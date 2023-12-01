@@ -20,27 +20,25 @@ import android.Manifest;
 import android.os.Build;
 import android.os.Environment;
 
-import com.ethan.hydrogen.demo.databinding.ActivityZlibBinding;
+import androidx.annotation.NonNull;
+
 import com.ethan.hydrogen.demo.R;
 import com.ethan.hydrogen.demo.base.BaseActivity;
+import com.ethan.hydrogen.demo.databinding.ActivityZlibBinding;
 import com.ethan.hydrogen.utils.ByteUtil;
 import com.ethan.hydrogen.utils.FileUtil;
 import com.ethan.hydrogen.utils.ToastUtil;
 import com.ethan.hydrogen.utils.ZlibUtil;
-
+import com.hjq.permissions.OnPermissionCallback;
+import com.hjq.permissions.XXPermissions;
 
 import java.io.IOException;
-
-import androidx.annotation.NonNull;
-
-
-import ru.alexbykov.nopermission.PermissionHelper;
+import java.util.List;
 
 public class ZLibActivity extends BaseActivity {
     private ActivityZlibBinding mBinding;
     private byte[] src;
     private byte[] compressSrc;
-    private PermissionHelper helper;
 
     @Override
     protected int getStatusColor() {
@@ -67,12 +65,25 @@ public class ZLibActivity extends BaseActivity {
 
     @Override
     public void initView() {
-        helper = new PermissionHelper(this);
-        helper.check(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE)
-              .onSuccess(this::onSuccess)
-              .onDenied(this::onDenied)
-              .onNeverAskAgain(this::onNeverAskAgain)
-              .run();
+
+        String[] permission;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            permission = new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE};
+        } else {
+            permission = new String[]{Manifest.permission.READ_MEDIA_AUDIO, Manifest.permission.READ_MEDIA_IMAGES, Manifest.permission.READ_MEDIA_VIDEO};
+        }
+
+        XXPermissions.with(this).permission(permission).request(new OnPermissionCallback() {
+            @Override
+            public void onGranted(@NonNull List<String> list, boolean b) {
+                ToastUtil.getInstance().show(getContext(), "授权成功");
+            }
+
+            @Override
+            public void onDenied(@NonNull List<String> permissions, boolean doNotAskAgain) {
+                ToastUtil.getInstance().show(getContext(), "权限拒绝，并且不再询问");
+            }
+        });
     }
 
     /**
@@ -103,21 +114,4 @@ public class ZLibActivity extends BaseActivity {
         mBinding.btnUnCompress.setOnClickListener(view -> mBinding.tvResult.setText(new String(ZlibUtil.getInstance().decompress(compressSrc))));
     }
 
-    public void onSuccess() {
-        ToastUtil.getInstance().show(getContext(), "授权成功");
-    }
-
-    public void onDenied() {
-        ToastUtil.getInstance().show(getContext(), "权限拒绝");
-    }
-
-    public void onNeverAskAgain() {
-        ToastUtil.getInstance().show(getContext(), "权限拒绝，并且不再询问");
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        helper.onRequestPermissionsResult(requestCode, permissions, grantResults);
-    }
 }

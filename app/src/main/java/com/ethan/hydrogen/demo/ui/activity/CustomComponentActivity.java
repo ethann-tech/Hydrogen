@@ -21,9 +21,9 @@
     import androidx.recyclerview.widget.RecyclerView;
 
     import com.ethan.hydrogen.UniversalItemDecoration;
-    import com.ethan.hydrogen.demo.databinding.ActivityCustomComponentBinding;
     import com.ethan.hydrogen.demo.R;
     import com.ethan.hydrogen.demo.adapter.CustomComponentAdapter;
+    import com.ethan.hydrogen.demo.databinding.ActivityCustomComponentBinding;
     import com.ethan.hydrogen.demo.router.PageRouter;
     import com.ethan.hydrogen.demo.base.BaseActivity;
 

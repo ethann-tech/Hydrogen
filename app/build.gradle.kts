@@ -1,5 +1,4 @@
 import java.util.Date
-
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -60,7 +59,7 @@ android {
 dependencies {
     implementation(fileTree("dir" to "libs", "include" to listOf("*.jar")))
     // 测试相关
-    implementation(libs.permissions.nopermission)
+    implementation(libs.permissions.xxpermissions)
     debugImplementation (libs.leakcanary.android)
     implementation (libs.imagepicker)  // 图片视频选择器
 

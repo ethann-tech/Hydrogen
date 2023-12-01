@@ -10,7 +10,7 @@
             android:id="@+id/include_component_toolbar"
             layout="@layout/layout_toolbar" />
 
-        <com.wonium.hydrogen.ui.widget.CrossView
+        <com.ethan.hydrogen.ui.widget.CrossView
             android:id="@+id/sample_cross_view"
             android:layout_width="80dp"
             android:layout_height="80dp"

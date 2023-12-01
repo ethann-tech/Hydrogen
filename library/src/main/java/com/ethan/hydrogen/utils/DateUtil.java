@@ -217,12 +217,12 @@ public class DateUtil {
     /**
      * 求两个日期相差天数
      *
-     * @param strat 起始日期，格式yyyy-MM-dd
+     * @param start 起始日期，格式yyyy-MM-dd
      * @param end   终止日期，格式yyyy-MM-dd
      * @return 两个日期相差天数
      */
-    public long getIntervalDays(String strat, String end) {
-        return ((java.sql.Date.valueOf(end)).getTime() - (java.sql.Date.valueOf(strat)).getTime()) / (3600 * 24 * 1000);
+    public long getIntervalDays(String start, String end) {
+        return ((java.sql.Date.valueOf(end)).getTime() - (java.sql.Date.valueOf(start)).getTime()) / (3600 * 24 * 1000);
     }
 
     /**
@@ -717,6 +717,9 @@ public class DateUtil {
     public static boolean isTimeOut(Date time, Long expiredIn) {
         return (System.currentTimeMillis() - time.getTime()) > expiredIn;
     }
+
+
+
 
 
 }

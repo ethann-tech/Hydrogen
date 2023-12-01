@@ -7,8 +7,7 @@
         android:orientation="vertical">
 
         <include
-            android:id="@+id/include_immu_toolbar"
-
+            android:id="@+id/include_toolbar"
             layout="@layout/layout_toolbar" />
 
         <TextView

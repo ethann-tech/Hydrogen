@@ -12,18 +12,7 @@ import com.ethan.hydrogen.demo.base.BaseActivity;
 import zlc.season.butterfly.annotation.Agile;
 
 
-/**
- * @ClassName:
- * @Description:
- * @Author: Ethan
- * @E-mail: ethan.nj@qq.com
- * @Blog: https://blog.wonium.com
- * @CreateDate: 2020/11/29 23:07
- * @UpdateUser: Ethan
- * @UpdateDate: 2020/11/29 23:07
- * @UpdateDescription: 更新说明
- * @Version: 1.0.1
- */
+
 @Agile(scheme = PageRouter.ACTIVITY_CROSS_VIEW)
 public class CrossViewActivity extends BaseActivity {
     private ActivityCrossViewBinding mBinding;
