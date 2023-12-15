@@ -18,11 +18,7 @@ package com.ethan.hydrogen.utils;
 import android.graphics.Color;
 public class ColorUtil {
 
-    private ColorUtil() {
-        if (Inner.INSTANCE != null) {
-            throw new RuntimeException("该实例已存在，请通过getInstance方法获取");
-        }
-    }
+    private ColorUtil() {}
 
     private static class Inner {
         private static final ColorUtil INSTANCE = new ColorUtil();

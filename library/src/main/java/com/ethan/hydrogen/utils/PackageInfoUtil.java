@@ -23,9 +23,7 @@ import android.os.Bundle;
 
 public class PackageInfoUtil {
     private PackageInfoUtil() {
-        if (Inner.INSTANCE != null) {
-            throw new RuntimeException("该实例已存在，请通过getInstance方法获取");
-        }
+
     }
 
     private static class Inner {

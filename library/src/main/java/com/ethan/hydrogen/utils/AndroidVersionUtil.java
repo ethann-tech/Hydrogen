@@ -33,11 +33,7 @@ import android.os.Build;
  */
 public class AndroidVersionUtil {
 
-    private AndroidVersionUtil() {
-        if (Inner.INSTANCE != null) {
-            throw new RuntimeException("该实例已存在，请通过getInstance方法获取");
-        }
-    }
+    private AndroidVersionUtil() { }
 
     private static class Inner {
         private static final AndroidVersionUtil INSTANCE = new AndroidVersionUtil();

@@ -40,9 +40,7 @@ import androidx.annotation.Keep;
 @Keep
 public class ShellUtil {
     private ShellUtil() {
-        if (Inner.INSTANCE != null) {
-            throw new RuntimeException("该实例已存在，请通过getInstance方法获取");
-        }
+
     }
 
     /**

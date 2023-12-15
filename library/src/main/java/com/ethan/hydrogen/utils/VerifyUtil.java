@@ -33,9 +33,7 @@ public class VerifyUtil {
      * 实例对象
      */
     private VerifyUtil() {
-        if (Inner.INSTANCE != null) {
-            throw new RuntimeException("该实例已存在，请通过getInstance方法获取");
-        }
+
     }
 
     private static class Inner {

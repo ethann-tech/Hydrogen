@@ -27,9 +27,7 @@ public class ScreenUtil {
      * true 支持，false 不支持
      */
     private ScreenUtil() {
-        if(Inner.INSTANCE != null) {
-            throw new RuntimeException("该实例已存在，请通过getInstance方法获取");
-        }
+
     }
 
     private static class Inner {

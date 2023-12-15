@@ -49,9 +49,7 @@ import java.nio.ByteBuffer;
 public class BitmapUtil {
 
     private BitmapUtil() {
-        if (Inner.INSTANCE != null) {
-            throw new RuntimeException("该实例已存在，请通过getInstance方法获取");
-        }
+
     }
 
     private static class Inner {

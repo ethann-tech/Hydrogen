@@ -46,9 +46,7 @@ public class Md5Util {
      * 实例对象
      */
     private Md5Util() {
-        if (Inner.INSTANCE != null) {
-            throw new RuntimeException("该实例已存在，请通过getInstance方法获取");
-        }
+
     }
 
     private static class Inner {

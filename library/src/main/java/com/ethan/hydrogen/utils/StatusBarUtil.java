@@ -56,9 +56,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 public class StatusBarUtil {
 
     private StatusBarUtil() {
-        if (Inner.INSTANCE != null) {
-            throw new RuntimeException("该实例已存在，请通过getInstance方法获取");
-        }
+
     }
 
     private static class Inner {

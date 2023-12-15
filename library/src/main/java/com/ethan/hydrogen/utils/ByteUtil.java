@@ -39,11 +39,7 @@ public class ByteUtil {
     /**
      * 实例对象
      */
-    private ByteUtil() {
-        if (Inner.INSTANCE != null) {
-            throw new RuntimeException("该实例已存在，请通过getInstance方法获取");
-        }
-    }
+    private ByteUtil() { }
 
     private static class Inner {
         private static final ByteUtil INSTANCE = new ByteUtil();

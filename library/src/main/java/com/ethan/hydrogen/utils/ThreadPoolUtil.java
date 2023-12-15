@@ -60,7 +60,7 @@ public enum ThreadPoolUtil {
     /**
      * 线程工厂
      */
-    private static ThreadFactory threadFactory = new ThreadFactory() {
+    private static final ThreadFactory threadFactory = new ThreadFactory() {
         private final AtomicInteger integer = new AtomicInteger();
 
         @Override

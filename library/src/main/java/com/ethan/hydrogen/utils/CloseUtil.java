@@ -34,9 +34,7 @@ import java.io.IOException;
 
 public class CloseUtil {
     private CloseUtil() {
-        if (Inner.INSTANCE != null) {
-            throw new RuntimeException("该实例已存在，请通过getInstance方法获取");
-        }
+
     }
 
     private static class Inner {

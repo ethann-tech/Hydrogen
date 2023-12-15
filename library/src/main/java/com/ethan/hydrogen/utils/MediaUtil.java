@@ -45,9 +45,7 @@ public class MediaUtil {
      */
 
     private MediaUtil() {
-        if (Inner.INSTANCE != null) {
-            throw new RuntimeException("该实例不存在，请通过getInstance方法获取");
-        }
+
     }
 
     private static class Inner {

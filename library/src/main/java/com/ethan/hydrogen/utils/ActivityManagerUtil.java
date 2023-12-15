@@ -41,11 +41,7 @@ public class ActivityManagerUtil {
 
     private static LinkedList<Activity> activityStack = new LinkedList<>();
 
-    private ActivityManagerUtil() {
-        if (Inner.INSTANCE != null) {
-            throw new RuntimeException("该实例已存在，请通过getInstance方法获取");
-        }
-    }
+    private ActivityManagerUtil() {}
     private static class Inner {
         private static final ActivityManagerUtil INSTANCE = new ActivityManagerUtil();
     }

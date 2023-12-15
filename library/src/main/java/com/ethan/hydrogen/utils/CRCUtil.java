@@ -37,11 +37,7 @@ import androidx.annotation.Keep;
 public class CRCUtil {
     private final String TAG = this.getClass().getSimpleName();
 
-    private CRCUtil() {
-        if (Inner.INSTANCE != null) {
-            throw new RuntimeException("该实例已存在，请通过getInstance方法获取");
-        }
-    }
+    private CRCUtil() {}
 
     private static class Inner {
         private static final CRCUtil INSTANCE = new CRCUtil();
